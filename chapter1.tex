@@ -1,0 +1,46 @@
+\chapter*{Introduction} \label{ch1_introduction}
+
+The concept of distributed ledger technology and blockchains was marked by the release of Satoshi Nakamoto’s Bitcoin white paper in 2008, which fundamentally altered the landscape of digital systems by introducing a decentralized, immutable ledger capable of creating trust without central entities \cite{nakamoto2008bitcoin}. Over the last decade, this technology has evolved far beyond its financial roots, finding applications in diverse sectors such as supply chain management \cite{rejeb2021logistics}, healthcare \cite{khezr2019healthcare}, and digital identity verification \cite{wang2020identity}. As the complexity of these distributed systems grew, these systems also shifted from simple Proof of Work consensus to Proof of Stake mechanisms \cite{king2012ppcoin} and smart contracts \cite{buterin2014ethereum}. The demand for skilled professionals capable of designing, securing, and maintaining these networks has surged. Simultaneously, higher education institutions face the critical challenge of updating computer science curricula to include rigorous, practical blockchain training. However, a significant disconnect remains between the theoretical concepts taught in lecture halls and the technical proficiency required in the industry \cite{duwadi2021education}. Students can often grasp the abstract mathematics of cryptography, but lack the opportunity to interact with the real blockchain systems within a live distributed network. This thesis emerges from that intersection of technological innovation and educational necessity, aiming to bridge the gap by developing a dedicated educational ecosystem. By proposing a dual approach: the construction of a modular, transparent blockchain prototype and the design of a structured educational curriculum that utilizes this prototype software to facilitate and close the gap between the theoretical and practical aspects of the distributed ledger technology.
+
+\newpage
+\section{Motivation} \label{ch1_motivation}
+
+The motivation for this research stems from the lack of sufficient educational tools suitable for university students' curricula. Current blockchain education often relies on one of two extremes:
+\begin{itemize}
+    \item \textbf{Theoretical Abstraction:} Lectures that only cover and focus on the theoretical aspect or the mathematics of hashing and consensus without providing a tangible or simulated blockchain system for students to experiment with.
+    \item \textbf{Production Complexity:} The use of public mainnets (like Ethereum) or monolithic open-source projects (like Hyperledger), which are often too complex, costly, or risky for introductory semester-long courses \cite{yumna2019blockchain}.
+\end{itemize}
+There is a clear need for a dedicated Sandbox like Environment, a system robust enough to demonstrate real distributed behavior (latency, forks, consensus voting) yet modular enough to allow students to modify core algorithms as part of a structured learning path.
+
+\section{Problem Statement} \label{ch1_problem_statement}
+
+The primary problem addressed by this thesis is the educational gap in teaching Distributed Systems. While students are often taught the concept and use cases of a consensus algorithm, they rarely teach how to implement such an algorithm or why one might fail under certain attack vectors or under certain network stress scenarios. Existing tools do not sufficiently support Active Learning, in which students learn by building in an educational approach proven to increase student performance in academia \cite{freeman2014active}. Without a platform that allows for the real-time visualization of algorithm execution and the flexibility to break and fix the system, students struggle to grasp how asynchronous distributed nodes achieve consensus and how blockchain systems work\cite{hundhausen2002meta}.
+
+\section{Proposed Solution \& Contribution} \label{ch1_solution}
+
+To resolve these issues, this thesis presents the design and implementation of an \textbf{Educational Blockchain Ecosystem}. The primary contribution is not merely the software, but the \textbf{Educational Curriculum} that utilizes the software and the practical aspect of the thesis to teach complex and core computer science concepts.
+
+The contribution of the thesis can be classified into two aspects:
+\begin{enumerate}
+    \item \textbf{The Technical Platform:} A modular Python-based blockchain system and a Vue.js user-friendly \textbf{Blockchain Explorer} that visualizes the internal state of the network (mem-pool, block propagation, and peering) in real-time.
+    \newpage
+    \item \textbf{The Educational Curriculum:} A set of five distinct educational modules designed to guide students from building blocks to advanced blockchain applications:
+    \begin{itemize}
+        \item \textbf{Module 1 - Network Fundamentals:} Examining networking layer, P2P topology and data structures.
+        \item \textbf{Module 2 - Consensus Algorithms:} Actively analyzing consensus algorithms focusing on Proof of Work (PoW) and Proof of Stake (PoS).
+        \item \textbf{Module 3 - Performance Analysis:} Benchmarking energy consumption and throughput.
+        \item \textbf{Module 4 - Asset Tokenization:} Extending the system to track non-financial assets (using a Library Management System as the case study).
+        \item \textbf{Module 5 - System Extensibility:} An open ended project where the system can be extending to be utilized by supply chain, logistics adaptation or any other fields.
+    \end{itemize}
+\end{enumerate}
+
+\section{Thesis Objectives} \label{ch1_objectives}
+
+The specific research objectives of this work are to:
+\begin{enumerate}
+    \item \textbf{Analyze} the security bounds and resource consumption of major consensus algorithms through a comprehensive review.
+    \item \textbf{Design} a modular blockchain architecture that allows for the switching between different consensus mechanisms for educational comparison.
+    \item \textbf{Implement} the educational prototype in Python, ensuring the code-base is documented and accessible for student experimentation.
+    \item \textbf{Develop} a web-based Blockchain Explorer to visually demonstrate the internal life-cycle of transactions and block propagation.
+    \item \textbf{Evaluate and create} the educational effectiveness of the system by designing and documenting the \textbf{Educational Modules}, demonstrating how the platform supports diverse learning outcomes from algorithm efficiency to real-world application.
+\end{enumerate}
