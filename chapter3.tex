@@ -2,34 +2,49 @@
 \chapter{System Analysis and Design} \label{ch3_design}
 \markboth{System Analysis and Design}{System Analysis and Design}
 
-Following the theoretical exploration of distributed ledger technologies in Chapter \ref{ch2_theoretical_framework}, this chapter details the comprehensive design of the educational blockchain artifact. The primary challenge in designing this system lies in balancing \textbf{production-grade functionality} (networking, cryptography, consensus) with \textbf{educational clarity}.
+Building upon the theoretical foundations of distributed ledger technologies presented in Chapter~\ref{ch2_theoretical_framework}, this chapter introduces the high-level system design of the proposed educational blockchain system. The primary challenge in designing this system lies in balancing \textbf{production-grade functionality} (networking, cryptography, consensus) with \textbf{educational clarity}. To address this challenge, the system is architected according to a modular design philosophy. This approach enables complex subsystems, such as the networking layer or the consensus engine, to be isolated, inspected, and modified independently. Consequently, students can experiment with and extend individual components without incurring extensive refactoring or unintended side effects across the codebase.
 
-The system is architected using a modular "Glass-Box" design philosophy, ensuring that complex components such as the consensus engine or the networking layer can be isolated, inspected, and modified by students without compromising the integrity of the entire system.
+\section{Requirement Analysis}
+\label{ch3_requirements}
 
-\section{Requirement Analysis} \label{ch3_requirements}
-
-The requirements for the system were derived from the pedagogical needs of the curriculum defined in this research. They are categorized into Functional Requirements (system capabilities) and Non-Functional Requirements (system qualities) \cite{sommerville2011software}.
-
-\subsection{Functional Requirements}
-To serve as a viable laboratory platform, the system must support the following core operations:
-
-\begin{enumerate}
-    \item \textbf{Peer-to-Peer Networking:} The system must autonomously discover peers and propagate messages (blocks and transactions) using a TCP-based gossip protocol \cite{coulouris2011distributed}.
-    \item \textbf{Pluggable Consensus:} The architecture must allow for the "Hot-Swapping" of consensus algorithms (e.g., switching from Proof of Stake to Proof of Work) via configuration, without code rewriting.
-    \item \textbf{State Management:} The system must maintain a persistent ledger state (UTXO or Account-based) and resolve forks automatically using the "Longest Chain" rule.
-    \item \textbf{Visual Observability:} A RESTful API must expose internal metrics (mempool size, peer count, last hash) to a frontend Blockchain Explorer.
-\end{enumerate}
+The requirements for the system were derived from the educational needs for software to be leveraged in the curriculum modules defined in the upcoming chapter \ref{ch5_curriculum}. Following best practices in software engineering The requirements are categorized into two sections, Non-Functional Requirements and Functional Requirements \cite{sommerville2011software}.
 
 \subsection{Non-Functional Requirements}
+
 \begin{enumerate}
-    \item \textbf{Modularity:} The codebase must adhere to the Separation of Concerns principle. The networking logic must be decoupled from the business logic.
-    \item \textbf{Deployability:} The system must be containerizable using Docker to ensure consistent behavior across different student operating systems.
-    \item \textbf{Readability:} As an educational tool, the source code must prioritize clarity over micro-optimizations, utilizing Python's explicit syntax \cite{guzdial2004programming}.
+    \item \textbf{Modularity:}  
+    The codebase must adhere to the principle of Separation of Concerns. In particular, networking functionality must be decoupled from core business and ledger logic to facilitate comprehension and extensibility.
+
+    \item \textbf{Readability:}  
+    As the system is intended for educational use, source code readability must be prioritized over production-level optimizations. The implementation should leverage Python’s explicit and expressive syntax to enhance conceptual understanding.
+
+    \item \textbf{Deployability:}  
+    The system must support containerization using Docker to ensure consistent deployment and execution across different student operating systems.
 \end{enumerate}
+
+\subsection{Functional Requirements}
+
+To function as an effective educational platform for computer science students and individuals interested in the technical foundations of blockchain systems, the implementation must support the following core capabilities:
+
+\begin{enumerate}
+    \item \textbf{Peer-to-Peer Networking:}  
+    The system must autonomously discover peers and propagate blocks and transactions through a TCP-based gossip protocol~\cite{coulouris2011distributed}.
+
+    \item \textbf{Pluggable Consensus Mechanisms:}  
+    The architecture must support the dynamic replacement of consensus algorithms (e.g., switching between Proof of Work and Proof of Stake), without requiring modifications to the other modules in the codebase.
+
+    \item \textbf{State Management:}  
+    The system must maintain a persistent ledger state, supporting either a UTXO-based or account-based model, and must automatically resolve forks using the longest-chain rule.
+
+    \item \textbf{Visual Observability:}  
+    A RESTful API must expose internal system metrics—such as mempool size, peer count, and the latest block hash—to enable integration with a graphical blockchain explorer.
+\end{enumerate}
+
 
 \section{System Architecture} \label{ch3_architecture}
 
-The system adopts a \textbf{Layered Architecture} pattern, dividing the node into three distinct layers: The Networking Layer, the Core Blockchain Layer, and the Application Interface Layer.
+The system adopts a multi-layered architecture pattern, dividing the system into three distinct layers: The Networking Layer, the Core Blockchain Layer, and the Application Interface Layer (API).
+%======================================REVISED===========================================
 
 % \begin{figure}[h]
 %     \centering
@@ -43,7 +58,7 @@ The system adopts a \textbf{Layered Architecture} pattern, dividing the node int
 This layer handles the raw TCP socket connections. It implements a custom message handler that serializes Python objects into JSON payloads for transmission. By abstracting the socket logic here, the upper layers can simply invoke `broadcast(message)` without managing connection states.
 
 \subsection{The Core Blockchain Layer}
-This is the central engine of the system. It contains the data structures (Block, Transaction) and the validation logic. Crucially, this layer utilizes the **Strategy Design Pattern** to manage consensus. The `Blockchain` class does not implement mining logic directly; instead, it holds a reference to an `IConsensus` interface, allowing the implementation (PoW or PoS) to be injected at runtime \cite{gamma1995design}.
+This is the central engine of the system. It contains the data structures (Block, Transaction) and the validation logic. Crucially, this layer utilizes the Strategy Design Pattern to manage consensus. The `Blockchain` class does not implement mining logic directly; instead, it holds a reference to an `IConsensus` interface, allowing the implementation (PoW or PoS) to be injected at runtime \cite{gamma1995design}.
 
 \subsection{The Application Interface (API)}
 Built using \textbf{FastAPI}, this layer exposes the node's internal state to the external world. It serves as the bridge for the "Blockchain Explorer" and allows students to manually trigger actions (e.g., `POST /connect\_peer`) during laboratory exercises.
@@ -96,7 +111,7 @@ The flow proceeds as follows:
 Python was selected as the implementation language primarily for its dominance in the data science and educational sectors. Unlike C++ (used in Bitcoin), which requires complex memory management, Python allows students to focus on the \textit{logic} of consensus algorithms rather than syntax errors. Libraries such as `pydantic` are used for data validation, enforcing strict typing similar to statically typed languages \cite{van1995python}.
 
 \subsection{Docker for Environment Isolation}
-To simulate a distributed network on a single machine, **Docker** containers are used. Each node runs in its own isolated container with a unique IP address within the Docker virtual network. This allows students to simulate network partitions and latency without requiring physical hardware clusters.
+To simulate a distributed network on a single machine, Docker containers are used. Each node runs in its own isolated container with a unique IP address within the Docker virtual network. This allows students to simulate network partitions and latency without requiring physical hardware clusters.
 
 \section{Summary}
 This chapter defined the architectural blueprint of the educational blockchain. By utilizing a modular, layered architecture and the Strategy Pattern, the system meets the Requirement Analysis for an extensible and clear learning platform. This design sets the stage for the detailed implementation discussed in Chapter \ref{ch4_implementation} and the curriculum exercises in Chapter \ref{ch5_curriculum}.

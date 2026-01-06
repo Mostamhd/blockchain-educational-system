@@ -11,6 +11,7 @@ The curriculum is designed to transform the learning process from understanding 
 
 \section{Approach and Methodology} \label{ch5_pedagogy}
 
+% Seymour Papert. say its inspired
 The design of the laboratory exercises is based on the theory of Constructionist Learning, proposed by Seymour Papert. This theory states that learning is most effective when students are actively engaged in constructing tangible objects in the real world, rather than acquiring knowledge through passive transmission or consumption \cite{papert1991situating}. In the context of Computer Science education, this necessitates moving beyond theory, static simulations, or black-box interactions with production networks (such as sending transactions on a public Testnet) toward deep system undrstanding allowing students to be able to fully understand the concepts by practive and gain code-level modifications experience.
 
 To facilitate this, the curriculum adopts a Problem-Based Learning methodology. Rather than following specific instructions and editing a finished system, students are presented with engineering challenges that mirror real-world distributed systems problems. To ensure a scientific approach, each of the five modules follows a standardized structure inspired by the Active Learning framework \cite{freeman2014active}:
@@ -250,7 +251,7 @@ By completing this module, students will be able to:
     \item Analyze and visualize performance metrics to empirically quantify the performance trade-off between Proof of Stake (PoS) and Proof of Work (PoW) \cite{croman2016scaling}.
 \end{itemize}
 
-\subsection{Laboratory Tasks}
+\subsection{Tasks}
 
 \textbf{Task 1: System Instrumentation} \\
 Students are provided with the \texttt{blockchain/utils/logger.py} and \texttt{node.py} files. They must inject timing logic to capture two critical metrics:
@@ -261,50 +262,50 @@ Students are provided with the \texttt{blockchain/utils/logger.py} and \texttt{n
 Students must modify the \texttt{handle\_block} method to log these statistics to a structured JSON file for later analysis.
 
 \textbf{Task 2: The Stress Test} \\
-Students must write a Python script (extending the provided \texttt{sample\_transactions.py}) that generates 500 valid transactions and broadcasts them to the REST API as rapidly as possible. This "Transaction Spam" forces the node to fill its Mempool, allowing students to observe how the network handles congestion.
+Students must write a Python script (extending the provided \texttt{sample\_transactions.py}) that generates hundreds to thousands of valid transactions and broadcasts them to the REST API as rapidly as possible. This "Transaction Spam" forces the node to fill its Mempool, allowing students to observe how the network handles congestion.
 
 \subsection{Reference Solution \& Analysis}
 
-\textbf{1. Instrumentation Logic:}
-The solution involves adding a calculation in the block handling logic to measure the "Time to Finality."
+% \textbf{1. Instrumentation Logic:}
+% The solution involves adding a calculation in the block handling logic to measure the "Time to Finality."
 
-\begin{lstlisting}[language=Python, caption=Instrumentation for Metrics, label=lst:mod3_metrics]
-# blockchain/node/node.py
-def handle_block(self, block):
-    arrival_time = time.time()
-    propagation_delay = arrival_time - block.timestamp
-    tps = len(block.transactions) / 10.0 # Assuming 10s block time
+% \begin{lstlisting}[language=Python, caption=Instrumentation for Metrics, label=lst:mod3_metrics]
+% # blockchain/node/node.py
+% def handle_block(self, block):
+%     arrival_time = time.time()
+%     propagation_delay = arrival_time - block.timestamp
+%     tps = len(block.transactions) / 10.0 # Assuming 10s block time
     
-    logger.info({
-        "metric": "block_performance",
-        "block_height": block.block_height,
-        "propagation_delay": propagation_delay,
-        "tps": tps
-    })
-\end{lstlisting}
+%     logger.info({
+%         "metric": "block_performance",
+%         "block_height": block.block_height,
+%         "propagation_delay": propagation_delay,
+%         "tps": tps
+%     })
+% \end{lstlisting}
 
-\textbf{2. Stress Test Script:}
-The test script utilizes the \texttt{requests} library to flood the local node.
+% \textbf{2. Stress Test Script:}
+% The test script utilizes the \texttt{requests} library to flood the local node.
 
-\begin{lstlisting}[language=Python, caption=Stress Test Execution, label=lst:mod3_stress]
-def stress_test(endpoint, count=500):
-    print(f"Starting Stress Test: {count} transactions...")
-    start_time = time.time()
+% \begin{lstlisting}[language=Python, caption=Stress Test Execution, label=lst:mod3_stress]
+% def stress_test(endpoint, count=500):
+%     print(f"Starting Stress Test: {count} transactions...")
+%     start_time = time.time()
     
-    for i in range(count):
-        tx = wallet.create_transaction(receiver_key, 1, "TRANSFER")
-        requests.post(f"{endpoint}/transaction", json=tx.payload())
+%     for i in range(count):
+%         tx = wallet.create_transaction(receiver_key, 1, "TRANSFER")
+%         requests.post(f"{endpoint}/transaction", json=tx.payload())
         
-    duration = time.time() - start_time
-    print(f"Sent {count} tx in {duration:.2f} seconds.")
-\end{lstlisting}
+%     duration = time.time() - start_time
+%     print(f"Sent {count} tx in {duration:.2f} seconds.")
+% \end{lstlisting}
 
 \subsection{Analysis of Findings}
-Students run the stress test against two network configurations: one running \textbf{Proof of Stake} and one running \textbf{Proof of Work} (from Module 2).
-\begin{itemize}
-    \item \textbf{PoS Performance:} The system maintains a steady block production rate. However, students observe that the Mempool clears slowly because the block size is fixed. The "TPS" is limited by the protocol parameter (Block Size), not the CPU.
-    \item \textbf{PoW Performance:} Students observe a massive degradation in latency. Because the CPU is 100\% utilized by mining, the HTTP API becomes unresponsive, and valid transactions time out. This demonstrates the \textbf{Computational Bottleneck} of PoW mechanisms \cite{vukolic2015quest}.
-\end{itemize}
+% Students run the stress test against two network configurations: one running \textbf{Proof of Stake} and one running \textbf{Proof of Work} (from Module 2).
+% \begin{itemize}
+%     \item \textbf{PoS Performance:} The system maintains a steady block production rate. However, students observe that the Mempool clears slowly because the block size is fixed. The "TPS" is limited by the protocol parameter (Block Size), not the CPU.
+%     \item \textbf{PoW Performance:} Students observe a massive degradation in latency. Because the CPU is 100\% utilized by mining, the HTTP API becomes unresponsive, and valid transactions time out. This demonstrates the \textbf{Computational Bottleneck} of PoW mechanisms \cite{vukolic2015quest}.
+% \end{itemize}
 
 \subsection{Learning Outcome}
 This module empirically demonstrates the difference between \textbf{Protocol Limits} (Block Size/Time) and \textbf{Hardware Limits} (CPU/Bandwidth). Students learn that while PoS is computationally efficient, it is still bounded by the network's capacity to propagate data, whereas PoW is bounded by the speed of hashing, creating a much lower ceiling for scalability on commodity hardware.
@@ -313,13 +314,13 @@ This module empirically demonstrates the difference between \textbf{Protocol Lim
 
 \section{Module 4: Application Layer - The Library Management System} \label{ch5_module4}
 
-Up to this point, the blockchain has served as a generic ledger for transferring "Coins." In this module, students transform the system into the **Library Management System** described in the thesis proposal. This module introduces the concept of **Asset Tokenization** and application-specific logic.
+Up to this point, the blockchain has served as a generic ledger for transferring currency.  In this module, students transform the system into the Library Management System described in the thesis proposal. This module introduces the concept of Asset Tokenization and application-specific blockchain systems.
 
 \subsection{Problem Statement}
 A standard cryptocurrency transaction (`Transfer 5 Coins`) is insufficient for managing physical inventory like library books. The core problems are:
 \begin{enumerate}
     \item \textbf{State Representation:} How do we represent a specific book (e.g., "Introduction to Algorithms") on the blockchain?
-    \item \textbf{Logic Constraints:} How do we ensure a book cannot be borrowed if it is currently checked out (The "Double-Borrow" problem)?
+    \item \textbf{Logic Constraints:} How do we ensure a book cannot be borrowed if it is currently checked out (We will call this problem the Double-Borrow)?
 \end{enumerate}
 
 \subsection{Learning Objectives}
@@ -333,38 +334,39 @@ By completing this module, students will be able to:
 \subsection{Tasks}
 
 \textbf{Task 1: Transaction Payload Extension} \\
-Students must modify the \texttt{Transaction} class in \texttt{blockchain/transaction/transaction.py}. They need to add a \texttt{model} field to the transaction structure that supports types beyond `TRANSFER`, specifically `BORROW` and `RETURN`, and includes a `book_id`.
+Students must modify the \texttt{Transaction} class in \texttt{blockchain/transaction/transaction.py}. They need to add a \texttt{model} field to the transaction structure that supports types beyond `TRANSFER`, specifically `BORROW` and `RETURN`, and includes a `book\_id`.
 
 \textbf{Task 2: Validation Logic} \\
-Students must modify the `AccountModel` to track not just balances, but the "Inventory State." They must implement a check: \textit{If type is BORROW, ensure the book_id is currently held by the Library Account.}
+Students must modify the `AccountModel` to track not just balances, but the "Inventory State." They must implement a check: \textit{If type is BORROW, ensure the book\_id is currently held by the Library Account.}
 
 \subsection{Reference Solution \& Analysis}
 
-\textbf{1. Transaction Extension:}
-\begin{lstlisting}[language=Python, caption=Library Transaction Logic, label=lst:mod4_library]
-# blockchain/transaction/transaction.py
+% \textbf{1. Transaction Extension:}
+% \begin{lstlisting}[language=Python, caption=Library Transaction Logic, label=lst:mod4_library]
+% # blockchain/transaction/transaction.py
 
-class Transaction:
-    def __init__(self, sender, receiver, amount, type, book_id=None):
-        self.book_id = book_id  # New field for Asset ID
+% class Transaction:
+%     def __init__(self, sender, receiver, amount, type, book_id=None):
+%         self.book_id = book_id  # New field for Asset ID
 
-# blockchain/node/node.py (Validation Logic)
-def handle_transaction(self, transaction):
-    if transaction.type == "BORROW":
-        if not self.blockchain.account_model.has_asset("LIBRARY_PUB_KEY", transaction.book_id):
-            logger.error("Invalid Borrow: Book not available")
-            return
-\end{lstlisting}
+% # blockchain/node/node.py (Validation Logic)
+% def handle_transaction(self, transaction):
+%     if transaction.type == "BORROW":
+%         if not self.blockchain.account_model.has_asset
+%             ("LIBRARY_PUB_KEY", transaction.book_id):
+%             logger.error("Invalid Borrow: Book not available")
+%             return
+% \end{lstlisting}
 
 \subsection{Analysis of Findings}
 Students attempt to "Borrow" the same book ID twice from two different student nodes simultaneously.
-\begin{itemize}
-    \item \textbf{Observation:} One transaction is included in the block; the second is rejected by the network because the state of the `book_id` changed from "Available" to "Borrowed" after the first transaction was finalized.
-    \item \textbf{Outcome:} This proves that the blockchain successfully prevents the "Double-Spend" problem applied to physical assets.
-\end{itemize}
+% \begin{itemize}
+%     \item \textbf{Observation:} One transaction is included in the block; the second is rejected by the network because the state of the `book\_id` changed from "Available" to "Borrowed" after the first transaction was finalized.
+%     \item \textbf{Outcome:} This proves that the blockchain successfully prevents the "Double-Spend" problem applied to physical assets.
+% \end{itemize}
 
 \subsection{Learning Outcome}
-Students bridge the gap between "Currency" and "Utility." They learn that a ledger is simply a state machine, and by defining new transaction types, they can track supply chains, identity, or library inventory without changing the underlying consensus engine.
+Students now understand the entire blockchain system and how the system operates and how to bridge the gap between Currency and Utility in the context of blockchains. They learn that a blockchain is simply a state machine, and by defining new transaction types, they can track multiple values that are not only strictly tied to currencies but can span supply chains, identity, or library inventory using the same building engine of the general blockchain developed in chapter \ref{ch4_implementation}
 
 \newpage
 
@@ -379,40 +381,40 @@ General-purpose blockchains often suffer from lack of specificity. Adapting the 
     \item \textbf{Data Privacy:} How do we store metadata (e.g., shipping manifests) without bloating the chain?
 \end{enumerate}
 
-\subsection{Learning Objectives}
-By completing this module, students will be able to:
-\begin{itemize}
-    \item Design a \textbf{Multi-Signature} scheme using the existing cryptographic primitives.
-    \item Propose a \textbf{Layer-2 Architecture} where large data (PDFs, Images) are stored off-chain (e.g., IPFS) while the hash is stored on-chain \cite{benet2014ipfs}.
-    \item Synthesize their knowledge to produce a System Design Document for a novel blockchain application.
-\end{itemize}
+% \subsection{Learning Objectives}
+% By completing this module, students will be able to:
+% \begin{itemize}
+%     \item Design a \textbf{Multi-Signature} scheme using the existing cryptographic primitives.
+%     \item Propose a \textbf{Layer-2 Architecture} where large data (PDFs, Images) are stored off-chain (e.g., IPFS) while the hash is stored on-chain \cite{benet2014ipfs}.
+%     \item Synthesize their knowledge to produce a System Design Document for a novel blockchain application.
+% \end{itemize}
 
-\subsection{Laboratory Tasks}
+% \subsection{Laboratory Tasks}
 
-\textbf{Task 1: The Design Challenge} \\
-Students do not write code for this module. Instead, they produce a \textbf{UML Sequence Diagram} and a \textbf{JSON Schema} proposing how they would modify the system to track "University Diplomas."
+% \textbf{Task 1: The Design Challenge} \\
+% Students do not write code for this module. Instead, they produce a \textbf{UML Sequence Diagram} and a \textbf{JSON Schema} proposing how they would modify the system to track "University Diplomas."
 
-\textbf{Task 2: Off-Chain Storage Prototype} \\
-Students demonstrate how to link the blockchain to the real world by hashing a PDF file (representing a diploma), sending a transaction with that hash, and verifying that the ledger acts as a "Proof of Existence" for the document.
+% \textbf{Task 2: Off-Chain Storage Prototype} \\
+% Students demonstrate how to link the blockchain to the real world by hashing a PDF file (representing a diploma), sending a transaction with that hash, and verifying that the ledger acts as a "Proof of Existence" for the document.
 
-\subsection{Analysis of Findings}
-Students present their architecture. A successful design correctly identifies that storing the full PDF on the blockchain would cause "Blockchain Bloat" (Scalability issue) and correctly utilizes the ledger only for the \textbf{Root of Trust} (the Hash).
+% \subsection{Analysis of Findings}
+% Students present their architecture. A successful design correctly identifies that storing the full PDF on the blockchain would cause "Blockchain Bloat" (Scalability issue) and correctly utilizes the ledger only for the \textbf{Root of Trust} (the Hash).
 
-\subsection{Learning Outcome}
-This module acts as a summary of the course. Students realize that blockchain is not a database for storing files, but a \textbf{Verification Engine} for maintaining truth. This prepares them for real-world enterprise blockchain architecture roles.
+% \subsection{Learning Outcome}
+% This module acts as a summary of the course. Students realize that blockchain is not a database for storing files, but a \textbf{Verification Engine} for maintaining truth. This prepares them for real-world enterprise blockchain architecture roles.
 
-\newpage
+% \newpage
 
-\section{Chapter Summary} \label{ch5_summary}
+% \section{Chapter Summary} \label{ch5_summary}
 
-This chapter presented a comprehensive 5-Module Laboratory Curriculum designed to transition students from novice observers to competent blockchain architects. By utilizing the "Scaffolding" methodology:
-\begin{itemize}
-    \item \textbf{Module 1} established the infrastructure (DevOps/Networking).
-    \item \textbf{Module 2} built the security engine (Consensus).
-    \item \textbf{Module 3} quantified the limits (Performance).
-    \item \textbf{Module 4} applied the technology to a use case (Library System).
-    \item \textbf{Module 5} generalized the knowledge for future design (Extensibility).
-\end{itemize}
+% This chapter presented a comprehensive 5-Module Laboratory Curriculum designed to transition students from novice observers to competent blockchain architects. By utilizing the "Scaffolding" methodology:
+% \begin{itemize}
+%     \item \textbf{Module 1} established the infrastructure (DevOps/Networking).
+%     \item \textbf{Module 2} built the security engine (Consensus).
+%     \item \textbf{Module 3} quantified the limits (Performance).
+%     \item \textbf{Module 4} applied the technology to a use case (Library System).
+%     \item \textbf{Module 5} generalized the knowledge for future design (Extensibility).
+% \end{itemize}
 
-This curriculum addresses the "Active Learning" gap identified in Chapter 1. It provides a reproducible, rigorous, and open-source pathway for universities to modernize their distributed systems education, utilizing the software artifact developed in Chapter 4 as the enabling tool.
+% This curriculum addresses the "Active Learning" gap identified in Chapter 1. It provides a reproducible, rigorous, and open-source pathway for universities to modernize their distributed systems education, utilizing the software artifact developed in Chapter 4 as the enabling tool.
 
