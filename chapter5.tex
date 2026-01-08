@@ -11,8 +11,7 @@ The curriculum is designed to transform the learning process from understanding 
 
 \section{Approach and Methodology} \label{ch5_pedagogy}
 
-% Seymour Papert. say its inspired
-The design of the laboratory exercises is based on the theory of Constructionist Learning, proposed by Seymour Papert. This theory states that learning is most effective when students are actively engaged in constructing tangible objects in the real world, rather than acquiring knowledge through passive transmission or consumption \cite{papert1991situating}. In the context of Computer Science education, this necessitates moving beyond theory, static simulations, or black-box interactions with production networks (such as sending transactions on a public Testnet) toward deep system undrstanding allowing students to be able to fully understand the concepts by practive and gain code-level modifications experience.
+The design of the laboratory exercises is inspired by the theory of Constructionist Learning, proposed by Seymour Papert. This theory states that learning is most effective when students are actively engaged in constructing tangible objects in the real world, rather than acquiring knowledge through passive transmission or consumption \cite{papert1991situating}. In the context of Computer Science education, this necessitates moving beyond theory, static simulations, or black-box interactions with production networks (such as sending transactions on a public Testnet) toward deep system undrstanding allowing students to be able to fully understand the concepts by practive and gain code-level modifications experience.
 
 To facilitate this, the curriculum adopts a Problem-Based Learning methodology. Rather than following specific instructions and editing a finished system, students are presented with engineering challenges that mirror real-world distributed systems problems. To ensure a scientific approach, each of the five modules follows a standardized structure inspired by the Active Learning framework \cite{freeman2014active}:
 
@@ -134,12 +133,12 @@ Upon the completion of the task, students perform the following verifications:
 
 \begin{itemize}
     \item \textbf{Fork verification:} Students compare the "Block Height" and "Last Hash" in the API of their new node versus a node from the original (unmodified) codebase. They observe that while both nodes are running, they refuse to sync blocks. This confirms that the modification to the Genesis configuration successfully isolated the network, preventing the "Foreign" chain from corrupting the local ledger.
-    \item \textbf{Connectivity Verification:} Students execute \texttt{docker-compose up} and inspect the logs. A successful node creation is indicated when \texttt{node\_new} logs a "Handshake" message, confirming it has established a connection with the other nodes in the blockchian netowrk.
+    \item \textbf{Connectivity Verification:} Students execute \texttt{docker-compose up} and inspect the logs. A successful node creation is indicated when \texttt{node\_new} logs a "Handshake" message, confirming it has established a connection with the other nodes in the blockchain network.
 
 \end{itemize}
 
 \subsection{Learning Outcome}
-This module effectively demonstrates the importance of hashing in blockchain. Students learn that a blockchain's identity is not defined by the software running it, but by the shared history (Blocks) agreed upon by the peers. Furthermore, the exercise provides practical experience in \textbf{Infrastructure setup and network topology}, by illustrating how creating a node requires a solid understanding of the underlying P2P networking layer and node discovery mechanisms in distributed systems.
+This module attempts to help students with demonstrating the importance of hashing in blockchains. Students are guided to learn that a blockchain's identity is not defined by the software running it, but rather by the shared history (Blocks) agreed upon by the network peers. Furthermore, the exercise provides practical experience in \textbf{Infrastructure setup and network topology}, by showing how creating a node requires an understanding of the underlying P2P networking layer and node discovery mechanisms in the distributed blockchain systems.
 
 
 \newpage
