@@ -41,6 +41,7 @@ The repository is structured to provide the necessary code base to start working
 \textbf{Note:} While the full solutions are provided to ensure no student remains blocked, they are strongly encouraged to attempt each task independently before consulting the \texttt{Solution/} directory. The primary educational value of the curriculum lies in the process of system design, implementation, and debugging, rather than in the examination of completed code alone.
 
 \newpage
+%=========================================REVISED========================================
 
 \section{Module 1: Network Fundamentals} \label{ch5_module1}
 
@@ -64,7 +65,6 @@ By completing this module, students will be able to:
     \item Utilize \textbf{Docker} and \textbf{Docker Compose} to manage containerized nodes, gaining practical experience with containerization and node discovery in P2P systems.
 \end{itemize}
 
-%=========================================REVISED========================================
 
 \subsection{Tasks}
 
@@ -81,7 +81,7 @@ Students are tasked with extending the blockchain network through the addition o
 
 \textbf{1. The Hard Fork:}
 
-By changing the second parameter in the Genesis block to "genesis\_new\_student" this in terms serves as the root anchor for the entire blockchain. In the validation logic (\texttt{blockchain.py}), nodes verify that a new block links cryptographically to the previous one. By changing genesis hash string to "genesis\_new\_student", the student changes the hash of Block 0. Consequently, any node running the original code will calculate a different hash chain which in turn successfully creates a new isolated blockchain network with a completely different chain of blocks.
+By changing the second parameter in the Genesis block to "genesis\_new\_student" this change in terms serves as the anchor for the entire blockchain. In the validation logic (\texttt{blockchain.py}), nodes verify that a new block links cryptographically to the previous one. By changing the genesis data the hash of the block, and subsequently all the hashes of the following blocks. Consequently, any node running the original code will calculate a different hash chain, which in turn successfully creates a new isolated blockchain network with a completely different chain of blocks.
 
 \begin{lstlisting}[language=Python, caption=Genesis Block Modification, label=lst:mod1_genesis]
 @staticmethod
