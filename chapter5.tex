@@ -1,5 +1,3 @@
-%%%%%%%%%%% Educational Curriculum Design %%%%%%%%%%%%%%%%%
-%=========================================REVISED=========================================
 \chapter{Educational Curriculum Design} \label{ch5_curriculum}
 \markboth{Educational Curriculum Design}{Educational Curriculum Design}
 
@@ -9,19 +7,20 @@ In this chapter, having established the technical implementation of the modular 
 
 The curriculum is designed to transform the learning process from understanding the theoretical aspects to applying what they learned in their courses or projects, actively engaging with the underlying mechanics of consensus, network propagation, and state management. By interacting with the blockchain system developed in the previous chapter, students can transition from passive knowledge consumers to active system architects.
 
+
 \section{Approach and Methodology} \label{ch5_pedagogy}
 
-The design of the laboratory exercises is inspired by the theory of Constructionist Learning, proposed by Seymour Papert. This theory states that learning is most effective when students are actively engaged in constructing tangible objects in the real world, rather than acquiring knowledge through passive transmission or consumption \cite{papert1991situating}. In the context of Computer Science education, this necessitates moving beyond theory, static simulations, or black-box interactions with production networks (such as sending transactions on a public Testnet) toward deep system undrstanding allowing students to be able to fully understand the concepts by practive and gain code-level modifications experience.
+The design of the laboratory exercises is inspired by the theory of Constructionist Learning, proposed by Seymour Papert. This theory states that learning is most effective when students are actively engaged in constructing tangible objects in the real world, rather than acquiring knowledge through passive transmission or consumption \cite{papert1991situating}. In the context of Computer Science education, this necessitates moving beyond theory, static simulations, or black-box interactions with production networks (such as sending transactions on a public Testnet) toward deep system undrstanding allowing students to be able to fully understand the concepts by practice and gain code-level modifications experience.
 
 To facilitate this, the curriculum adopts a Problem-Based Learning methodology. Rather than following specific instructions and editing a finished system, students are presented with engineering challenges that mirror real-world distributed systems problems. To ensure a scientific approach, each of the five modules follows a standardized structure inspired by the Active Learning framework \cite{freeman2014active}:
 
 
 \begin{enumerate}
-    \item \textbf{Problem Statement:} Introduces a specific theoretical challenge (e.g., "How do decentralized nodes agree on time?") or an operational deficiency (e.g., "The network halts when a peer disconnects").
-    \item \textbf{Learning Objectives:} Defines specific technical competencies the student will acquire, aligned with the implementation details discussed in Chapter \ref{ch4_implementation}.
-    \item \textbf{Laboratory Tasks:} This is the core "Constructionist" phase, where students must find a solution and start modifying in the Python codebase, consensus parameters, altering the network module, or implementing new transaction types—to resolve the stated problem.
-    \item \textbf{Analysis of Findings:} states an observation of the system's behaviors to the actions taken from the previous steps, utilizing the Blockchain Explorer or other tools, to visualize metrics such as throughput, latency, or fork rates.
-    \item \textbf{Learning Outcome:} In this phase, students correlate and connect their experimental results with the theoretical bounds established in Chapter \ref{ch2_theoretical_framework}, solidifying their mental models of distributed consensus.
+    \item \textbf{Problem Statement:} Introduces a specific theoretical challenge (e.g., "How do decentralized nodes agree on time?") or an operational deficiency (e.g., "How does the network behave when a peer disconnects?").
+    \item \textbf{Learning Objectives:} Defines specific technical competencies the student will acquire by completing the module, aligned with the implementation details discussed in Chapter \ref{ch4_implementation}.
+    \item \textbf{Laboratory Tasks:} This is the core phase, where students are tasked to find a solution and start modifying in the codebase, consensus parameters, altering the network module, or implementing new transaction types to resolve the stated problem.
+    \item \textbf{Analysis of Findings:} states an observation of the system's behaviors in relation to the actions taken from the previous steps, such as throughput, latency, or change in the state of the system.
+    \item \textbf{Learning Outcome:} In this phase, students correlate and connect their experimental results with the theoretical bounds established in Chapter \ref{ch2_theoretical_framework}, solidifying their gained knowledge of distributed systems and blockchains.
 \end{enumerate}
 
 This structured approach addresses the educational disconnect identified in Chapter \ref{ch1_introduction}, providing a safe environment in which breaking and changing the system is facilitated through a constructive learning mechanism, rather than a failure in the system, thus leading to a further engagement of both students and teachers in the learning process.
@@ -30,7 +29,7 @@ This structured approach addresses the educational disconnect identified in Chap
 
 \section{Repository Structure and Setup} \label{ch5_repo_structure}
 
-To support the modular nature of the curriculum, a dedicated GitHub repository has been organized to provide distinct entry points for each learning module. \url{https://github.com/mostamhd/blockchain-educational-lab} \label{ch5_repo_url}
+To support the modular nature of the curriculum, a dedicated GitHub repository has been organized to provide distinct entry points for each learning module. \url{https://github.com/Mostamhd/blockchain-educational-system} \label{ch5_repo_url}
 
 The repository is structured to provide the necessary code base to start working on each module for the students. For each module, two directories are provided:
 \begin{itemize}
@@ -45,7 +44,7 @@ The repository is structured to provide the necessary code base to start working
 
 \section{Module 1: Network Fundamentals} \label{ch5_module1}
 
-This module focuses on two foundational building blocks of blockchain technology: Creating a custom blockchain by forking and network fundamentals and Peer-to-Peer (P2P) discovery. Students are provided with the \textit{Starter Code} for the node software, which contains the core blockchain logic but lacks the specific configuration and implementation required to solve the tasks. The student's role is to establish a new blockchain network and to understand how the network peers discovery layer works to be able to create a new node and link it to the blockchain using the network's independent nodes.
+This module focuses on two foundational building blocks of blockchain technology: Creating a custom blockchain by forking and network fundamentals and Peer-to-Peer (P2P) discovery. Students are provided with the \textit{Starter Code} for the node software, which contains the core blockchain logic but lacks the specific configuration and implementation required to solve the tasks. The student's role is to establish a new blockchain network and to understand how the network's peers discovery layer works to be able to create a new node and link it to the blockchain using the network's independent nodes.
 
 \subsection{Problem Statement}
 
@@ -62,23 +61,21 @@ By completing this module, students will be able to:
 \begin{itemize}
     \item Execute a \textbf{Hard Fork} by modifying the Genesis configuration, thereby ensuring the cryptographic isolation of their private network.
     \item Understand the mechanics of \textbf{Peer-to-Peer Discovery} and how nodes bootstrap connections to an existing blockchain.
-    \item Utilize \textbf{Docker} and \textbf{Docker Compose} to manage containerized nodes, gaining practical experience with containerization and nodes discovery in P2P systems.
+    \item Utilize \textbf{Docker} and \textbf{Docker Compose} to manage containerized nodes, gaining practical experience with containerization and node discovery in P2P systems.
 \end{itemize}
+
+%=========================================REVISED========================================
 
 \subsection{Tasks}
 
 \textbf{Task 1: Hard Fork} \\
 
-Students are required to modify the \texttt{blockchain/block/block.py} file in order to establish a unique identity for a newly instantiated blockchain network. This is achieved by altering the data contained within the Genesis Block (Block~0), thereby ensuring that the resulting ledger produces a distinct hash history. As a consequence, This effectively creates a private fork of the blockchain, and nodes participating in this network will reject blocks originating from other networks including those operated by different student groups— ue to hash incompatibilities at the genesis level.
+Students are required to modify the \texttt{blockchain/block/block.py} file in order to establish a unique identity for a newly instantiated blockchain network. This is achieved by altering the data contained within the Genesis Block (Block~0), thereby ensuring that the resulting ledger produces a distinct hash history. As a consequence, this creates a private fork of the blockchain, and nodes participating in this network will reject blocks originating from other nodes in the original network. Due to hash incompatibilities at the genesis level.
 
 \textbf{Task 2: Network Node Addition} \\
 
 Students are tasked with extending the blockchain network through the addition of a new node, referred to as \texttt{node\_new}. This can be accomplished either by defining an additional service within the \texttt{docker-compose.yml} configuration file or by initializing the \texttt{Node} class via the \texttt{run\_node.py} script using the appropriate parameters. In both cases, it is necessary to ensure that the new node is configured with the correct environment variables and startup parameters, allowing it to automatically discover existing peers, establish peer-to-peer connections, and successfully synchronize with the blockchain network.
 
-% ========================================================================================
-% ========================================================================================
-% ========================================================================================
-%=========================================REVISED=========================================
 
 \subsection{Reference Solution \& Analysis}
 
