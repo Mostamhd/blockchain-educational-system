@@ -45,11 +45,10 @@ The repository is structured to provide the necessary code base to start working
 
 \section{Module 1: Network Fundamentals} \label{ch5_module1}
 
-This module focuses on two foundational building blocks of blockchain technology: Creating a custom blockchain by forking and network fundamentals and Peer-to-Peer (P2P) discovery. Students are provided with the \textit{Starter Code} for the node software, which contains the core blockchain logic but lacks the specific configuration and implementation required to solve the tasks. The student's role is to establish a new blockchain network and to understand how the network's peers discovery layer works to be able to create a new node and link it to the blockchain using the network's independent nodes.
+This module focuses on two foundational building blocks of blockchain technology: creating a custom blockchain via forking and understanding Peer-to-Peer (P2P) discovery. Students are provided with the \textit{Starter Code} for the node software, which contains the core blockchain logic but lacks the specific configuration and implementation required to solve the tasks. The student's role is to act as a system architect, establishing a fork of the blockchain network and to understand how the network's peers discovery layer works to be able to create a new node and link it to the blockchain using the network's independent nodes.
 
 \subsection{Problem Statement}
-
-In order to facilitate a comprehensive understanding of blockchain networks, two fundamental challenges must be addressed first.
+To facilitate a comprehensive understanding of blockchain networks, two fundamental challenges must be addressed:
 
 \begin{enumerate}
     \item \textbf{Blockchain Forking:} How can a distinct blockchain network be instantiated such that it is cryptographically incompatible with other networks operating the same software version?
@@ -65,22 +64,17 @@ By completing this module, students will be able to:
     \item Utilize \textbf{Docker} and \textbf{Docker Compose} to manage containerized nodes, gaining practical experience with containerization and node discovery in P2P systems.
 \end{itemize}
 
-
 \subsection{Tasks}
 
-\textbf{Task 1: Hard Fork} \\
-
-Students are required to modify the \texttt{blockchain/block/block.py} file in order to establish a unique identity for a newly instantiated blockchain network. This is achieved by altering the data contained within the Genesis Block (Block~0), thereby ensuring that the resulting ledger produces a distinct hash history. As a consequence, this creates a private fork of the blockchain, and nodes participating in this network will reject blocks originating from other nodes in the original network. Due to hash incompatibilities at the genesis level.
+\textbf{Task 1: The Hard Fork} \\
+Modify the \texttt{blockchain/block/block.py} file to establish a unique identity for the blockchain network. Change the data contained within the Genesis Block (Block~0) to a unique string (e.g., your student ID). This alteration ensures that the resulting ledger produces a distinct hash history, creating a private fork of the blockchain. Nodes participating in this network must reject blocks originating from other networks due to hash incompatibilities at the genesis level.
 
 \textbf{Task 2: Network Node Addition} \\
-
-Students are tasked with extending the blockchain network through the addition of a new node, referred to as \texttt{node\_new}. This can be accomplished either by defining an additional service within the \texttt{docker-compose.yml} configuration file or by initializing the \texttt{Node} class via the \texttt{run\_node.py} script using the appropriate parameters. In both cases, it is necessary to ensure that the new node is configured with the correct environment variables and startup parameters, allowing it to automatically discover existing peers, establish peer-to-peer connections, and successfully synchronize with the blockchain network.
-
+Extend the blockchain network by adding a new node, \texttt{node\_new}. This must be accomplished by defining either an additional service within the \texttt{docker-compose.yml} configuration file or by initializing the \texttt{Node} class via the \texttt{run\_node.py} script using the appropriate parameters. In both cases, it is necessary to ensure that the new node is configured with the correct environment variables and startup parameters to allow it to automatically discover existing peers, establish P2P connections, and successfully synchronize with the network.
 
 \subsection{Reference Solution \& Analysis}
 
 \textbf{1. The Hard Fork:}
-
 By changing the second parameter in the Genesis block to "genesis\_new\_student" this change in terms serves as the anchor for the entire blockchain. In the validation logic (\texttt{blockchain.py}), nodes verify that a new block links cryptographically to the previous one. By changing the genesis data the hash of the block, and subsequently all the hashes of the following blocks. Consequently, any node running the original code will calculate a different hash chain, which in turn successfully creates a new isolated blockchain network with a completely different chain of blocks.
 
 \begin{lstlisting}[language=Python, caption=Genesis Block Modification, label=lst:mod1_genesis]
@@ -88,7 +82,6 @@ By changing the second parameter in the Genesis block to "genesis\_new\_student"
 def genesis():
     return Block([], "genesis_new_student", "genesis", 0)
 \end{lstlisting}
-
 
 \textbf{2. Network Node Addition:}
 Two distinct approaches may be employed to add a node to the system. The first approach consists of executing the \texttt{run\_node.py} script with the appropriate parameters. This method, however, requires that all nodes deployed on the same physical machine be initiated using the same procedure, with each node executed in a separate terminal session. While functional, this approach can become cumbersome as the number of nodes increases.
@@ -131,12 +124,10 @@ Upon the completion of the task, students perform the following verifications:
 \begin{itemize}
     \item \textbf{Fork verification:} Students compare the "Block Height" and "Last Hash" in the API of their new node versus a node from the original (unmodified) codebase. They observe that while both nodes are running, they refuse to sync blocks. This confirms that the modification to the Genesis configuration successfully isolated the network, preventing the "Foreign" chain from corrupting the local ledger.
     \item \textbf{Connectivity Verification:} Students execute \texttt{docker-compose up} and inspect the logs. A successful node creation is indicated when \texttt{node\_new} logs a "Handshake" message, confirming it has established a connection with the other nodes in the blockchain network.
-
 \end{itemize}
 
 \subsection{Learning Outcome}
 This module attempts to help students with demonstrating the importance of hashing in blockchains. Students are guided to learn that a blockchain's identity is not defined by the software running it, but rather by the shared history (Blocks) agreed upon by the network peers. Furthermore, the exercise provides practical experience in \textbf{Infrastructure setup and network topology}, by showing how creating a node requires an understanding of the underlying P2P networking layer and node discovery mechanisms in the distributed blockchain systems.
-
 
 \newpage
 
