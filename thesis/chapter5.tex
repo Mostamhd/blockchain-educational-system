@@ -250,26 +250,30 @@ Students validate their implementation by running the network and observing the 
 This module provides the students with a demonstration of how computational power or capital power (staked assets) can be used to secure a distributed system. Students also learn more about the Byzantine fault tolerance explained in section \ref{ch2_consensus_bft}. And by replacing the consensus engine of the blockchain, they also gain a deeper understanding of the different design patterns used to split the concerns in the codebase and how modular design allows complex systems to evolve without rewriting core logic.
 
 \newpage
-%=========================================REVISED========================================
 
 \section{Module 3: Performance Analysis and Benchmarking} \label{ch5_module3}
+Once the networking layer is operational and a consensus mechanism has been selected (Module~2), the curriculum shifts its focus to \textbf{System Evaluation}. In the context of distributed systems, theoretical correctness alone is insufficient. Engineers must also verify that the system satisfies the required throughput and latency constraints.
 
-With the network operational and the consensus mechanism selectable (from Module 2), the curriculum shifts focus to \textbf{System Evaluation}. In distributed systems, theoretical correctness is insufficient; engineers must verify that the system can handle the required throughput and latency constraints. This module introduces students to the methodology of benchmarking blockchain systems, moving beyond simple functional verification to rigorous quantitative analysis.
+This module introduces students to systematic methodologies for benchmarking blockchain systems. By doing so, it deepens their understanding of the interactions between the system’s components and encourages a transition from basic functional validation toward a more rigorous, analytical evaluation of system performance.
+
 
 \subsection{Problem Statement}
-Blockchain systems are inherently constrained by the "Blockchain Trilemma" (Scalability, Security, Decentralization). To optimize a system, engineers must first be able to measure it. The core problems addressed in this module are:
+Blockchain systems are inherently constrained by the Blockchain Trilemma (Scalability, Security, Decentralization) \cite{buterin2018trilemma}. To optimize a system, engineers must first be able to measure it. The core problems addressed in this module are:
 \begin{enumerate}
-    \item \textbf{Throughput Visibility:} How do we measure Transactions Per Second (TPS) in a distributed asynchronous system where no single global clock exists?
-    \item \textbf{Latency Analysis:} How long does it take for a transaction to propagate from the client, through the Mempool, to a finalized block?
+    \item \textbf{Throughput:} How do we measure Transactions Per Second (TPS) in a distributed asynchronous system where no single global clock exists?
+    \item \textbf{Latency Analysis:} How long does it take for a transaction to move and propagate from the client, through the Mempool, to a finalized block?
 \end{enumerate}
 
 \subsection{Learning Objectives}
 By completing this module, students will be able to:
 \begin{itemize}
     \item Implement \textbf{Instrumentation Logic} within the Python codebase to capture precise timestamps for block creation and transaction finality.
-    \item Develop a \textbf{Stress Test Script} to flood the network with high-volume traffic, simulating a "DDoS" or high-usage scenario.
+    \item Develop a \textbf{Stress Test} script to flood the network with high-volume traffic, simulating a "DDoS" or high-usage scenario.
     \item Analyze and visualize performance metrics to empirically quantify the performance trade-off between Proof of Stake (PoS) and Proof of Work (PoW) \cite{croman2016scaling}.
 \end{itemize}
+
+%=========================================USE the paper to get data about how to make the expirementes croman2016scaling ========================================
+%=========================================REVISED========================================
 
 \subsection{Tasks}
 
@@ -283,6 +287,7 @@ Students must modify the \texttt{handle\_block} method to log these statistics t
 
 \textbf{Task 2: The Stress Test} \\
 Students must write a Python script (extending the provided \texttt{sample\_transactions.py}) that generates hundreds to thousands of valid transactions and broadcasts them to the REST API as rapidly as possible. This "Transaction Spam" forces the node to fill its Mempool, allowing students to observe how the network handles congestion.
+
 
 \subsection{Reference Solution \& Analysis}
 
