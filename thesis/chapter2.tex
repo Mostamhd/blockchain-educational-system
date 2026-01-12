@@ -97,12 +97,12 @@ As a result, once a transaction has been successfully processed and its nonce co
 
 In decentralized distributed systems, achieving agreement on a shared state without a central authority is a fundamental challenge. This section explores the theoretical foundations of consensus and critically analyzes the dominant mechanisms used to maintain ledger integrity.
 
-\subsection{The Byzantine Generals Problem and BFT}
+\subsection{The Byzantine Generals Problem and BFT} \label{ch2_consensus_bft}
 The primary objective of any consensus algorithm is to achieve \textbf{Byzantine Fault Tolerance (BFT)}. This concept, formalized by Lamport et al. \cite{lamport1982byzantine}, describes a scenario where components of a distributed system may fail or act maliciously (Byzantine faults) by providing inconsistent information to different parts of the network.
 
 To reach a consensus in such an environment, the system must agree on a single value even if some nodes are acting maliciously. Mathematically, traditional BFT requires that more than two-thirds of the network participants ($3f + 1$, where $f$ is the number of faulty nodes) are honest to guarantee safety and security. Modern blockchain algorithms address this issue by introducing economic costs or cryptographic proofs that make acting maliciously in the network expensive or computationally infeasible.
 
-\subsection{Proof of Work (PoW)}
+\subsection{Proof of Work (PoW)} \label{ch2_consensus_pow}
 Proof of Work (PoW), introduced by Nakamoto \cite{nakamoto2008bitcoin}, serves as the primary mechanism for achieving consensus in a permissionless environment. It functions by requiring nodes (miners) to prove they have performed a specific amount of computational effort.
 
 \subsubsection{The Hashing Problem and Proof Generation}

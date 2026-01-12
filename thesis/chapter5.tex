@@ -63,15 +63,31 @@ By completing this module, students will be able to:
     \item Utilize \textbf{Docker} and \textbf{Docker Compose} to manage containerized nodes, gaining practical experience with containerization and node discovery in P2P systems.
 \end{itemize}
 
+\newpage
+
 \subsection{Tasks}
 
-\textbf{Task 1: The Hard Fork} \\
-Modify the \texttt{blockchain/block/block.py} file to establish a unique identity for the blockchain network. Change the data contained within the Genesis Block (Block~0) to a unique string (e.g., your student ID). This alteration ensures that the resulting ledger produces a distinct hash history, creating a private fork of the blockchain. Nodes participating in this network must reject blocks originating from other networks due to hash incompatibilities at the genesis level.
+\textbf{Task 1: The Hard Fork (Genesis Configuration)} \\
+To establish a unique blockchain network identity, perform the following steps:
+\begin{enumerate}
+    \item Open the file \texttt{blockchain/block/block.py}.
+    \item Locate the method \texttt{genesis()}.
+    \item Modify the second parameter of the \texttt{Block} constructor (the \texttt{last\_hash} field) from the default value to a unique identifier (e.g., \texttt{"genesis\_group\_05"} or your Student ID).
+    \item Save the file. This change ensures that the hash of Block 0 is mathematically distinct from the original codebase, effectively creating a hard fork.
+\end{enumerate}
 
 \textbf{Task 2: Network Node Addition} \\
-Extend the blockchain network by adding a new node, \texttt{node\_new}. This must be accomplished by defining either an additional service within the \texttt{docker-compose.yml} configuration file or by initializing the \texttt{Node} class via the \texttt{run\_node.py} script using the appropriate parameters. In both cases, it is necessary to ensure that the new node is configured with the correct environment variables and startup parameters to allow it to automatically discover existing peers, establish P2P connections, and successfully synchronize with the network.
+Extend the existing network nodes by adding a new node, \texttt{node\_new}. You may choose to run the node manually via the terminal or orchestrate it via Docker.
+\begin{enumerate}
+    \item \textbf{Configuration:} Open the \texttt{docker-compose.yml} file.
+    \item \textbf{Service Definition:} Define a new service entry named \texttt{node\_new}.
+    \item \textbf{Port Mapping:} Map a unique host port to the container's internal P2P port.
+    \item \textbf{Discovery:} Update the environment variables to ensure the new node is discoverable:
+    \item \textbf{Execution:} Run \texttt{docker-compose up} and verify in the logs that \texttt{node\_new} successfully establishes a handshake with the existing peers.
+\end{enumerate}
 
 \subsection{Reference Solution \& Analysis}
+The complete reference implementation for this module is archived in the accompanying repository, specifically within the \texttt{Module 1} directory (refer to Section \ref{ch5_repo_structure} for repository structure).\newline
 
 \textbf{1. The Hard Fork:}
 By changing the second parameter in the Genesis block to "genesis\_new\_student" this change in terms serves as the anchor for the entire blockchain. In the validation logic (\texttt{blockchain.py}), nodes verify that a new block links cryptographically to the previous one. By changing the genesis data the hash of the block, and subsequently all the hashes of the following blocks. Consequently, any node running the original code will calculate a different hash chain, which in turn successfully creates a new isolated blockchain network with a completely different chain of blocks.
@@ -83,11 +99,10 @@ def genesis():
 \end{lstlisting}
 
 \textbf{2. Network Node Addition:}
-Two distinct approaches may be employed to add a node to the system. The first approach consists of executing the \texttt{run\_node.py} script with the appropriate parameters. This method, however, requires that all nodes deployed on the same physical machine be initiated using the same procedure, with each node executed in a separate terminal session. While functional, this approach can become cumbersome as the number of nodes increases.
+Two approaches may be used to add a node to the system. The first approach consists of executing the \texttt{run\_node.py} script with the appropriate parameters. However, this method requires that all nodes on the same machine to be executed in separate terminal sessions. Although functional, this approach can be more difficult to manage as the number of nodes grows.
 
-The second approach, which is adopted in this work due to its suitability for educational and experimental purposes, relies on a \texttt{docker-compose} configuration to orchestrate multiple isolated nodes. Within this framework, each node is represented as an individual \texttt{docker-compose} service. Implementing this approach requires the explicit definition of specific environment variables to allow the Python peer-to-peer (P2P) module to correctly resolve and map Docker container IP addresses and ports to the corresponding network interfaces on the host machine.
+The second approach, which is adopted in this work, relies on a \texttt{docker-compose} configuration to orchestrate multiple isolated nodes. Each node is represented as a Docker service. Implementing this approach requires the definition of specific environment variables to allow the peer-to-peer (P2P) module to correctly resolve and map Docker container IP addresses and ports to the corresponding network interfaces on the machine. The following configuration example demonstrates the correct method for creating a node in the system using docker-compose.
 
-The following configuration example demonstrates the correct procedure for incorporating an additional node into the system using the \texttt{docker-compose} orchestration file.
 \begin{lstlisting}[language=yaml, caption=Docker Compose Solution, label=lst:mod1_docker]
 node_new:
     build: ./blockchain
@@ -98,9 +113,7 @@ node_new:
       - ./blockchain:/usr/src/node
     environment:
       - USE_DOCKER=True
-      # node_new is added to the list so it can be discovered
       - DOCKER_NODE_CONTAINER_NAMES=node_one,node_two,node_new
-      # The port 8015 corresponds to node_new in the mapping
       - DOCKER_NODE_PORTS=8010,8011,8015
     labels:
       com.datadoghq.ad.logs: '[{"service": "blockchain_node", 
@@ -113,61 +126,81 @@ node_new:
 \textbf{Technical Justification of Configuration Parameters:}
 \begin{itemize}
     \item \texttt{command}: Defines the runtime arguments. \texttt{--ip=0.0.0.0} binds the node to all network interfaces within the container, which is strictly necessary for it to receive external TCP connections from other Docker containers.
-    \item \texttt{environment (DOCKER\_NODE\_CONTAINER\_NAMES / PORTS)}: These variables are critical for the \textbf{Peer Discovery} mechanism. In \texttt{p2p\_communication.py}, the \texttt{SocketConnector} class parses these lists to map container names (e.g., `node\_one`) to their respective ports. This allows the new node to identify "Bootnodes" (seed nodes) and initiate the first handshake, solving the empty-network problem.
-    \item \texttt{ports}: Maps the internal container ports to the host machine. This is not required for inter-node communication (which happens internally in Docker) but is essential for the student to access the API and visualize the node's status via the Blockchain Explorer.
+    \item \texttt{environment}: The environment variables are critical for the \textbf{Peer Discovery} mechanism. In \texttt{p2p\_communication.py}, the \texttt{SocketConnector} class parses these lists to map container names (e.g., `node\_one`) to their respective ports. This allows the new node to identify other nodes in the network and initiate the first handshake.
+    \item \texttt{ports}: Maps the internal container ports to the host machine.
 \end{itemize}
 
 \subsection{Analysis of Findings}
 Upon the completion of the task, students perform the following verifications:
 
 \begin{itemize}
-    \item \textbf{Fork verification:} Students compare the "Block Height" and "Last Hash" in the API of their new node versus a node from the original (unmodified) codebase. They observe that while both nodes are running, they refuse to sync blocks. This confirms that the modification to the Genesis configuration successfully isolated the network, preventing the "Foreign" chain from corrupting the local ledger.
+    \item \textbf{Fork verification:} Students compare the "Block Height" and "Last Hash" in the API of their new node versus a node from the original unmodified codebase. They observe that while both nodes are running both nodes run on different blockchains. This confirms that the modification to the Genesis configuration isolated the network, preventing the "Foreign" chain from corrupting the local ledger.
     \item \textbf{Connectivity Verification:} Students execute \texttt{docker-compose up} and inspect the logs. A successful node creation is indicated when \texttt{node\_new} logs a "Handshake" message, confirming it has established a connection with the other nodes in the blockchain network.
 \end{itemize}
 
 \subsection{Learning Outcome}
-This module attempts to help students with demonstrating the importance of hashing in blockchains. Students are guided to learn that a blockchain's identity is not defined by the software running it, but rather by the shared history (Blocks) agreed upon by the network peers. Furthermore, the exercise provides practical experience in \textbf{Infrastructure setup and network topology}, by showing how creating a node requires an understanding of the underlying P2P networking layer and node discovery mechanisms in the distributed blockchain systems.
+This module attempts to help students with demonstrating the importance of hashing in blockchains. Students are guided to learn that a blockchain's identity is not defined by the software running it, but rather by the shared history (Blocks) agreed upon by the network peers. Furthermore, the exercise provides practical experience in Infrastructure setup and network topology, by showing how creating a node requires an understanding of the underlying P2P networking layer and node discovery mechanisms in the distributed blockchain systems.
+
 
 \newpage
 
 \section{Module 2: Consensus Mechanisms} \label{ch5_module2}
-% ========================================================================================
-% ========================================================================================
-%=========================================REVISED=========================================
 
-Having established a working distributed network in Module 1, the focus shifts now to the mechanism of consensus in decentralized systems. As explained in \ref{ch2_consensus} The \textit{Starter Code} for this module includes the fully containerized setup from \ref{ch4_implementation} which operates on a simplified POS consensus model. Students are tasked to redesign the system's consensus algorithm to help with achiveing conseus in destributed systems and secure the network against attacks and solve the Byzantine fault tolerence problem. While students are encouraged to explore various algorithms (e.g., Delegated Proof of Stake, Proof of Elapsed Time), this guide focuses on implementing Proof of Work (PoW) as it's still the most used and battle-tested consensus algorithms used to this date, and due to its educational value in demonstrating the trade-off between computational intensity and security.
+Having established a working distributed network in Module 1, the focus shifts to the mechanism of consensus in decentralized systems. As explained in \ref{ch2_consensus} The \textit{Starter Code} for this module includes the fully containerized setup from \ref{ch4_implementation}, which operates on a simplified POS consensus model. Students are tasked to redesign the system's consensus algorithm to help with achieving consensus in distributed systems, secure the network against attacks, and solve the Byzantine fault tolerance problem. While students are encouraged to explore various algorithms (e.g., Delegated Proof of Stake, Proof of Elapsed Time), this guide focuses on implementing Proof of Work (PoW) as it's still the most used and battle-tested consensus algorithm to date, and due to its educational value in demonstrating the trade-off between computational intensity and scalability.
 
 \subsection{Problem Statement}
 In an open, permissionless network where nodes can join anonymously, two critical vulnerabilities must be addressed:
 \begin{enumerate}
-    \item \textbf{The Sybil Attack:} Without a cost to participate, a single malicious actor can spawn thousands of nodes to gain a majority influence over the network \cite{douceur2002sybil}.
+    \item \textbf{The Sybil Attack:} Without a cost to participate, a single malicious actor can spawn thousands of nodes to gain a majority influence over the network, as mentioned in section \ref{ch2_security_risks}.
     \item \textbf{Leader Selection:} How can the network select a unique leader to propose the next block in a deterministic way without a central coordinator?
 \end{enumerate}
 
 \subsection{Learning Objectives}
 By completing this module, students will be able to:
 \begin{itemize}
-    \item Analyze the modular architecture of the \texttt{Blockchain} class and utilize the \textbf{Strategy Pattern} to switch consensus algorithms in the blockchain prototype system built in chapter \ref{ch4_implementation}.
+    \item Analyze the architecture of the \texttt{Blockchain} class and design a method to switch the consensus algorithms in the blockchain prototype system built in chapter \ref{ch4_implementation} to the POW consensus algorithm explained in section \ref{ch2_consensus_pow}.
     \item Design and implement a cryptographic \textbf{Proof of Work} algorithm, translating theoretical concepts (Nonce, Difficulty, Target) into executable Python code.
     \item measure and analyze the impact of consensus choices on system performance.
 \end{itemize}
 
+\newpage
+
 \subsection{Tasks}
 
 \textbf{Task 1: The Consensus Implementation} \\
-Students are tasked with creating a new consensus class (e.g., \texttt{ProofOfWork}) that satisfies the system's interface. Unlike the default logic, this new implementation must require a "Cost" to propose a block. For PoW, this involves implementing a \texttt{mine()} method that performs a brute-force search for a nonce that satisfies a specific network difficulty target as briefly discussed in section \ref{ch2_consensus} (e.g., a hash starting with '0000') .
-\newline
+To secure the network, you must change the consensus algorithm and implement a Proof of Work algorithm to achieve consensus in the blockchain network.
+\begin{enumerate}
+    \item Create a new class \texttt{ProofOfWork} (e.g., in \texttt{blockchain/consensus/proof\_of\_work.py}) that adheres to the system's consensus interface.
+    \item Implement the \texttt{mine(block)} method to perform the "Mining" process described in Section \ref{ch2_consensus_pow}. This method must:
+    \begin{itemize}
+        \item Initialize the block's \texttt{nonce} to 0.
+        \item Execute a \texttt{while} loop that calculates the cryptographic hash of the block.
+        \item Check if the resulting hash meets the difficulty target (e.g., starts with four leading zeros: \texttt{'0000'}).
+        \item Increment the \texttt{nonce} and repeat until a valid hash is found.
+    \end{itemize}
+\end{enumerate}
 
 \textbf{Task 2: The Mining Loop Integration} \\
-Changing the consensus algorithm requires altering the node's behavior. The default mechanism waits for a specific time slot (Time-Bound), whereas PoW requires continuous calculation (CPU-Bound). Students must modify the \texttt{produce\_block} logic in \texttt{node.py} to switch from a the current mechanism which only handles POS method of consensus to also handle POW logice of a continuous Mining and then producing blocks.
+The default node behavior is designed for Proof of Stake (Time-Bound), which waits for specific slots. You must alter the \texttt{node.py} logic to support the continuous, CPU-Bound nature of Proof of Work.
+\begin{enumerate}
+    \item Open the \texttt{blockchain/node/node.py} file and locate the \texttt{produce\_block} method.
+    \item Modify the production loop to check which consensus strategy is currently active.
+    \item Implement the conditional logic for PoW:
+    \begin{itemize}
+        \item Instead of waiting for a turn, the node must continuously call the \texttt{mine()} method created in Task 1.
+        \item Ensure the system blocks (waits) until the mining function returns a valid block.
+        \item Immediately broadcast the mined block to the network upon success.
+    \end{itemize}
+\end{enumerate}
+
 
 \subsection{Reference Solution \& Analysis}
+The complete reference implementation for this module is archived in the accompanying repository, specifically within the \texttt{Module 2} directory (refer to Section \ref{ch5_repo_structure} for repository structure).\newline
 
 \textbf{1. Proof of Work Implementation:}
-The solution involves creating a class that wraps the hashing logic in a `while` loop.
+The solution involves creating a class that wraps the hashing logic in a while loop.
 
 \begin{lstlisting}[language=Python, caption=Proof of Work Mining Logic, label=lst:mod2_pow_class]
-# blockchain/consensus_algorithm/proof_of_work.py
 class ProofOfWork:
     def __init__(self, difficulty=4):
         self.difficulty = difficulty
@@ -181,14 +214,14 @@ class ProofOfWork:
             block.nonce += 1
 \end{lstlisting}
 
-\textbf{Analysis of the Algorithm:}
-The `mine` method transforms the block creation process into a probabilistic lottery. The `difficulty` parameter acts as the regulator; increasing it by 1 exponentially increases the expected number of hashes required to find a solution. This makes the "Cost" of a Sybil attack proportional to physical hardware rather than just the number of IP addresses an attacker controls.
+The \texttt{mine} method models the block creation process as a probabilistic brute-force search problem. The \emph{difficulty} parameter serves as a regulatory control variable: incrementing the difficulty by one results in an exponential increase in the expected number of iterations required to discover a valid solution.
 
-\textbf{2. Node Integration (Hot-Swapping):}
-The `Node` class must be updated to handle the blocking nature of the mining process.
+As a consequence, the effective \enquote{cost} of executing the attacks described in Section~\ref{ch2_security_risks} becomes proportional to the attacker’s available physical computing resources and the associated hardware costs, rather than merely the number of IP addresses under the attacker’s control.
+
+\textbf{2. Node Integration:}
+The Node class must be updated to handle the blocking nature of the mining process.
 
 \begin{lstlisting}[language=Python, caption=Integrating the Mining Loop, label=lst:mod2_node_integration]
-# blockchain/node/node.py
 def run_produce_block(self):
     while self.keep_running:
         if isinstance(self.blockchain.consensus, ProofOfWork):
@@ -206,17 +239,18 @@ def run_produce_block(self):
 \end{lstlisting}
 
 \subsection{Analysis of Findings}
-Students validate their implementation by running the network and observing the container metrics (using \texttt{docker stats}).
+Students validate their implementation by running the network and observing the container metrics.
 
 \begin{itemize}
-    \item \textbf{Resource Consumption:} Unlike Module 1, where CPU usage was near minmal, the PoW implementation causes immediate CPU spike to (100\% usage on the allocated core). This in terms proves that the security of the network is anchored in physical energy expenditure.
-    \item \textbf{Difficulty Correlation:} By adjusting the `difficulty` parameter in the code, students observe a direct correlation with the "Block Time" (the interval between blocks), validating the theoretical relationship between target difficulty and network throughput.
+    \item \textbf{Resource Consumption:} Unlike Module 1, where CPU usage was near minmal, the PoW implementation causes an immediate CPU spike. This in terms proves that the security of the network relies on the physical energy process.
+    \item \textbf{Difficulty Correlation:} By adjusting the difficulty parameter in the code, students observe a direct correlation with the Block Time (the interval between blocks), validating the theoretical relationship between target difficulty and network throughput.
 \end{itemize}
 
 \subsection{Learning Outcome}
-This module provides a tangible demonstration of the \textbf{Energy vs. Security Trade-off}. Students learn that "Trustlessness" is not free; it is purchased through computational work. By replacing the engine of the blockchain, they also gain a deeper appreciation for the \textbf{Strategy Pattern} in software architecture, understanding how modular design allows complex distributed systems to evolve without rewriting core networking logic.
+This module provides the students with a demonstration of how computational power or capital power (staked assets) can be used to secure a distributed system. Students also learn more about the Byzantine fault tolerance explained in section \ref{ch2_consensus_bft}. And by replacing the consensus engine of the blockchain, they also gain a deeper understanding of the different design patterns used to split the concerns in the codebase and how modular design allows complex systems to evolve without rewriting core logic.
 
 \newpage
+%=========================================REVISED========================================
 
 \section{Module 3: Performance Analysis and Benchmarking} \label{ch5_module3}
 
