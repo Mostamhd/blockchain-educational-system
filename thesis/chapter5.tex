@@ -18,7 +18,7 @@ To facilitate this, the curriculum adopts a Problem-Based Learning methodology. 
 \begin{enumerate}
     \item \textbf{Problem Statement:} Introduces a specific theoretical challenge (e.g., "How do decentralized nodes agree on time?") or an operational deficiency (e.g., "How does the network behave when a peer disconnects?").
     \item \textbf{Learning Objectives:} Defines specific technical competencies the student will acquire by completing the module, aligned with the implementation details discussed in Chapter \ref{ch4_implementation}.
-    \item \textbf{Laboratory Tasks:} This is the core phase, where students are tasked to find a solution and start modifying in the codebase, consensus parameters, altering the network module, or implementing new transaction types to resolve the stated problem.
+    \item \textbf{Tasks:} This is the core phase, where students are tasked to find a solution and start modifying in the codebase, consensus parameters, altering the network module, or implementing new transaction types to resolve the stated problem.
     \item \textbf{Analysis of Findings:} states an observation of the system's behaviors in relation to the actions taken from the previous steps, such as throughput, latency, or change in the state of the system.
     \item \textbf{Learning Outcome:} In this phase, students correlate and connect their experimental results with the theoretical bounds established in Chapter \ref{ch2_theoretical_framework}, solidifying their gained knowledge of distributed systems and blockchains.
 \end{enumerate}
@@ -44,7 +44,7 @@ The repository is structured to provide the necessary code base to start working
 
 \section{Module 1: Network Fundamentals} \label{ch5_module1}
 
-This module focuses on two foundational building blocks of blockchain technology: creating a custom blockchain via forking and understanding Peer-to-Peer (P2P) discovery. Students are provided with the \textit{Starter Code} for the node software, which contains the core blockchain logic but lacks the specific configuration and implementation required to solve the tasks. The student's role is to act as a system architect, establishing a fork of the blockchain network and to understand how the network's peers discovery layer works to be able to create a new node and link it to the blockchain using the network's independent nodes.
+This module focuses on two foundational building blocks of blockchain technology: creating a custom blockchain via forking and understanding Peer-to-Peer (P2P) discovery. Students are provided with the \textit{Starter Code} for the node software, which contains the core blockchain logic but lacks the specific configuration and implementation required to solve the tasks. The student's role is to act as a system architect, establishing a fork of the blockchain network, and to understand how the network's peers discovery layer works to be able to create a new node and link it to the blockchain using the network's independent nodes.
 
 \subsection{Problem Statement}
 To facilitate a comprehensive understanding of blockchain networks, two fundamental challenges must be addressed:
@@ -67,7 +67,7 @@ By completing this module, students will be able to:
 
 \subsection{Tasks}
 
-\textbf{Task 1: The Hard Fork (Genesis Configuration)} \\
+\subsubsection*{Task 1: The Hard Fork}
 To establish a unique blockchain network identity, perform the following steps:
 \begin{enumerate}
     \item Open the file \texttt{blockchain/block/block.py}.
@@ -76,7 +76,7 @@ To establish a unique blockchain network identity, perform the following steps:
     \item Save the file. This change ensures that the hash of Block 0 is mathematically distinct from the original codebase, effectively creating a hard fork.
 \end{enumerate}
 
-\textbf{Task 2: Network Node Addition} \\
+\subsubsection*{Task 2: Network Node Addition} 
 Extend the existing network nodes by adding a new node, \texttt{node\_new}. You may choose to run the node manually via the terminal or orchestrate it via Docker.
 \begin{enumerate}
     \item \textbf{Configuration:} Open the \texttt{docker-compose.yml} file.
@@ -86,11 +86,13 @@ Extend the existing network nodes by adding a new node, \texttt{node\_new}. You 
     \item \textbf{Execution:} Run \texttt{docker-compose up} and verify in the logs that \texttt{node\_new} successfully establishes a handshake with the existing peers.
 \end{enumerate}
 
+\newpage
+
 \subsection{Reference Solution \& Analysis}
 The complete reference implementation for this module is archived in the accompanying repository, specifically within the \texttt{Module 1} directory (refer to Section \ref{ch5_repo_structure} for repository structure).\newline
 
-\textbf{1. The Hard Fork:}
-By changing the second parameter in the Genesis block to "genesis\_new\_student" this change in terms serves as the anchor for the entire blockchain. In the validation logic (\texttt{blockchain.py}), nodes verify that a new block links cryptographically to the previous one. By changing the genesis data the hash of the block, and subsequently all the hashes of the following blocks. Consequently, any node running the original code will calculate a different hash chain, which in turn successfully creates a new isolated blockchain network with a completely different chain of blocks.
+\subsubsection*{Task 1: The Hard Fork}
+By changing the second parameter in the Genesis block to genesis\_new\_student this change in terms serves as the anchor for the entire blockchain. In the validation logic (\texttt{blockchain.py}), nodes verify that a new block links cryptographically to the previous one. By changing the genesis data the hash of the block, and subsequently all the hashes of the following blocks. Consequently, any node running the original code will calculate a different hash chain, which in turn successfully creates a new isolated blockchain network with a completely different chain of blocks.
 
 \begin{lstlisting}[language=Python, caption=Genesis Block Modification, label=lst:mod1_genesis]
 @staticmethod
@@ -98,12 +100,12 @@ def genesis():
     return Block([], "genesis_new_student", "genesis", 0)
 \end{lstlisting}
 
-\textbf{2. Network Node Addition:}
+\subsubsection*{Task 2: Network Node Addition}
 Two approaches may be used to add a node to the system. The first approach consists of executing the \texttt{run\_node.py} script with the appropriate parameters. However, this method requires that all nodes on the same machine to be executed in separate terminal sessions. Although functional, this approach can be more difficult to manage as the number of nodes grows.
 
 The second approach, which is adopted in this work, relies on a \texttt{docker-compose} configuration to orchestrate multiple isolated nodes. Each node is represented as a Docker service. Implementing this approach requires the definition of specific environment variables to allow the peer-to-peer (P2P) module to correctly resolve and map Docker container IP addresses and ports to the corresponding network interfaces on the machine. The following configuration example demonstrates the correct method for creating a node in the system using docker-compose.
 
-\begin{lstlisting}[language=yaml, caption=Docker Compose Solution, label=lst:mod1_docker]
+\begin{lstlisting}[caption=Docker Compose code snippet, label=lst:mod1_docker]
 node_new:
     build: ./blockchain
     command: python run_node.py --ip=0.0.0.0 --node_port=8015 
@@ -134,7 +136,7 @@ node_new:
 Upon the completion of the task, students perform the following verifications:
 
 \begin{itemize}
-    \item \textbf{Fork verification:} Students compare the "Block Height" and "Last Hash" in the API of their new node versus a node from the original unmodified codebase. They observe that while both nodes are running both nodes run on different blockchains. This confirms that the modification to the Genesis configuration isolated the network, preventing the "Foreign" chain from corrupting the local ledger.
+    \item \textbf{Fork verification:} Students compare the "Block Height" and "Last Hash" in the API of their new node versus a node from the original unmodified codebase. They observe that while both nodes are running, both nodes run on different blockchains. This confirms that the modification to the Genesis configuration isolated the network, preventing the "Foreign" chain from corrupting the local ledger.
     \item \textbf{Connectivity Verification:} Students execute \texttt{docker-compose up} and inspect the logs. A successful node creation is indicated when \texttt{node\_new} logs a "Handshake" message, confirming it has established a connection with the other nodes in the blockchain network.
 \end{itemize}
 
@@ -156,18 +158,20 @@ In an open, permissionless network where nodes can join anonymously, two critica
 \end{enumerate}
 
 \subsection{Learning Objectives}
-By completing this module, students will be able to:
+
+Upon completion of this module, students will be able to:
+
 \begin{itemize}
-    \item Analyze the architecture of the \texttt{Blockchain} class and design a method to switch the consensus algorithms in the blockchain prototype system built in chapter \ref{ch4_implementation} to the POW consensus algorithm explained in section \ref{ch2_consensus_pow}.
-    \item Design and implement a cryptographic \textbf{Proof of Work} algorithm, translating theoretical concepts (Nonce, Difficulty, Target) into executable Python code.
-    \item measure and analyze the impact of consensus choices on system performance.
+    \item Demonstrate an understanding of the architecture of the \texttt{Blockchain} class by designing a mechanism to switch the consensus algorithm of the prototype system implemented in Chapter~\ref{ch4_implementation} to the Proof of Work (PoW) consensus model described in Section~\ref{ch2_consensus_pow}.
+    \item Design and implement a cryptographic \textbf{Proof of Work} algorithm by translating theoretical concepts—such as nonce, difficulty, and target—into executable Python code.
+    % \item Measure and analyze the impact of consensus choices on system performance.
 \end{itemize}
 
 \newpage
 
 \subsection{Tasks}
 
-\textbf{Task 1: The Consensus Implementation} \\
+\subsubsection*{Task 1: The Consensus Implementation}
 To secure the network, you must change the consensus algorithm and implement a Proof of Work algorithm to achieve consensus in the blockchain network.
 \begin{enumerate}
     \item Create a new class \texttt{ProofOfWork} (e.g., in \texttt{blockchain/consensus/proof\_of\_work.py}) that adheres to the system's consensus interface.
@@ -180,7 +184,7 @@ To secure the network, you must change the consensus algorithm and implement a P
     \end{itemize}
 \end{enumerate}
 
-\textbf{Task 2: The Mining Loop Integration} \\
+\subsubsection*{Task 2: The Mining Loop Integration} 
 The default node behavior is designed for Proof of Stake (Time-Bound), which waits for specific slots. You must alter the \texttt{node.py} logic to support the continuous, CPU-Bound nature of Proof of Work.
 \begin{enumerate}
     \item Open the \texttt{blockchain/node/node.py} file and locate the \texttt{produce\_block} method.
@@ -197,10 +201,10 @@ The default node behavior is designed for Proof of Stake (Time-Bound), which wai
 \subsection{Reference Solution \& Analysis}
 The complete reference implementation for this module is archived in the accompanying repository, specifically within the \texttt{Module 2} directory (refer to Section \ref{ch5_repo_structure} for repository structure).\newline
 
-\textbf{1. Proof of Work Implementation:}
+\subsubsection*{Task 1: The Consensus Implementation}
 The solution involves creating a class that wraps the hashing logic in a while loop.
 
-\begin{lstlisting}[language=Python, caption=Proof of Work Mining Logic, label=lst:mod2_pow_class]
+\begin{lstlisting}[language=Python, caption=Proof of Work Mining Logic code snippet, label=lst:mod2_pow_class]
 class ProofOfWork:
     def __init__(self, difficulty=4):
         self.difficulty = difficulty
@@ -218,10 +222,10 @@ The \texttt{mine} method models the block creation process as a probabilistic br
 
 As a consequence, the effective \enquote{cost} of executing the attacks described in Section~\ref{ch2_security_risks} becomes proportional to the attacker’s available physical computing resources and the associated hardware costs, rather than merely the number of IP addresses under the attacker’s control.
 
-\textbf{2. Node Integration:}
+\subsubsection*{Task 2: The Mining Loop Integration}
 The Node class must be updated to handle the blocking nature of the mining process.
 
-\begin{lstlisting}[language=Python, caption=Integrating the Mining Loop, label=lst:mod2_node_integration]
+\begin{lstlisting}[language=Python, caption=Integrating the Mining Loop snippet, label=lst:mod2_node_integration]
 def run_produce_block(self):
     while self.keep_running:
         if isinstance(self.blockchain.consensus, ProofOfWork):
@@ -243,6 +247,10 @@ Students validate their implementation by running the network and observing the 
 
 \begin{itemize}
     \item \textbf{Resource Consumption:} Unlike Module 1, where CPU usage was near minmal, the PoW implementation causes an immediate CPU spike. This in terms proves that the security of the network relies on the physical energy process.
+    %=========================================??????========================================
+    % do i want to do this here?
+    %=========================================??????========================================
+
     \item \textbf{Difficulty Correlation:} By adjusting the difficulty parameter in the code, students observe a direct correlation with the Block Time (the interval between blocks), validating the theoretical relationship between target difficulty and network throughput.
 \end{itemize}
 
@@ -252,194 +260,385 @@ This module provides the students with a demonstration of how computational powe
 \newpage
 
 \section{Module 3: Performance Analysis and Benchmarking} \label{ch5_module3}
-Once the networking layer is operational and a consensus mechanism has been selected (Module~2), the curriculum shifts its focus to \textbf{System Evaluation}. In the context of distributed systems, theoretical correctness alone is insufficient. Engineers must also verify that the system satisfies the required throughput and latency constraints.
+Once the networking layer is operational and a consensus mechanism has been selected after completing the previous 2 modules, the curriculum shifts its focus to \textbf{System Evaluation}. In the context of distributed systems and blockchains specifically, theoretical correctness alone is insufficient. Engineers must also verify that the system satisfies the required throughput and latency constraints.
 
-This module introduces students to systematic methodologies for benchmarking blockchain systems. By doing so, it deepens their understanding of the interactions between the system’s components and encourages a transition from basic functional validation toward a more rigorous, analytical evaluation of system performance.
-
+This module introduces students to systematic methodologies for benchmarking blockchain systems. By doing so, it deepens their understanding of the interactions between the system’s components. It encourages a transition from basic functional validation toward an analytical evaluation of the system performance.
 
 \subsection{Problem Statement}
-Blockchain systems are inherently constrained by the Blockchain Trilemma (Scalability, Security, Decentralization) \cite{buterin2018trilemma}. To optimize a system, engineers must first be able to measure it. The core problems addressed in this module are:
+Blockchain systems are inherently constrained by the Blockchain Trilemma (Scalability, Security, Decentralization) \cite{buterin2018trilemma}. To optimize a system, engineers must first be able to measure its performance. The core problems addressed in this module are:
 \begin{enumerate}
-    \item \textbf{Throughput:} How do we measure Transactions Per Second (TPS) in a distributed asynchronous system where no single global clock exists?
-    \item \textbf{Latency Analysis:} How long does it take for a transaction to move and propagate from the client, through the Mempool, to a finalized block?
+    \item \textbf{Throughput:} How do we measure Transactions Per Second (TPS) in a distributed system where no single central service exists?
+    \item \textbf{Latency:} How long does it take for a transaction to move and propagate from the client, through the Mempool, to a finalized block?
 \end{enumerate}
 
 \subsection{Learning Objectives}
 By completing this module, students will be able to:
 \begin{itemize}
-    \item Implement \textbf{Instrumentation Logic} within the Python codebase to capture precise timestamps for block creation and transaction finality.
-    \item Develop a \textbf{Stress Test} script to flood the network with high-volume traffic, simulating a "DDoS" or high-usage scenario.
-    \item Analyze and visualize performance metrics to empirically quantify the performance trade-off between Proof of Stake (PoS) and Proof of Work (PoW) \cite{croman2016scaling}.
+    \item Implement the logic within the Python codebase to capture the precise timestamps for block creation and transaction finality.
+    \item Develop a Stress Test script which floods the blockchain network with high-volume traffic, simulating a DDoS or high-usage scenarios.
+    \item Analyze and visualize performance metrics to empirically quantify the performance trade-off between Proof of Stake (PoS) and Proof of Work (PoW) \cite{croman2016scaling}.    
 \end{itemize}
 
-%=========================================USE the paper to get data about how to make the expirementes croman2016scaling ========================================
-%=========================================REVISED========================================
+%=========================================
+    % \item Analyze and visualize performance metrics to empirically quantify the performance trade-off between Proof of Stake (PoS) and Proof of Work (PoW) \cite{croman2016scaling}.    
+
+% USE the paper to get data about how to make the experiments croman2016scaling ========================================
+
+\newpage
 
 \subsection{Tasks}
 
-\textbf{Task 1: System Instrumentation} \\
-Students are provided with the \texttt{blockchain/utils/logger.py} and \texttt{node.py} files. They must inject timing logic to capture two critical metrics:
+\subsubsection*{Task 1: System Throughput} 
+To quantitatively measure network throughput, you must inject utilities or logic directly into the node software.
 \begin{enumerate}
-    \item \textbf{Block Propagation Time:} The delta between a block's timestamp and when it is received by a peer.
-    \item \textbf{Transaction Throughput:} The number of transactions processed divided by the block time.
+    \item Review the \texttt{blockchain/node/node.py} file and locate the \texttt{handle\_block} method.
+    \item Implement logic to capture the block propagation time by calculating the difference between the current system time and the final block's creation timestamp on the blockchain.
+    \item Implement logic to calculate transaction throughput by dividing the number of transactions in the received block by the configured block time.
+    \item Modify the logging logic to append these calculated metrics into a structured log file for post-experiment analysis.
 \end{enumerate}
-Students must modify the \texttt{handle\_block} method to log these statistics to a structured JSON file for later analysis.
 
-\textbf{Task 2: The Stress Test} \\
-Students must write a Python script (extending the provided \texttt{sample\_transactions.py}) that generates hundreds to thousands of valid transactions and broadcasts them to the REST API as rapidly as possible. This "Transaction Spam" forces the node to fill its Mempool, allowing students to observe how the network handles congestion.
+\subsubsection*{Task 2: The Stress Test} 
+To observe network behavior under congestion, you must simulate a high-load scenario by flooding the network with transactions.
+\begin{enumerate}
+    \item Create a new Python script (or extend \texttt{sample\_transactions.py}) to act as a load generator.
+    \item Implement a loop that generates 500 to 1,000 valid transactions.
+    \item Configure the script to broadcast these transactions via the Node's REST API (\texttt{/transaction}).
+    \item Execute this script against a running network and monitor the logs to observe how the Mempool fills and how the node prioritizes transactions during block creation.
+\end{enumerate}
 
 
 \subsection{Reference Solution \& Analysis}
+The complete reference implementation for this module is archived in the accompanying repository, specifically within the \texttt{Module 3} directory (refer to Section \ref{ch5_repo_structure} for repository structure).\newline
 
-% \textbf{1. Instrumentation Logic:}
-% The solution involves adding a calculation in the block handling logic to measure the "Time to Finality."
+\subsubsection*{Task 1: System Throughput} 
+The solution involves adding a calculation in the block handling logic on the node class to measure the time it takes for a block to be finalized
 
-% \begin{lstlisting}[language=Python, caption=Instrumentation for Metrics, label=lst:mod3_metrics]
-% # blockchain/node/node.py
-% def handle_block(self, block):
-%     arrival_time = time.time()
-%     propagation_delay = arrival_time - block.timestamp
-%     tps = len(block.transactions) / 10.0 # Assuming 10s block time
+\begin{lstlisting}[language=Python, caption=System throughput code snippet, label=lst:mod3_metrics]
+def handle_block(self, block):
+    arrival_time = time.time()
+    propagation_delay = arrival_time - block.timestamp
+    tps = len(block.transactions) / 10.0 # Assuming 10s block time
     
-%     logger.info({
-%         "metric": "block_performance",
-%         "block_height": block.block_height,
-%         "propagation_delay": propagation_delay,
-%         "tps": tps
-%     })
-% \end{lstlisting}
+    logger.info({
+        "metric": "block_performance",
+        "block_height": block.block_height,
+        "propagation_delay": propagation_delay,
+        "tps": tps
+    })
+\end{lstlisting}
 
-% \textbf{2. Stress Test Script:}
-% The test script utilizes the \texttt{requests} library to flood the local node.
+\subsubsection*{Task 2: The Stress Test}
+The stress test script emulates the behavior of multiple wallet clients concurrently submitting a high volume of transactions to a node. The objective of this test is to saturate the node and, by extension, the underlying blockchain network, thereby evaluating the system’s performance under high load conditions.
 
-% \begin{lstlisting}[language=Python, caption=Stress Test Execution, label=lst:mod3_stress]
-% def stress_test(endpoint, count=500):
-%     print(f"Starting Stress Test: {count} transactions...")
-%     start_time = time.time()
+\begin{lstlisting}[language=Python, caption=Stress test code snippet, label=lst:mod3_stress]
+def stress_test(endpoint, count=500):
+    print(f"Starting Stress Test: {count} transactions...")
+    start_time = time.time()
     
-%     for i in range(count):
-%         tx = wallet.create_transaction(receiver_key, 1, "TRANSFER")
-%         requests.post(f"{endpoint}/transaction", json=tx.payload())
+    for i in range(count):
+        tx = wallet.create_transaction(receiver_key, 1, "TRANSFER")
+        requests.post(f"{endpoint}/transaction", json=tx.payload())
         
-%     duration = time.time() - start_time
-%     print(f"Sent {count} tx in {duration:.2f} seconds.")
-% \end{lstlisting}
+    duration = time.time() - start_time
+    print(f"Sent {count} tx in {duration:.2f} seconds.")
+\end{lstlisting}
+
+
 
 \subsection{Analysis of Findings}
-% Students run the stress test against two network configurations: one running \textbf{Proof of Stake} and one running \textbf{Proof of Work} (from Module 2).
-% \begin{itemize}
-%     \item \textbf{PoS Performance:} The system maintains a steady block production rate. However, students observe that the Mempool clears slowly because the block size is fixed. The "TPS" is limited by the protocol parameter (Block Size), not the CPU.
-%     \item \textbf{PoW Performance:} Students observe a massive degradation in latency. Because the CPU is 100\% utilized by mining, the HTTP API becomes unresponsive, and valid transactions time out. This demonstrates the \textbf{Computational Bottleneck} of PoW mechanisms \cite{vukolic2015quest}.
-% \end{itemize}
+
+Upon completion of the tasks, students conduct a two-step verification process to validate both the correctness of their implementation and the behavior of the network under load.
+
+\textbf{1. Throughput Verification:}
+Before to executing the full stress test, students verify that the implemented logging mechanism correctly captures relevant network metrics.
+
+\begin{itemize}
+     \item \textbf{Metric Validity:}  
+    Students inspect the generated log files after the production of several blocks under normal operating conditions. They verify that the Block Propagation Time is recorded as a correct non-zero latency value and that throughput is computed correctly based on the number of transactions contained within each received block.
+
+    \item \textbf{Data Integrity:}  
+    Students confirm that the JSON output is well-formed and syntactically valid, ensuring that it can be reliably parsed and analyzed.
+
+\end{itemize}
+
+\textbf{2. Stress Test Analysis:}
+Students execute a high-load simulation under two distinct network configurations: one operating with the default \textbf{Proof of Stake} (PoS) consensus mechanism and another employing the \textbf{Proof of Work} (PoW) implementation developed in Module~2.
+\begin{itemize}
+    \item \textbf{PoS Performance:}  
+    The system maintains a stable block production rate throughout the experiment. However, students can observe that the mempool is cleared gradually due to the fixed block size parameters set for each block. As a result, the observed \textit{transactions per second} (TPS) is constrained primarily by protocol parameters and configurations.
+
+    \item \textbf{PoW Performance:}  
+    A degradation in network latency is observed. Because the node’s processing is largely consumed by the mining process, leading to transaction requests timeouts or significantly delayed propagation. This behavior provides a practical demonstration of the computational bottleneck inherited by Proof of Work–based consensus mechanisms.
+\end{itemize}
 
 \subsection{Learning Outcome}
-This module empirically demonstrates the difference between \textbf{Protocol Limits} (Block Size/Time) and \textbf{Hardware Limits} (CPU/Bandwidth). Students learn that while PoS is computationally efficient, it is still bounded by the network's capacity to propagate data, whereas PoW is bounded by the speed of hashing, creating a much lower ceiling for scalability on commodity hardware.
+
+This module aims to illustrate the difference between protocol-imposed limits (e.g., block size and block interval) and hardware-imposed limits(e.g., CPU capacity). Students gain an understanding that, while Proof of Stake is computationally efficient, it remains bounded by the network’s ability to disseminate data. In contrast, Proof of Work is fundamentally constrained by the distributed hashing consensus performance, resulting in lower scalability for the system.
 
 \newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Module 4: Application Layer (Smart Assets)          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Module 4: Application Layer and Smart Assets} \label{ch5_module4}
 
-\section{Module 4: Application Layer - The Library Management System} \label{ch5_module4}
+While previous modules focused on the infrastructure aspects of the system—namely, networking, consensus, and performance, this module shifts the focus to the \textbf{Application Layer}. In this stage, students transition from analyzing the blockchain as a mechanism for currency transfer to utilizing it as a secure and immutable state machine capable of storing and managing arbitrary application data.
 
-Up to this point, the blockchain has served as a generic ledger for transferring currency.  In this module, students transform the system into the Library Management System described in the thesis proposal. This module introduces the concept of Asset Tokenization and application-specific blockchain systems.
+Rather than serving exclusively as a financial ledger, the blockchain is introduced as a general-purpose platform for enforcing state transitions under decentralized trust assumptions.
 
 \subsection{Problem Statement}
-A standard cryptocurrency transaction (`Transfer 5 Coins`) is insufficient for managing physical inventory like library books. The core problems are:
-\begin{enumerate}
-    \item \textbf{State Representation:} How do we represent a specific book (e.g., "Introduction to Algorithms") on the blockchain?
-    \item \textbf{Logic Constraints:} How do we ensure a book cannot be borrowed if it is currently checked out (We will call this problem the Double-Borrow)?
-\end{enumerate}
+
+Cryptocurrencies such as Bitcoin employ a UTXO-based data model that is optimized for currency tracking, as discussed in Section~\ref{ch2_relatedWork_bitcoin}. However, general-purpose applications require more expressive data structures to represent and manage digital assets. The central challenge addressed in this module is therefore defined as follows:
+
+\begin{quote}
+\textit{How can arbitrary business logic and structured application data be embedded within blockchain transactions to implement a decentralized Library Management System?}
+\end{quote}
 
 \subsection{Learning Objectives}
-By completing this module, students will be able to:
+Upon successful completion of this module, students will be able to:
 \begin{itemize}
-    \item Extend the core \texttt{Transaction} class to support arbitrary data payloads (Smart Contract-like behavior).
-    \item Implement \textbf{Business Logic Validation} in the node to reject invalid state transitions (e.g., returning a book that was not borrowed).
-    \item Demonstrate the utility of blockchain for \textbf{Provenance Tracking} by auditing the borrow history of a specific asset \cite{swan2015blockchain}.
+    \item Extend the core \textbf{transaction schema} to support arbitrary data payloads beyond simple value transfers.
+    \item Implement \textbf{business logic validation} to ensure that only semantically valid state transitions (e.g., unique ISBN identifiers) are accepted into the ledger.
+    \item Interact with the blockchain to perform application-level state transitions, including the registration and transfer of ownership of digital assets.
 \end{itemize}
+
+\newpage
 
 \subsection{Tasks}
 
-\textbf{Task 1: Transaction Payload Extension} \\
-Students must modify the \texttt{Transaction} class in \texttt{blockchain/transaction/transaction.py}. They need to add a \texttt{model} field to the transaction structure that supports types beyond `TRANSFER`, specifically `BORROW` and `RETURN`, and includes a `book\_id`.
+\subsubsection*{Task 1: Hello World Transaction}
+Before building complex assets, students first enable the blockchain to store general textual data.
 
-\textbf{Task 2: Validation Logic} \\
-Students must modify the `AccountModel` to track not just balances, but the "Inventory State." They must implement a check: \textit{If type is BORROW, ensure the book\_id is currently held by the Library Account.}
-
-\subsection{Reference Solution \& Analysis}
-
-% \textbf{1. Transaction Extension:}
-% \begin{lstlisting}[language=Python, caption=Library Transaction Logic, label=lst:mod4_library]
-% # blockchain/transaction/transaction.py
-
-% class Transaction:
-%     def __init__(self, sender, receiver, amount, type, book_id=None):
-%         self.book_id = book_id  # New field for Asset ID
-
-% # blockchain/node/node.py (Validation Logic)
-% def handle_transaction(self, transaction):
-%     if transaction.type == "BORROW":
-%         if not self.blockchain.account_model.has_asset
-%             ("LIBRARY_PUB_KEY", transaction.book_id):
-%             logger.error("Invalid Borrow: Book not available")
-%             return
-% \end{lstlisting}
-
-\subsection{Analysis of Findings}
-Students attempt to "Borrow" the same book ID twice from two different student nodes simultaneously.
-% \begin{itemize}
-%     \item \textbf{Observation:} One transaction is included in the block; the second is rejected by the network because the state of the `book\_id` changed from "Available" to "Borrowed" after the first transaction was finalized.
-%     \item \textbf{Outcome:} This proves that the blockchain successfully prevents the "Double-Spend" problem applied to physical assets.
-% \end{itemize}
-
-\subsection{Learning Outcome}
-Students now understand the entire blockchain system and how the system operates and how to bridge the gap between Currency and Utility in the context of blockchains. They learn that a blockchain is simply a state machine, and by defining new transaction types, they can track multiple values that are not only strictly tied to currencies but can span supply chains, identity, or library inventory using the same building engine of the general blockchain developed in chapter \ref{ch4_implementation}
-
-\newpage
-
-\section{Module 5: System Extensibility and Final Design} \label{ch5_module5}
-
-The final module serves as a capstone design exercise. Having built, secured, measured, and applied the blockchain, students are now challenged to architect a theoretical extension of the system for a new domain, such as Supply Chain Logistics or Academic Credentialing.
-
-\subsection{Problem Statement}
-General-purpose blockchains often suffer from lack of specificity. Adapting the generic "Library" model to a complex "Supply Chain" requires handling multi-party approvals and automated triggers.
 \begin{enumerate}
-    \item \textbf{Complex Workflows:} How do we handle transactions that require approval from multiple parties (e.g., Manufacturer $\rightarrow$ Courier $\rightarrow$ Retailer)?
-    \item \textbf{Data Privacy:} How do we store metadata (e.g., shipping manifests) without bloating the chain?
+    \item Open \texttt{blockchain/backend/core/transaction.py}.
+    \item Modify the \texttt{\_\_init\_\_} method of the \texttt{Transaction} class to accept an optional \texttt{data} parameter, defaulting to \texttt{None}.
+    \item Update the \texttt{to\_dict()} serialization method to include the new \texttt{data} field in the resulting JSON representation.
+    \item Validate the implementation by submitting a transaction via the API with the payload \texttt{"Hello Blockchain"} and verifying it appears in the next propagated block.
 \end{enumerate}
 
-% \subsection{Learning Objectives}
-% By completing this module, students will be able to:
-% \begin{itemize}
-%     \item Design a \textbf{Multi-Signature} scheme using the existing cryptographic primitives.
-%     \item Propose a \textbf{Layer-2 Architecture} where large data (PDFs, Images) are stored off-chain (e.g., IPFS) while the hash is stored on-chain \cite{benet2014ipfs}.
-%     \item Synthesize their knowledge to produce a System Design Document for a novel blockchain application.
-% \end{itemize}
+\subsubsection*{Task 2: Asset Schema}
+Students subsequently define a structured digital asset representing a book.
 
-% \subsection{Laboratory Tasks}
+\begin{enumerate}
+    \item Create a new class \texttt{Book} in the file \texttt{digital\_asset.py}.
+    \item Define the schema attributes: \texttt{ISBN} (unique identifier), \texttt{Title}, \texttt{Author}, and \texttt{Owner\_Public\_Key}.
+    \item Implement a \texttt{to\_json()} method that serializes the book object into a string format suitable for inclusion in the transaction \texttt{data} field introduced in Task~1.
+\end{enumerate}
 
-% \textbf{Task 1: The Design Challenge} \\
-% Students do not write code for this module. Instead, they produce a \textbf{UML Sequence Diagram} and a \textbf{JSON Schema} proposing how they would modify the system to track "University Diplomas."
+\paragraph{Task 3: Library Management System}
+The final task consists of implementing the application-level business logic.
 
-% \textbf{Task 2: Off-Chain Storage Prototype} \\
-% Students demonstrate how to link the blockchain to the real world by hashing a PDF file (representing a diploma), sending a transaction with that hash, and verifying that the ledger acts as a "Proof of Existence" for the document.
+\begin{enumerate}
+    \item \textbf{Registration:}  
+    Create a script named \texttt{register\_book.py} that instantiates a \texttt{Book} object, signs a transaction containing its book's data, and broadcasts the transaction to the network.
 
-% \subsection{Analysis of Findings}
-% Students present their architecture. A successful design correctly identifies that storing the full PDF on the blockchain would cause "Blockchain Bloat" (Scalability issue) and correctly utilizes the ledger only for the \textbf{Root of Trust} (the Hash).
+    \item \textbf{Transfer:}  
+    Create a script named \texttt{transfer\_book.py} that generates a transaction updating the \texttt{Owner\_Public\_Key} of an existing book, identified by its ISBN.
 
-% \subsection{Learning Outcome}
-% This module acts as a summary of the course. Students realize that blockchain is not a database for storing files, but a \textbf{Verification Engine} for maintaining truth. This prepares them for real-world enterprise blockchain architecture roles.
+    \item \textbf{Validation:}  
+    Execute the scripts and confirm, via the Blockchain data, that the books are correctly registered and transferred on the ledger.
+\end{enumerate}
 
-% \newpage
 
-% \section{Chapter Summary} \label{ch5_summary}
+\subsection{Reference Solution \& Analysis}
+The complete reference implementation for this module is archived in the accompanying repository, specifically within the \texttt{Module 4} directory (refer to Section \ref{ch5_repo_structure} for repository structure).\newline
 
-% This chapter presented a comprehensive 5-Module Laboratory Curriculum designed to transition students from novice observers to competent blockchain architects. By utilizing the "Scaffolding" methodology:
-% \begin{itemize}
-%     \item \textbf{Module 1} established the infrastructure (DevOps/Networking).
-%     \item \textbf{Module 2} built the security engine (Consensus).
-%     \item \textbf{Module 3} quantified the limits (Performance).
-%     \item \textbf{Module 4} applied the technology to a use case (Library System).
-%     \item \textbf{Module 5} generalized the knowledge for future design (Extensibility).
-% \end{itemize}
+\subsubsection*{1. Task 1: Transaction Schema Modification} 
+To support application-specific transactions, the transaction class must include a generic data field, which allows the transaction structure to become flexible enough to support any application logic without changing the underlying consensus mechanism.
 
-% This curriculum addresses the "Active Learning" gap identified in Chapter 1. It provides a reproducible, rigorous, and open-source pathway for universities to modernize their distributed systems education, utilizing the software artifact developed in Chapter 4 as the enabling tool.
+\begin{lstlisting}[language=Python, caption=Transaction Class code snippet, label=lst:mod4_tx]
+class Transaction:
+    def __init__(self, sender, receiver, amount, 
+                        signature=None, data=None):
+        self.sender = sender
+        self.receiver = receiver
+        self.amount = amount
+        self.data = data 
+        self.signature = signature
+\end{lstlisting}
 
+\subsubsection*{2. Task 2: The Digital Asset Class} 
+The \texttt{Book} class acts as a data wrapper. This implementation demonstrates the encapsulation of business logic before it is added to the blockchain.
+
+\begin{lstlisting}[language=Python, caption=The Digital Book Asset Class, label=lst:mod4_book]
+import json
+
+class Book:
+    def __init__(self, isbn, title, author, owner_pub_key):
+        self.isbn = isbn
+        self.title = title
+        self.author = author
+        self.owner_pub_key = owner_pub_key
+\end{lstlisting}
+
+\subsubsection*{3. Task 3: The Library Management System} 
+The core challenge in Task 3 is managing state changes. We use the \texttt{Book} class to instantiate a valid object of the book.
+
+\textbf{A. Creating a book (The Mint Event):}
+\begin{lstlisting}[language=Python, caption=Book Creation Logic, label=lst:mod4_register]
+
+my_book = Book(
+    isbn="978-0132350884",
+    title="Clean Code",
+    author="Robert C. Martin",
+    owner_pub_key=my_public_key
+)
+
+# 2. Wrap in Transaction and Broadcast
+tx = Transaction(
+    sender=my_public_key,
+    receiver=my_public_key, 
+    amount=0,
+    data=my_book.to_json() 
+)
+tx.sign(my_private_key)
+requests.post(f"{NODE_URL}/transaction", json=tx.to_dict())
+\end{lstlisting}
+
+\textbf{B. Transfer (The Update Event):}
+For transfers, we send a specific payload in the data field that has the data to update the owner.
+\begin{lstlisting}[language=Python, caption=Book Transfer Logic, label=lst:mod4_transfer]
+transfer_payload = {
+    "isbn": "978-0132350884",
+    "new_owner": recipient_public_key,
+    "action": "TRANSFER"
+}
+
+tx = Transaction(
+    sender=my_public_key,
+    receiver=recipient_public_key,
+    amount=0,
+    data=json.dumps(transfer_payload)
+)
+tx.sign(my_private_key) 
+requests.post(f"{NODE_URL}/transaction", json=tx.to_dict())
+\end{lstlisting}
+
+\textbf{C. Verification:}
+Since the blockchain is an append-only log, the system cannot simply read the current owner from a database row. Instead, it must validate the current state and action before updating the data .
+
+\begin{lstlisting}[language=Python, caption=State Reconstruction Logic, label=lst:mod4_verify]
+def get_current_owner(blockchain_history, target_isbn):
+    current_owner = None
+    
+    # Iterate through history chronologically (Genesis -> Latest)
+    for block in blockchain_history:
+        for tx in block.transactions:
+            if not tx.data: continue 
+            try:
+                payload = json.loads(tx.data)
+            except: continue
+            
+            if payload.get("isbn") == target_isbn:
+                action = payload.get("action")
+                
+                if action == "REGISTER":
+                    if current_owner is None:
+                        current_owner = payload.get("owner")
+                        
+                elif action == "TRANSFER":
+                    if tx.sender == current_owner:
+                        current_owner = payload.get("new_owner")
+                        
+    return current_owner
+\end{lstlisting}
+\subsection{Analysis of Findings}
+Students validate their implementations through the following observations:
+
+\begin{itemize}
+    \item \textbf{Data Persistence:}  
+    By querying the API endpoint \texttt{/get\_block/\{last\_index\}}, students observe that the JSON-encoded book data is permanently recorded within the block payload.
+
+    \item \textbf{Immutability:}  
+    student observer that if a node attempted to modify a book’s title within a locally altered block, students observe that hash validation will fail, as the data of the block is used in generating the hash of the block, which reinforces the principle that once a library record is committed to the ledger, it cannot be tampered with.
+\end{itemize}
+
+\subsection{Learning Outcome}
+This module aims to bridge the gap between value transfer and state transfer. Students learn that a blockchain is fundamentally a secure, append-only database. By building the Library Management System, they gain the foundational skills for understanding decentralized applications (dApps) and learn how complex application schemas can be mapped onto transaction structures.
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Module 5: System Extensibility                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Module 5: System Extensibility and Design Challenge} \label{ch5_module5}
+
+This final module moves beyond system implementation and introduces students to \textbf{architectural criticism and extensibility analysis}. Having developed a comprehensive understanding of the blockchain system across the previous modules, students are now required to critically evaluate its limitations and propose scalable design alternatives suitable for real-world deployment. Consequently, this module also functions as an open-ended future work extension of the implemented system.
+
+\subsection{Problem Statement}
+In the previous module, students stored book metadata (e.g., title and author) directly on the blockchain. While this approach is acceptable for small, structured data, it exposes a fundamental scalability limitation when applied to large data. Specifically, the question arises:
+\textit{What are the implications of storing the complete PDF of a book directly on the blockchain?}
+
+Blockchains replicate data across all participating nodes. As a result, storing large files on the order of megabytes or gigabytes incurs significant storage increase, bandwidth, and synchronization costs. Over time, this leads to unsustainable ledger growth and threatens the ability of nodes to participate in consensus.
+
+
+\subsection{Learning Objectives}
+Upon successful completion of this module, students will be able to:
+\begin{itemize}
+    \item Analyze the \textbf{storage and bandwidth costs} associated with distributed ledgers.
+    \item Design a \textbf{hybrid on-chain/off-chain architecture} that preserves integrity while improving scalability.
+    \item Explain the role of decentralized storage systems such as the \textbf{InterPlanetary File System (IPFS)} in blockchain-based applications.
+\end{itemize}
+
+\newpage
+\subsection{Tasks}
+
+\subsubsection*{Task 1: Cost Analysis}
+Students calculate and evaluate the resource impact of the current design.
+\begin{enumerate}
+    \item Assume a standard PDF textbook size of 5 MB.
+    \item Calculate the time required to propagate a block containing this PDF over a network with 10 Mbps bandwidth.
+    \item Compare this propagation time with that of a typical block of approximately 20 KB.
+    \item Explain why embedding large binary files directly in transaction data constitutes an architectural anti-pattern.
+\end{enumerate}
+
+\subsubsection*{Task 2: Hybrid Design Proposal}
+Propose an improved system architecture that solves the storage problem without sacrificing data integrity.
+\begin{enumerate}
+    \item Design a workflow in which the PDF is stored off-chain (e.g., using IPFS \cite{benet2014ipfs}. or a cloud storage provider).
+    \item Specify how the blockchain transaction is modified to reference the off-chain file, for example by storing a cryptographic hash.
+    \item Provide a pseudo-code implementation of a function that verifies the integrity of the downloaded file against the on-chain reference.
+\end{enumerate}
+
+\newpage
+\subsection{Reference Solution and Analysis}
+
+\subsubsection*{Task 1: Theoretical Cost Calculation} 
+The scalability bottleneck is demonstrated through a simple propagation-time analysis.
+\begin{itemize}
+    \item \textbf{Scenario A (On-Chain PDF):}
+    \[ T_{prop} = \frac{Size}{Bandwidth} = \frac{5 \cdot 8 \text{ Mb}}{10 \text{ Mbps}} = 4.0 \text{ seconds} \]
+    \item \textbf{Scenario B (Standard Block):}
+    \[ T_{prop} = \frac{0.02 \cdot 8 \text{ Mb}}{10 \text{ Mbps}} = 0.016 \text{ seconds} \]
+\end{itemize}
+\textbf{Conclusion:} Including a PDF directly in a block increases propagation latency by approximately \textbf{250 times}. Such delays negatively impact block dissemination and consensus stability, demonstrating that blockchains should store \textit{reference data} rather than \textit{content data}.
+
+\subsubsection*{Task 2: The Hybrid Architecture (IPFS Pattern)}
+A widely adopted solution is the use of \textit{content-addressed storage}, where large data objects reside off-chain while immutable references are recorded on-chain. IPFS provides a decentralized storage layer that identifies files by their cryptographic hash rather than their location \cite{benet2014ipfs}.
+
+\textbf{Proposed Workflow:}
+\begin{enumerate}
+    \item \textbf{Upload:} User uploads \texttt{book.pdf} to IPFS $\rightarrow$ receives Hash \texttt{QmX...}.
+    \item \textbf{Mint:} User sends a blockchain transaction with \texttt{data=\{ "PDF\_Hash": "QmX..." \}}.
+    \item \textbf{Verify:} Any user can download the PDF from IPFS, re-hash it, and compare it to the immutable hash stored on the blockchain.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python, caption=Pseudo-code for Integrity Verification, label=lst:mod5_verify]
+import hashlib
+
+def verify_book_integrity(downloaded_pdf_path, on_chain_hash):
+    with open(downloaded_pdf_path, 'rb') as f:
+        file_bytes = f.read()
+    local_hash = hashlib.sha256(file_bytes).hexdigest()
+    return local_hash == on_chain_hash
+\end{lstlisting}
+
+
+\subsection{Analysis of Findings}
+From the analytical evaluation and architectural redesign, students derive the following conclusions:
+\begin{itemize}
+    \item \textbf{Scalability Improvement:} Storing only cryptographic hashes on-chain drastically reduces storage and bandwidth requirements.
+    \item \textbf{Integrity Guarantees:} Although the data is off-chain, the blockchain still guarantees its integrity. If the off-chain file is modified, its hash will no longer match the on-chain record.
+\end{itemize}
+
+\subsection{Learning Outcome}
+This module shows that blockchain technology is not a universal solution for data storage but a technology within a broader system architecture. By critically evaluating design trade-offs, students are introduced to advanced scalability concepts. This prepares students for advanced topics such as Layer 2 scaling and decentralized storage \cite{poon2017plasma, buterin2021rollups}.
