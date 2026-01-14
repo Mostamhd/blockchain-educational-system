@@ -22,6 +22,7 @@ class PeerDiscoveryHandler:
         count = 1
         while True:
             current_connections = []
+            self.socket_communication.node.blockchain.peers = [self.socket_communication.socket_connector] + self.socket_communication.peers 
             for peer in self.socket_communication.peers:
                 current_connections.append(f"{peer.ip}: {peer.port}")
             if not self.socket_communication.peers:

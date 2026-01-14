@@ -11,8 +11,9 @@ class Blockchain:
         self.blocks = [Block.genesis()]
         self.account_model = AccountModel()
         self.pos = ProofOfStake()
-        self.block_time = 10  # block time between blocks (in seconds)
-        self.block_reward = 10  # block time between blocks (in seconds)
+        self.block_time = 10
+        self.block_reward = 10
+        self.peers = None
 
     def get_block_by_height(self, block_height):
         for block in self.blocks:
@@ -56,7 +57,7 @@ class Blockchain:
 
     def transaction_covered(self, transaction):
         # Assume the exchange always has the amount of tokens
-        if transaction.type == "EXCHANGE" or "COINBASE":
+        if transaction.type == "EXCHANGE" or transaction.type == "COINBASE":
             return True
         sender_balance = self.account_model.get_balance(transaction.sender_public_key)
         if sender_balance >= transaction.amount:
@@ -108,7 +109,7 @@ class Blockchain:
     def get_transaction(self, transaction_hash):
         for block in self.blocks:
             for block_transaction in block.transactions:
-                if block_transaction.signature==transaction_hash:
+                if block_transaction.signature == transaction_hash:
                     return block_transaction
         return False
 
@@ -124,3 +125,14 @@ class Blockchain:
         if len(covered_transactions) == len(transactions):
             return True
         return False
+    
+    def get_address_balance(self, public_key):
+        return self.account_model.get_balance(public_key)
+
+    def get_address_transactions(self, public_key):
+        transactions = []
+        for block in self.blocks:
+            for block_transaction in block.transactions:
+                if block_transaction.sender_public_key == public_key or block_transaction.receiver_public_key == public_key:
+                    transactions.append(block_transaction)
+        return transactions
