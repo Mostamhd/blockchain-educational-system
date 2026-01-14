@@ -1,5 +1,5 @@
 # pull official base image
-FROM bitnami/python:3.11.5
+FROM python:3.11.5
 
 ARG NODE_HOME=/usr/src/node
 
