@@ -56,7 +56,6 @@ class Blockchain:
         return covered_transactions
 
     def transaction_covered(self, transaction):
-        # Assume the exchange always has the amount of tokens
         if transaction.type == "EXCHANGE" or transaction.type == "COINBASE":
             return True
         sender_balance = self.account_model.get_balance(transaction.sender_public_key)
