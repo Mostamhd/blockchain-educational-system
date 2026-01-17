@@ -1,8 +1,13 @@
 %%%%%%%%%%% Theoretical Framework %%%%%%%%%%%%%%%%%
+%%%%%%%%%%% SHOULD I ADD?
+%%%%%%%%%%%%%%%%%%%%%% utxo and account architecture overview?
+%%%%%%%%%%%%%%%%%%%%%% containerization overview?
+?
+%%%%%%%%%%%%%%%%%
 \chapter{Theoretical Framework} \label{ch2_theoretical_framework}
 \markboth{Theoretical Framework}{Theoretical Framework}
 
-This chapter demonstrates the theoretical foundations necessary for the development of the proposed educational blockchain system. It presents an overview of Distributed Ledger Technology (DLT), examines the cryptographic primitives that ensure data integrity and authentication on the blockchain, and provides a technical foundation and an overview of the major consensus algorithms. Furthermore, this chapter explores these theoretical concepts through an analysis of existing blockchain implementations—including Bitcoin, Ethereum, and Solana to showcase the practical trade-offs between security, scalability, and decentralization in such systems.
+This chapter provides the necessary preliminaries and theoretical foundations required to understand the educational blockchain system developed in the methodologies and the results presented in the subsequent chapters. It presents an overview of blockchains, Distributed Ledger Technology (DLT), examines the cryptographic primitives that ensure data integrity and authentication on the blockchain, and provides a technical foundation and an overview of the major consensus algorithms. Furthermore, this chapter explores these theoretical concepts through an overview of existing blockchain implementations, including Bitcoin, Ethereum, and Solana, to showcase the practical trade-offs between security, scalability, and decentralization in such systems.
 
 
 \section{Distributed Ledger Technology (DLT)} \label{ch2_dlt}
@@ -64,7 +69,7 @@ The signature scheme operates through the following mechanisms:
 
 \section{Security Risks and Attack Vectors} \label{ch2_security_risks}
 
-Despite the robust cryptographic foundations, distributed systems face unique attack vectors inherent to their decentralized nature. Understanding these risks is essential for the design of the blockchain system we will discussed in Chapter \ref{ch3_design}.
+Despite the robust cryptographic foundations, distributed systems face unique attack vectors inherent to their decentralized nature. Understanding these risks is essential for the design of the blockchain system we will discuss in Chapter \ref{ch3_design}.
 
 \subsection{The Double-Spending Problem}
 The fundamental challenge of digital currency is the ease of duplicating digital data. The Double-spending attack occurs when a malicious actor spends the same unit of currency in two different transactions. In a centralized system, a bank prevents this by maintaining a master ledger and validating that the amount to be spent is valid. In a blockchain system, as it's a decentralized system and there's no central ledger, the network must agree on the ordering of transactions to determine which spend is valid. Bitcoin solved this by introducing a decentralized timestamp server, which makes it computationally expensive to reverse a confirmed transaction \cite{nakamoto2008bitcoin}.
@@ -246,7 +251,7 @@ By removing the communication overhead associated with time synchronization, PoH
 
 \subsection{Comparative Analysis} \label{ch2_comparison}
 
-To review the architectural trade-offs inherent in distributed ledger technologies, Table \ref{table:consensus_comparison} provides a comparative analysis of the discussed algorithms. These comparisons are evaluated through the lens of the Blockchain Trilemma \cite{buterin2017trilemma}, which suggests that decentralized systems must navigate a trade-off between security, scalability, and decentralization.
+To review the architectural trade-offs inherent in distributed ledger technologies, Table \ref{table:consensus_comparison} provides a comparative analysis of the discussed algorithms. These comparisons are evaluated through the lens of the Blockchain Trilemma \cite{buterintrilemma}, which suggests that decentralized systems must navigate a trade-off between security, scalability, and decentralization.
 
 \begin{table}[h!]
 \centering
@@ -269,7 +274,7 @@ To review the architectural trade-offs inherent in distributed ledger technologi
 
 \section{Related work} \label{ch2_relatedWork}
 
-To understand the practical application of the consensus mechanisms and data systems discussed previously, in this section we focus on investigating the existing works and show three blockchain architectures: Bitcoin, Ethereum, and Solana. Each represents a distinct approach to solving the Blockchain Trilemma \cite{buterin2018trilemma}.
+To understand the practical application of the consensus mechanisms and data systems discussed previously, in this section we focus on investigating the existing works and show three blockchain architectures: Bitcoin, Ethereum, and Solana. Each represents a distinct approach to solving the Blockchain Trilemma \cite{buterintrilemma}.
 
 \subsection{Bitcoin}\label{ch2_relatedWork_bitcoin}
 Introduced in 2008 by Satoshi Nakamoto, Bitcoin represents the first successful implementation of a decentralized, permissionless ledger \cite{nakamoto2008bitcoin}. Its architecture is defined by two key design choices:
