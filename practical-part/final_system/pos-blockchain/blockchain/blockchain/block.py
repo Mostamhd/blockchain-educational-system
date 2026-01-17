@@ -15,7 +15,7 @@ class Block:
         
     @staticmethod
     def genesis():
-        genesis_block = Block([], "test_fork4", "genesis", 0)
+        genesis_block = Block([], "genesis_block", "genesis", 0)
         genesis_block.timestamp = time.time()
         genesis_block.hash = BlockchainUtils.hash(genesis_block.payload()).hex()
         return genesis_block
