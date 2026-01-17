@@ -11,7 +11,7 @@ class Blockchain:
         self.blocks = [Block.genesis()]
         self.account_model = AccountModel()
         self.pos = ProofOfStake()
-        self.block_time = 5
+        self.block_time = 10
         self.block_reward = 10
         self.peers = None
 

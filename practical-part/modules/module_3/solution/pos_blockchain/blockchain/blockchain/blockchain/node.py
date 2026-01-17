@@ -60,12 +60,12 @@ class Node:
     def run_forging(self):
         while self.keep_running:
             self.validate()
-            time.sleep(5)
+            time.sleep(10)
 
     def run_produce_block(self):
         while self.keep_running:
             self.produce_block()
-            time.sleep(5)
+            time.sleep(10)
 
     def start_resource_monitoring(self):
         threading.Thread(target=self.monitor_resources, daemon=True).start()
