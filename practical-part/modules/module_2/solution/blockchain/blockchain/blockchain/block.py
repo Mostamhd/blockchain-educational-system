@@ -1,5 +1,6 @@
 import copy
 import time
+from blockchain.utils.helpers import BlockchainUtils 
 
 
 class Block:
@@ -10,14 +11,15 @@ class Block:
         self.block_height = block_height
         self.timestamp = time.time()
         self.signature = ""
+        self.hash = hash
         self.nonce = nonce
         self.difficulty = difficulty
 
     @staticmethod
     def genesis():
-        # Genesis block with arbitrary nonce and difficulty
         genesis_block = Block([], "genesis_hash", "genesis", 0, 0, 1)
         genesis_block.timestamp = time.time()
+        genesis_block.hash = BlockchainUtils.hash(genesis_block.payload()).hex()
         return genesis_block
 
     def to_dict(self):
@@ -31,7 +33,9 @@ class Block:
     def payload(self):
         dict_representation = copy.deepcopy(self.to_dict())
         dict_representation["signature"] = ""
+        dict_representation["hash"] = ""
         return dict_representation
 
     def sign(self, signature):
         self.signature = signature
+        self.hash = BlockchainUtils.hash(self.payload()).hex()

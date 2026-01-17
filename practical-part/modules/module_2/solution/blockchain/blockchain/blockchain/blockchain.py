@@ -143,10 +143,10 @@ class Blockchain:
                     return True
         return False
     
-    def get_transaction(self, transaction_hash):
+    def get_transaction(self, transaction_signature):
         for block in self.blocks:
             for block_transaction in block.transactions:
-                if block_transaction.signature == transaction_hash:
+                if block_transaction.signature == transaction_signature:
                     return block_transaction
         return False
 
