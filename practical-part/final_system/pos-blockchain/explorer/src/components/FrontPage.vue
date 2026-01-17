@@ -14,7 +14,7 @@
         <tbody>
         <tr v-for="block in blocks">
           <td>{{ block.block_height }}</td>
-          <td><router-link :to="{ name: 'Block', params: { id: block.block_height }}">{{ block.signature }}</router-link></td>
+          <td><router-link :to="{ name: 'Block', params: { id: block.block_height }}">{{ block.hash }}</router-link></td>
           <td>{{ block.transactions.length }}</td>
           <td>{{ block.timestamp}}</td>
         </tr>

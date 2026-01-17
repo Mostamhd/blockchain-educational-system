@@ -1,13 +1,13 @@
 <template>
 
   <div>
-  <div class="container"><h3>Transaction: {{transaction.signature}}</h3>  </div>
+  <div class="container"><h3>Transaction: {{transaction.hash}}</h3>  </div>
 
     <table>
       <tbody>
-        <tr>
+      <tr>
         <td>Hash</td>
-        <td><span >{{ transaction.signature }}</span></td>
+        <td><span >{{ transaction.hash }}</span></td>
       </tr>
       <tr>
         <td>From</td>
@@ -21,6 +21,10 @@
       <tr>
         <td>Amount</td>
         <td>{{ transaction.amount}}</td>
+      </tr>
+      <tr>
+        <td>Signature</td>
+        <td><span >{{ transaction.signature }}</span></td>
       </tr>
 
       </tbody>

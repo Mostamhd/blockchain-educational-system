@@ -11,7 +11,7 @@
       </tr>
       <tr>
         <td>Hash</td>
-        <td>{{ block.signature }}</td>
+        <td>{{ block.hash }}</td>
       </tr>
       <tr>
         <td>Previous hash</td>
@@ -24,6 +24,10 @@
       <tr>
         <td>Number of transactions</td>
         <td>{{ block.transactions.length}}</td>
+      </tr>
+      <tr>
+        <td>Signature</td>
+        <td>{{ block.signature}}</td>
       </tr>
 
       </tbody>
