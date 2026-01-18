@@ -92,7 +92,24 @@ The resource utilization profile highlights the fundamental difference between t
 
 \begin{itemize}
     \item \textbf{CPU Usage:} The PoW node (Figure \ref{fig:pow_cpu}) exhibited a high average CPU utilization of \textbf{58.44\%}, reflecting the continuous hashing required to solve the difficulty puzzle. In contrast, the PoS node (Figure \ref{fig:pos_cpu}) remained idle for the majority of the time, with an average CPU utilization of only \textbf{6.50\%}, spiking only during block validation and forging.
-    \item \textbf{Memory Usage:} Memory consumption was comparable between both implementations (approx. \textbf{61 MB}), as the core data structures (blockchain, transaction pool) remain consistent regardless of the consensus engine.
+    \item \textbf{Memory Usage:} Memory consumption was comparable between both implementations (approx. \textbf{61 MB}), as the core data structures (blockchain, transaction pool) remain consistent regardless of the consensus engine (Figure \ref{fig:pow_ram} and \ref{fig:pos_ram}).
 \end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/pow_ram.png}
+        \caption{PoW Memory Usage}
+        \label{fig:pow_ram}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/pos_ram.png}
+        \caption{PoS Memory Usage}
+        \label{fig:pos_ram}
+    \end{minipage}
+\end{figure}
 
 These findings confirm that the PoS implementation is vastly more energy-efficient and scalable for the educational context, avoiding the hardware strain associated with PoW mining.
