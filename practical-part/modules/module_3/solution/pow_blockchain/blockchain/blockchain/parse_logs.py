@@ -2,7 +2,7 @@ import re
 import pandas as pd
 import matplotlib.pyplot as plt
 
-LOG_FILE = "pos_logs.txt" # You save docker logs here: docker-compose logs > node_logs.txt
+LOG_FILE = "pow_logs.txt" # You save docker logs here: docker-compose logs > node_logs.txt
 
 def parse_metrics():
     resources = []
@@ -30,7 +30,7 @@ def parse_metrics():
 
     return pd.DataFrame(resources), pd.DataFrame(propagation)
 
-def plot_data(res_df, prop_df, title="Proof of Stake"):
+def plot_data(res_df, prop_df, title="Proof of Work"):
     # 1. CPU Usage
     plt.figure(figsize=(10, 5))
     plt.plot(res_df['cpu'], label='CPU %', color='orange')
@@ -67,4 +67,4 @@ if __name__ == "__main__":
     if not prop_df.empty:
         print(f"Avg Latency: {prop_df['delay'].mean():.4f}s")
     
-    plot_data(res_df, prop_df, "PoS_Benchmark")
+    plot_data(res_df, prop_df, "PoW_Benchmark")
