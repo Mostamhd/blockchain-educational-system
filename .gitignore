@@ -24,7 +24,7 @@ archive.zip
 .python-version
 .vscode
 .env
-
+node_modules
 # vim temporary files
 *~
 .*.sw?
@@ -36,7 +36,6 @@ archive.zip
 
 
 explorer/node_modules
-
 transcripts/
 
 gemini.md
