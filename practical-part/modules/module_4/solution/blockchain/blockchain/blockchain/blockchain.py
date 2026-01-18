@@ -1,8 +1,10 @@
 import logging
+import json
 
 from blockchain.block import Block
 from blockchain.pos.proof_of_stake import ProofOfStake
 from blockchain.transaction.account_model import AccountModel
+from blockchain.transaction.asset_model import AssetModel
 from blockchain.utils.helpers import BlockchainUtils
 
 
@@ -10,6 +12,7 @@ class Blockchain:
     def __init__(self):
         self.blocks = [Block.genesis()]
         self.account_model = AccountModel()
+        self.asset_model = AssetModel()
         self.pos = ProofOfStake()
         self.block_time = 10
         self.block_reward = 10
@@ -58,6 +61,43 @@ class Blockchain:
     def transaction_covered(self, transaction):
         if transaction.type == "EXCHANGE" or transaction.type == "COINBASE":
             return True
+        
+        # Asset Logic Validation
+        if transaction.type == "REGISTRATION":
+            try:
+                data = json.loads(transaction.data)
+                isbn = data.get("isbn")
+                if not isbn:
+                    return False
+                # Ensure ISBN doesn't already exist
+                if self.asset_model.get_asset_owner(isbn):
+                    logging.error(f"Registration failed: Asset {isbn} already exists.")
+                    return False
+                return True
+            except Exception:
+                logging.error("Registration failed: Invalid data format.")
+                return False
+
+        if transaction.type == "TRANSFER":
+            try:
+                data = json.loads(transaction.data)
+                isbn = data.get("isbn")
+                if not isbn:
+                    return False
+                current_owner = self.asset_model.get_asset_owner(isbn)
+                # Check if asset exists and sender is the owner
+                if not current_owner:
+                    logging.error(f"Transfer failed: Asset {isbn} not found.")
+                    return False
+                if current_owner != transaction.sender_public_key:
+                    logging.error(f"Transfer failed: Sender {transaction.sender_public_key} is not the owner of {isbn}.")
+                    return False
+                return True
+            except Exception:
+                logging.error("Transfer failed: Invalid data format.")
+                return False
+
+        # Default Balance Check
         sender_balance = self.account_model.get_balance(transaction.sender_public_key)
         if sender_balance >= transaction.amount:
             return True
@@ -75,6 +115,24 @@ class Blockchain:
                 amount = transaction.amount
                 self.pos.update(sender, amount)
                 self.account_model.update_balance(sender, -amount)
+        elif transaction.type == "REGISTRATION":
+            try:
+                data = json.loads(transaction.data)
+                isbn = data.get("isbn")
+                owner = data.get("owner_public_key")
+                if isbn and owner:
+                    self.asset_model.add_asset(isbn, owner)
+            except Exception:
+                pass
+        elif transaction.type == "TRANSFER":
+            try:
+                data = json.loads(transaction.data)
+                isbn = data.get("isbn")
+                new_owner = data.get("owner_public_key")
+                if isbn and new_owner:
+                    self.asset_model.update_asset_owner(isbn, new_owner)
+            except Exception:
+                pass
         else:
             sender = transaction.sender_public_key
             receiver = transaction.receiver_public_key

@@ -4,7 +4,7 @@ import uuid
 from blockchain.utils.helpers import BlockchainUtils
 
 class Transaction:
-    def __init__(self, sender_public_key, receiver_public_key, amount, type):
+    def __init__(self, sender_public_key, receiver_public_key, amount, type, data=None):
         self.sender_public_key = sender_public_key
         self.receiver_public_key = receiver_public_key
         self.amount = amount
@@ -13,6 +13,7 @@ class Transaction:
         self.timestamp = time.time()
         self.signature = ""
         self.hash = None
+        self.data = data
 
     def to_dict(self):
         return self.__dict__

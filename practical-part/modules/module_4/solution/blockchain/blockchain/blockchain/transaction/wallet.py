@@ -51,8 +51,8 @@ class Wallet:
         transaction.sign(signature)
         return transaction
     
-    def create_transaction(self, receiver, amount, type):
-        transaction = Transaction(self.public_key_string(), receiver, amount, type)
+    def create_transaction(self, receiver, amount, type, data=None):
+        transaction = Transaction(self.public_key_string(), receiver, amount, type, data)
         signature = self.sign(transaction.payload())
         transaction.sign(signature)
         return transaction
