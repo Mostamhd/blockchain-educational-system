@@ -62,14 +62,12 @@ class Blockchain:
         if transaction.type == "EXCHANGE" or transaction.type == "COINBASE":
             return True
         
-        # Asset Logic Validation
         if transaction.type == "REGISTRATION":
             try:
                 data = json.loads(transaction.data)
                 isbn = data.get("isbn")
                 if not isbn:
                     return False
-                # Ensure ISBN doesn't already exist
                 if self.asset_model.get_asset_owner(isbn):
                     logging.error(f"Registration failed: Asset {isbn} already exists.")
                     return False
@@ -85,7 +83,6 @@ class Blockchain:
                 if not isbn:
                     return False
                 current_owner = self.asset_model.get_asset_owner(isbn)
-                # Check if asset exists and sender is the owner
                 if not current_owner:
                     logging.error(f"Transfer failed: Asset {isbn} not found.")
                     return False
@@ -97,7 +94,6 @@ class Blockchain:
                 logging.error("Transfer failed: Invalid data format.")
                 return False
 
-        # Default Balance Check
         sender_balance = self.account_model.get_balance(transaction.sender_public_key)
         if sender_balance >= transaction.amount:
             return True
