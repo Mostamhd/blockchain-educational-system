@@ -16,3 +16,83 @@ The evaluation is conducted in two distinct phases:
 \end{enumerate}
 
 This dual-approach ensures that the system is not only technically sound but also accessible for its intended educational purpose.
+
+\section{Phase I: Technical System Evaluation}
+This section presents the quantitative evaluation of the implemented blockchain system. The experiments were designed to measure the performance characteristics of the two consensus mechanisms: Proof of Work (PoW) and Proof of Stake (PoS). The primary metrics considered were Transaction Throughput (TPS), Block Propagation Latency, and System Resource Utilization (CPU and Memory).
+
+\subsection{Experimental Setup}
+The benchmarking experiments were conducted on a MacBook Air (M3, 2024) equipped with an 8-core CPU and 16GB of Unified Memory running macOS. The blockchain network was simulated using Docker Desktop to containerize four distinct nodes (Node 1 to Node 4), emulating a distributed environment over a virtual bridge network.
+
+The workload was generated using the \textit{Benchmark Suite} developed in Module 3. The suite submitted a total batch of transactions to the network at a controlled submission rate to saturate the transaction pool. The metrics were captured by parsing the structured logs emitted by the nodes during operation.
+
+\subsection{Throughput Analysis}
+Transaction Throughput (TPS) is defined as the number of valid transactions committed to the blockchain per second. Table \ref{tab:tps_comparison} summarizes the results obtained from the stress tests.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Metric} & \textbf{Proof of Work (PoW)} & \textbf{Proof of Stake (PoS)} \\
+        \hline
+        Average TPS & 5.82 & 16.03 \\
+        \hline
+        Total Transactions Confirmed & 469 & 1123 \\
+        \hline
+    \end{tabular}
+    \caption{Throughput Comparison: PoW vs. PoS}
+    \label{tab:tps_comparison}
+\end{table}
+
+The results indicate a significant performance disparity. The Proof of Stake implementation achieved an average throughput of \textbf{16.03 TPS}, whereas the Proof of Work implementation was limited to \textbf{5.82 TPS}. This approximately 2.75x increase in throughput for PoS can be attributed to the elimination of the computationally intensive mining process. In PoW, the block generation time is artificially constrained by the difficulty target, whereas in PoS, the slot time is deterministic, allowing for more consistent and rapid block creation.
+
+\subsection{Latency and Resource Utilization}
+To further understand the operational overhead of each consensus mechanism, we analyzed the block propagation latency and the computational resources consumed by the nodes.
+
+\subsubsection{Block Propagation Latency}
+Block propagation latency measures the time taken for a newly forged block to be received and validated by peers. 
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/pow_latency.png}
+        \caption{PoW Block Latency}
+        \label{fig:pow_latency}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/pos_latency.png}
+        \caption{PoS Block Latency}
+        \label{fig:pos_latency}
+    \end{minipage}
+\end{figure}
+
+As shown in Figures \ref{fig:pow_latency} and \ref{fig:pos_latency}, the average latency for PoW was significantly higher (\textbf{1.10s}) compared to PoS (\textbf{0.38s}). The variation in PoW latency is also more pronounced, likely due to the variance in mining time and the occasional race conditions (orphaned blocks) that require chain reorganization.
+
+\subsubsection{Resource Utilization (CPU \& RAM)}
+The resource utilization profile highlights the fundamental difference between the two algorithms.
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/pow_cpu.png}
+        \caption{PoW CPU Utilization}
+        \label{fig:pow_cpu}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/pos_cpu.png}
+        \caption{PoS CPU Utilization}
+        \label{fig:pos_cpu}
+    \end{minipage}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{CPU Usage:} The PoW node (Figure \ref{fig:pow_cpu}) exhibited a high average CPU utilization of \textbf{58.44\%}, reflecting the continuous hashing required to solve the difficulty puzzle. In contrast, the PoS node (Figure \ref{fig:pos_cpu}) remained idle for the majority of the time, with an average CPU utilization of only \textbf{6.50\%}, spiking only during block validation and forging.
+    \item \textbf{Memory Usage:} Memory consumption was comparable between both implementations (approx. \textbf{61 MB}), as the core data structures (blockchain, transaction pool) remain consistent regardless of the consensus engine.
+\end{itemize}
+
+These findings confirm that the PoS implementation is vastly more energy-efficient and scalable for the educational context, avoiding the hardware strain associated with PoW mining.
