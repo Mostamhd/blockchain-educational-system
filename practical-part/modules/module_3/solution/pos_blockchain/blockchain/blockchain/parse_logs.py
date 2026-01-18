@@ -31,28 +31,34 @@ def parse_metrics():
     return pd.DataFrame(resources), pd.DataFrame(propagation)
 
 def plot_data(res_df, prop_df, title="Proof of Stake"):
-    fig, ax = plt.subplots(3, 1, figsize=(10, 15))
-    
     # 1. CPU Usage
-    ax[0].plot(res_df['cpu'], label='CPU %', color='orange')
-    ax[0].set_title(f"{title} - CPU Utilization")
-    ax[0].set_ylabel("Percentage")
+    plt.figure(figsize=(10, 5))
+    plt.plot(res_df['cpu'], label='CPU %', color='orange')
+    plt.title(f"{title} - CPU Utilization")
+    plt.ylabel("Percentage")
+    plt.tight_layout()
+    plt.savefig(f"{title}_cpu_metrics.png")
+    plt.close()
     
     # 2. RAM Usage
-    ax[1].plot(res_df['ram'], label='RAM (MB)', color='blue')
-    ax[1].set_title(f"{title} - Memory Usage")
-    ax[1].set_ylabel("MB")
+    plt.figure(figsize=(10, 5))
+    plt.plot(res_df['ram'], label='RAM (MB)', color='blue')
+    plt.title(f"{title} - Memory Usage")
+    plt.ylabel("MB")
+    plt.tight_layout()
+    plt.savefig(f"{title}_ram_metrics.png")
+    plt.close()
     
     # 3. Latency
     if not prop_df.empty:
-        ax[2].bar(prop_df['block'], prop_df['delay'], color='green')
-        ax[2].set_title(f"{title} - Block Propagation Latency")
-        ax[2].set_xlabel("Block Height")
-        ax[2].set_ylabel("Seconds")
-
-    plt.tight_layout()
-    plt.savefig(f"{title}_metrics.png")
-    plt.show()
+        plt.figure(figsize=(10, 5))
+        plt.bar(prop_df['block'], prop_df['delay'], color='green')
+        plt.title(f"{title} - Block Propagation Latency")
+        plt.xlabel("Block Height")
+        plt.ylabel("Seconds")
+        plt.tight_layout()
+        plt.savefig(f"{title}_latency_metrics.png")
+        plt.close()
 
 if __name__ == "__main__":
     res_df, prop_df = parse_metrics()
@@ -61,4 +67,4 @@ if __name__ == "__main__":
     if not prop_df.empty:
         print(f"Avg Latency: {prop_df['delay'].mean():.4f}s")
     
-    plot_data(res_df, prop_df, "PoW_Benchmark")
+    plot_data(res_df, prop_df, "PoS_Benchmark")
