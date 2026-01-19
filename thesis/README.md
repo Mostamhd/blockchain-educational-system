@@ -57,3 +57,31 @@
 #### **Chapter 7: Conclusion and Future Work**
 * **7.1 Summary of Contributions:** Recap of the software artifact and the 5-module curriculum.
 * **7.2 Future Work:** Transitioning to high-performance languages (Rust/Go), implementing Kademlia DHT for discovery, and expanding the curriculum to Smart Contracts (Solidity).
+
+
+
+---
+
+### **Local Compilation (Docker)**
+
+This project is configured to be compiled locally using Docker, avoiding the need to install a massive LaTeX distribution on your host machine. It uses `xelatex` and `latexmk` for automated builds with support for Noto Naskh Arabic fonts.
+
+#### **Option 1: VS Code (Recommended)**
+1.  Install the **LaTeX Workshop** extension.
+2.  Open `thesis/main.tex`.
+3.  Use the `Docker Compose: latexmk` recipe (via `Cmd+Opt+B` or the LaTeX sidebar).
+4.  The extension will automatically build the container and compile your PDF.
+
+#### **Option 2: Terminal**
+1.  Navigate to the `thesis/` directory.
+2.  Run the following command:
+    ```bash
+    docker-compose run --rm compiler
+    ```
+3.  The resulting `main.pdf` will be available in the `build/` directory.
+
+### **Cleaning Up**
+Since all output goes to `build/`, you can simply delete that folder to clean up.
+
+
+---
