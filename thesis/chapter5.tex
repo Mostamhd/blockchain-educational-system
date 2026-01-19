@@ -581,62 +581,72 @@ Upon successful completion of this module, students will be able to:
 \newpage
 \subsection{Tasks}
 
-\subsubsection*{Task 1: Cost Analysis}
-Students calculate and evaluate the resource impact of the current design.
+\subsubsection*{Task 1: Protocol Defense (Block Size Limit)}
+To prevent ledger bloat and ensure propagation latency remains within acceptable bounds, the protocol must strictly enforce resource limits.
 \begin{enumerate}
-    \item Assume a standard PDF textbook size of 5 MB.
-    \item Calculate the time required to propagate a block containing this PDF over a network with 10 Mbps bandwidth.
-    \item Compare this propagation time with that of a typical block of approximately 20 KB.
-    \item Explain why embedding large binary files directly in transaction data constitutes an architectural anti-pattern.
+    \item Open \texttt{blockchain/core/blockchain.py}.
+    \item Define a constant \texttt{MAX\_BLOCK\_SIZE\_BYTES = 2048} (2KB) to simulate a constrained environment.
+    \item Locate the \texttt{add\_block()} or \texttt{validate\_block()} method.
+    \item Implement logic to serialize the candidate block, measure its size in bytes, and raise a \texttt{BlockSizeExceededError} if it violates the limit.
+    \item \textbf{Verification:} Attempt to broadcast a transaction containing a large string payload (e.g., 5KB of text) and verify that the node rejects the resulting block.
 \end{enumerate}
 
-\subsubsection*{Task 2: Hybrid Design Proposal}
-Propose an improved system architecture that solves the storage problem without sacrificing data integrity.
+\subsubsection*{Task 2: Schema Enforcement (Hash Pointers)}
+To support the Hybrid Architecture efficiently, the protocol must enforce that "Storage" transactions contain valid pointers (hashes) rather than raw data.
 \begin{enumerate}
-    \item Design a workflow in which the PDF is stored off-chain (e.g., using IPFS \cite{benet2014ipfs} or a cloud storage provider).
-    \item Specify how the blockchain transaction is modified to reference the off-chain file, for example by storing a cryptographic hash.
-    \item Provide a pseudo-code implementation of a function that verifies the integrity of the downloaded file against the on-chain reference.
+    \item Open the transaction validation logic in \texttt{blockchain/core/node.py}.
+    \item Implement a validation rule for transactions with the type \texttt{STORE\_FILE}.
+    \item The rule must assert that the \texttt{data} payload is a valid SHA-256 hash (i.e., a 64-character hexadecimal string) and not an arbitrary file blob.
+    \item \textbf{Verification:} Submit a transaction with type \texttt{STORE\_FILE} containing a raw file string. Observe the validation failure in the logs.
 \end{enumerate}
 
 \newpage
 \subsection{Reference Solution and Analysis}
 
-\subsubsection*{Task 1: Theoretical Cost Calculation} 
-The scalability bottleneck is demonstrated through a simple propagation-time analysis.
-\begin{itemize}
-    \item \textbf{Scenario A (On-Chain PDF):}
-    \[ T_{prop} = \frac{Size}{Bandwidth} = \frac{5 \cdot 8 \text{ Mb}}{10 \text{ Mbps}} = 4.0 \text{ seconds} \]
-    \item \textbf{Scenario B (Standard Block):}
-    \[ T_{prop} = \frac{0.02 \cdot 8 \text{ Mb}}{10 \text{ Mbps}} = 0.016 \text{ seconds} \]
-\end{itemize}
-\textbf{Conclusion:} Including a PDF directly in a block increases propagation latency by approximately \textbf{250 times}. Such delays negatively impact block dissemination and consensus stability, demonstrating that blockchains should store \textit{reference data} rather than \textit{content data}.
+\subsubsection*{Task 1: Enforcing Block Size Limits} 
+This solution demonstrates how to protect the network layer at the consensus level. By serializing the block before acceptance, the node ensures no peer can burden the network with bandwidth-heavy data.
 
-\subsubsection*{Task 2: The Hybrid Architecture (IPFS Pattern)}
-A widely adopted solution is the use of \textit{content-addressed storage}, where large data objects reside off-chain while immutable references are recorded on-chain. IPFS provides a decentralized storage layer that identifies files by their cryptographic hash rather than their location \cite{benet2014ipfs}.
+\begin{lstlisting}[language=Python, caption=Block Size Enforcement, label=lst:mod5_blocksize]
+# blockchain/core/blockchain.py
 
-\textbf{Proposed Workflow:}
-\begin{enumerate}
-    \item \textbf{Upload:} User uploads \texttt{book.pdf} to IPFS $\rightarrow$ receives Hash \texttt{QmX...}.
-    \item \textbf{Mint:} User sends a blockchain transaction with \texttt{data=\{ "PDF\_Hash": "QmX..." \}}.
-    \item \textbf{Verify:} Any user can download the PDF from IPFS, re-hash it, and compare it to the immutable hash stored on the blockchain.
-\end{enumerate}
+MAX_BLOCK_SIZE = 2048 # 2KB Limit
 
-\begin{lstlisting}[language=Python, caption=Pseudo-code for Integrity Verification, label=lst:mod5_verify]
-import hashlib
+def add_block(self, block):
+    # 1. Measure Payload Size
+    block_bytes = json.dumps(block.to_dict()).encode('utf-8')
+    
+    if len(block_bytes) > MAX_BLOCK_SIZE:
+        logger.error(f"Block rejected: Size {len(block_bytes)}B "
+                     f"exceeds limit {MAX_BLOCK_SIZE}B")
+        return False
+        
+    # 2. Proceed with Consensus Validation
+    # ...
+\end{lstlisting}
 
-def verify_book_integrity(downloaded_pdf_path, on_chain_hash):
-    with open(downloaded_pdf_path, 'rb') as f:
-        file_bytes = f.read()
-    local_hash = hashlib.sha256(file_bytes).hexdigest()
-    return local_hash == on_chain_hash
+\subsubsection*{Task 2: Schema Validation for Off-Chain Pointers}
+This implementation forces the application layer to utilize off-chain storage. The protocol explicitly forbids "Data Dumping" by validating the format of the payload.
+
+\begin{lstlisting}[language=Python, caption=Transaction Schema Validation, label=lst:mod5_schema]
+# blockchain/core/node.py
+
+def validate_transaction(self, tx):
+    if tx.type == "STORE_FILE":
+        # Enforce SHA-256 Pointer Format
+        if not re.match(r'^[a-fA-F0-9]{64}$', tx.data):
+            raise InvalidTransactionError(
+                "Storage transactions must contain a valid SHA-256 hash"
+            )
+    
+    # ... other signature checks
 \end{lstlisting}
 
 
 \subsection{Analysis of Findings}
-From the analytical evaluation and architectural redesign, students derive the following conclusions:
+By implementing these constraints, students observe the transition from a "Passive" ledger to an "Active" protocol:
 \begin{itemize}
-    \item \textbf{Scalability Improvement:} Storing only cryptographic hashes on-chain drastically reduces storage and bandwidth requirements.
-    \item \textbf{Integrity Guarantees:} Although the data is off-chain, the blockchain still guarantees its integrity. If the off-chain file is modified, its hash will no longer match the on-chain record.
+    \item \textbf{Rejection of Bloat:} Students confirm that while they \textit{can} technically create a 5MB transaction in the client, the network nodes autonomously reject it, preserving the health of the P2P mesh.
+    \item \textbf{Standardization:} The system now enforces a data standard. The blockchain acts as the "Notary" verifying the \textit{existence} of data (via the hash) without bearing the cost of \textit{storing} it.
 \end{itemize}
 
 \subsection{Learning Outcome}
