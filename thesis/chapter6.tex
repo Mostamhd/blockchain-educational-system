@@ -1,6 +1,5 @@
-%%%%% Questions?
-%%%%%%%%%%%%%%%%%%%%%% 
-%%%%%%%%%%%%%%%%%%%%%% 
+%%%%% should i keep the summary section here, also for all other chapters too
+%%%%%% is the structure ok ?
 
 \chapter{Results and Discussion} \label{ch6_evaluation}
 \markboth{Results and Discussion}{Results and Discussion}
@@ -30,7 +29,7 @@ Transaction Throughput (TPS) is defined as the number of valid transactions comm
     \centering
     \begin{tabular}{|l|c|c|}
         \hline
-        \textbf{Metric} & \textbf{Proof of Work (PoW)} & \textbf{Proof of Stake (PoS)} \\
+        \textbf{Metric} & \textbf{Using Proof of Work (PoW)} & \textbf{Using Proof of Stake (PoS)} \\
         \hline
         Average TPS & 5.82 & 16.03 \\
         \hline
@@ -147,8 +146,8 @@ The study revealed distinct variations in difficulty across the curriculum's mod
     \textbf{Module} & \textbf{Success Rate} & \textbf{Common Technical Bottlenecks} \\ \hline
     M1: Network & 5/5 (100\%) & None. All participants successfully established the P2P handshake and fork. \\ \hline
     M2: Consensus & 3/5 (60\%) & 1. Python GIL: CPU-bound mining loops blocked P2P heartbeat threads. \newline 2. Difficulty Adjustment: Logic errors in retargeting to maintain block time. \\ \hline
-    M3: Performance & 4/5 (80\%) & Latency Measurement: Difficulty in correctly timestamping "Time to Finality" across distributed nodes. \\ \hline
-    M4: Assets & 5/5 (100\%) & Minor serialization issues, but all successfully registered and transferred assets. \\ \hline
+    M3: Performance & 4/5 (80\%) & Latency Measurement: Difficulty in correctly timestamping the data. \\ \hline
+    M4: Assets & 5/5 (100\%) & data parsing issues, but all successfully registered and transferred assets. \\ \hline
     M5: Extensibility & 3/5 (60\%) & 1. IPFS: Conceptual difficulty linking off-chain hashes to on-chain pointers. \newline 2. Block Size: Errors in calculating serialized byte size vs. string length. \\ \hline
     \end{tabular}
     \caption{Module Completion Rates and Bottlenecks}

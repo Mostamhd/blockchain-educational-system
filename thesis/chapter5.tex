@@ -1,3 +1,6 @@
+%%% are the tasks in here now represent 
+%% something alterative to having a work sheet
+
 \chapter{Educational Curriculum Design} \label{ch5_curriculum}
 \markboth{Educational Curriculum Design}{Educational Curriculum Design}
 
@@ -229,7 +232,6 @@ The Node class must be updated to handle the blocking nature of the mining proce
 def run_produce_block(self):
     while self.keep_running:
         if isinstance(self.blockchain.consensus, ProofOfWork):
-             # Create candidate block
             block = self.blockchain.create_block(
                 self.transaction_pool.transactions, self.wallet
             )
@@ -238,7 +240,6 @@ def run_produce_block(self):
             if mined_block:
                 self.p2p.broadcast(mined_block)
         else:
-            # Default behavior (Sleep-based)
             time.sleep(10)
 \end{lstlisting}
 
@@ -317,7 +318,7 @@ The solution involves adding a calculation in the block handling logic on the no
 def handle_block(self, block):
     arrival_time = time.time()
     propagation_delay = arrival_time - block.timestamp
-    tps = len(block.transactions) / 10.0 # Assuming 10s block time
+    tps = len(block.transactions) / 10.0 
     
     logger.info({
         "metric": "block_performance",
@@ -519,7 +520,6 @@ Since the blockchain is an append-only log, the system cannot simply read the cu
 def get_current_owner(blockchain_history, target_isbn):
     current_owner = None
     
-    # Iterate through history chronologically (Genesis -> Latest)
     for block in blockchain_history:
         for tx in block.transactions:
             if not tx.data: continue 
@@ -607,12 +607,10 @@ To support the Hybrid Architecture efficiently, the protocol must enforce that "
 This solution demonstrates how to protect the network layer at the consensus level. By serializing the block before acceptance, the node ensures no peer can burden the network with bandwidth-heavy data.
 
 \begin{lstlisting}[language=Python, caption=Block Size Enforcement, label=lst:mod5_blocksize]
-# blockchain/core/blockchain.py
 
-MAX_BLOCK_SIZE = 2048 # 2KB Limit
+MAX_BLOCK_SIZE = 2048
 
 def add_block(self, block):
-    # 1. Measure Payload Size
     block_bytes = json.dumps(block.to_dict()).encode('utf-8')
     
     if len(block_bytes) > MAX_BLOCK_SIZE:
@@ -620,25 +618,20 @@ def add_block(self, block):
                      f"exceeds limit {MAX_BLOCK_SIZE}B")
         return False
         
-    # 2. Proceed with Consensus Validation
-    # ...
 \end{lstlisting}
 
 \subsubsection*{Task 2: Schema Validation for Off-Chain Pointers}
 This implementation forces the application layer to utilize off-chain storage. The protocol explicitly forbids "Data Dumping" by validating the format of the payload.
 
 \begin{lstlisting}[language=Python, caption=Transaction Schema Validation, label=lst:mod5_schema]
-# blockchain/core/node.py
 
 def validate_transaction(self, tx):
     if tx.type == "STORE_FILE":
-        # Enforce SHA-256 Pointer Format
         if not re.match(r'^[a-fA-F0-9]{64}$', tx.data):
             raise InvalidTransactionError(
-                "Storage transactions must contain a valid SHA-256 hash"
+                "invalid hash"
             )
     
-    # ... other signature checks
 \end{lstlisting}
 
 
