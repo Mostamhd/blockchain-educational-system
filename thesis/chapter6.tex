@@ -159,17 +159,17 @@ The study revealed distinct variations in difficulty across the curriculum's mod
 Qualitative feedback was collected to understand the root causes of the bottlenecks identified in Table \ref{tab:completion_rates}. The responses highlight specific educational hurdles related to distributed systems engineering.
 
 \paragraph{Module 1: Network Fundamentals}
-Despite the complexity of P2P networking, the scaffolding provided in the starter code proved effective. Participant P5 (Data Science) noted: \textit{"I was worried about the networking part, but the Starter code for the socket connector was very clear. I got my two nodes talking to each other on the first try using the Docker instructions."} This suggests that abstracting the low-level socket management allowed students to focus on the high-level logic of node discovery.
+Despite the complexity of P2P networking, the scaffolding provided in the starter code proved effective. Participant P5 noted: \textit{"I was worried about the networking part, but the Starter code for the socket connector was very clear. I got my two nodes talking to each other on the first try using the Docker instructions."} This suggests that abstracting the low-level socket management allowed students to focus on the high-level logic of node discovery.
 
 \paragraph{Module 2: Consensus Mechanisms}
 This module presented the most significant engineering challenges, particularly regarding language-specific constraints. The CPU-intensive nature of Proof of Work exposed the limitations of Python's concurrency model.
 \begin{itemize}
-    \item \textbf{The GIL Bottleneck:} Participant P2 (CS, Advanced) reported: \textit{"I spent three hours debugging why my node kept disconnecting peers. I didn't realize that the `while True` mining loop was holding the Global Interpreter Lock (GIL), effectively pausing the heartbeat listener. I had to insert manual `sleep(0)` calls to yield execution."}
-    \item \textbf{Algorithmic Complexity:} Participant P4 (CS, Basic) struggled with the dynamic difficulty adjustment: \textit{"The math for the dynamic difficulty adjustment was hard... My chain kept freezing because the difficulty got too high too quickly."}
+    \item \textbf{The GIL Bottleneck:} Participant P2 reported: \textit{"I spent three hours debugging why my node kept disconnecting peers. I didn't realize that the `while True` mining loop was holding the Global Interpreter Lock (GIL), effectively pausing the heartbeat listener. I had to insert manual `sleep(0)` calls to yield execution."}
+    \item \textbf{Algorithmic Complexity:} Participant P4 struggled with the dynamic difficulty adjustment: \textit{"The math for the dynamic difficulty adjustment was hard... My chain kept freezing because the difficulty got too high too quickly."}
 \end{itemize}
 
 \paragraph{Module 3: Performance Analysis}
-While students successfully measured throughput, measuring latency proved conceptually difficult. Participant P3 (DS-AI) remarked: \textit{"The throughput calculation was easy, but I struggled with measuring Latency."}
+While students successfully measured throughput, measuring latency proved conceptually difficult. Participant P3 remarked: \textit{"The throughput calculation was easy, but I struggled with measuring Latency."}
 
 \paragraph{Module 5: System Extensibility}
 The introduction of off-chain storage (IPFS) represented a steep learning curve. Participant P1 noted: \textit{"I couldn't finish the IPFS integration... It felt like a jump in complexity compared to the previous modules."} Conversely, the block-size limit task provided a clear lesson in protocol enforcement, with P5 noting: \textit{"It was challenging to understand how to measure a transaction size to keep the new generated blocks under the maximum block size."}
