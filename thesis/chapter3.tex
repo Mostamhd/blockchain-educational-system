@@ -58,7 +58,7 @@ The system adopts a multi-layered architecture pattern, dividing the system into
 This layer handles the raw TCP socket connections. It implements a custom message handler that serializes Python objects into JSON payloads for transmission. By abstracting the socket logic here, the upper layers can simply invoke `broadcast(message)` without managing connection states.
 
 \subsection{The Core Blockchain Layer}
-This is the central engine of the system. It contains the data structures (Block, Transaction) and the validation logic. Crucially, this layer utilizes the Strategy Design Pattern to manage consensus. The `Blockchain` class does not implement mining logic directly; instead, it holds a reference to an `IConsensus` interface, allowing the implementation (PoW or PoS) to be injected at runtime \cite{gamma1995design}.
+This is the central engine of the system. It contains the data structures (Block, Transaction) and the validation logic. To support the educational requirement of swappable consensus mechanisms, the `Blockchain` class is designed to delegate block validation and creation to a dedicated consensus component. Rather than embedding mining or staking logic directly into the ledger management, the blockchain instantiates a specific consensus class (e.g., `ProofOfStake` or `ProofOfWork`). This encapsulation allows the consensus algorithm to be replaced or modified in isolation without affecting the transaction processing or peer-to-peer logic.
 
 \subsection{The Application Interface (API)}
 Built using \textbf{FastAPI}, this layer exposes the node's internal state to the external world. It serves as the bridge for the "Blockchain Explorer" and allows students to manually trigger actions (e.g., `POST /connect\_peer`) during laboratory exercises.
@@ -70,9 +70,8 @@ The Object-Oriented structure of the system is designed to mirror the theoretica
 
 \begin{figure}[h]
     \centering
-    % Placeholder for Class Diagram
-    \includegraphics[width=0.9\textwidth]{figures/blockchain_class_diagram.png}
-    \caption{UML Class Diagram showing the relationship between Node, Blockchain, and Consensus Strategy.}
+    \includegraphics[width=0.9\textwidth]{figures/classdiagrampos.png}
+    \caption{Simplified Component Class Diagram illustrating the relationship between Node, Blockchain, and Consensus Strategy.}
     \label{fig:class_diagram}
 \end{figure}
 
@@ -80,7 +79,7 @@ Key relationships include:
 \begin{itemize}
     \item \textbf{Composition:} The `Node` class owns a `Blockchain` instance and a `TransactionPool`.
     \item \textbf{Aggregation:} The `Blockchain` contains a list of `Block` objects.
-    \item \textbf{Polymorphism:} The `Blockchain` relies on the `Consensus` abstract base class, which is implemented by concrete classes like `ProofOfStake` and `ProofOfWork`.
+    \item \textbf{Component-based Consensus:} The `Blockchain` integrates a dedicated consensus class. In the reference system implemented in Chapter \ref{ch4_implementation}, this is the `ProofOfStake` component. This design choice simplifies the initial codebase while retaining the flexibility to swap the consensus mechanism (e.g., to `ProofOfWork`) as an educational exercise in Chapter \ref{ch5_curriculum}.
 \end{itemize}
 
 \subsection{Data Flow and Transaction Lifecycle}
@@ -88,9 +87,8 @@ Understanding how data moves through the system is critical for the "Performance
 
 \begin{figure}[h]
     \centering
-    % Placeholder for Flow Chart
-    \includegraphics[width=0.7\textwidth]{figures/transaction_lifecycle.png}
-    \caption{Data Flow Diagram: Lifecycle of a Transaction from Client to Finalized Block.}
+    \includegraphics[height=0.85\textheight, keepaspectratio]{figures/transactionflowchat.png}
+    \caption{Transaction Processing Flowchart: Illustrating the sequence of operations from creation to finalization.}
     \label{fig:tx_flow}
 \end{figure}
 
