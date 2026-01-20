@@ -70,7 +70,7 @@ By completing this module, students will be able to:
 \subsubsection*{Task 1: The Hard Fork}
 To establish a unique blockchain network identity, perform the following steps:
 \begin{enumerate}
-    \item Open the file \texttt{blockchain/block/block.py}.
+    \item Open the file \texttt{blockchain/blockchain/block.py}.
     \item Locate the method \texttt{genesis()}.
     \item Modify the second parameter of the \texttt{Block} constructor (the \texttt{last\_hash} field) from the default value to a unique identifier (e.g., \texttt{"genesis\_group\_05"} or your Student ID).
     \item Save the file. This change ensures that the hash of Block 0 is mathematically distinct from the original codebase, effectively creating a hard fork.
@@ -174,7 +174,7 @@ Upon completion of this module, students will be able to:
 \subsubsection*{Task 1: The Consensus Implementation}
 To secure the network, you must change the consensus algorithm and implement a Proof of Work algorithm to achieve consensus in the blockchain network.
 \begin{enumerate}
-    \item Create a new class \texttt{ProofOfWork} (e.g., in \texttt{blockchain/consensus/proof\_of\_work.py}) that adheres to the system's consensus interface.
+    \item Create a new class \texttt{ProofOfWork} (e.g., in \texttt{blockchain/blockchain/pow/proof\_of\_work.py}) that adheres to the system's consensus interface.
     \item Implement the \texttt{mine(block)} method to perform the "Mining" process described in Section \ref{ch2_consensus_pow}. This method must:
     \begin{itemize}
         \item Initialize the block's \texttt{nonce} to 0.
@@ -187,7 +187,7 @@ To secure the network, you must change the consensus algorithm and implement a P
 \subsubsection*{Task 2: The Mining Loop Integration} 
 The default node behavior is designed for Proof of Stake (Time-Bound), which waits for specific slots. You must alter the \texttt{node.py} logic to support the continuous, CPU-Bound nature of Proof of Work.
 \begin{enumerate}
-    \item Open the \texttt{blockchain/node/node.py} file and locate the \texttt{produce\_block} method.
+    \item Open the \texttt{blockchain/blockchain/node.py} file and locate the \texttt{produce\_block} method.
     \item Modify the production loop to check which consensus strategy is currently active.
     \item Implement the conditional logic for PoW:
     \begin{itemize}
@@ -291,7 +291,7 @@ By completing this module, students will be able to:
 \subsubsection*{Task 1: System Throughput} 
 To quantitatively measure network throughput, you must inject utilities or logic directly into the node software.
 \begin{enumerate}
-    \item Review the \texttt{blockchain/node/node.py} file and locate the \texttt{handle\_block} method.
+    \item Review the \texttt{blockchain/blockchain/node.py} file and locate the \texttt{handle\_block} method.
     \item Implement logic to capture the block propagation time by calculating the difference between the current system time and the final block's creation timestamp on the blockchain.
     \item Implement logic to calculate transaction throughput by dividing the number of transactions in the received block by the configured block time.
     \item Modify the logging logic to append these calculated metrics into a structured log file for post-experiment analysis.
@@ -409,7 +409,7 @@ Upon successful completion of this module, students will be able to:
 Before building complex assets, students first enable the blockchain to store general textual data.
 
 \begin{enumerate}
-    \item Open \texttt{blockchain/backend/core/transaction.py}.
+    \item Open \texttt{blockchain/blockchain/transaction/transaction.py}.
     \item Modify the \texttt{\_\_init\_\_} method of the \texttt{Transaction} class to accept an optional \texttt{data} parameter, defaulting to \texttt{None}.
     \item Update the \texttt{to\_dict()} serialization method to include the new \texttt{data} field in the resulting JSON representation.
     \item Validate the implementation by submitting a transaction via the API with the payload \texttt{"Hello Blockchain"} and verifying it appears in the next propagated block.
@@ -584,7 +584,7 @@ Upon successful completion of this module, students will be able to:
 \subsubsection*{Task 1: Protocol Defense (Block Size Limit)}
 To prevent ledger bloat and ensure propagation latency remains within acceptable bounds, the protocol must strictly enforce resource limits.
 \begin{enumerate}
-    \item Open \texttt{blockchain/core/blockchain.py}.
+    \item Open \texttt{blockchain/blockchain/blockchain.py}.
     \item Define a constant \texttt{MAX\_BLOCK\_SIZE\_BYTES = 2048} (2KB) to simulate a constrained environment.
     \item Locate the \texttt{add\_block()} or \texttt{validate\_block()} method.
     \item Implement logic to serialize the candidate block, measure its size in bytes, and raise a \texttt{BlockSizeExceededError} if it violates the limit.
@@ -594,7 +594,7 @@ To prevent ledger bloat and ensure propagation latency remains within acceptable
 \subsubsection*{Task 2: Schema Enforcement (Hash Pointers)}
 To support the Hybrid Architecture efficiently, the protocol must enforce that "Storage" transactions contain valid pointers (hashes) rather than raw data.
 \begin{enumerate}
-    \item Open the transaction validation logic in \texttt{blockchain/core/node.py}.
+    \item Open the transaction validation logic in \texttt{blockchain/blockchain/node.py}.
     \item Implement a validation rule for transactions with the type \texttt{STORE\_FILE}.
     \item The rule must assert that the \texttt{data} payload is a valid SHA-256 hash (i.e., a 64-character hexadecimal string) and not an arbitrary file blob.
     \item \textbf{Verification:} Submit a transaction with type \texttt{STORE\_FILE} containing a raw file string. Observe the validation failure in the logs.
