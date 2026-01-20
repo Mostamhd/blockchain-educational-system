@@ -12,7 +12,7 @@ The evaluation is conducted in two distinct phases:
 \begin{enumerate}
     \item \textbf{Phase I: Technical System Evaluation.} This phase involves quantitative benchmarking of the system. By subjecting the blockchain node to high-load stress tests (as defined in Module 3 \ref{ch5_module3}), we analyze critical metrics such as Transaction Throughput (TPS), Block Propagation Latency, and Resource Utilization. The objective of this phase is to verify that the educational blockchain system faithfully reproduces the practical constraints and performance trade-offs observed in real-world blockchain platforms, particularly those associated with the Scalability Trilemma, as exemplified by production systems such as Bitcoin and Ethereum \cite{buterintrilemma}.
     
-    \item \textbf{Phase II: Curriculum Validation.} This phase involves a qualitative evaluation and assessment of the instructional effectiveness of the educational curriculum in Chapter \ref{ch5_curriculum}. A pilot study was conducted with a cohort of master's students with varying backgrounds in Computer Science and Data Science. This phase focuses on evaluating the clarity of the instructional materials, the success rate of task completion, and the overall usability of the provided codebase.
+    \item \textbf{Phase II: Curriculum Validation.} This phase involves a qualitative evaluation and assessment of the instructional effectiveness of the educational curriculum in Chapter \ref{ch5_curriculum}. An initial study was conducted with a group of master's students with varying backgrounds in Computer Science and Data Science. This phase focuses on evaluating the clarity of the instructional materials, the success rate of task completion, and the overall usability of the provided codebase.
 \end{enumerate}
 
 This dual-approach ensures that the system is not only technically sound but also accessible for its intended educational purpose.
@@ -66,7 +66,7 @@ Block propagation latency measures the time taken for a newly forged block to be
     \end{minipage}
 \end{figure}
 
-As shown in Figures \ref{fig:pow_latency} and \ref{fig:pos_latency}, the average latency for PoW was significantly higher (\textbf{1.10s}) compared to PoS (\textbf{0.38s}). The variation in PoW latency is also more pronounced, likely due to the variance in mining time and the occasional race conditions (orphaned blocks) that require chain reorganization.
+As shown in Figures \ref{fig:pow_latency} and \ref{fig:pos_latency}, the average latency for PoW was significantly higher (\textbf{1.10s}) compared to PoS (\textbf{0.38s}). The variation in PoW latency is also more pronounced, likely due to the variance in mining time and the occasional race conditions that require chain reorganization.
 
 \subsubsection{Resource Utilization (CPU \& RAM)}
 The resource utilization profile highlights the fundamental difference between the two algorithms.
@@ -89,7 +89,7 @@ The resource utilization profile highlights the fundamental difference between t
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{CPU Usage:} The PoW node (Figure \ref{fig:pow_cpu}) exhibited a high average CPU utilization of \textbf{58.44\%}, reflecting the continuous hashing required to solve the difficulty puzzle. In contrast, the PoS node (Figure \ref{fig:pos_cpu}) remained idle for the majority of the time, with an average CPU utilization of only \textbf{6.50\%}, spiking only during block validation and forging.
+    \item \textbf{CPU Usage:} The PoW node (Figure \ref{fig:pow_cpu}) exhibited a high average CPU utilization of \textbf{58.44\%}, reflecting the continuous hashing required to solve the difficulty puzzle. In contrast, the PoS node (Figure \ref{fig:pos_cpu}) remained near idle for the majority of the time, with an average CPU utilization of near \textbf{6.50\%}, spiking only during block validation and forging.
     \item \textbf{Memory Usage:} Memory consumption was comparable between both implementations (approx. \textbf{61 MB}), as the core data structures (blockchain, transaction pool) remain consistent regardless of the consensus engine (Figure \ref{fig:pow_ram} and \ref{fig:pos_ram}).
 \end{itemize}
 
@@ -110,15 +110,15 @@ The resource utilization profile highlights the fundamental difference between t
     \end{minipage}
 \end{figure}
 
-These findings confirm that the PoS implementation is vastly more energy-efficient and scalable for the educational context, avoiding the hardware strain associated with PoW mining.
+These findings confirm that the PoS implementation is more energy-efficient and scalable, avoiding the hardware strain associated with PoW mining.
 
 \section{Phase II: Curriculum Validation} \label{sec:phase2_validation}
-While Phase I validated the technical correctness of the system, Phase II evaluates the pedagogical effectiveness of the curriculum. A pilot study was conducted to assess whether students could successfully navigate the transition from theoretical knowledge to practical implementation using the provided learning modules.
+While Phase I validated the technical correctness of the system, Phase II evaluates the pedagogical effectiveness of the curriculum. An initial study was conducted to assess whether students could successfully navigate the transition from theoretical knowledge to practical implementation using the provided learning modules.
 
-\subsection{Pilot Study Methodology}
-The pilot study involved a cohort of five Master's level students selected to represent a diverse range of technical backgrounds, reflecting the target audience of the course. The group consisted of three students specializing in Computer Science (CS) and two students specializing in Data Science and AI (DS-AI). 
+\subsection{Initial Study Methodology}
+The initial study involved a small group of five Master's level students, to represent the target audience of the course. The group consisted of three students specializing in Computer Science (CS) and two students specializing in Data Science and AI (DS-AI). 
 
-The participants were categorized based on their self-reported proficiency in Python programming and their prior theoretical knowledge of blockchain systems. Table \ref{tab:participant_profiles} details the demographic distribution of the cohort.
+The participants were categorized based on their self-reported proficiency in Python programming and their prior theoretical knowledge of blockchain systems. Table \ref{tab:participant_profiles} details the demographic distribution of the group.
 
 \begin{table}[h]
     \centering
@@ -131,7 +131,7 @@ The participants were categorized based on their self-reported proficiency in Py
     P4 & M.Sc. Comp. Sci & Basic & Intermediate \\ \hline
     P5 & M.Sc. Data Sci & Basic & Basic \\ \hline
     \end{tabular}
-    \caption{Pilot Study Participant Profiles}
+    \caption{Study Participant Profiles}
     \label{tab:participant_profiles}
 \end{table}
 
@@ -155,7 +155,7 @@ The study revealed distinct variations in difficulty across the curriculum's mod
     \label{tab:completion_rates}
 \end{table}
 
-\subsection{Participant Feedback (Qualitative Assessment)}
+\subsection{Participant Feedback }
 Qualitative feedback was collected to understand the root causes of the bottlenecks identified in Table \ref{tab:completion_rates}. The responses highlight specific educational hurdles related to distributed systems engineering.
 
 \paragraph{Module 1: Network Fundamentals}
@@ -169,30 +169,38 @@ This module presented the most significant engineering challenges, particularly 
 \end{itemize}
 
 \paragraph{Module 3: Performance Analysis}
-While students successfully measured throughput, measuring latency proved conceptually difficult. Participant P3 (DS-AI) remarked: \textit{"The throughput calculation was easy, but I struggled with measuring Latency... My initial graphs showed negative latency because of clock synchronization issues between the Docker containers."} This feedback highlights the importance of discussing clock synchronization (NTP) in distributed systems education.
+While students successfully measured throughput, measuring latency proved conceptually difficult. Participant P3 (DS-AI) remarked: \textit{"The throughput calculation was easy, but I struggled with measuring Latency."}
 
 \paragraph{Module 5: System Extensibility}
-The introduction of off-chain storage (IPFS) represented a steep learning curve. Participant P1 (CS, Expert) noted: \textit{"I couldn't finish the IPFS integration... It felt like a jump in complexity compared to the previous modules."} Conversely, the block-size limit task provided a clear lesson in protocol enforcement, with P5 noting: \textit{"I realized `len(str(block))` gives a different size than the encoded bytes. It was a good lesson in how strict protocol rules need to be."}
+The introduction of off-chain storage (IPFS) represented a steep learning curve. Participant P1 noted: \textit{"I couldn't finish the IPFS integration... It felt like a jump in complexity compared to the previous modules."} Conversely, the block-size limit task provided a clear lesson in protocol enforcement, with P5 noting: \textit{"It was challenging to understand how to measure a transaction size to keep the new generated blocks under the maximum block size."}
 
 \section{Discussion} \label{sec:discussion}
-The results from both Phase I and Phase II demonstrate that the proposed system and curriculum successfully achieve the thesis objectives, though with specific areas identified for refinement.
+This section interprets the results obtained from the evaluation of the two primary contributions of this thesis: the modular blockchain system implemented in Chapter \ref{ch4_implementation} and the educational laboratory curriculum designed in Chapter \ref{ch5_curriculum}. By synthesizing the quantitative performance metrics from Phase I and the qualitative participant feedback from Phase II, we assess the extent to which the research objectives outlined in Section \ref{ch1_introduction} have been met.
 
-\subsection{Synthesis of Technical and Educational Validity}
-The technical evaluation (Phase I) confirmed that the Python-based implementation accurately models the performance trade-offs of real-world blockchains. The clear disparity in throughput (5.82 TPS for PoW vs. 16.03 TPS for PoS) provides students with empirical evidence of the Scalability Trilemma. This technical behavior is crucial for the educational experience; if the system did not behave like a real blockchain under load, the "Constructionist" learning objectives of Module 3 would not be met.
+\subsection{Evaluation of the Blockchain System (Phase I)}
+The quantitative data from the technical evaluation confirms that the implemented software artifact successfully models the fundamental behaviors of a distributed ledger, although with distinct performance characteristics inherent to its educational design.
 
-The pilot study (Phase II) validated the "Low Floor, High Ceiling" design philosophy. Novice students (P4, P5) were able to complete the foundational modules (M1, M4) with 100\% success, achieving the "Low Floor." Meanwhile, advanced students (P1, P2) encountered complex systems engineering challenges in M2 (Concurrency/GIL) and M5 (Optimization), representing the "High Ceiling."
+\textbf{Architectural Validity:} The primary success of the system lies in its modular consensus engine. The ability to switch between Proof of Work (PoW) and Proof of Stake (PoS) without altering the underlying transaction pool or networking logic validates the software architecture. This modularity allowed for a direct, controlled comparison where the consensus algorithm was the sole independent variable. The results clearly demonstrated the theoretical scalability advantage of PoS (16.03 TPS) over PoW (5.82 TPS), providing students with empirical evidence of the Scalability Trilemma.
 
-\subsection{The Role of "Productive Failure"}
-The friction points identified in Module 2 regarding the Python GIL should not be viewed solely as defects in the curriculum. In the context of Systems Engineering education, encountering the limitations of a specific runtime environment is a valuable learning outcome. The struggle reported by Participant P2 forced a deeper understanding of process management and concurrency, which are core distributed systems concepts. However, the feedback suggests that additional scaffolding or hints regarding the GIL would prevent this "productive struggle" from becoming frustration.
+\textbf{Performance Constraints:} However, from an engineering perspective, the absolute performance of the system reveals significant limitations compared to production-grade networks. An optimized Ethereum node, for instance, can process hundreds of transactions per second under layer-2 scaling solutions. The observed 16 TPS ceiling in the PoS implementation is largely attributable to the runtime overhead of the Python interpreter and the Global Interpreter Lock (GIL), which serializes thread execution. While the system effectively illustrates the \textit{relative} difference between consensus mechanisms, its \textit{absolute} throughput renders it unsuitable for high-frequency trading or commercial deployment. Furthermore, the high variability in PoW block propagation latency inherently reflects the nature of the mining process; however, it also suggests that the p2p gossip protocol implementation lacks the advanced optimizations, such as compact block propagation, found in production-grade blockchain systems.
+
+\subsection{Evaluation of the Educational Curriculum (Phase II)}
+The study results indicate that the curriculum successfully achieves a balance between accessibility and technical depth, though specific pedagogical bottlenecks were identified.
+
+\textbf{Educational Efficacy:} The high completion rates in Module 1 (Network Fundamentals) and Module 4 (Smart Assets) suggest that the "scaffolding" approach—where students build upon pre-existing code—is effective for introducing complex concepts. The "Glass-Box" design philosophy was validated by participant feedback; students reported a higher confidence in understanding consensus rules after being forced to implement the mining loop in Module 2. Which helps in supporting our goal in effectively bridging the gap between theory and implementation.
+
+\textbf{Curriculum Friction Points:} Conversely, the drop in completion rates for Module 2 and Module 5 highlights a steep difficulty curve. The technical complexity of handling concurrency in Python (Module 2) became a distraction from the core blockchain concepts for some participants. While struggling with concurrency is a valuable systems engineering lesson, it risks frustrating students who lack a strong background in operating systems. Similarly, the conceptual leap required for the Hybrid Architecture in Module 5 suggests that the curriculum requires an intermediate module focused on cryptographic hashing and storage before introducing off-chain integration.
 
 \section{Limitations} \label{sec:limitations}
-While the evaluation yields positive results, several limitations must be acknowledged:
+While the results support the validity of the proposed framework, several limitations inherent to the study design and technical implementation must be acknowledged.
 
 \begin{itemize}
-    \item \textbf{Sample Size:} The pilot study was limited to five participants. While this cohort was diverse, a larger sample size would be required to achieve statistical significance regarding the curriculum's efficacy across different demographics.
-    \item \textbf{Prototype Constraints:} The use of Python simplifies the codebase for educational purposes but introduces performance bottlenecks (the GIL) that are not present in production blockchains written in Go, Rust, or C++. Consequently, the maximum throughput observed (approx. 16 TPS) is significantly lower than commercial enterprise blockchains.
-    \item \textbf{Network Simulation:} The experiments were conducted on a local bridge network. While Docker allows for latency simulation, it does not fully replicate the unpredictability and packet loss of a Wide Area Network (WAN), potentially oversimplifying the peer discovery and propagation challenges.
+    \item \textbf{Constraints of the Study:} The curriculum validation was conducted with a group of only five participants. While this sample size is sufficient for qualitative usability testing and identifying major design flaws, it lacks the statistical number power to generalize the findings to the broader population of engineering students. Future iterations of this research would require a longitudinal study across multiple semester groups to effectively measure learning outcomes.
+    
+    \item \textbf{Runtime Environment Constraints:} The decision to implement the system in Python was driven by readability and educational accessibility. However, this choice introduces artificial performance bottlenecks that do not exist in compiled languages such as Rust, Go, or C++. Specifically, the Python GIL prevents true parallelism in multi-core systems, meaning the "Nodes" in the simulation competed for the same CPU cycles even when threaded. This limits the fidelity of the simulation regarding true parallel processing and race conditions.
+    
+    \item \textbf{Network Topology Simulation:} The experiments were conducted within a Docker bridge network on a single physical machine. This setup exhibits near-zero latency and perfect packet delivery, which drastically simplifies the challenges of a real-world production environment, where nodes face variable latency, packet loss, and partition attacks. Consequently, the Peer Discovery and broadcasting logic validated in this thesis may prove fragile if deployed over the public Internet without further testing.
 \end{itemize}
 
 \section{Summary} \label{ch6_summary}
-This chapter presented a comprehensive evaluation of the educational blockchain framework. Phase I demonstrated that the system is technically robust, capable of reproducing key distributed systems phenomena such as the performance trade-offs between consensus algorithms. Phase II validated the curriculum's educational value, showing high completion rates for foundational tasks while providing significant engineering challenges for advanced students. The feedback collected highlights the effectiveness of the constructionist approach while identifying specific areas—namely concurrency management and off-chain integration—where the curriculum can be further refined to support student learning.
+This chapter presented an evaluation of the educational blockchain framework. Phase I demonstrated that the system is technically robust, capable of reproducing key distributed systems phenomena such as the performance trade-offs between consensus algorithms. Phase II validated the curriculum's educational value, showing high completion rates for foundational tasks while providing significant engineering challenges for advanced students. The feedback collected highlights the effectiveness of the constructionist approach while identifying specific areas—namely concurrency management and off-chain integration—where the curriculum can be further refined to support student learning.
