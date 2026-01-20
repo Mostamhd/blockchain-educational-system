@@ -1,0 +1,32 @@
+{
+    "latex-workshop.latex.outDir": "%DIR%/build",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "docker-compose-latexmk",
+            "command": "docker-compose",
+            "args": [
+                "run",
+                "--rm",
+                "compiler",
+                "latexmk",
+                "-pdfxe",
+                "-bibtex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-outdir=build",
+                "%DOCFILE%"
+            ],
+            "env": {}
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "Docker Compose: latexmk (Clean)",
+            "tools": [
+                "docker-compose-latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipe.default": "Docker Compose: latexmk (Clean)"
+}
