@@ -1,9 +1,4 @@
-%%%%%%%%%%% Theoretical Framework %%%%%%%%%%%%%%%%%
-%%%%%%%%%%% SHOULD I ADD?
-%%%%%%%%%%%%%%%%%%%%%% utxo and account architecture overview?
-%%%%%%%%%%%%%%%%%%%%%% containerization overview?
-%%%%%%%%%%%%%%%%%%%%%% Is the related work section enough or relevant?
-%%%%%%%%%%%%%%%%% should i keep the table here ?
+
 \chapter{Theoretical Framework} \label{ch2_theoretical_framework}
 \markboth{Theoretical Framework}{Theoretical Framework}
 
@@ -201,8 +196,10 @@ By fixing the number of active validators to a small, constant set $N$, DPoS eff
 
 \begin{itemize}
     \item \textbf{Sub-second Block Times:} Because the next block producer is known in advance via the round-robin schedule, there is no "competition" phase, allowing for near-instantaneous block propagation.
-    \item \textbf{High Scalability:} By decoupling the number of users from the number of consensus participants, DPoS can sustain thousands of Transactions Per Second (TPS), as demonstrated by platforms like EOS and Steem \cite{saleh2021blockchain}.
+    \item \textbf{High Scalability:} By decoupling the number of users from the number of consensus participants, DPoS can sustain thousands of Transactions Per Second (TPS)\cite{springer2025_dpos_scalability}.
 \end{itemize}
+
+% this paper has some graphs i could put here  springer2025_dpos_scalability
 
 \subsubsection{Addressing Byzantine Faults}
 DPoS solves the Byzantine Generals Problem through a combination of reputation and real-time intervention:
@@ -272,7 +269,12 @@ To review the architectural trade-offs inherent in distributed ledger technologi
 \end{table}
 
 
-\section{Related work} \label{ch2_relatedWork}
+\section{Containerization} \label{ch2_containerization}
+
+Containerization is a lightweight form of virtualization that allows applications to run in isolated environments called containers. Unlike traditional virtual machines that require a full operating system, containers share the host system's kernel while maintaining their own filesystem, libraries, and configuration. Docker \cite{docker} has emerged as the standard platform for this technology, enabling developers to package applications with all their dependencies into a single immutable artifact. This approach ensures consistency across different computing environments, simplifies deployment, and improves resource efficiency, making it particularly suitable for simulating distributed systems like blockchain networks where multiple nodes need to run simultaneously on a single machine.
+
+
+\section{Real Life Implementation Examples} \label{ch2_relatedWork}
 
 To understand the practical application of the consensus mechanisms and data systems discussed previously, in this section we focus on investigating the existing works and show three blockchain architectures: Bitcoin, Ethereum, and Solana. Each represents a distinct approach to solving the Blockchain Trilemma \cite{buterintrilemma}.
 
@@ -293,11 +295,11 @@ Ethereum, which was proposed by Vitalik Buterin in 2013, extended blockchain sys
 \end{itemize}
 
 \subsection{Solana}
-Solana represents a third-generation blockchain designed specifically to maximize throughput without sharding the system. It introduces an architectural design that aims to remove the performance bottlenecks found in Bitcoin and Ethereum.
+Solana represents a third-generation blockchain designed specifically to maximize throughput without sharding the system. It introduces an architectural design that aims to remove the performance bottlenecks found in Bitcoin and Ethereum \cite{yakovenko2018poh}.
 
 \begin{itemize}
     \item \textbf{Proof of History (PoH):} As discussed in Section \ref{ch2_consensus}, Solana utilizes a Verifiable Delay Function to create a global clock before consensus is reached. This reduces the communication overhead required for nodes to synchronize.
-    \item \textbf{Pipeline Architecture:} Unlike the sequential processing in older chains, Solana utilizes a concept called Pipelining, which allows transaction validation to be parallelized across GPU cores. This enables theoretical throughputs exceeding 50,000 TPS \cite{yakovenko2018poh}.
+    \item \textbf{Pipeline Architecture:} Unlike the sequential processing in older chains, Solana utilizes a concept called Pipelining, which allows transaction validation to be parallelized across GPU cores. This enables theoretical throughputs exceeding 50,000 TPS.
 \end{itemize}
 
 
