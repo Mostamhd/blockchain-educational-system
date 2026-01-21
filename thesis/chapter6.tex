@@ -9,18 +9,18 @@ Following the design and implementation of the modular blockchain system in Chap
 The evaluation is conducted in two distinct phases:
 
 \begin{enumerate}
-    \item \textbf{Phase I: Technical System Evaluation.} This phase involves quantitative benchmarking of the system. By subjecting the blockchain node to high-load stress tests (as defined in Module 3 \ref{ch5_module3}), we analyze critical metrics such as Transaction Throughput (TPS), Block Propagation Latency, and Resource Utilization. The objective of this phase is to verify that the educational blockchain system faithfully reproduces the practical constraints and performance trade-offs observed in real-world blockchain platforms, particularly those associated with the Scalability Trilemma, as exemplified by production systems such as Bitcoin and Ethereum \cite{buterintrilemma}.
+    \item \textbf{Phase I: Technical System Evaluation.} This phase involves quantitative benchmarking of the system. By subjecting the blockchain node to high-load stress tests (as defined in Module 3 \ref{ch5_module3}), we analyze critical metrics such as Transaction Throughput (TPS), Block Propagation Latency, and System Resource Utilization. The objective of this phase is to verify that the educational blockchain system faithfully reproduces the practical constraints and performance trade-offs observed in real-world blockchain platforms, particularly those associated with the Scalability Trilemma, as exemplified by production systems such as Bitcoin and Ethereum \cite{buterintrilemma}.
     
-    \item \textbf{Phase II: Curriculum Validation.} This phase involves a qualitative evaluation and assessment of the instructional effectiveness of the educational curriculum in Chapter \ref{ch5_curriculum}. An initial study was conducted with a group of master's students with varying backgrounds in Computer Science and Data Science. This phase focuses on evaluating the clarity of the instructional materials, the success rate of task completion, and the overall usability of the provided codebase.
+    \item \textbf{Phase II: Curriculum Validation.} This phase involves a qualitative evaluation of the instructional effectiveness of the educational curriculum in Chapter \ref{ch5_curriculum}. An initial study was conducted with a group of master's students with varied backgrounds in Computer Science and Data Science. This phase focuses on evaluating the clarity of the instructional materials, the success rate of task completion, and the overall usability of the provided codebase.
 \end{enumerate}
 
-This dual-approach ensures that the system is not only technically sound but also accessible for its intended educational purpose.
+This dual approach ensures that the system is not only technically sound but also accessible for its intended educational purpose.
 
 \section{Phase I: Technical System Evaluation}
 This section presents the quantitative evaluation of the implemented blockchain system. The experiments were designed to measure the performance characteristics of the two consensus mechanisms: Proof of Work (PoW) and Proof of Stake (PoS). The primary metrics considered were Transaction Throughput (TPS), Block Propagation Latency, and System Resource Utilization (CPU and Memory).
 
 \subsection{Experimental Setup}
-The benchmarking experiments were conducted on a MacBook Air (M3, 2024) equipped with an 8-core CPU and 16GB of Unified Memory running macOS. The blockchain network was simulated using Docker Desktop to containerize four distinct nodes (Node 1 to Node 4), emulating a distributed environment over a virtual bridge network. The workload was generated using the \textit{Benchmark Suite} developed in Module 3. The suite submitted a total batch of transactions to the network at a controlled submission rate to saturate the transaction pool. The metrics were captured by parsing the structured logs emitted by the nodes during operation.
+The benchmarking experiments were conducted on a MacBook Air (M3, 2024) equipped with an 8-core CPU and 16GB of Unified Memory running macOS. The blockchain network was simulated using Docker Desktop, containerizing four distinct nodes (Node 1 to Node 4) to emulate a distributed environment over a virtual bridge network. The workload was generated using the \textit{Benchmark Suite} developed in Module 3. The suite submitted a batch of transactions to the network at a controlled rate to saturate the transaction pool. The metrics were captured by parsing the structured logs emitted by the nodes during operation.
 
 \subsection{Throughput Analysis}
 Transaction Throughput (TPS) is defined as the number of valid transactions committed to the blockchain per second. Table \ref{tab:tps_comparison} summarizes the results obtained from the stress tests.
@@ -40,7 +40,7 @@ Transaction Throughput (TPS) is defined as the number of valid transactions comm
     \label{tab:tps_comparison}
 \end{table}
 
-The results indicate a significant performance disparity. The Proof of Stake implementation achieved an average throughput of \textbf{16.03 TPS}, whereas the Proof of Work implementation was limited to \textbf{5.82 TPS}. This approximately 2.75x increase in throughput for PoS can be attributed to the elimination of the computationally intensive mining process. In PoW, the block generation time is artificially constrained by the difficulty target, whereas in PoS, the slot time is deterministic, allowing for more consistent and rapid block creation.
+The results indicate a significant performance disparity. The Proof of Stake implementation achieved an average throughput of \textbf{16.03 TPS}, whereas the Proof of Work implementation was limited to \textbf{5.82 TPS}. This approximate 2.75x increase in throughput for PoS can be attributed to the elimination of the computationally intensive mining process. In PoW, the block generation time is artificially constrained by the difficulty target, whereas in PoS, the slot time is deterministic, allowing for more consistent and rapid block creation.
 
 \subsection{Latency and Resource Utilization}
 To further understand the operational overhead of each consensus mechanism, we analyzed the block propagation latency and the computational resources consumed by the nodes.

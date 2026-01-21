@@ -5,28 +5,28 @@
 \markboth{Educational Curriculum Design}{Educational Curriculum Design}
 
 
-Having established the technical implementation of the modular blockchain system in Chapter \ref{ch4_implementation}, this chapter presents a comprehensive \textbf{5-Module Laboratory Curriculum}. The core contribution of this thesis is not only the blockchain software developed, but the educational curriculum that utilizes this software to bridge the gap between the theoretical distributed systems concepts and the practical engineering skills in distributed systems.
+Having established the technical implementation of the modular blockchain system in Chapter \ref{ch4_implementation}, this chapter presents a comprehensive \textbf{5-Module Laboratory Curriculum}. The core contribution of this thesis is not only the blockchain software developed, but the educational curriculum that utilizes this software to bridge the gap between theoretical distributed systems concepts and practical engineering skills.
 
 
-The curriculum is designed to transform the learning process from understanding the theoretical aspects to applying what they learned in their courses or projects, actively engaging with the underlying mechanics of consensus, network propagation, and state management. By interacting with the blockchain system developed in the previous chapter, students can transition from passive knowledge consumers to active system architects.
+The curriculum is designed to transform the learning process from understanding the theoretical aspects to applying what they have learned in their courses or projects by actively engaging with the underlying mechanics of consensus, network propagation, and state management. By interacting with the blockchain system developed in the previous chapter, students can transition from passive knowledge consumers to active system architects.
 
 
 \section{Approach and Methodology} \label{ch5_pedagogy}
 
-The design of the laboratory exercises is inspired by the theory of Constructionist Learning, proposed by Seymour Papert. This theory states that learning is most effective when students are actively engaged in constructing tangible objects in the real world, rather than acquiring knowledge through passive transmission or consumption \cite{papert1991situating}. In the context of Computer Science education, this necessitates moving beyond theory, static simulations, or black-box interactions with production networks (such as sending transactions on a public Testnet) toward deep system understanding, allowing students to be able to fully understand the concepts by practice and gain code-level modifications experience.
+The design of the laboratory exercises is inspired by the theory of Constructionist Learning, proposed by Seymour Papert. This theory states that learning is most effective when students are actively engaged in constructing tangible objects in the real world, rather than acquiring knowledge through passive transmission or consumption \cite{papert1991situating}. In the context of Computer Science education, this necessitates moving beyond theory, static simulations, or black-box interactions with production networks (such as sending transactions on a public Testnet) toward deep system understanding, enabling students to fully understand the concepts by practice and gain experience with code-level modifications.
 
-To facilitate this, the curriculum adopts a Problem-Based Learning methodology. Rather than following specific instructions and editing a finished system, students are presented with engineering challenges that mirror real-world distributed systems problems. To ensure a scientific approach, each of the five modules follows a standardized structure inspired by the Active Learning framework \cite{freeman2014active}:
+To facilitate this, the curriculum adopts a Problem-Based Learning methodology. Rather than editing a finished system, students are presented with engineering challenges that mirror real-world distributed systems problems. To ensure a scientific approach, each of the five modules follows a standardized structure inspired by the Active Learning framework \cite{freeman2014active}:
 
 
 \begin{enumerate}
     \item \textbf{Problem Statement:} Introduces a specific theoretical challenge (e.g., "How do decentralized nodes agree on time?") or an operational deficiency (e.g., "How does the network behave when a peer disconnects?").
     \item \textbf{Learning Objectives:} Defines specific technical competencies the student will acquire by completing the module, aligned with the implementation details discussed in Chapter \ref{ch4_implementation}.
-    \item \textbf{Tasks:} This is the core phase, where students are tasked to find a solution and start modifying in the codebase, consensus parameters, altering the network module, or implementing new transaction types to resolve the stated problem.
-    \item \textbf{Analysis of Findings:} states an observation of the system's behaviors in relation to the actions taken from the previous steps, such as throughput, latency, or change in the state of the system.
+    \item \textbf{Tasks:} This is the core phase, where students are tasked to find a solution and modify the codebase, consensus parameters, altering the network module, or implementing new transaction types to resolve the stated problem.
+    \item \textbf{Analysis of Findings:} Record an observation of the system's behaviors in relation to the actions taken from the previous steps, such as throughput, latency, or change in the state of the system.
     \item \textbf{Learning Outcome:} In this phase, students correlate and connect their experimental results with the theoretical bounds established in Chapter \ref{ch2_theoretical_framework}, solidifying their gained knowledge of distributed systems and blockchains.
 \end{enumerate}
 
-This structured approach addresses the educational disconnect identified in Chapter \ref{ch1_introduction}, providing a safe environment in which breaking and changing the system is facilitated through a constructive learning mechanism, rather than a failure in the system, thus leading to a further engagement of both students and teachers in the learning process.
+This structured approach addresses the educational disconnect identified in Chapter \ref{ch1_introduction}, providing a safe environment where breaking and modifying the system facilitates constructive learning rather than causing system failure, thus fostering deeper engagement of both students and teachers in the learning process.
 
 \newpage
 
@@ -47,7 +47,7 @@ The repository is structured to provide the necessary code base to start working
 
 \section{Module 1: Network Fundamentals} \label{ch5_module1}
 
-This module focuses on two foundational building blocks of blockchain technology: creating a custom blockchain via forking and understanding Peer-to-Peer (P2P) discovery. Students are provided with the \textit{Starter Code} for the node software, which contains the core blockchain logic but lacks the specific configuration and implementation required to solve the tasks. The student's role is to act as a system architect, establishing a fork of the blockchain network, and to understand how the network's peers discovery layer works to be able to create a new node and link it to the blockchain using the network's independent nodes.
+This module focuses on two foundational building blocks of blockchain technology: creating a custom blockchain via forking and understanding Peer-to-Peer (P2P) discovery. Students are provided with the \textit{Starter Code} for the node software, which contains the core blockchain logic but lacks the specific configuration and implementation required to solve the tasks. The student acts as a system architect, establishing a fork of the blockchain network, and understanding how the network's peer discovery layer works to create a new node and link it to the existing blockchain network.
 
 \subsection{Problem Statement}
 To facilitate a comprehensive understanding of blockchain networks, two fundamental challenges must be addressed:

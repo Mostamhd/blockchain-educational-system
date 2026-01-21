@@ -3,7 +3,7 @@
 \markboth{Implementation Details}{Implementation Details}
 
 This chapter details the technical implementation of the architectural design proposed for the blockchain system described in the previous chapter. It provides a comprehensive walkthrough of the implementation methodologies, focusing on the modular Python core-blockchain backend and the blockchain explorer frontend implementation using Vue.js for visualization.
-The full source code for this implementation is open-source and available on GitHub to facilitate student experimentation from this link:\url{https://github.com/Mostamhd/blockchain-educational-system}
+The full source code for this implementation is open-source and available on GitHub to facilitate student experimentation at the following link: \url{https://github.com/Mostamhd/blockchain-educational-system}
 
 \section{Development Environment and Technology Stack} \label{ch4_tech_stack}
 
@@ -12,8 +12,8 @@ The system relies on a containerized microservices architecture to ensure consis
 \begin{itemize}
     \item \textbf{Language:} Python 3.9 was selected for the backend due to its extensive support for cryptographic libraries and high readability, which facilitates the "glass-box" educational approach \cite{python_lang}.
     \item \textbf{API Framework:} \textit{FastAPI} (wrapped via Uvicorn) is utilized to expose the blockchain's functionality via RESTful endpoints, allowing the communication between the backend node and the frontend client.
-    \item \textbf{Cryptography:} The system utilizes the \textit{eth-keys} and \textit{eth-utils} libraries. This makes the project matches with Ethereum's cryptographic standards, employing \textbf{Keccak-256} for hashing and \textbf{ECDSA} (SECP256k1) for digital signatures, providing students with exposure to a production like Ethereum primitives \cite{wood2014ethereum}.
-    \item \textbf{Frontend:} \textit{Vue.js} which is used to power the Blockchain Explorer, providing a user interface that visualizes block propagation, validators, and mempool status in real-time \cite{vuejs}.
+    \item \textbf{Cryptography:} The system utilizes the \textit{eth-keys} and \textit{eth-utils} libraries. This aligns the project with Ethereum's cryptographic standards, employing \textbf{Keccak-256} for hashing and \textbf{ECDSA} (SECP256k1) for digital signatures, providing students with exposure to production-like Ethereum primitives \cite{wood2014ethereum}.
+    \item \textbf{Frontend:} \textit{Vue.js}, which is used to power the Blockchain Explorer, providing a user interface that visualizes block propagation, validators, and mempool status in real-time \cite{vuejs}.
     \item \textbf{Containerization:} \textit{Docker} and \textit{Docker Compose} are used to orchestrate the multi-node network, allowing students and teachers to simulate a distributed consensus network on a single physical machine \cite{docker}.
 \end{itemize}
 
@@ -43,9 +43,9 @@ class AccountModel:
 \subsection{Transaction Management} \label{ch4_transaction_impl}
 A transaction is the atomic unit that represents a change in the state of a blockchain. In the blockchain system implemented,
 
-the \texttt{Transaction} class (\texttt{blockchain/transaction/transaction.py}) encapsulates the transfer logic. It supports different types of transaction payloads, such as \texttt{TRANSFER} for currency ,\texttt{EXCHANGE} for system operations, and \texttt{COINBASE} for the block reward used in the consensus mechanism. 
+the \texttt{Transaction} class (\texttt{blockchain/transaction/transaction.py}) encapsulates the transfer logic. It supports different types of transaction payloads, such as \texttt{TRANSFER} for currency, \texttt{EXCHANGE} for system operations, and \texttt{COINBASE} for the block reward used in the consensus mechanism. 
 
-Crucially, every transaction includes a unique id hash calculated based on the transaction payload, as seen in the \texttt{payload} method. Additionally, every transaction includes a timestamp to prevent replay attacks. The \texttt{sign} method ensures non-repudiation using the sender's private key.
+Crucially, every transaction includes a unique ID hash calculated based on the transaction payload, as seen in the \texttt{payload} method. Additionally, every transaction includes a timestamp to prevent replay attacks. The \texttt{sign} method ensures non-repudiation using the sender's private key.
 
 \begin{lstlisting}[language=Python, caption=Transaction Structure, label=lst:transaction_class]
 class Transaction:
@@ -76,7 +76,7 @@ The implementation includes logic to prevent double-spending and duplication. Be
 
 \section{The Network Node} \label{ch4_node_impl}
 
-The \texttt{Node} class (\texttt{blockchain/node/node.py}) acts as the central orchestrator of the system. as the node class integrates three critical subsystems of the blockchain:
+The \texttt{Node} class (\texttt{blockchain/node/node.py}) acts as the central orchestrator of the system, as the Node class integrates three critical subsystems of the blockchain:
 \begin{enumerate}
     \item \textbf{The P2P Layer:} For communicating between the nodes in the blockchain network.
     \item \textbf{The Blockchain Core:} For maintaining the ledger state and consensus.
