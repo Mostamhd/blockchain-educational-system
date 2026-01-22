@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  plantuml-renderer:
+    image: plantuml/plantuml
+    container_name: thesis_diagram_renderer
+    # Mount the project root to /project inside the container
+    volumes:
+      - ../:/project
+    # Set working directory to where the puml files are
+    working_dir: /project/graphs
+    # Command to convert all .puml files to .png and output them to the figures directory
+    # -tpng: Generate PNG images
+    # -o: Output directory (relative to working_dir)
+    # pattern: Process all .puml files
+    command: >
+      -tpng 
+      -o /project/thesis/figures 
+      blockchain_architecture.puml 
+      thesis_structure.puml 
+      transaction_lifecycle_pos.puml
