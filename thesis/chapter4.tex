@@ -11,8 +11,8 @@ The system relies on a containerized microservices architecture to ensure consis
 
 \begin{itemize}
     \item \textbf{Language:} Python 3.9 was selected for the backend due to its extensive support for cryptographic libraries and high readability, which facilitates the "glass-box" educational approach \cite{python_lang}.
-    \item \textbf{API Framework:} \textit{FastAPI} (wrapped via Uvicorn) is utilized to expose the blockchain's functionality via RESTful endpoints, allowing the communication between the backend node and the frontend client.
-    \item \textbf{Cryptography:} The system utilizes the \textit{eth-keys} and \textit{eth-utils} libraries. This aligns the project with Ethereum's cryptographic standards, employing \textbf{Keccak-256} for hashing and \textbf{ECDSA} (SECP256k1) for digital signatures, providing students with exposure to production-like Ethereum primitives \cite{wood2014ethereum}.
+    \item \textbf{API Framework:} \textit{FastAPI} \cite{fastapi} (wrapped via Uvicorn \cite{uvicorn}) is utilized to expose the blockchain's functionality via RESTful endpoints, allowing the communication between the backend node and the frontend client.
+    \item \textbf{Cryptography:} The system utilizes the \textit{eth-keys} \cite{eth_keys} and \textit{eth-utils} \cite{eth_utils} libraries. This aligns the project with Ethereum's cryptographic standards, employing \textbf{Keccak-256} for hashing and \textbf{ECDSA} (SECP256k1) for digital signatures, providing students with exposure to production-like Ethereum primitives \cite{wood2014ethereum}.
     \item \textbf{Frontend:} \textit{Vue.js}, which is used to power the Blockchain Explorer, providing a user interface that visualizes block propagation, validators, and mempool status in real-time \cite{vuejs}.
     \item \textbf{Containerization:} \textit{Docker} and \textit{Docker Compose} are used to orchestrate the multi-node network, allowing students and teachers to simulate a distributed consensus network on a single physical machine \cite{docker}.
 \end{itemize}
