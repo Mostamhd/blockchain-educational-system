@@ -10,7 +10,7 @@ This chapter provides the necessary preliminaries and theoretical foundations re
 Distributed Ledger Technology (DLT) represents a shift in data management and data science, moving from centralized data systems to decentralized systems with a distributed, replicated database architecture. In a DLT network, the ledger is maintained by a distributed set of nodes, each possessing a copy of the database, thereby eliminating the single point of failure inherent in traditional centralized systems in the client-server model.
 
 \subsection{Blockchain Architecture}
-A blockchain is a specific implementation of DLT wherein data is structured into sequential batches known as "blocks." As defined in the foundational Bitcoin whitepaper \cite{nakamoto2008bitcoin}, this structure utilizes a cryptographic chain to ensure the tamper-proofing of historical data, ordering, and immutability.
+A blockchain is a specific implementation of DLT wherein data is structured into sequential batches known as "blocks." As defined in the Bitcoin whitepaper \cite{nakamoto2008bitcoin}, this structure utilizes cryptographic chaining to ensure the tamper-proofing of historical data, ordering, and immutability.
 The architecture typically consists of two primary components, as illustrated in Figure \ref{fig:block_structure}:
 
 \begin{figure}[h]
@@ -67,14 +67,16 @@ The signature scheme operates through the following mechanisms:
 Despite the robust cryptographic foundations, distributed systems face unique attack vectors inherent to their decentralized nature. Understanding these risks is essential for the design of the blockchain system we will discuss in Chapter \ref{ch3_design}.
 
 \subsection{The Double-Spending Problem}
-The fundamental challenge of digital currency is the ease of duplicating digital data. A double-spending attack occurs when a malicious actor spends the same unit of currency in two different transactions. In a centralized system, a bank prevents this by maintaining a master ledger and validating that the amount to be spent is valid. In a blockchain system, as it's a decentralized system and there's no central ledger, the network must agree on the ordering of transactions to determine which spend is valid. Bitcoin solved this by introducing a decentralized timestamp server, which makes it computationally expensive to reverse a confirmed transaction \cite{nakamoto2008bitcoin}.
+The fundamental challenge of digital currency is that digital data is easily reproducible. Unlike physical cash, where handing over a bill ends possession, a digital token is information that could theoretically be sent to multiple recipients simultaneously. This is known as the \textbf{Double-Spending Problem}. 
+
+Centralized systems, such as banks, prevent this by maintaining a master ledger to validate transactions. In contrast, blockchain systems lack a central authority and must instead rely on consensus mechanisms to agree on transaction ordering, thereby determining which spend is valid. By creating a shared, immutable history, the network ensures that once a token is spent, any subsequent attempt to spend it again is identified as invalid and rejected \cite{nakamoto2008bitcoin}.
 
 \subsection{Sybil Attacks}
-In peer-to-peer (P2P) networks, an adversary may attempt to gain disproportionate control by creating and operating a large number of fake or pseudonymous identities. This vector of attacks is known as a \emph{Sybil attack} \cite{douceur2002sybil}. By pretending as multiple independent participants, a single attacker can divert the network mechanisms that assume a one-to-one correspondence between network identities and real-world entities.
+In peer-to-peer (P2P) networks, a malicious party may attempt to gain disproportionate control by creating and operating a large number of fake or pseudonymous identities. This vector of attacks is known as a \emph{Sybil attack} \cite{douceur2002sybil}. By posing as multiple independent participants, a single attacker can divert the network mechanisms that assume a one-to-one correspondence between network identities and real-world entities.
 
 Traditional P2P systems are particularly vulnerable when influence or voting power is assigned based on easily replicable attributes, such as IP addresses or node identifiers. In such cases, an attacker can generate thousands of identities, thereby manipulating consensus decisions, disrupting routing, or degrading system reliability.
 
-Blockchain systems mitigate the Sybil attack vector by explicitly binding participation and decision-making power to scarce and verifiable resources. In Proof-of-Work (PoW) systems, influence is proportional to computational power, making large-scale identity forgery economically costly. Similarly, Proof-of-Stake (PoS) systems tie influence to financial capital locked within the protocol. By replacing identity-based trust with resource-based trust, blockchain protocols significantly raise the cost of Sybil attacks and make them impractical under rational adversarial assumptions.
+Blockchain systems mitigate the Sybil attack vector by explicitly binding participation and decision-making power to scarce and verifiable resources. In Proof-of-Work (PoW) systems, influence is proportional to computational power, making large-scale identity forgery economically costly. Similarly, Proof-of-Stake (PoS) systems tie influence to the financial capital locked within the protocol. By replacing identity-based trust systems with resource-based trust systems, blockchain protocols significantly increase the cost of Sybil attacks and render them economically unfeasible under rational adversarial behavior.
 
 \subsection{The 51\% Majority Attack}
 A majority attack occurs when a single entity or group of entities holds more than 50\% of the consensus power. An attacker with this majority can:
@@ -83,14 +85,14 @@ A majority attack occurs when a single entity or group of entities holds more th
     \item Reverse their own transactions that were completed while they held the majority, leading to double-spending.
 \end{itemize}
 
-Despite these capabilities, a 51\% attack does not allow the attackers to modify historical transactions or steal funds belonging to other users, as transaction validity remains constrained by cryptographic signatures and protocol rules. Nevertheless, the mere feasibility of sustained transaction censorship or transaction reversion undermines confidence in the immutability of the ledger, posing a severe threat to the practical security of the system \cite{narayanan2016bitcoin}.
+Despite these capabilities, a 51\% attack does not allow the attackers to modify historical transactions or steal funds belonging to other users, as transaction validity remains constrained by cryptographic signatures and protocol rules. Nevertheless, the mere feasibility of sustained transaction censorship or transaction reversion undermines confidence in the immutability of the ledger, posing a severe threat to the practical security of the system \cite{zhou2025blockchainsecuritybasedcryptography}.
 
 \subsection{Replay Attacks}
 A replay attack occurs when a malicious actor intercepts a valid network message and subsequently retransmits it in order to illicitly reproduce its effects. In the context of blockchain systems, this typically involves intercepting a correctly signed transaction and rebroadcasting it to the network with the intention of executing the same state transition multiple times.
 
 If unmitigated, replay attacks could allow the malicious actor to trigger repeated transfers without possessing the private keys of the original sender. Blockchain protocols prevent such attacks by enforcing transaction uniqueness through the inclusion of a \texttt{nonce} or sequence number within each transaction. The nonce establishes a strict ordering of transactions originating from the same account and ensures that each cryptographic signature is valid for only a single, well-defined state transition.
 
-As a result, once a transaction has been successfully processed and its nonce consumed, any subsequent replay of the same transaction is rejected by honest nodes as invalid. This mechanism guarantees transaction freshness and preserves the integrity of the global state despite any message replay attempts \cite{narayanan2016bitcoin}.
+As a result, once a transaction has been successfully processed and its nonce consumed, any subsequent replay of the same transaction is rejected by honest nodes as invalid. This mechanism guarantees transaction freshness and preserves the integrity of the global state despite any message replay attempts \cite{zhou2025blockchainsecuritybasedcryptography}.
 
 
 \section{Consensus Algorithms} \label{ch2_consensus}
@@ -121,7 +123,7 @@ Where:
 \end{itemize}
 
 
-Because hash functions are designed for high sensitivity (Avalanche Effect), where any small change in the input to the hashing function will generate a completely different hash string. The only strategy to find a valid $n$ is a brute-force search. This process requires significant CPU/ASIC cycles to compute. Since it is easy to calculate the hash of input data, but computationally infeasible for normal computers to derive the original input from a specific hash value, the resulting “proof” is trivial for other nodes to verify with a single hash operation.
+Because hash functions are designed for high sensitivity (Avalanche Effect), the only strategy to find a valid $n$ is via brute-force search. This process requires significant CPU cycles to compute. While calculating the hash of input data is efficient, deriving the original input from a specific hash value is computationally infeasible. Consequently, the resulting “proof” is trivial for other nodes to verify with a single hash operation.
 
 \subsubsection{Dynamic Difficulty Adjustment}
 To maintain stability, the network must account for fluctuations in the total computational power (\textit{hashrate}). If more miners join or hardware becomes faster, the average block time would decrease, leading to inflation and network congestion. To counter this, the protocol periodically adjusts the Target $T$.
@@ -135,13 +137,13 @@ The difficulty $D$ is inversely proportional to the Target. The adjustment ensur
 If $\text{Actual Time} < \text{Expected Time}$, the Target $T$ is lowered, thereby making the puzzle harder to solve.
 
 \subsubsection{Solving Byzantine Faults}
-PoW addresses the Byzantine Generals Problem by introducing an economic and physical cost to acting maliciously In a BFT context, it solves the problem via:
+PoW addresses the Byzantine Generals Problem by introducing an economic and physical cost to acting maliciously. In a BFT context, it solves the problem via:
 \begin{enumerate}
     \item \textbf{Probabilistic Finality:} By following the "Longest Chain Rule," nodes converge on the chain with the most cumulative difficulty (computation power). 
     \item \textbf{Attack Deterrence:} To reverse a transaction or double-spend, an attacker would need to control $>50\%$ of the network's hashrate. The cost of energy and hardware required for such an attack usually exceeds the potential rewards, thus making it in the interests of all participants to maintain the honesty of the network.
 \end{enumerate}
 
-\textbf{Analysis:} While PoW provides the highest level of security and decentralization, its primary drawbacks are its \textbf{environmental impact} and \textbf{low throughput}, as the block interval and size are strictly limited to allow for global synchronization.
+\textbf{Analysis:} While PoW provides the highest level of security and decentralization, its primary drawbacks are its \textbf{environmental impact} and \textbf{low throughput}, as the block interval and size are strictly limited to allow for global synchronization \cite{croman2016scaling}.
 
 
 \subsection{Proof of Stake (PoS)}
@@ -162,7 +164,7 @@ Where:
 
 Unlike PoW, where security is derived from the cost of hardware and energy, PoS security is derived from the \textbf{opportunity cost} and the potential loss of the staked assets.
 
-\subsubsection{The "Nothing at Stake" Problem and BFT}
+\subsubsection{The Problem and BFT}
 A fundamental challenge in early PoS implementations was the "Nothing at Stake" problem. In a PoW system, miners are naturally disincentivized from mining on two competing forks because their hashing power is a finite physical resource. In PoS, however, there is no physical cost to signing every available fork, which would prevent the network from ever reaching a stable consensus.
 
 To achieve Byzantine Fault Tolerance (BFT), modern PoS protocols (such as Ethereum's Casper or Cardano's Ouroboros) implement \textbf{Slashing Conditions} \cite{buterin2014ethereum}:
@@ -178,7 +180,7 @@ PoS solves the Byzantine Generals Problem by making an attack self-defeating. To
 PoS offers better scalability and lower latency compared to PoW. However, it introduces risks of \textbf{wealth concentration}, where early or large stakers accumulate more rewards, potentially leading to a centralizing effect over time.
 
 \subsection{Delegated Proof of Stake (DPoS)}
-Delegated Proof of Stake (DPoS), pioneered by Larimer \cite{larimer2014dpos}, represents a shift from purely algorithmic consensus to a \textbf{representative democratic model}. It is designed specifically to overcome the scalability bottlenecks inherent in traditional BFT and PoW systems by concentrating block production among a small set of elected nodes.
+Delegated Proof of Stake (DPoS) \cite{larimer2014dpos, Consensus2023DPoS}, represents a shift from purely algorithmic consensus to a \textbf{representative democratic model}. It is designed specifically to overcome the scalability bottlenecks inherent in traditional BFT and PoW systems by concentrating block production among a small set of elected nodes.
 
 \subsubsection{The Two-Tiered Governance Mechanism}
 The DPoS protocol separates the security of the network into two distinct layers:
@@ -189,7 +191,7 @@ The DPoS protocol separates the security of the network into two distinct layers
 
 
 \subsubsection{Optimizing Throughput and Communication Complexity}
-The primary technical advantage of DPoS lies in its reduction of network overhead. The communication complexity required for nodes to reach a consensus on a single block is $O(n^2)$, where $n$ is the total number of participants. This quadratic growth occurs because every node must broadcast its "prepare" and "commit" messages to every other node in the network. As $n$ grows into the thousands, the time required for message propagation and processing leads to significant latency.
+The primary technical advantage of DPoS lies in its reduction of network overhead. The communication complexity required for nodes to reach a consensus on a single block is $O(n^2)$, where $n$ is the total number of participants. This quadratic growth occurs because every node must broadcast its "prepare" and "commit" messages to every other node in the network. As $n$ grows into the thousands, the time required for message propagation and processing leads to significant latency \cite{CastroLiskov1999}. 
 
 
 By fixing the number of active validators to a small, constant set $N$, DPoS effectively transforms the complexity from $O(n^2)$ to $O(N)$ for the broader network \cite{larimer2014dpos}. While the $N$ delegates still communicate amongst themselves, the limited size of this group ensures that the consensus delay remains minimal and constant, regardless of how many thousands of passive token holders are in the system. This enables:
@@ -239,6 +241,7 @@ In a Byzantine environment, malicious nodes can attempt to disrupt the network b
     \item \textbf{Eliminating Network Latency:} Traditional protocols require nodes to wait for a consensus message before proceeding to the next block. In PoH, nodes can continue processing incoming transactions in the order provided by the PoH sequence.
 \end{enumerate}
 
+
 \subsubsection{Hybrid Consensus Integration}
 It is critical to distinguish that PoH does not provide finality on its own; instead, it is used in conjunction with a Proof of Stake (PoS) mechanism (as seen in the Solana protocol). While PoH provides a verifiable timeline, the PoS validator set provides the economic security and voting power required to confirm the final state of the ledger.
 
@@ -249,24 +252,82 @@ By removing the communication overhead associated with time synchronization, PoH
 \subsection{Comparative Analysis} \label{ch2_comparison}
 
 To review the architectural trade-offs inherent in distributed ledger technologies, Table \ref{table:consensus_comparison} provides a comparative analysis of the discussed algorithms. These comparisons are evaluated through the lens of the Blockchain Trilemma \cite{buterintrilemma}, which suggests that decentralized systems must navigate a trade-off between security, scalability, and decentralization.
-
-\begin{table}[h!]
-\centering
-\small
-\renewcommand{\arraystretch}{1.8}
-\begin{tabularx}{\textwidth}{|l|X|X|X|X|}
-\hline
-\textbf{Metric} & \textbf{PoW} & \textbf{PoS} & \textbf{DPoS} & \textbf{PoH (Hybrid)} \\ \hline
-\textbf{Resource} & Energy \& Hardware & Staked Capital & Voting \& Reputation & Sequential Time \\ \hline
-\textbf{Complexity} & $O(n)$ \cite{nakamoto2008bitcoin} & $O(n \log n)$ \cite{buterin2014ethereum} & $O(N)$ \cite{larimer2014dpos} & $O(1)$ \textit{(Ordering)} \\ \hline
-\textbf{Throughput} & Low ($\sim$7 TPS) & Medium ($\sim$30+ TPS) & High ($>$4k TPS) & Ultra-High ($>$50k TPS) \\ \hline
-\textbf{Finality} & Probabilistic & Deterministic & Fast Probabilistic & Fast Deterministic \\ \hline
-\textbf{BFT Solution} & Cumulative Difficulty & Slashing Penalties & Delegate Eviction & VDF Sequencing \\ \hline
-\textbf{Decentralization} & High & High & Moderate & Moderate/Low \\ \hline
-\end{tabularx}
-\caption{Technical Comparison of Consensus Mechanisms}
-\label{table:consensus_comparison}
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.8}
+    \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
+        \hline
+        \textbf{Metric} 
+        & \textbf{PoW} 
+        & \textbf{PoS} 
+        & \textbf{DPoS} 
+        & \textbf{PoH (Hybrid)} \\ \hline
+        
+        \textbf{Primary Resource} 
+        & Energy and Hardware 
+        & Staked Capital 
+        & Voting Power 
+        & Sequential Time (VDF) \\ \hline
+        
+        \textbf{Consensus Participants} 
+        & All miners 
+        & All validators / committees 
+        & Small elected delegate set 
+        & Small validator set \\ \hline
+        
+        \textbf{Throughput} 
+        & Approx. 7 TPS \cite{croman2016scaling}
+        & Approx. 15--30 TPS \cite{ethereum_pos}
+        & $>$4,000 TPS \cite{springer2025_dpos_scalability}
+        & $>$50,000 TPS \cite{yakovenko2018poh} \\ \hline
+        
+        \textbf{Finality} 
+        & Probabilistic 
+        & Deterministic 
+        & Fast Deterministic 
+        & Fast Deterministic \\ \hline
+        
+        \textbf{BFT Mechanism} 
+        & Longest Chain Rule 
+        & Slashing Conditions 
+        & Delegate Eviction 
+        & VDF Sequencing \\ \hline
+        
+        \textbf{Decentralization} 
+        & High 
+        & High 
+        & Moderate 
+        & Moderate to Low \\ \hline
+    \end{tabularx}
+    \caption{Comparative Overview of Major Blockchain Consensus Mechanisms}
+    \label{table:consensus_comparison}
 \end{table}
+
+\section{Decentralized Data Storage} \label{ch2_storage}
+
+While blockchains excel at maintaining an immutable order of small state data, they are inefficient for storing large datasets. This limitation requires the integration of off-chain decentralized storage solutions in order to build scalable applications.
+
+\subsection{The Data Availability Problem} \label{ch2_data_availability}
+In a blockchain system, every full node must download and store the entire history of the blockchain to validate new blocks. This creates a problem where the cost of storage is multiplied by the number of nodes in the network. This makes storing large files directly on the blockchain expensive, leading to a significant increase in blockchain size. Consequently, this increases the synchronization time for new nodes and centralizes the network by raising the hardware barrier to entry \cite{benet2014ipfs}.
+
+\subsection{InterPlanetary File System (IPFS)}
+The InterPlanetary File System (IPFS) is a peer-to-peer hypermedia protocol designed to address these storage limitations by creating a content-addressable distributed storage network \cite{benet2014ipfs}.
+
+\subsubsection{Content Addressing vs. Location Addressing}
+Traditional web protocols (HTTP) utilize location addressing, where data is identified by \textit{where} it is hosted. If the server goes offline or the file is moved, the link breaks.
+
+In contrast, IPFS utilizes content addressing, where data is identified by \textit{what} it is, specifically by its cryptographic hash (CID). When a user requests a file with hash $H$, the network locates the nodes that possess the data matching $H$, which ensures:
+\begin{itemize}
+    \item \textbf{Immutability:} If the content of the file changes, its hash changes, creating a new address.
+    \item \textbf{Deduplication:} Identical files produce the exact same hash and are stored only once on the network.
+\end{itemize}
+
+\subsubsection{Merkle DAGs}
+IPFS structures data using Merkle Directed Acyclic Graphs (DAGs). Large files are split into smaller chunks, hashed, and organized into a tree structure. The root hash (CID) uniquely identifies the entire file. This structure allows for parallel downloading of file chunks from different peers, while ensuring data integrity \cite{benet2014ipfs}.
+
+\subsubsection{Blockchain Integration}
+IPFS complements blockchain systems by handling the storage layer while the blockchain handles the consensus and state layers. In this model, large data is uploaded to IPFS, and only the resulting fixed-size cryptographic hash (CID) is stored on the blockchain. This guarantees the integrity and availability of the data without increasing the size of the blockchain.
 
 
 \section{Containerization} \label{ch2_containerization}
@@ -276,39 +337,40 @@ Containerization is a lightweight form of virtualization that allows application
 
 \section{Real Life Implementation Examples} \label{ch2_relatedWork}
 
-To understand the practical application of the consensus mechanisms and data systems discussed previously, in this section we focus on investigating the existing works and show three blockchain architectures: Bitcoin, Ethereum, and Solana. Each represents a distinct approach to solving the Blockchain Trilemma \cite{buterintrilemma}.
+To understand the practical application of the consensus mechanisms and data systems discussed previously, in this section we focus on investigating the existing works and show three blockchain architectures: Bitcoin, Ethereum, and Solana. Each represents a different approach to solving the Blockchain Trilemma \cite{buterintrilemma}.
 
 \subsection{Bitcoin}\label{ch2_relatedWork_bitcoin}
 Introduced in 2008 by Satoshi Nakamoto, Bitcoin represents the first successful implementation of a decentralized, permissionless ledger \cite{nakamoto2008bitcoin}. Its architecture is defined by two key design choices:
 
 \begin{itemize}
     \item \textbf{UTXO Model:} Unlike traditional bank accounts, Bitcoin does not track balances. Instead, it tracks Unspent Transaction Outputs (UTXOs). A transaction consumes existing UTXOs as inputs and creates new UTXOs as outputs. This model is stateless and highly conducive to parallel verification, but makes complex logic (like smart contracts) difficult to implement.
-    \item \textbf{Nakamoto Consensus:} Bitcoin utilizes Proof of Work with the longest-chain rule. While this provides security and immutability, the overhead associated with how the POW consensus mechanism works restricts the throughput of the network to approximately 7 transactions per second (TPS) with a 10-minute block interval.
+    \item \textbf{Nakamoto Consensus:} Bitcoin utilizes Proof of Work with the longest-chain rule. While this provides security and immutability, the computational overhead of the PoW consensus mechanism restricts the throughput of the network to approximately 7 transactions per second (TPS) with a 10-minute block interval.
 \end{itemize}
 
 \subsection{Ethereum}
-Ethereum, which was proposed by Vitalik Buterin in 2013, extended blockchain systems from the peer-to-peer currency model to a distributed Turing-complete system capable of executing arbitrary code as well as having the functionality of the currency model \cite{buterin2014ethereum}.
+Ethereum, which was proposed by Vitalik Buterin in 2013, extended blockchain systems from the peer-to-peer currency model to a distributed Turing-complete system capable of executing arbitrary code while maintaining the functionality of a cryptocurrency \cite{buterin2014ethereum}. Ethereum's architecture can be defined by these
+key design choices:
 
 \begin{itemize}
     \item \textbf{Account-Based Model:} To support complex applications, Ethereum abandoned UTXOs for an Account Model (State machine), mapping addresses directly to balances and storage. This design choice simplifies the development of Decentralized Applications (dApps).
-    \item \textbf{The Merge (PoW to PoS):} As Ethereum was originally launched as a PoW network similar to Bitcoin, Ethereum successfully transitioned to Proof of Stake in 2022. This transition demonstrated the feasibility of securing high-value networks without the massive energy footprint of mining, validating the arguments stated in Section \ref{ch2_consensus}.
+    \item \textbf{The Merge (PoW to PoS):} As Ethereum was originally launched as a PoW network similar to Bitcoin, Ethereum successfully transitioned to Proof of Stake in 2022. This transition shows the feasibility of securing large blockchain systems without the massive energy footprint of POW and mining.
 \end{itemize}
 
 \subsection{Solana}
-Solana represents a third-generation blockchain designed specifically to maximize throughput without sharding the system. It introduces an architectural design that aims to remove the performance bottlenecks found in Bitcoin and Ethereum \cite{yakovenko2018poh}.
+Solana represents a third-generation blockchain designed specifically to maximize throughput without sharding the system. It introduces an architectural design that aims to remove the performance bottlenecks found in Bitcoin and Ethereum \cite{yakovenko2018poh}. Solana's architecture can be defined by these
+key design choices:
 
 \begin{itemize}
+    \item \textbf{Pipeline Architecture:} Unlike sequential processing in earlier blockchains, Solana employs a pipelined transaction processing architecture in which different stages of transaction are processed concurrently. This architecture improves hardware utilization and contributes to Solana’s high throughput, often cited as tens of thousands of transactions per second under ideal conditions \cite{yakovenko2018poh}. 
     \item \textbf{Proof of History (PoH):} As discussed in Section \ref{ch2_consensus}, Solana utilizes a Verifiable Delay Function to create a global clock before consensus is reached. This reduces the communication overhead required for nodes to synchronize.
-    \item \textbf{Pipeline Architecture:} Unlike the sequential processing in older chains, Solana utilizes a concept called Pipelining, which allows transaction validation to be parallelized across GPU cores. This enables theoretical throughputs exceeding 50,000 TPS.
 \end{itemize}
 
 
 \section{Summary} \label{ch2_summary}
 
-This chapter established the theoretical and architectural foundations necessary for understanding distributed ledger systems. We began by defining the core data structures of blockchain technology, specifically the role of cryptographic hashing in creating tamper-evident histories. We then analyzed the fundamental security pillars—Public Key Cryptography and Hash Functions—that ensure data integrity and authenticity.
+This chapter established the theoretical foundations necessary for understanding distributed ledger systems. We began by defining the core data structures of blockchain technology, specifically the role of cryptographic hashing in creating tamper-proof histories. We then analyzed the fundamental Public Key Cryptography and Hash Functions that ensure data integrity and authenticity.
 
-Crucially, this chapter identified the unique adversarial vectors inherent to decentralized networks, including Sybil attacks, Double-Spending, and 51\% Majority attacks. These risks provided the context for our critical evaluation of consensus mechanisms, where we contrasted the physical cost-based security of Proof of Work (PoW) against the economic incentives of Proof of Stake (PoS) and the democratic efficiency of Delegated Proof of Stake (DPoS).
+Crucially, this chapter explored different attack vectors inherent to decentralized networks, including Sybil attacks, Double-Spending, and 51\% Majority attacks. These risks provided the context for our critical evaluation of consensus mechanisms, where we contrasted the physical cost-based security of Proof of Work (PoW) against the economic incentives of Proof of Stake (PoS), the democratic efficiency of Delegated Proof of Stake (DPoS), and the temporal sequencing of Proof of History (PoH).
 
-Finally, through the analysis of Bitcoin, Ethereum, and Solana, we observed how these theoretical concepts are engineered into production systems, highlighting the persistent trade-offs between security, scalability, and decentralization. This theoretical framework serves as the blueprint for the design and implementation of the educational blockchain system detailed in the upcoming chapters.
+Finally, through the analysis of Bitcoin, Ethereum, and Solana, we observed how these theoretical concepts are engineered into real-world production systems, highlighting the trade-offs between security, scalability, and decentralization. This theoretical framework serves as the blueprint for the design and implementation of the educational blockchain system detailed in the upcoming chapters.
 
-%=========================================REVISED========================================
