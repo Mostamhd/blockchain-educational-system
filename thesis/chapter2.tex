@@ -123,7 +123,7 @@ Where:
 \end{itemize}
 
 
-Because hash functions are designed for high sensitivity (Avalanche Effect), the only strategy to find a valid $n$ is via brute-force search. This process requires significant CPU cycles to compute. While calculating the hash of input data is efficient, deriving the original input from a specific hash value is computationally infeasible. Consequently, the resulting “proof” is trivial for other nodes to verify with a single hash operation.
+Because hash functions are designed for high sensitivity (Avalanche Effect), the only strategy to find a valid $n$ is via brute-force search. This process requires significant CPU cycles to compute. Since calculating the hash of input data is computationally easy and efficient, deriving the original input data from a specific hash value is computationally infeasible. Consequently, the resulting “proof” is trivial for other nodes to verify with a single hash operation.
 
 \subsubsection{Dynamic Difficulty Adjustment}
 To maintain stability, the network must account for fluctuations in the total computational power (\textit{hashrate}). If more miners join or hardware becomes faster, the average block time would decrease, leading to inflation and network congestion. To counter this, the protocol periodically adjusts the Target $T$.
