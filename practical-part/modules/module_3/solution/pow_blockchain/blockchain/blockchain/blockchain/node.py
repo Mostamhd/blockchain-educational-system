@@ -28,7 +28,6 @@ class Node:
         if key:
             self.wallet.from_key(key)
             
-        # Threading event to stop mining if a block is received
         self.abort_mining = threading.Event()
         
         self.keep_running = True
@@ -61,13 +60,13 @@ class Node:
         while self.keep_running:
             cpu = process.cpu_percent(interval=1)
             memory = process.memory_info().rss / (1024 * 1024) # MB
-            logger.info(f"BENCHMARK_RESOURCES: CPU: {cpu}% | RAM: {memory:.2f}MB")
+            difficulty = self.blockchain.difficulty
+            logger.info(f"BENCHMARK_RESOURCES: CPU: {cpu}% | RAM: {memory:.2f}MB | Difficulty: {difficulty:.2f}")
             time.sleep(1)
 
     def run_produce_block(self):
         while self.keep_running:
             self.produce_block()
-            time.sleep(1)
 
     def stop(self):
         self.keep_running = False

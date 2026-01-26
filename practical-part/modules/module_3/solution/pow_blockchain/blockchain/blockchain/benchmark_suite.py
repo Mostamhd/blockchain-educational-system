@@ -1,110 +1,105 @@
 import time
 import requests
 import threading
-import json
-import random
 import pandas as pd
-import matplotlib.pyplot as plt
 from blockchain.transaction.wallet import Wallet
 from blockchain.utils.helpers import BlockchainUtils
 
-# CONFIG
-API_URL = "http://localhost:8050"  # Point to Node 1
-TOTAL_TX = 500                     # Total transactions to send
-TX_RATE = 20                       # Transactions per second (submission rate)
-OUTPUT_FILE = "benchmark_results.csv"
+class BenchmarkSuite:
+    def __init__(self, api_url="http://localhost:8050", tx_rate=20, duration=60, output_file="benchmark_results.csv"):
+        self.api_url = api_url
+        self.tx_rate = tx_rate
+        self.duration = duration
+        self.output_file = output_file
+        self.wallet = Wallet()
+        self.stop_event = threading.Event()
 
-def send_transaction(wallet):
-    """Creates and sends a single transaction"""
-    tx = wallet.create_transaction(wallet.public_key_string(), 1, "EXCHANGE")
-    payload = {"transaction": BlockchainUtils.encode(tx)}
-    try:
-        requests.post(f"{API_URL}/api/v1/transaction/create/", json=payload, timeout=0.5)
-    except:
-        pass
+    def wait_for_api(self):
+        print(f"Benchmark: Waiting for API at {self.api_url}...")
+        while not self.stop_event.is_set():
+            try:
+                requests.get(f"{self.api_url}/api/v1/blockchain/", timeout=1)
+                print("Benchmark: API is online.")
+                return True
+            except:
+                time.sleep(1)
+        return False
 
-def load_generator(wallet, stop_event):
-    """Spams transactions at a specific rate"""
-    while not stop_event.is_set():
-        # Send a burst
-        start = time.time()
-        send_transaction(wallet)
-        elapsed = time.time() - start
-        
-        # Sleep to maintain rate
-        sleep_time = (1.0 / TX_RATE) - elapsed
-        if sleep_time > 0:
-            time.sleep(sleep_time)
+    def send_transaction(self):
+        tx = self.wallet.create_transaction(self.wallet.public_key_string(), 1, "EXCHANGE")
+        payload = {"transaction": BlockchainUtils.encode(tx)}
+        try:
+            requests.post(f"{self.api_url}/api/v1/transaction/create/", json=payload, timeout=2)
+        except Exception as e:
+            print(f"TX Submission Failed: {e}")
 
-def get_chain_stats():
-    """Fetches chain data to calculate TPS"""
-    try:
-        res = requests.get(f"{API_URL}/api/v1/blockchain/")
-        chain = res.json()['blocks']
-        return chain
-    except:
+    def load_generator(self):
+        print("Benchmark: Starting load generation...")
+        while not self.stop_event.is_set():
+            start = time.time()
+            self.send_transaction()
+            elapsed = time.time() - start
+            sleep_time = (1.0 / self.tx_rate) - elapsed
+            if sleep_time > 0:
+                time.sleep(sleep_time)
+
+    def get_chain_stats(self):
+        try:
+            res = requests.get(f"{self.api_url}/api/v1/blockchain/", timeout=5)
+            if res.status_code == 200:
+                return res.json()['blocks']
+        except Exception as e:
+            print(f"Get Chain Failed: {e}")
         return []
 
-def run_benchmark(mode_name="POW"):
-    print(f"--- Starting Benchmark: {mode_name} ---")
-    wallet = Wallet()
-    stop_event = threading.Event()
-    
-    # 1. Start Load Generator
-    print("Generating Load...")
-    gen_thread = threading.Thread(target=load_generator, args=(wallet, stop_event))
-    gen_thread.start()
-    
-    # 2. Monitor Confirmation
-    start_time = time.time()
-    initial_block_height = len(get_chain_stats())
-    confirmed_tx = 0
-    
-    # Run for a fixed duration (e.g., 60 seconds)
-    DURATION = 60
-    time.sleep(DURATION)
-    
-    stop_event.set()
-    gen_thread.join()
-    
-    # 3. Wait a bit for pending blocks
-    print("Waiting for final blocks...")
-    time.sleep(10) 
-    
-    # 4. Analyze
-    chain = get_chain_stats()
-    end_time = time.time()
-    
-    # Calculate Metrics
-    tx_count = 0
-    propagation_delays = []
-    
-    for block in chain:
-        if block['block_height'] >= initial_block_height:
-            # Count transactions (exclude Coinbase)
-            tx_count += max(0, len(block['transactions']) - 1)
-            
-            # Note: Propagation delay must be parsed from Docker logs, 
-            # but we can estimate block time here.
-            
-    tps = tx_count / (end_time - start_time)
-    
-    print(f"--- Results ({mode_name}) ---")
-    print(f"Total TX Confirmed: {tx_count}")
-    print(f"Time Elapsed: {end_time - start_time:.2f}s")
-    print(f"TPS: {tps:.2f}")
-    
-    return {
-        "mode": mode_name,
-        "tps": tps,
-        "total_tx": tx_count
-    }
+    def run(self):
+        if not self.wait_for_api():
+            return
+
+        initial_chain = self.get_chain_stats()
+        initial_height = len(initial_chain)
+        print(f"Benchmark: Initial Block Height: {initial_height}")
+
+        start_time = time.time()
+        
+        gen_thread = threading.Thread(target=self.load_generator)
+        gen_thread.start()
+
+        time.sleep(self.duration)
+        
+        self.stop_event.set()
+        gen_thread.join()
+
+        print("Benchmark: Load generation finished. Waiting for processing...")
+        time.sleep(10) 
+
+        end_time = time.time()
+        final_chain = self.get_chain_stats()
+        
+        tx_count = 0
+        for block in final_chain:
+            if block['block_height'] >= initial_height:
+                tx_count += max(0, len(block['transactions']) - 1)
+                
+        tps = tx_count / (end_time - start_time)
+        
+        print(f"--- Results ---")
+        print(f"Total TX Confirmed: {tx_count}")
+        print(f"Time Elapsed: {end_time - start_time:.2f}s")
+        print(f"TPS: {tps:.2f}")
+        
+        data = {
+            "mode": "AUTO_BENCHMARK",
+            "tps": tps,
+            "total_tx": tx_count
+        }
+        
+        try:
+            df = pd.DataFrame([data])
+            df.to_csv(self.output_file, mode='a', header=False)
+        except Exception as e:
+            print(f"Failed to save results: {e}")
 
 if __name__ == "__main__":
-    # You would run this once for PoS, save data, restart docker with PoW, run again.
-    # For now, let's assume we are running the current mode.
-    data = run_benchmark("CURRENT_MODE")
-    
-    # Save to file
-    df = pd.DataFrame([data])
-    df.to_csv(OUTPUT_FILE, mode='a', header=False)
+    bench = BenchmarkSuite()
+    bench.run()

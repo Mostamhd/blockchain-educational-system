@@ -18,7 +18,7 @@ class Blockchain:
         
         self.block_time = 10
         self.block_reward = 10
-        self.difficulty = 2.0
+        self.difficulty = 4.0
         self.difficulty_adjustment_interval = 5
         self.max_block_size = 102400 
 

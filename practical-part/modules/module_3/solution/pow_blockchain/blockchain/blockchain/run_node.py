@@ -1,4 +1,6 @@
 from blockchain.node import Node
+from benchmark_suite import BenchmarkSuite
+import threading
 
 if __name__ == "__main__":
     import argparse
@@ -32,3 +34,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     node = Node(args.ip, args.node_port, args.api_port, args.key_file)
+
+    if args.api_port == 8050:
+        print("INFO: Starting Automatic Benchmark on Node 1...")
+        bench = BenchmarkSuite(api_url=f"http://localhost:{args.api_port}")
+        bench_thread = threading.Thread(target=bench.run)
+        bench_thread.daemon = True
+        bench_thread.start()
