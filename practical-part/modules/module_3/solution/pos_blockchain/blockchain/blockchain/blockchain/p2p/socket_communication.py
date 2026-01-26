@@ -47,20 +47,25 @@ class SocketCommunication(Node):
         self.peer_discovery_handler.handshake(connected_node)
 
     def node_message(self, connected_node, message):
-        message = BlockchainUtils.decode(json.dumps(message))
-        if message.message_type == "DISCOVERY":
-            self.peer_discovery_handler.handle_message(message)
-        elif message.message_type == "TRANSACTION":
-            transaction = message.data
-            self.node.handle_transaction(transaction)
-        elif message.message_type == "BLOCK":
-            block = message.data
-            self.node.handle_block(block)
-        elif message.message_type == "BLOCKCHAINREQUEST":
-            self.node.handle_blockchain_request(connected_node)
-        elif message.message_type == "BLOCKCHAIN":
-            blockchain = message.data
-            self.node.handle_blockchain(blockchain)
+        try:
+            if not isinstance(message, str):
+                message = json.dumps(message)
+            message = BlockchainUtils.decode(message)
+            if message.message_type == "DISCOVERY":
+                self.peer_discovery_handler.handle_message(message)
+            elif message.message_type == "TRANSACTION":
+                transaction = message.data
+                self.node.handle_transaction(transaction)
+            elif message.message_type == "BLOCK":
+                block = message.data
+                self.node.handle_block(block)
+            elif message.message_type == "BLOCKCHAINREQUEST":
+                self.node.handle_blockchain_request(connected_node)
+            elif message.message_type == "BLOCKCHAIN":
+                blockchain = message.data
+                self.node.handle_blockchain(blockchain)
+        except Exception as e:
+            logger.error(f"Could not handle node message: {e}")
 
     def send(self, receiver, message):
         self.send_to_node(receiver, message)

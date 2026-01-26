@@ -2,7 +2,7 @@ import re
 import pandas as pd
 import matplotlib.pyplot as plt
 
-LOG_FILE = "pos_logs.txt" # You save docker logs here: docker-compose logs > node_logs.txt
+LOG_FILE = "pos_logs.txt"
 
 def parse_metrics():
     resources = []
@@ -10,8 +10,6 @@ def parse_metrics():
     
     with open(LOG_FILE, 'r') as f:
         for line in f:
-            # Regex for Resource
-            # Log format: BENCHMARK_RESOURCES: CPU: 12.5% | RAM: 45.20MB
             res_match = re.search(r"BENCHMARK_RESOURCES: CPU: ([\d.]+)% \| RAM: ([\d.]+)MB", line)
             if res_match:
                 resources.append({
@@ -19,8 +17,6 @@ def parse_metrics():
                     "ram": float(res_match.group(2))
                 })
 
-            # Regex for Propagation
-            # Log format: BENCHMARK_PROPAGATION: Block 5 Delay: 0.2341s
             prop_match = re.search(r"BENCHMARK_PROPAGATION: Block (\d+) Delay: ([\d.]+)s", line)
             if prop_match:
                 propagation.append({
@@ -31,31 +27,31 @@ def parse_metrics():
     return pd.DataFrame(resources), pd.DataFrame(propagation)
 
 def plot_data(res_df, prop_df, title="Proof of Stake"):
-    # 1. CPU Usage
     plt.figure(figsize=(10, 5))
     plt.plot(res_df['cpu'], label='CPU %', color='orange')
     plt.title(f"{title} - CPU Utilization")
     plt.ylabel("Percentage")
+    plt.xlabel("Time (Samples)")
     plt.tight_layout()
     plt.savefig(f"{title}_cpu_metrics.png")
     plt.close()
     
-    # 2. RAM Usage
     plt.figure(figsize=(10, 5))
     plt.plot(res_df['ram'], label='RAM (MB)', color='blue')
     plt.title(f"{title} - Memory Usage")
     plt.ylabel("MB")
+    plt.xlabel("Time (Samples)")
     plt.tight_layout()
     plt.savefig(f"{title}_ram_metrics.png")
     plt.close()
     
-    # 3. Latency
     if not prop_df.empty:
         plt.figure(figsize=(10, 5))
         plt.bar(prop_df['block'], prop_df['delay'], color='green')
         plt.title(f"{title} - Block Propagation Latency")
         plt.xlabel("Block Height")
         plt.ylabel("Seconds")
+        plt.xticks(prop_df['block'])
         plt.tight_layout()
         plt.savefig(f"{title}_latency_metrics.png")
         plt.close()
