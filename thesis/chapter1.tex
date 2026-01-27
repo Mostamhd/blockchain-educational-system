@@ -8,16 +8,16 @@ The concept of distributed ledger technology and blockchains was marked by the r
 \newpage
 \section{Motivation} \label{ch1_motivation}
 
-The motivation for this research stems from the lack of sufficient educational tools suitable for university students' curricula. Current blockchain education often relies on one of two extremes:
+The motivation for this thesis stems from the lack of sufficient educational tools suitable for university students' curricula. Current blockchain education often relies on one of two extremes:
 \begin{itemize}
     \item \textbf{Theoretical Abstraction:} Lectures that only cover and focus on the theoretical aspect or the mathematics of hashing and consensus without providing a tangible or simulated blockchain system for students to experiment with.
     \item \textbf{Production Complexity:} The use of public mainnets (like Ethereum) or monolithic open-source projects (like Hyperledger), which are often too complex, costly, or risky for introductory semester-long courses.
 \end{itemize}
-There is a clear need for a dedicated sandbox-like environment, a system robust enough to demonstrate real distributed behavior (latency, forks, consensus voting) yet modular enough to allow students to modify core algorithms as part of a structured learning path \cite{blockchainBasedEducation}.
+There is a clear need for a dedicated sandbox-like environment, a system robust enough to demonstrate real distributed behavior (latency, forks, and consensus) yet modular enough to allow students to modify core algorithms as part of a structured learning path~\cite{blockchainBasedEducation}.
 
 \section{Problem Statement} \label{ch1_problem_statement}
 
-The primary problem addressed by this thesis is the educational gap in teaching distributed systems. While students are often taught the concept and use cases of a consensus algorithm, curricula rarely teach how to implement such an algorithm or why one might fail under certain attack vectors or under certain network stress scenarios. Existing tools do not sufficiently support Active Learning, an educational approach proven to increase student performance in academia \cite{freeman2014active}. Without a platform that allows for the real-time visualization of algorithm execution and the flexibility to break and fix the system, students struggle to grasp how asynchronous distributed nodes achieve consensus and how blockchain systems work.
+The primary problem addressed by this thesis is the educational gap in teaching distributed systems. While students are often taught the concept and use cases of a consensus algorithm, curricula rarely teach how to implement such an algorithm or why one might fail under certain attack vectors or under certain network stress scenarios. Existing tools do not sufficiently support Active Learning, an educational approach proven to increase student performance in academia~\cite{freeman2014active}. Without a platform that allows for the real-time visualization of algorithm execution and the flexibility to break and fix the system, students struggle to grasp how distributed nodes achieve consensus and how blockchain systems work.
 
 \section{Proposed Solution \& Contribution} \label{ch1_solution}
 
@@ -26,13 +26,13 @@ To resolve these issues, this thesis presents the design and implementation of a
 The contribution of the thesis can be classified into two aspects:
 \begin{enumerate}
     \item \textbf{The Technical Platform:} A modular Python-based blockchain system and a user-friendly, Vue.js-based \textbf{blockchain explorer} that visualizes the internal state of the network (mempool, block propagation, and peering) in real-time.
-    \item \textbf{The Educational Curriculum:} A set of five distinct educational modules designed to guide students from basic blockchain concepts to advanced blockchain applications:
+    \item \textbf{The Educational Curriculum:} A set of five distinct educational modules designed to guide students from basic blockchain concepts to advanced blockchain applications, these modules are:
     \begin{itemize}
         \item \textbf{Module 1 - Network Fundamentals:} Examining networking layer, P2P topology and data structures.
         \item \textbf{Module 2 - Consensus Algorithms:} Actively analyzing consensus algorithms while focusing on implementing Proof of Work (PoW).
         \item \textbf{Module 3 - Performance Analysis and Benchmarking:} Analyzing and benchmarking resource utilization and throughput of the blockchain system.
         \item \textbf{Module 4 - Application Layer and Smart Assets:} Extending the system to track non-financial assets.
-        \item \textbf{Module 5 - System Extensibility and Design Challenge:} An open-ended module where students are asked to extend the system built in the previous modules.
+        \item \textbf{Module 5 - System Extensibility and Design Challenge:} A module where students are asked to extend the system built in the previous modules.
     \end{itemize}
 \end{enumerate}
 
@@ -47,12 +47,12 @@ The contribution of the thesis can be classified into two aspects:
 
 \section{Thesis Objectives} \label{ch1_objectives}
 
-The specific research objectives of this work are to:
+The specific thesis objectives are:
 \begin{enumerate}
-    \item \textbf{Analyze} the security bounds and resource consumption of consensus algorithms through a comprehensive review.
-    \item \textbf{Design} a modular blockchain architecture that allows for the switching between different consensus mechanisms for educational comparison.
-    \item \textbf{Implement} the educational prototype in Python, ensuring the codebase is documented and accessible for student experimentation.
-    \item \textbf{Develop} a web-based blockchain explorer to visually demonstrate the internal state of the blockchain system.
-    \item \textbf{Design and document} a set of \textbf{Educational Modules} that utilize the platform to teach core concepts from algorithm efficiency to real-world application.
-    \item \textbf{Evaluate} the effectiveness of the resulting educational ecosystem, ensuring it fulfills the defined educational and technical requirements.
+    \item The analysis of the security bounds and resource consumption of consensus algorithms through a comprehensive review.
+    \item The design of a modular blockchain architecture that enables the interchangeability of consensus mechanisms for educational comparison.
+    \item The implementation of an educational prototype in Python, ensuring that the codebase is well-documented and accessible for student experimentation.
+    \item The development of a web-based blockchain explorer to visually illustrate the internal state and behavior of the blockchain system.
+    \item The design and documentation of a set of educational modules that leverage the blockchain software implemented to teach fundamental concepts, in blockchain systems.
+    \item The evaluation of the effectiveness of the resulting educational ecosystem, ensuring that it meets the defined educational and technical requirements.
 \end{enumerate}
