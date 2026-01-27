@@ -124,7 +124,7 @@ Where:
 
 Because hash functions are designed with high sensitivity (Avalanche Effect), the only strategy to find a valid $n$ is via brute-force search, which consumes significant CPU cycles. While computing the hash of input data is efficient, inverting the process to derive the input data from a hash is computationally infeasible. Consequently, the resulting “proof” is trivial for other nodes to verify via a single hash operation.
 
-\subsubsection{Dynamic Difficulty Adjustment}
+\subsubsection{Dynamic Difficulty Adjustment} \label{ch2_dynamic_difficulty_adjustment}
 To maintain stability, the network must account for fluctuations in the total computational power (\textit{hashrate}). If more miners join or hardware becomes faster, the average block time would decrease, leading to inflation and network congestion. To counter this, the protocol periodically adjusts the Target $T$.
 
 The difficulty $D$ is inversely proportional to the Target. The adjustment ensures that the average time taken to find a valid hash remains constant. The adjustment factor is typically calculated as:
