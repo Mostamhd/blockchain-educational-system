@@ -1,5 +1,6 @@
 import logging
 import json
+import re
 
 from blockchain.block import Block
 from blockchain.pos.proof_of_stake import ProofOfStake
@@ -17,6 +18,7 @@ class Blockchain:
         self.block_time = 10
         self.block_reward = 10
         self.peers = None
+        self.max_block_size = 102400
 
     def get_block_by_height(self, block_height):
         for block in self.blocks:
@@ -62,6 +64,12 @@ class Blockchain:
         if transaction.type == "EXCHANGE" or transaction.type == "COINBASE":
             return True
         
+        if transaction.type == "STORE_FILE":
+            if transaction.data and re.match(r'^[a-fA-F0-9]{64}$', transaction.data):
+                return True
+            logging.error("STORE_FILE transaction failed: Invalid data format (must be 64-char hex).")
+            return False
+
         if transaction.type == "REGISTRATION":
             try:
                 data = json.loads(transaction.data)
@@ -129,6 +137,8 @@ class Blockchain:
                     self.asset_model.update_asset_owner(isbn, new_owner)
             except Exception:
                 pass
+        elif transaction.type == "STORE_FILE":
+            pass
         else:
             sender = transaction.sender_public_key
             receiver = transaction.receiver_public_key
@@ -143,9 +153,20 @@ class Blockchain:
 
     def create_block(self, transactions_from_pool, forger_wallet):
         covered_transactions = self.get_covered_transaction_set(transactions_from_pool)
-        self.execute_transactions(covered_transactions)
+        
+        selected_transactions = []
+        current_block_size = 0
+        for transaction in covered_transactions:
+            tx_string = BlockchainUtils.encode(transaction)
+            tx_size = len(tx_string)
+            if current_block_size + tx_size > self.max_block_size:
+                break
+            selected_transactions.append(transaction)
+            current_block_size += tx_size
+
+        self.execute_transactions(selected_transactions)
         new_block = forger_wallet.create_block(
-            covered_transactions,
+            selected_transactions,
             BlockchainUtils.hash(self.blocks[-1].payload()).hex(),
             len(self.blocks),
         )
