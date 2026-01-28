@@ -94,6 +94,19 @@ If unmitigated, replay attacks could allow the malicious actor to trigger repeat
 As a result, once a transaction has been successfully processed and its nonce consumed, any subsequent replay of the same transaction is rejected by honest nodes as invalid. This mechanism guarantees transaction freshness and preserves the integrity of the global state despite any message replay attempts \cite{zhou2025blockchainsecuritybasedcryptography}.
 
 
+\section{The Blockchain Trilemma} \label{ch2_trilemma}
+
+A fundamental theoretical constraint in the design of distributed ledger systems is the Blockchain Trilemma. This concept posits that a blockchain system can typically only optimize for two of the three following properties simultaneously: \textbf{Decentralization}, \textbf{Security}, and \textbf{Scalability} \cite{blockchainTrilemma}.
+
+\begin{itemize}
+    \item \textbf{Decentralization:} This refers to the distribution of control and decision-making across a wide network of participants (nodes). A highly decentralized system is resistant to censorship and collusion, as no single entity has authority. However, increasing the number of nodes often increases the time required for message propagation and consensus.
+    \item \textbf{Security:} This represents the network's ability to resist malicious attacks, such as 51\% attacks, Sybil attacks, or data tampering. In many consensus models, higher security requires redundant validation and substantial economic or computational resources, which can limit throughput.
+    \item \textbf{Scalability:} This defines the system's capacity to process a growing volume of transactions per second (TPS) without a degradation in performance (latency). To achieve high scalability, systems often reduce the number of necessary validations or centralize the consensus process, which can negatively impact security or decentralization.
+\end{itemize}
+
+This trilemma serves as a method through which different blockchain architectures must be evaluated. For example, traditional Proof of Work systems like Bitcoin prioritize Decentralization and Security, resulting in limited Scalability. Conversely, high-throughput systems may compromise Decentralization by relying on a smaller set of validators. Overcoming this trilemma is the primary motivation behind modern scaling solutions and research papers.\cite{blockchainTrilemma}.
+
+
 \section{Consensus Algorithms} \label{ch2_consensus}
 
 In decentralized distributed systems, achieving agreement on a shared state without a central authority is a fundamental challenge. This section explores the theoretical foundations of consensus and critically analyzes the dominant mechanisms used to maintain ledger integrity.
@@ -250,7 +263,7 @@ By removing the communication overhead associated with time synchronization, PoH
 
 \subsection{Comparative Analysis} \label{ch2_comparison}
 
-To review the architectural trade-offs inherent in distributed ledger technologies, Table \ref{table:consensus_comparison} provides a comparative analysis of the discussed algorithms. These comparisons are evaluated through the lens of the Blockchain Trilemma \cite{buterintrilemma}, which suggests that decentralized systems must navigate a trade-off between security, scalability, and decentralization.
+To review the architectural trade-offs inherent in distributed ledger technologies, Table \ref{table:consensus_comparison} provides a comparative analysis of the discussed algorithms. These comparisons are evaluated through the lens of the Blockchain Trilemma \cite{blockchainTrilemma}, which suggests that decentralized systems must navigate a trade-off between security, scalability, and decentralization.
 \begin{table}[H]
     \centering
     \small
@@ -329,7 +342,7 @@ Containerization is a lightweight form of virtualization that allows application
 
 \section{Real-World Implementation Examples} \label{ch2_relatedWork}
 
-To understand the practical application of the consensus mechanisms and data systems discussed previously, this section examines existing work and highlights three blockchain architectures: Bitcoin, Ethereum, and Solana. Each represents a different approach to solving the Blockchain Trilemma \cite{buterintrilemma}.
+To understand the practical application of the consensus mechanisms and data systems discussed previously, this section examines existing work and highlights three blockchain architectures: Bitcoin, Ethereum, and Solana. Each represents a different approach to solving the Blockchain Trilemma \cite{blockchainTrilemma}.
 
 \subsection{Bitcoin}\label{ch2_relatedWork_bitcoin}
 Introduced in 2008 by Satoshi Nakamoto, Bitcoin represents the first successful implementation of a decentralized, permissionless ledger \cite{nakamoto2008bitcoin}. Its architecture is defined by the following key design choices:

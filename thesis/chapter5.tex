@@ -290,16 +290,16 @@ This module provides the students with a demonstration of how computational powe
 In this module, after completing the previous two modules, the curriculum shifts its focus to system evaluation. In the context of blockchains, theoretical correctness alone is insufficient. Software engineers must also verify that the system satisfies the required throughput and scalability requirements. This module aims to provide students with systematic methodologies for benchmarking blockchain systems. By doing so, it deepens their understanding of the underlying blocks generation process, furthering their knowledge about how blockchain systems achieve consensus and the scalability concerns associated with each consensus algorithm.
 
 \subsection{Problem Statement}
-Blockchain systems are inherently constrained by the Blockchain Trilemma (Scalability, Security, Decentralization) \cite{buterintrilemma}. To optimize a system, software engineers must first be able to measure the system performance. The core problems addressed in this module are:
+Blockchain systems are inherently constrained by the Blockchain Trilemma (Scalability, Security, Decentralization) \cite{blockchainTrilemma}. To optimize a system, software engineers must first be able to measure the system performance. The core problems addressed in this module are:
 \begin{enumerate}
     \item \textbf{Throughput:} How do we measure Transactions Per Second (TPS) in a distributed blockchain system where no single central service exists?
-    \item \textbf{Latency:} How long does it take for a transaction to move and propagate from the client, through the node, to a finalized block?
+    \item \textbf{Latency:} How long does it take for a block to be create and propagated from the node, through the network, to a finalized block?
 \end{enumerate}
 
 \subsection{Learning Objectives}
 By completing this module, students will be able to:
 \begin{itemize}
-    \item Implement the logic within the Python codebase to capture and measure the different timestamps for the processes of block creation and finalizing a transaction.
+    \item Implement the logic within the Python codebase to capture and measure the different timestamps for the processes of block creation and finalizing a block.
     \item Develop a Stress Test utility which floods the blockchain network with high-volume transactions, attempting to simulate a DDoS attack or high-usage scenarios for the blockchain system.
     \item Analyze and visualize performance metrics to quantify the performance trade-off between the Proof of Stake (PoS) system, which was implemented in Chapter \ref{ch4_implementation} and the Proof of Work (PoW) system, implemented in the second module.    
 \end{itemize}
@@ -349,7 +349,7 @@ def handle_block(self, block):
 
 \newpage
 \subsubsection*{Task 2: The Stress Test}
-The benchmarking suite utilizes a multi-threaded design to decouple transaction generation from network IO. It also performs post-execution analysis to calculate TPS. Listing~\ref{lst:mod3_stress} below, provide a code snippet of a possible implementation.
+The benchmarking suite utilizes a multi-threaded design to stress test the system and to perform post-execution analysis to calculate TPS. Listing~\ref{lst:mod3_stress} below, provide a code snippet of a possible implementation.
 \begin{lstlisting}[language=Python, caption=Benchmark Suite Structure Code Snippet, label=lst:mod3_stress]
 class BenchmarkSuite:
     def load_generator(self):
