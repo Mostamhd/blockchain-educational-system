@@ -303,30 +303,23 @@ To review the architectural trade-offs inherent in distributed ledger technologi
     \label{table:consensus_comparison}
 \end{table}
 
-\section{Decentralized Data Storage} \label{ch2_storage}
+\section{Off-Chain Data Storage} \label{ch2_storage}
 
-While blockchains excel at maintaining an immutable order of small state data, they are inefficient for storing large datasets. This limitation requires the integration of off-chain decentralized storage solutions in order to build scalable applications.
+While blockchains excel at maintaining an immutable order of small state data, they are inefficient for storing large datasets. This limitation requires the integration of off-chain storage solutions in order to build scalable applications.
 
 \subsection{The Data Availability Problem} \label{ch2_data_availability}
 In a blockchain system, every full node must download and store the entire history of the blockchain to validate new blocks. This makes storing large files directly on the blockchain expensive and leads to a significant increase in blockchain size. Consequently, synchronization time for new nodes will increases, which further centralizes the network by raising the hardware barrier to entry \cite{benet2014ipfs}.
 
-\subsection{InterPlanetary File System (IPFS)}
-The InterPlanetary File System (IPFS) is a peer-to-peer hypermedia protocol designed to address these storage limitations by creating a content-addressable distributed storage network \cite{benet2014ipfs}.
+\subsection{Hybrid On-Chain/Off-Chain Architecture}
+To address the data availability problem, hybrid architectures utilize the blockchain solely for access control and integrity verification, while delegating the storage of the raw payload to off-chain systems. In this model, large data is not stored directly on the ledger. Instead:
 
-\subsubsection{Content Addressing vs. Location Addressing}
-Traditional web protocols (HTTP) utilize location addressing, where data is identified by \textit{where} it is hosted. If the server goes offline or the file is moved, the link breaks.
+\begin{enumerate}
+    \item \textbf{Hashing:} The raw data (e.g., a document or image) is processed through a cryptographic hash function (such as SHA-256) to produce a unique, fixed-size digest.
+    \item \textbf{Off-Chain Storage:} The raw data is stored in an external system. This could be a centralized cloud object store, a local file server, or a distributed storage network.
+    \item \textbf{On-Chain Commitment:} Only the cryptographic hash (the digest) is submitted to the blockchain as part of a transaction.
+\end{enumerate}
 
-In contrast, IPFS utilizes content addressing, where data is identified by \textit{what} it is, specifically by its cryptographic hash (CID). When a user requests a file with hash $H$, the network locates the nodes that possess the data matching $H$, which ensures:
-\begin{itemize}
-    \item \textbf{Immutability:} If the content of the file changes, its hash changes, creating a new address.
-    \item \textbf{Deduplication:} Identical files produce the exact same hash and are stored only once on the network.
-\end{itemize}
-
-\subsubsection{Merkle DAGs}
-IPFS structures data using Merkle Directed Acyclic Graphs (DAGs). Large files are split into smaller chunks, hashed, and organized into a tree structure. The root hash (CID) uniquely identifies the entire file. This structure allows for parallel downloading of file chunks from different peers, while ensuring data integrity \cite{benet2014ipfs}.
-
-\subsubsection{Blockchain Integration}
-IPFS complements blockchain systems by handling the storage layer while the blockchain handles the consensus and state layers. In this model, large data is uploaded to IPFS, and only the resulting fixed-size cryptographic hash (CID) is stored on the blockchain. This guarantees the integrity and availability of the data without increasing the size of the blockchain.
+This architecture guarantees \textbf{Integrity} without sacrificing \textbf{Scalability}. Any modification to the file in the off-chain storage would result in a different hash, which would not match the immutable record on the blockchain, thereby alerting the user to the tampering.
 
 
 \section{Containerization} \label{ch2_containerization}
