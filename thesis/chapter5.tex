@@ -165,7 +165,7 @@ In an open, trustless network where nodes can join anonymously, two critical vul
 Upon completion of this module, students will be able to:
 
 \begin{itemize}
-    \item Demonstrate an understanding of the architecture of the (Blockchain) class by designing a mechanism to switch the consensus algorithm of the blockchain system implemented in Chapter~\ref{ch4_implementation} to utilize the Proof of Work (PoW) consensus model described in Section~\ref{ch2_consensus_pow}.
+    \item Demonstrate an understanding of the architecture of the \texttt{Blockchain} class by designing a mechanism to switch the consensus algorithm of the blockchain system implemented in Chapter~\ref{ch4_implementation} to utilize the Proof of Work (PoW) consensus model described in Section~\ref{ch2_consensus_pow}.
     \item Design and implement a cryptographic Proof of Work algorithm by translating theoretical concepts—such as nonce, dynamic difficulty adjustment algorithm as mentioned in Section ~\ref{ch2_dynamic_difficulty_adjustment}, and represent it into executable Python code.
 \end{itemize}
 
@@ -301,7 +301,7 @@ By completing this module, students will be able to:
 \begin{itemize}
     \item Implement the logic within the Python codebase to capture and measure the different timestamps for the processes of block creation and finalizing a transaction.
     \item Develop a Stress Test utility which floods the blockchain network with high-volume transactions, attempting to simulate a DDoS attack or high-usage scenarios for the blockchain system.
-    \item Analyze and create visualization performance metrics to quantify the performance trade-off between the Proof of Stake (PoS) system, which was implemented in Chapter \ref{ch4_implementation} and the Proof of Work (PoW) system, implemented in the second module.    
+    \item Analyze and visualize performance metrics to quantify the performance trade-off between the Proof of Stake (PoS) system, which was implemented in Chapter \ref{ch4_implementation} and the Proof of Work (PoW) system, implemented in the second module.    
 \end{itemize}
 
 
@@ -563,10 +563,10 @@ Students validate their implementations through the following observations:
 
 \begin{itemize}
     \item \textbf{Data Persistence:}  
-    By querying the API endpoint for retrieving a block, students observe that the JSON-encoded response data from the API, includes the book data within the immutable block payload.
+    By querying the API endpoint for retrieving a block, students observe that the JSON-encoded response data from the API includes the book data within the immutable block payload.
 
     \item \textbf{Immutability:}  
-    Students observe that if a node attempted to modify a book’s title within a locally altered block,that block hash validation will fail, as the data of the block is used in generating the hash of the block, which reinforces the principle that once a record is committed to the blockchain ledger, it cannot be tampered with.
+    Students observe that if a node attempted to modify a book’s title within a locally altered block, that block hash validation will fail, as the data of the block is used in generating the hash of the block, which reinforces the principle that once a record is committed to the blockchain ledger, it cannot be tampered with.
 \end{itemize}
 
 \subsection{Learning Outcome}
@@ -599,14 +599,14 @@ Upon successful completion of this module, students will be able to:
 To control ledger size increase and to ensure that propagation latency remains within acceptable bounds, the protocol must strictly enforce resource limits, by performing the following tasks:
 \begin{enumerate}
     \item Open the \texttt{blockchain/blockchain/blockchain.py}, which contains the Blockchain class implementation.
-    \item Define a class attribute \texttt{self.max\_block\_size = 102400}. In the \texttt{\_\_init\_\_} method. Which corresponds to around (100KB) for the maximum block size.
+    \item Define a class attribute \texttt{self.max\_block\_size = 102400} in the \texttt{\_\_init\_\_} method, which corresponds to around (100KB) for the maximum block size.
     \item Locate the \texttt{create\_block()} method in the Blockchain class.
     \item Implement the logic to select transactions from the pool such that their cumulative size does not exceed the maximum block size.
     \item For verification attempt to broadcast a transaction containing a large data payload such that it exceeds the maximum block size and verify that the node excludes it from the block.
 \end{enumerate}
 
 \subsubsection*{Task 2: Schema Enforcement}
-To support the Hybrid Architecture efficiently, the protocol must enforce that if a transaction is of type \enquote{STORE\_FILE}, it must contain a valid pointer hash rather than raw data. Which can be achieved by performing the following tasks:
+To support the Hybrid Architecture efficiently, the protocol must enforce that if a transaction is of type \enquote{STORE\_FILE}, it must contain a valid pointer hash rather than raw data, which can be achieved by performing the following tasks:
 
 \begin{enumerate}
     \item Open the transaction validation logic in \texttt{blockchain/blockchain/blockchain.py}.
