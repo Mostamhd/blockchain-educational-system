@@ -151,7 +151,7 @@ This module attempts to help students with demonstrating the importance of hashi
 \newpage
 \section{Module 2: Consensus Mechanisms} \label{ch5_module2}
 
-Having established a working distributed network in the first module, the focus shifts to the mechanism of consensus in decentralized systems. As explained in Section~\ref{ch2_consensus}, the \textit{Starter Code} for this module includes the fully containerized setup from Section~\ref{ch4_implementation}, which operates on the POS consensus model. Students are tasked to redesign the system's consensus algorithm to help with achieving consensus in distributed systems, secure the network against attacks, and solve the Byzantine fault tolerance problem, Section~\ref{ch2_consensus_bft}. While students are encouraged to explore various algorithms (e.g., Delegated Proof of Stake, Proof of History), this guide focuses on implementing Proof of Work (PoW) consensus algorithm as it's still the most used and battle-tested consensus algorithm to the date of writing this thesis, and due to its educational value in demonstrating the trade-off between computational intensity, decentralization, and scalability.
+Having established a working distributed network in the first module, the focus shifts to the mechanism of consensus in decentralized systems. As explained in Section~\ref{ch2_consensus}, the \textit{Starter Code} for this module includes the fully containerized setup from Section~\ref{ch4_implementation}, which operates on the PoS consensus model. Students are tasked to redesign the system's consensus algorithm to help with achieving consensus in distributed systems, secure the network against attacks, and solve the Byzantine Fault Tolerance problem, Section~\ref{ch2_consensus_bft}. While students are encouraged to explore various algorithms (e.g., Delegated Proof of Stake, Proof of History), this guide focuses on implementing Proof of Work (PoW) consensus algorithm as it's still the most used and battle-tested consensus algorithm to the date of writing this thesis, and due to its educational value in demonstrating the trade-off between computational intensity, decentralization, and scalability.
 
 \subsection{Problem Statement}
 In an open, trustless network where nodes can join anonymously, two critical vulnerabilities must be addressed:
@@ -277,12 +277,12 @@ Upon the completion of the task, students validate their implementation by runni
 
 \begin{itemize}
     \item \textbf{Difficulty Correlation:} By adjusting the difficulty parameter in the code, students observe a direct correlation with the block time (the interval between blocks), validating the theoretical relationship between target difficulty and block time.
-    \item \textbf{Resource Consumption:} Unlike in module 1, where CPU usage was minimal, the PoW implementation causes an immediate CPU spike. Which the students can observe by reviewing the resources usage statistics on their machine. This, in turn, proves that the security of the network relies on the physical energy process.
+    \item \textbf{Resource Consumption:} Unlike in Module 1, where CPU usage was minimal, the PoW implementation causes an immediate CPU spike. Which the students can observe by reviewing the resources usage statistics on their machine. This, in turn, proves that the security of the network relies on the physical energy process.
 
 \end{itemize}
 
 \subsection{Learning Outcome}
-This module provides the students with a demonstration of how computational power or capital power (staked assets) can be used to secure a distributed system. Students also learn more about the Byzantine fault tolerance explained in section \ref{ch2_consensus_bft}. And by replacing the consensus engine of the blockchain, they also gain a deeper understanding of the different design patterns used to split the concerns in the codebase and how modular design allows complex systems to evolve without rewriting core logic.
+This module provides the students with a demonstration of how computational power or capital power (staked assets) can be used to secure a distributed system. Students also learn more about the Byzantine Fault Tolerance explained in section \ref{ch2_consensus_bft}. And by replacing the consensus engine of the blockchain, they also gain a deeper understanding of the different design patterns used to split the concerns in the codebase and how modular design allows complex systems to evolve without rewriting core logic.
 
 \newpage
 
@@ -292,7 +292,7 @@ In this module, after completing the previous two modules, the curriculum shifts
 \subsection{Problem Statement}
 Blockchain systems are inherently constrained by the Blockchain Trilemma (Scalability, Security, Decentralization) \cite{blockchainTrilemma}. To optimize a system, software engineers must first be able to measure the system performance. The core problems addressed in this module are:
 \begin{enumerate}
-    \item \textbf{Throughput:} How do we measure Transactions Per Second (TPS) in a distributed blockchain system where no single central service exists?
+    \item \textbf{Throughput:} How do we measure transactions per second (TPS) in a distributed blockchain system where no single central service exists?
     \item \textbf{Latency:} How long does it take for a block to be create and propagated from the node, through the network, to a finalized block?
 \end{enumerate}
 
@@ -323,9 +323,9 @@ To observe network behavior, the student must develop a tool capable of simulati
 
 \begin{enumerate}
     \item Create a new Python script \texttt{benchmark\_suite.py} to act as a configurable transactions load generator.
-    \item Implement a class \texttt{BenchmarkSuite} that generates and broadcasts transactions at a fixed rate (e.g., 20 Transactions Per Second).
+    \item Implement a class \texttt{BenchmarkSuite} that generates and broadcasts transactions at a fixed rate (e.g., 20 transactions per second).
     \item Configure the script to run for a fixed duration (e.g., 60 seconds) to allow the blockchain network to stabilize.
-    \item Implement a calculation method that queries the blockchain state via API before and after the test to determine the total confirmed transactions and compute the average Transactions Per Second (TPS).
+    \item Implement a calculation method that queries the blockchain state via API before and after the test to determine the total confirmed transactions and compute the average transactions per second (TPS).
 \end{enumerate}
 
 \newpage
