@@ -1,44 +1,40 @@
 \chapter{Conclusion and Future Work} \label{ch7_conclusion}
 \markboth{Conclusion and Future Work}{Conclusion and Future Work}
 
-This thesis set out to address the widening gap between the theoretical principles of distributed systems and the practical engineering skills required to build them. By designing a modular, Python-based blockchain system and a corresponding constructionist laboratory curriculum, this work provides a comprehensive educational framework that transforms students from passive consumers of technology into active system architects. This final chapter summarizes the primary contributions of the research and outlines strategic directions for future development.
-
+This thesis set out to address the widening gap between the theoretical principles of distributed systems and the practical engineering skills required to build distributed systems. By designing a Python-based blockchain system and a corresponding educational curriculum, this work provides an educational framework that aims to transform students from passive consumers of technology into active software engineers able to work on blockchain system-related problems. This final chapter summarizes the primary contributions of the thesis and outlines strategic directions for future development.
 \section{Summary of Contributions} \label{sec:contributions}
-The contributions of this thesis are twofold, advancing both the software tooling available for blockchain education and the educational methodologies used to teach it.
+The contributions of this thesis can be broken down into two parts: advancing both the software tooling available for blockchain education and the educational methodologies used to teach it.
 
-\subsection{The Educational Blockchain Artifact}
-The primary technical contribution is the development of a "Glass-Box" blockchain node designed specifically for educational transparency. Unlike production systems such as Bitcoin or Ethereum, which prioritize performance and security at the cost of complexity, this system prioritizes readability and modularity. Key technical achievements include:
+\subsection{The Educational Blockchain Solution}
+The primary technical contribution is the development of a blockchain system designed specifically for educational usage. Unlike production systems such as Bitcoin or Ethereum, which prioritize performance and security at the cost of complexity, this system prioritizes readability and modularity. The key technical achievements include:
+
+
 \begin{itemize}
-    \item \textbf{Modular Consensus Engine:} The implementation of the Strategy Pattern allows for the dynamic runtime swapping of consensus algorithms. This enabled the direct empirical comparison of Proof of Work (PoW) and Proof of Stake (PoS) within a controlled environment, isolating the consensus variable from network noise.
-    \item \textbf{Containerized Network Simulation:} The integration of Docker orchestration allows students to deploy complete P2P networks on personal hardware. This lowers the barrier to entry for studying distributed phenomena like propagation latency and network partitions.
-    \item \textbf{Visual Observability:} The development of a Vue.js-based Blockchain Explorer provides students with immediate visual feedback on the state of the ledger, reinforcing their mental model of the data structures.
+    \item \textbf{Codebase Architectural Versatility:} The architectural implementation allowed for the possibility of changing the consensus algorithms without rewriting major parts of the codebase. This enabled the feasibility of comparing Proof of Work (PoW) and Proof of Stake (PoS) within a similar and controlled environment, isolating the consensus layer from the network or the API layer.
+    \item \textbf{Containerized Network Simulation:} The integration of Docker orchestration allowed students to understand and run P2P networks on personal hardware, lowering the barrier to entry for studying distributed systems concepts like propagation latency and resource utilization.
+    \item \textbf{Visual Observability:} The development of a Vue.js-based Blockchain Explorer provided students with real-time visual feedback on the state of the blockchain ledger.
 \end{itemize}
 
 \subsection{The Laboratory Curriculum}
-The educational contribution is a structured 5-Module Curriculum that guides students through the engineering lifecycle of a distributed system. Validated through a pilot study, the curriculum effectively targets the "Zone of Proximal Development" for computer science students:
+The educational contribution consists of a 5-module curriculum that guides students through the understanding of blockchain systems. Validated through an initial pilot study, the curriculum targeted the following aspects:
 \begin{itemize}
-    \item \textbf{Scaffolding Complex Concepts:} By providing "Starter Code" that abstracts low-level socket management (Module 1), students can focus on high-level logic.
-    \item \textbf{Empirical Analysis:} Module 3 successfully shifts the focus from "getting it to work" to "measuring how well it works," instilling a rigourous engineering mindset regarding benchmarking and metrics (TPS, Latency).
-    \item \textbf{Architectural Criticism:} Module 5 forces students to confront the limitations of their own creations, deriving architectural best practices (e.g., hybrid off-chain storage) through the failure analysis of naive implementations.
+    \item \textbf{Scaffolding Approach:} By providing starter code which abstracts concepts such as P2P networking in Module 1, students were allowed to focus on the high-level logic of blockchain systems.
+    \item \textbf{Empirical Analysis:} Module 3 shifts the focus from having a functional system to evaluating the system, with the aim to create an engineering mindset regarding concepts such as benchmarking and metrics (TPS, Latency).
+    \item \textbf{Architectural Criticism:} Module 5 forces students to understand the limitations of their system architecture, providing them with an opportunity to think of their own innovative solutions to the system limitations.
 \end{itemize}
 
 \section{Future Work} \label{sec:future_work}
-While the current system successfully meets its educational objectives, the pilot study identified specific areas where the framework can be evolved to improve both technical fidelity and the student learning experience.
+While the current system meets its educational objectives, the pilot study identified specific areas where the framework can be evolved to improve both the technical solution and the student learning experience.
 
 \subsection{Educational Refinement}
-The evaluation in Chapter \ref{ch6_evaluation} revealed that the learning curve for implementing consensus mechanisms (Module 2) and system extensibility (Module 5) was steeper than anticipated. Future iterations of the curriculum should introduce intermediate "bridging" tasks. Specifically, the difficulty adjustment algorithm in Proof of Work proved to be a significant stumbling block. Future course materials should provide more granular theoretical derivations and pseudo-code for the retargeting logic before requiring students to implement it in Python. Additionally, enhanced debugging tools and pre-written unit tests for the consensus module would prevent students from getting blocked by minor syntax errors, allowing them to focus on the algorithmic logic.
+The evaluation in Chapter \ref{ch6_evaluation} revealed that the learning curve for implementing consensus mechanisms (Module 2) and system extensibility (Module 5) was steeper than anticipated. Future iterations of the curriculum should introduce more intermediate introductory tasks. Before diving into deep technical concepts, such as, the difficulty adjustment algorithm in Proof of Work, which proved to be a significant stumbling block. Additionally, providing the students with pre-written unit tests for the consensus module would prevent students from getting blocked by unforeseen issues, allowing them to focus on the algorithmic logic.
 
 \subsection{Runtime Environment and Language Migration}
-A critical technical limitation identified in this work is the performance bottleneck imposed by the Python Global Interpreter Lock (GIL). While Python's expressiveness makes it ideal for educational readability, the GIL prevents true parallel execution, limiting the fidelity of race-condition simulations and capping throughput at approximately 16 TPS.
+A critical technical limitation identified in this work is the performance bottleneck imposed by the Python Global Interpreter Lock (GIL). While Python's expressiveness makes it ideal for educational readability, the GIL prevents true parallel execution, affecting scalability and capping the throughput of the system.
 
-To address this, future work should explore migrating the core node implementation to a language that supports true multi-threading while maintaining a manageable cognitive load for students. 
+To address this, future work should explore migrating the core system implementation to a language that supports true multi-threading, possibly as part of more advanced modules of the curriculum. Options include:
 \begin{itemize}
-    \item \textbf{Golang (Go):} Go offers native concurrency primitives (goroutines) that map well to distributed systems concepts. Its syntax is simpler than C++, making it a viable candidate for upper-level undergraduate courses.
+    \item \textbf{Golang (Go):} Go offers native concurrency primitives (goroutines) that map well to distributed systems concepts. Its syntax is simpler than C++, making it a potential candidate for upper-level undergraduate courses.
     \item \textbf{Kotlin:} As a modern JVM language, Kotlin offers high performance and robust concurrency (coroutines) while remaining syntactically approachable for students familiar with Java or Python.
 \end{itemize}
-Transitioning to either language would represent a compromise: gaining system performance and parallelism fidelity at the cost of a higher barrier to entry for students with limited systems programming experience.
-
-\subsection{Advanced Networking and Smart Contracts}
-The current P2P layer utilizes a simple broadcast gossip protocol. To better reflect the complexity of modern production networks, future versions of the system could implement a \textbf{Kademlia Distributed Hash Table (DHT)} for peer discovery. This would allow the curriculum to cover advanced topics such as routing efficiency and sybil resistance in the networking layer.
-
-Furthermore, the "Smart Assets" module (Module 4) currently relies on hard-coded transaction logic. Extending the system to include a lightweight virtual machine would allow for the introduction of Turing-complete \textbf{Smart Contracts} (e.g., a simplified Solidity subset). This would significantly expand the scope of the curriculum to include decentralized finance (DeFi) primitives and automated governance, aligning the educational content with the current state of the industry.
+Transitioning to either language would represent a compromise, gaining better system performance and parallelism at the cost of a higher barrier to entry for students with limited systems-level programming experience.
