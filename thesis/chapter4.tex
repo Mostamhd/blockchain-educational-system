@@ -12,7 +12,7 @@ The system relies on a containerized microservices architecture to ensure consis
     \item \textbf{Programming Language:} Python 3.9 was selected for the backend due to its high readability and extensive support for cryptographic libraries, which facilitates the educational approach and ease of use for students.
     \item \textbf{API Framework:} An API service is utilized to expose the blockchain's functionality via RESTful endpoints, facilitating communication between the backend node and the frontend client.
     \item \textbf{Cryptography:} The system utilizes the cryptographic standards of \textbf{Keccak-256}~\cite{Keccak} for hashing and \textbf{ECDSA} (SECP256k1~\cite{sinai2024quantumsecp256k1}) for digital signatures.
-    \item \textbf{Frontend:} \textit{Vue.js} is employed to power the Blockchain Explorer, providing a user interface that visualizes block propagation, validators, and mempool status~\cite{vuejs}.
+    \item \textbf{User Interface:} \textit{Vue.js}~\cite{vuejs} is employed to implement the blockchain explorer, providing a user interface that visualizes block propagation, lists validators, and shows the mempool's content.
     \item \textbf{Containerization:} \textit{Docker} and \textit{Docker Compose} are used to orchestrate the multi-node network, allowing students and instructors to simulate a distributed consensus network on a single physical machine~\cite{docker}.
 \end{itemize}
 
@@ -21,8 +21,8 @@ The system relies on a containerized microservices architecture to ensure consis
 The blockchain system implementation is structured around several key classes that manage the distributed ledger's state.
 
 \subsection{The Account Model} \label{ch4_account_model}
-Unlike Bitcoin, which uses an Unspent Transaction Output (UTXO) model, this system implements an \textbf{Account-based Model} similar to Ethereum. This design choice was made to simplify the state logic for students, facilitating balance tracking and the understanding of global state transitions.
-The \texttt{AccountModel} class (\texttt{blockchain/transaction/account\_model.py}), shown in the code snippet Listing~\ref{lst:account_model}, maintains the global state of user balances. \\\textbf{Data Persistence Note:}
+Unlike Bitcoin, which uses an Unspent Transaction Output (UTXO) model, this system implements an \textbf{Account-based Model} similar to Ethereum (Section~\ref{ch2_relatedWork_eth}). This design choice was made to simplify the state logic for students, facilitating balance tracking and the understanding of global state transitions.
+The \texttt{AccountModel} class, shown in the code snippet Listing~\ref{lst:account_model}, maintains the global state of user balances. \\\textbf{Data Persistence Note:}
 For the purpose of this educational system, the state of the blockchain is stored in memory. This allows for rapid iteration and modification during the different educational module exercises. In a production-level application, this in-memory structure would be replaced by a key-value database or an authenticated data structure like a Merkle tree~\cite{merkleTrees}. Which would ensure data durability and provide cryptographically verifiable state roots.
 
 \begin{lstlisting}[language=Python, caption=Account Model code snippet, label=lst:account_model]
@@ -37,7 +37,7 @@ class AccountModel:
 
 \newpage
 \subsection{Transaction Management} \label{ch4_transaction_impl}
-A transaction is the atomic unit that represents a change in the state of a blockchain. In the implemented system, the \texttt{Transaction} class \\(\texttt{blockchain/transaction/transaction.py}) encapsulates the transfer logic, as illustrated in the code snippet Listing~\ref{lst:transaction_class}. It supports different types of transaction payloads, such as \texttt{TRANSFER} for currency, \texttt{EXCHANGE} for system operations, and \texttt{COINBASE} for the block reward used in the consensus mechanism. \\Crucially, every transaction includes a unique ID hash calculated based on the transaction payload, as demonstrated in the \texttt{payload} method. Additionally, every transaction includes a timestamp to prevent replay attacks. The \texttt{sign} method ensures non-repudiation using the sender's private key.
+A transaction is the atomic unit that represents a change in the state of a blockchain. In the implemented system, the \texttt{Transaction} class encapsulates the transfer logic, as illustrated in the code snippet Listing~\ref{lst:transaction_class}. It supports different types of transaction payloads, such as \texttt{TRANSFER} for currency, \texttt{EXCHANGE} for system operations, and \texttt{COINBASE} for the block reward used in the consensus mechanism. \\Crucially, every transaction includes a unique ID hash calculated based on the transaction payload, as demonstrated in the \texttt{payload} method. Additionally, every transaction includes a timestamp to prevent replay attacks. The \texttt{sign} method ensures non-repudiation using the sender's private key.
 
 \begin{lstlisting}[language=Python, caption=Transaction class code snippet, label=lst:transaction_class]
 class Transaction:
@@ -62,7 +62,7 @@ Before transactions are included in a block, they reside in the \texttt{Transact
 
 \section{The Network Node} \label{ch4_node_impl}
 
-The \texttt{Node} class (\texttt{blockchain/node/node.py}) acts as the central orchestrator of the system, integrating three critical subsystems of the blockchain:
+The \texttt{Node} class acts as the central orchestrator of the system, integrating three critical subsystems of the blockchain:
 \begin{enumerate}
     \item \textbf{The P2P Layer:} Facilitates communication between nodes in the network.
     \item \textbf{The Blockchain Core:} Maintains the ledger state and handles consensus.
@@ -108,12 +108,12 @@ def produce_block(self):
     forger = self.blockchain.next_forger()
     
     if forger == self.wallet.public_key_string():
-        block = self.blockchain.create_block(
+      block = self.blockchain.create_block(
             self.transaction_pool.transactions, 
             self.wallet
         )
-        message = Message(self.p2p.socket_connector, 'BLOCK', block)
-        self.p2p.broadcast(BlockchainUtils.encode(message))
+      message = Message(self.p2p.socket_connector, 'BLOCK', block)
+      self.p2p.broadcast(BlockchainUtils.encode(message))
 \end{lstlisting}
 
 
