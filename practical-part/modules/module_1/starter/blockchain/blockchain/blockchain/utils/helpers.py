@@ -19,5 +19,4 @@ class BlockchainUtils:
 
     @staticmethod
     def decode(encoded_obj):
-        # CAUTION: Never deserialize data that you can not 100% trust
-        return jsonpickle.decode(encoded_obj)  # nosec
+        return jsonpickle.decode(encoded_obj)

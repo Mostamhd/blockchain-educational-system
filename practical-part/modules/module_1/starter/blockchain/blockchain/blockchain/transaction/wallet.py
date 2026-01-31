@@ -21,8 +21,6 @@ class Wallet:
             self.key_pair = keys.PrivateKey(decode_hex(key_hex))
 
     def sign(self, data):
-        # if 'signature' in data:
-        #     del data['signature']
         data_hash = BlockchainUtils.hash(data)
         signature = self.key_pair.sign_msg(data_hash)
         return str(signature)

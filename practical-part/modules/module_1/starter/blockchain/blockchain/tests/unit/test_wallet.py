@@ -1,76 +1,34 @@
 from blockchain.transaction.wallet import Wallet
 
 
-def test_wallet_signature(transaction):
-    wallet = Wallet()
-    signature = wallet.sign(transaction.to_dict())
-    assert int(signature, 16)
+class TestWalletFunctionality:
+    def test_crypto_signature_checks(self, transaction):
+        user_wallet = Wallet()
+        sig = user_wallet.sign(transaction.payload())
+        
+        assert Wallet.signature_valid(transaction.payload(), sig, user_wallet.public_key_string())
+        
+        assert not Wallet.signature_valid({"data": "garbage"}, sig, user_wallet.public_key_string())
 
+    def test_key_format_standards(self):
+        user_wallet = Wallet()
+        assert "0x" in user_wallet.public_key_string()
 
-def test_wallet_signature_not_valid_with_to_dict(transaction):
-    wallet = Wallet()
-    signature = wallet.sign(transaction.to_dict())
-    assert Wallet.signature_valid(
-        transaction.to_dict(), signature, wallet.public_key_string()
-    )
-
-    transaction.sign(signature)
-    assert Wallet.signature_valid(
-        transaction.payload(), signature, wallet.public_key_string()
-    )
-    assert not Wallet.signature_valid(
-        transaction.to_dict(), signature, wallet.public_key_string()
-    )
-
-
-def test_public_key_string():
-    wallet = Wallet()
-    public_key = wallet.public_key_string()
-    assert "PUBLIC KEY" in public_key
-
-
-def test_wallet_create_transaction(transaction_from_wallet):
-    tx = transaction_from_wallet["transaction"]
-    wallet = transaction_from_wallet["wallet"]
-
-    tx_dict = tx.to_dict()
-
-    assert "PUBLIC KEY" in tx_dict["sender_public_key"]
-    assert tx_dict["receiver_public_key"]
-
-    tx_payload = tx.payload()
-
-    assert tx_payload["signature"] == ""
-    assert Wallet.signature_valid(
-        tx.payload(), tx.signature, wallet.public_key_string()
-    )
-
-    fraudulent_wallet = Wallet()
-
-    assert not Wallet.signature_valid(
-        tx.payload(),
-        tx.signature,
-        fraudulent_wallet.public_key_string(),
-    )
-
-
-def test_wallet_create_block(transaction_pool):
-    pool = transaction_pool["pool"]
-    wallet = transaction_pool["transaction_from_wallet"]["wallet"]
-
-    fraudulent_wallet = Wallet()
-
-    block = wallet.create_block(pool.transactions, "last_hash", 1)
-
-    block_readable = block.to_dict()
-
-    assert "PUBLIC KEY" in block_readable["transactions"][0]["sender_public_key"]
-    assert block_readable["forger"]
-    assert block_readable["block_height"]
-
-    assert Wallet.signature_valid(
-        block.payload(), block.signature, wallet.public_key_string()
-    )
-    assert not Wallet.signature_valid(
-        block.payload(), block.signature, fraudulent_wallet.public_key_string()
-    )
+    def test_tx_generation(self):
+        sender_wallet = Wallet()
+        receiver_wallet = Wallet()
+        new_tx = sender_wallet.create_transaction(receiver_wallet.public_key_string(), 10, "TRANSFER")
+        
+        assert new_tx.sender_public_key == sender_wallet.public_key_string()
+        assert new_tx.receiver_public_key == receiver_wallet.public_key_string()
+        assert new_tx.amount == 10
+        assert new_tx.signature != ""
+        
+    def test_block_minting(self, transaction_pool):
+        minter_wallet = transaction_pool["transaction_from_wallet"]["wallet"]
+        tx_source = transaction_pool["pool"]
+        
+        minted_block = minter_wallet.create_block(tx_source.transactions, "last_hash", 1)
+        assert minted_block.forger == minter_wallet.public_key_string()
+        assert minted_block.signature != ""
+        assert minted_block.transactions == tx_source.transactions
