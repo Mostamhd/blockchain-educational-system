@@ -1,0 +1,200 @@
+\chapter{Implementation Details} \label{ch4_implementation}
+\markboth{Implementation Details}{Implementation Details}
+
+This chapter details the technical implementation of the architectural design proposed for the blockchain system described in Chapter~\ref{ch3_design}. It provides a comprehensive walkthrough of the implementation methodologies, focusing on the modular Python blockchain system backend and the blockchain explorer frontend implemented using Vue.js for visualization.
+The full source code for this implementation is open-source and available on GitHub at the following link: \url{https://github.com/Mostamhd/blockchain-educational-system}
+
+\section{Development Environment and Technology Stack} \label{ch4_tech_stack}
+
+The system relies on a containerized microservices architecture to ensure consistent behavior across different educational environments (e.g., student laptops versus university lab servers). The core technologies selected for this implementation include:
+
+\begin{itemize}
+    \item \textbf{Programming Language:} Python 3.9 was selected for the backend due to its high readability and extensive support for cryptographic libraries, which facilitates the educational approach and ease of use for students.
+    \item \textbf{API Framework:} An API service is utilized to expose the blockchain's functionality via RESTful endpoints, facilitating communication between the backend node and the frontend client.
+    \item \textbf{Cryptography:} The system utilizes the cryptographic standards of \textbf{Keccak-256}~\cite{Keccak} for hashing and \textbf{ECDSA} (SECP256k1~\cite{sinai2024quantumsecp256k1}) for digital signatures.
+    \item \textbf{User Interface:} \textit{Vue.js}~\cite{vuejs} is employed to implement the blockchain explorer, providing a user interface that visualizes block propagation, lists validators, and shows the mempool's content.
+    \item \textbf{Containerization:} \textit{Docker} and \textit{Docker Compose} are used to orchestrate the multi-node network, allowing students and instructors to simulate a distributed consensus network on a single physical machine~\cite{docker}.
+\end{itemize}
+
+\section{Core Blockchain Architecture} \label{ch4_core_architecture}
+
+The blockchain system implementation is structured around several key classes that manage the distributed ledger's state.
+
+\subsection{The Account Model} \label{ch4_account_model}
+Unlike Bitcoin, which uses an Unspent Transaction Output (UTXO) model, this system implements an \textbf{Account-based Model} similar to Ethereum (Section~\ref{ch2_relatedWork_eth}). This design choice was made to simplify the state logic for students, facilitating balance tracking and the understanding of global state transitions.
+The \texttt{AccountModel} class, shown in the code snippet Listing~\ref{lst:account_model}, maintains the global state of user balances. \\\textbf{Data Persistence Note:}
+For the purpose of this educational system, the state of the blockchain is stored in memory. This allows for rapid iteration and modification during the different educational module exercises. In a production-level application, this in-memory structure would be replaced by a key-value database or an authenticated data structure like a Merkle tree~\cite{merkleTrees}. Which would ensure data durability and provide cryptographically verifiable state roots.
+
+\begin{lstlisting}[language=Python, caption=Account Model code snippet, label=lst:account_model]
+class AccountModel:
+    def __init__(self):
+        self.accounts = []
+        self.balances = {}
+
+    def update_balance(self, public_key_string, amount):
+        # ... Rest of the update_balance method logic...
+\end{lstlisting}
+
+\newpage
+\subsection{Transaction Management} \label{ch4_transaction_impl}
+A transaction is the atomic unit that represents a change in the state of a blockchain. In the implemented system, the \texttt{Transaction} class encapsulates the transfer logic, as illustrated in the code snippet Listing~\ref{lst:transaction_class}. It supports different types of transaction payloads, such as \texttt{TRANSFER} for currency, \texttt{EXCHANGE} for system operations, and \texttt{COINBASE} for the block reward used in the consensus mechanism. \\Crucially, every transaction includes a unique ID hash calculated based on the transaction payload, as demonstrated in the \texttt{payload} method. Additionally, every transaction includes a timestamp to prevent replay attacks. The \texttt{sign} method ensures non-repudiation using the sender's private key.
+
+\begin{lstlisting}[language=Python, caption=Transaction class code snippet, label=lst:transaction_class]
+class Transaction:
+    def __init__(self, sender_public_key,
+             receiver_public_key, amount, type):
+        self.sender_public_key = sender_public_key
+        self.receiver_public_key = receiver_public_key
+        self.amount = amount
+        self.type = type
+        self.id = uuid.uuid1().hex
+        self.timestamp = time.time()
+        self.signature = ""
+        self.hash = None
+    sign(self, signature):
+        # ... Rest of the sign method logic...
+    def payload(self):
+        # ... Rest of the Payload method logic...
+\end{lstlisting}
+
+\subsection{The Transaction Pool (Mempool)}
+Before transactions are included in a block, they reside in the \texttt{TransactionPool}. This class acts as a holding buffer for pending operations. In a distributed asynchronous network, transactions arrive at different times, awaiting execution. The TransactionPool, also known as the mempool, ensures that nodes can temporarily store valid transactions that have been broadcast but not yet confirmed.\\The system implementation includes logic to prevent double-spending and duplication. When a node receives a transaction, it checks if the transaction already exists or if the signature is invalid before adding it to the pool and broadcasting the transaction to other nodes in the network. This ensures that the transaction provided to the next block creator is clean and valid.
+
+\section{The Network Node} \label{ch4_node_impl}
+
+The \texttt{Node} class acts as the central orchestrator of the system, integrating three critical subsystems of the blockchain:
+\begin{enumerate}
+    \item \textbf{The P2P Layer:} Facilitates communication between nodes in the network.
+    \item \textbf{The Blockchain Core:} Maintains the ledger state and handles consensus.
+    \item \textbf{The REST API:} Enables external interaction with the node (e.g., via a Wallet application or Explorer).
+\end{enumerate}
+
+\subsection{Concurrency and Threading}
+To maintain responsiveness, the node utilizes Python's \texttt{threading} module. Since the P2P listener and the API server are blocking operations, it must run in parallel with the block production loop (see code snippet Listing~\ref{lst:node_init}).
+
+\begin{lstlisting}[language=Python, caption=Node Initialization and Threading code snippet, label=lst:node_init]
+class Node:
+    def __init__(self, ip, port, api_port, key=None):
+        self.transaction_pool = TransactionPool()
+        self.wallet = Wallet()
+        self.blockchain = Blockchain()
+        
+        self.start_p2p()
+        self.start_node_api()
+        self.start_produce_block()
+
+    def start_produce_block(self):
+        produce_thread = threading.Thread(
+                    target=self.run_produce_block)
+        produce_thread.daemon = True
+        produce_thread.start()
+
+
+\end{lstlisting}
+
+\subsection{Consensus and Block Forging Logic}
+The node implements the Proof of Stake consensus logic, which functions as the deterministic lottery explained in Section~\ref{ch2_consensus_pos}. The \texttt{produce\_block} method is central to creating or forging a block, as detailed in the code snippet Listing~\ref{lst:produce_block}. It queries the consensus module to calculate the \texttt{next\_forger} based on the hash of the previous block and the current stake distribution.
+
+If the local node's public key matches the calculated forger, the node proceeds to:
+\begin{enumerate}
+    \item Bundle pending transactions from the transaction pool.
+    \item Execute the transactions to verify state changes.
+    \item Cryptographically seal the block by adding the signature hash.
+    \item Broadcast the new block to all connected peers via the P2P layer.
+\end{enumerate}
+
+\begin{lstlisting}[language=Python, caption=code snippet Block Production Logic, label=lst:produce_block]
+def produce_block(self):
+    forger = self.blockchain.next_forger()
+    
+    if forger == self.wallet.public_key_string():
+      block = self.blockchain.create_block(
+            self.transaction_pool.transactions, 
+            self.wallet
+        )
+      message = Message(self.p2p.socket_connector, 'BLOCK', block)
+      self.p2p.broadcast(BlockchainUtils.encode(message))
+\end{lstlisting}
+
+
+\section{Blockchain Explorer (Visualization Layer)} \label{ch4_explorer}
+
+This component of the blockchain system is the \textbf{Blockchain Explorer}, which was developed to help users visualize the basic real-time data within the blockchain. Built using \textbf{Vue.js}, this frontend application connects to the Python node's REST API to provide a user-friendly interface for viewing the network's internal state.\\The explorer is divided into several functional views, as shown in the following figures.
+
+\subsection{Network Dashboard}
+The main dashboard (Figure~\ref{fig:explorer_dashboard}) provides a high-level overview of the blockchain, displaying the current block list, as well as providing access to the pending transactions tab and the validator list tab.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/explorer_dashboard.png}
+    \caption{The Blockchain Explorer Dashboard showing real-time network data.}
+    \label{fig:explorer_dashboard}
+\end{figure}
+
+\subsection{Block View}
+Students can click on any block to inspect its details (Figure~\ref{fig:explorer_block_details}). This view visualizes the data stored within a block and lists the transactions included in that block.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/explorer_block_details.png}
+    \caption{Detailed view of a block, showing the block data and transactions list.}
+    \label{fig:explorer_block_details}
+\end{figure}
+
+\subsection{Transaction View}
+When a user clicks on a transaction hash in the interface, they are navigated to the Transaction Details view (Figure~\ref{fig:explorer_transaction_details}). This page is critical for understanding the structure of a transaction and how it changes the state of the blockchain.A transaction can be broken down into these parts:
+\begin{itemize}
+    \item \textbf{Metadata:} The unique Transaction hash.
+    \item \textbf{Transfer Logic:} The Sender and Receiver public keys, along with the transferred Amount.
+\end{itemize}
+
+This view allows students to visually verify that the transaction data and structure match the \texttt{Transaction} class definition in the blockchain backend code.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/explorer_trasaction_details.png}
+    \caption{Detailed view of a single transaction.}
+    \label{fig:explorer_transaction_details}
+\end{figure}
+
+\subsection{Address View}
+When a user clicks on an address from the interface, they are navigated to the Address view (Figure~\ref{fig:explorer_address_details}) which acts as a personal ledger for a specific address in the blockchain network. The Address view can be broken down into these parts:
+\begin{enumerate}
+    \item \textbf{Current Balance:} The aggregated balance of the account based on all the historical state changes for the account balance.
+    \item \textbf{Transaction History:} A chronological list of all transactions where the address is involved as either a sender or a receiver.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/explorer_address_details.png}
+    \caption{The Address Details view showing the current balance and transaction history for a specific address.}
+    \label{fig:explorer_address_details}
+\end{figure}
+
+\subsection{Pending Transactions View}
+When a user clicks on \enquote{Pending Transactions} from the navigation bar in the interface, they are navigated to the Pending Transactions view (Mempool) (Figure~\ref{fig:explorer_mempool}) which displays transactions that have been broadcasted but not yet confirmed. This view helps students to visualize transaction propagation and network latency.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/explorer_mempool.png}
+    \caption{The Mempool view displaying pending transactions waiting for confirmation.}
+    \label{fig:explorer_mempool}
+\end{figure}
+
+\subsection{Validators View}
+When a user clicks on \enquote{Validators} from the navigation bar in the interface, they are navigated to the Validators view (Figure~\ref{fig:explorer_validators}) which provides a real-time list of the current validator nodes participating in the network's Proof of Stake consensus mechanism.
+
+This view queries the blockchain system to display:
+\begin{itemize}
+    \item \textbf{Name:} The name of the validator provided to the network
+    \item \textbf{IP:} The IP address from which the validator client is running
+    \item \textbf{Port:} The port on which the validator client is running.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/explorer_validators_details.png}
+    \caption{The Validators dashboard showing active stakers and their IPs and ports.}
+    \label{fig:explorer_validators}
+\end{figure}
+\section{Summary}
+This chapter presented the technical implementation of the \textit{Blockchain System}. A modular Python-based architecture was created, implementing an account-based blockchain, a Proof of Stake consensus mechanism, and a P2P networking layer to facilitate communication between nodes and achieve consensus. A frontend web interface, represented by the Blockchain Explorer, was developed to provide users with a simple visualization of the system, making these abstract concepts tangible for both students and instructors.\\With the core system implemented and validated, the platform is stable and ready for the subsequent chapter, which demonstrates how this technical blockchain system is utilized as the foundation for the \textbf{5-Module Curriculum}, guiding students from basic blockchain system knowledge to being able to create, use, or contribute to their own blockchain system of choice.

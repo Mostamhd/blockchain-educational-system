@@ -1,0 +1,73 @@
+@startuml Transaction_Lifecycle_PoS
+
+' =======================
+' Rendering / Style
+' =======================
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+skinparam activityBorderColor black
+skinparam activityBackgroundColor white
+skinparam arrowColor black
+skinparam defaultFontName Arial
+
+title Transaction Activity Diagram
+
+' =======================
+' Activity Diagram
+' =======================
+
+start
+
+partition "User" {
+    :Create Transaction\nPOST /create;
+}
+
+partition "Node" {
+    :Decode Transaction Object;
+    :Validate Signature\n(Elliptic Curve);
+
+    if (Signature valid?) then (No)
+        stop
+    else (Yes)
+        :Check Transaction\nin Pool or Chain;
+    endif
+
+    if (Transaction exists?) then (Yes)
+        stop
+    else (No)
+        :Add Transaction to\nTransactionPool (Mempool);
+    endif
+}
+
+partition "P2P Network" {
+    :Broadcast Transaction\nto Peers;
+}
+
+partition "Consensus (PoS)" {
+    :Wait for Forging Turn;
+
+    while (Is Node Next Forger?) is (No)
+        :Wait;
+    endwhile (Yes)
+}
+
+partition "Blockchain" {
+    :Select Valid Transactions\n(Balance Check);
+    :Create & Sign Block;
+}
+
+partition "P2P Network" {
+    :Broadcast Block\nto Network;
+}
+
+partition "Peer Nodes" {
+    :Validate Block\n(Signature, Forger,\nTransactions);
+    :Append Block to Blockchain;
+    :Update State\n(Account Balances);
+}
+
+stop
+
+@enduml

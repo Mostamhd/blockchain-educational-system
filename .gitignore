@@ -1,0 +1,42 @@
+*yarn*
+.idea
+.ipynb_checkpoints
+.mypy_cache
+__pycache__
+.pytest_cache
+htmlcov
+dist
+site
+.coverage
+coverage.xml
+.netlify
+test.db
+log.txt
+Pipfile.lock
+env3.*
+# env
+docs_build
+site_build
+venv
+docs.zip
+archive.zip
+.python-version
+.env
+
+# vim temporary files
+*~
+.*.sw?
+.cache
+
+# macOS
+.DS_Store
+
+
+
+explorer/node_modules
+
+transcripts/
+
+# gemini.md
+# .gemini/
+# gha-creds-*.json

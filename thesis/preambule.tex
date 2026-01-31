@@ -1,0 +1,154 @@
+% \usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% loading this first to avoid clash with bidi/arabic
+\usepackage{xunicode}
+%%% For language switching -- like babel, but for xelatex
+\usepackage{polyglossia}
+\usepackage{csquotes}
+\providecommand{\bsc}[1]{\textsc{#1}}
+
+\setmainlanguage{english}
+\setotherlanguages{arabic, french}
+
+% define fonts for other languages
+\newfontfamily\arabicfont[Script=Arabic]{Noto Naskh Arabic}
+
+\usepackage{booktabs}
+\usepackage{tabularx} 
+\usepackage{multirow}
+\usepackage{stix,bbding,pifont,utfsym,fontawesome}
+\usepackage{subfig}
+
+
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{here}
+\graphicspath{{images/}}
+
+\usepackage{minitoc}
+\setcounter{minitocdepth}{1}
+% \mtcselectlanguage{french}
+%\nomtcpagenumbers  % remove page numbers from minitocs
+%\nomtcrule         % removes rules = horizontal lines
+%\undotted          % removes just the dots
+
+\usepackage{fancybox}% pour fbox et shadowbox
+
+\usepackage{setspace}%pour l'environnement onehalfspace
+\onehalfspacing
+
+\usepackage{eso-pic}
+\newcommand \AlCentroPagina [1]{%
+\AddToShipoutPicture *{\AtPageCenter {%
+\makebox (0,0){\includegraphics %
+[width=0.98\paperwidth]{#1}}}}}
+
+\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry} %pour les marges
+%\usepackage[top=3.5cm, bottom=3.5cm, left=3.5cm, right=3.5cm]{geometry}
+
+\usepackage{epigraph} %pour les citation dans les débuts des chapitres
+\setlength{\epigraphwidth}{8cm}
+\renewcommand{\epigraphsize}{\footnotesize}
+
+\usepackage [Lenny]{fncychap}%pour modifier l'allure des chapitres
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\leftmark}% gère le coin gauche de len-tête.
+\chead{}% gère le centre de len-tête.
+\rhead{}% gère le coin droit de len-tête.
+\lfoot{}% gère le coin gauche du pieds de page.
+\cfoot{}% gère le centre du pieds de page.
+\rfoot{\thepage}% gère le coin droit du pieds de page.
+\renewcommand{\chaptermark}[1]{\markboth{\bsc{\chaptername~\thechapter{} :} #1}{}}
+
+\usepackage{url} %pour écrire des adresses cliquables
+
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}%le package pour faire des formules et équations perfectionnées
+\newtheorem{derty}{Définition}%[section]
+\newtheorem{lem}{Lemme}%[section]
+\newtheorem{thm}{Théorème}%[section]
+\newtheorem{cor}{Corollaire}%[section]
+\newtheorem{pro}{Proposition}%[section]
+%definition
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\usepackage{color}
+\usepackage{colortbl}
+\definecolor{marron}{rgb}{0.65,0.16,0.16}
+\definecolor{grisb}{rgb}{0.86,0.86,0.86}
+\newcolumntype{M}[1]{>{\centering \scriptsize}p{#1}}
+\newcolumntype{K}[1]{>{\centering \footnotesize}p{#1}}
+%\usepackage{array}
+
+
+
+\usepackage{hyperref} 
+\hypersetup{
+backref=true,       
+pagebackref=true,   
+colorlinks=true, 
+breaklinks=true,
+urlcolor= blue, 
+linkcolor= black, 
+citecolor=blue, 
+pdftitle={Engineering Thesis}, 
+pdfauthor={Moustafa Ahmed}, 
+pdfsubject={Design and Implementation of an Educational Cryptocurrency Blockchain System and Consensus Algorithm} 
+}
+
+\title{\huge \textsc{\textbf Engineering Thesis}}
+\author{\large Moustafa Ahmed} 
+\date{2021}
+
+
+
+\usepackage{listings}
+\usepackage{multirow}
+
+\usepackage{slashbox}
+
+\usepackage{adjustbox}
+\usepackage{blindtext}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\usepackage[french]{algorithm2e}
+
+\lstnewenvironment{pascal}
+{
+\lstset
+			{
+			language=Pascal,
+			keywordstyle=\bfseries\color{marron},
+			stringstyle=\it\color{blue},
+			basicstyle=\rm\footnotesize,
+			showstringspaces=false,
+			%numbers=left,
+			numberstyle=\tiny\bfseries,
+			stepnumber=1,
+			numberfirstline=false,
+			%linewidth=9cm,
+			aboveskip=3mm,%marge avant le listing
+			belowskip=3mm,%marge après le listing
+			xrightmargin=5mm,%marge à droite du listing
+			xleftmargin=5mm,%marge à gauche du listing
+			%float=!h,
+			frame=tblr,%tBlR
+			rulesep=0.5mm,%la distance entre les traits des bordures doubles
+			framesep=2mm,%distance entre le code et la bordure
+			frameround=ftft,%framerule=2pt,%l'épaisseure de la bordure
+			rulecolor={\color{marron}},
+			rulesepcolor={\color{white}},
+			captionpos=b,
+			backgroundcolor=\color{grisb}
+			}
+}
+{}

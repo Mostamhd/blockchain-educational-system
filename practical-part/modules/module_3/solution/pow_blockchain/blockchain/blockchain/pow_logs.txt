@@ -1,0 +1,798 @@
+{"message": "Node initialisation on port: 8012", "node": {"id": "ae941f3cb8dde2efb3ffd1db354a593b3b5022addc1ed21fd4d7756f3148af7e37c7dddc6010f995b9d133657327307aefc568bd87180ad3f1a33a3691deab8a", "ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:13:14.450827Z", "level": "INFO"}
+{"message": "No nodes connected", "timestamp": "2026-01-26T19:13:14.451327Z", "level": "INFO"}
+{"message": "Started server process [1]", "timestamp": "2026-01-26T19:13:14.515046Z", "level": "INFO"}
+{"message": "Waiting for application startup.", "timestamp": "2026-01-26T19:13:14.515092Z", "level": "INFO"}
+{"message": "Application startup complete.", "timestamp": "2026-01-26T19:13:14.515216Z", "level": "INFO"}
+{"message": "Uvicorn running on http://0.0.0.0:8052 (Press CTRL+C to quit)", "timestamp": "2026-01-26T19:13:14.515420Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 0.5038s", "timestamp": "2026-01-26T19:13:14.980656Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 106.9% | RAM: 108.77MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:15.455858Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 2 Delay: 1.2665s", "timestamp": "2026-01-26T19:13:16.246853Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 105.9% | RAM: 108.89MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:17.463803Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 4.1532s", "timestamp": "2026-01-26T19:13:18.646462Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 3 Delay: 2.9206s", "timestamp": "2026-01-26T19:13:19.151524Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 109.02MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:19.473314Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 4 Delay: 8.6775s", "timestamp": "2026-01-26T19:13:21.321687Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 109.27MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:21.485104Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 5 Delay: 1.1955s", "timestamp": "2026-01-26T19:13:22.502499Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 110.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:23.488422Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 110.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:25.493486Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 110.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:27.496840Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:13:29.454155Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 110.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:29.505845Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 4 Delay: 11.8028s", "timestamp": "2026-01-26T19:13:30.917430Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.4% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:31.512373Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:33.520358Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:35.526245Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:37.530567Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:39.533021Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:41.535635Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.0% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:43.538464Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:13:44.455097Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:45.541735Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:47.546573Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:49.551381Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:51.558075Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:53.563376Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:55.573401Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:57.582028Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:13:59.455982Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:59.597144Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 111.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:01.601414Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 111.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:03.603963Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 111.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:05.610496Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 111.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:07.613089Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 111.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:09.620719Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 111.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:11.627485Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 111.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:13.630870Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:14:14.459204Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 111.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:15.634317Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 111.77MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:17.638138Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 111.77MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:19.640950Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 111.77MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:21.644200Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 4 Delay: 64.8385s", "timestamp": "2026-01-26T19:14:23.492736Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 111.77MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:23.648918Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:25.653278Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:27.659569Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:14:29.460381Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:29.663383Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:31.668115Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:33.674042Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:35.678034Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:37.681796Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:39.688817Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:41.696877Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:43.702925Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:14:44.461153Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:45.711577Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:47.720948Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:49.730175Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:51.740172Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:53.744726Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:55.750857Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:57.760346Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:14:59.463345Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:59.768719Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:01.773024Z", "level": "INFO"}
+{"message": "Node initialisation on port: 8011", "node": {"id": "502abf4b4ab679bda284d674df6ca1d7606eefe936cf1df52bdbefffefacbac182372548137357f1c2923cdeee9543f75a073f45048aa3c57c959c24b00ea264", "ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:13:14.477716Z", "level": "INFO"}
+{"message": "No nodes connected", "timestamp": "2026-01-26T19:13:14.478054Z", "level": "INFO"}
+{"message": "Started server process [1]", "timestamp": "2026-01-26T19:13:14.581362Z", "level": "INFO"}
+{"message": "Waiting for application startup.", "timestamp": "2026-01-26T19:13:14.581408Z", "level": "INFO"}
+{"message": "Application startup complete.", "timestamp": "2026-01-26T19:13:14.581532Z", "level": "INFO"}
+{"message": "Uvicorn running on http://0.0.0.0:8051 (Press CTRL+C to quit)", "timestamp": "2026-01-26T19:13:14.594073Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 0.5030s", "timestamp": "2026-01-26T19:13:14.980564Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 0.5025s", "timestamp": "2026-01-26T19:13:14.988522Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 107.5% | RAM: 109.02MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:15.501585Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 2 Delay: 1.2619s", "timestamp": "2026-01-26T19:13:16.243951Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 2 Delay: 1.2610s", "timestamp": "2026-01-26T19:13:16.248811Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 2.9679s", "timestamp": "2026-01-26T19:13:17.431091Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 107.4% | RAM: 109.15MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:17.509994Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 3 Delay: 2.9244s", "timestamp": "2026-01-26T19:13:19.155379Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 3 Delay: 2.9302s", "timestamp": "2026-01-26T19:13:19.162066Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 109.65MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:19.513680Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 4 Delay: 8.6775s", "timestamp": "2026-01-26T19:13:21.322816Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.1% | RAM: 109.65MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:21.524846Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 5 Delay: 1.2088s", "timestamp": "2026-01-26T19:13:22.517504Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.6% | RAM: 110.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:23.531142Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.9% | RAM: 110.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:25.536061Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.9% | RAM: 110.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:27.541561Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:13:29.479484Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 110.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:29.544760Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 4 Delay: 11.8030s", "timestamp": "2026-01-26T19:13:30.909193Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 4 Delay: 11.8162s", "timestamp": "2026-01-26T19:13:30.934479Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 102.0% | RAM: 111.90MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:31.551707Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.6% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:33.558840Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:35.563909Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.5% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:37.576711Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:39.582271Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:41.587913Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:43.591833Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:13:44.480671Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:45.596183Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:47.598287Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 102.2% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:49.613401Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:51.635481Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:53.641589Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:55.646227Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:57.664051Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:13:59.488563Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 102.3% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:59.689718Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.3% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:01.698471Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:03.707963Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 112.02MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:05.721381Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 112.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:07.726555Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 112.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:09.737296Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 112.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:11.746225Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 112.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:13.758607Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:14:14.490088Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 112.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:15.764708Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 112.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:17.778735Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 112.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:19.783721Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.0% | RAM: 112.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:21.803991Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:23.810984Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:25.814910Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:27.828510Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:14:29.491994Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:29.835834Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:31.849744Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:33.856141Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:35.864793Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 112.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:03.777354Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 113.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:05.780536Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 113.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:07.783462Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 113.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:09.790621Z", "level": "INFO"}
+{"message": "Node initialisation on port: 8013", "node": {"id": "bbd520b0d978c47b77f2101ef853f792a149da34cbdabaf2748f94d140369adbafb52621b4d08c799dd141d30d58b4744dace4e816874ef84eb1d01ed70b19ee", "ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:13:14.469312Z", "level": "INFO"}
+{"message": "No nodes connected", "timestamp": "2026-01-26T19:13:14.469777Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 113.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:11.800958Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 113.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:13.810472Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:15:14.469746Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 6 Delay: 51.6022s", "timestamp": "2026-01-26T19:15:14.953691Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.2% | RAM: 113.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:15.831134Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:17.838324Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:19.847460Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:37.881815Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:39.890754Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:21.858237Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:23.866332Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:25.873080Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:27.879845Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:29.895584Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:31.909519Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:33.945044Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:35.953918Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:37.970060Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:39.975685Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:41.988039Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:43.993782Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:46.001965Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:48.009464Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:50.026327Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:52.028784Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:54.036778Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:56.050779Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:58.058662Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:00.065263Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:02.070512Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:04.084272Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:06.099606Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:08.108689Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:10.140890Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:12.156620Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.1% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:14.167438Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:16.181307Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:18.193694Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:20.203162Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:22.211932Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:24.220189Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:26.228597Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:28.237176Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:30.242691Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:32.246151Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:34.252266Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:36.258332Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:38.264928Z", "level": "INFO"}
+{"message": "Node initialisation on port: 8010", "node": {"id": "6eb611ab80b0f71e19994b4195c7f07efca00d09e423acf7292536bc62f9bd249a0ce6a40ae82cec5771074d1c250f3cfc08b1a4ebbb4fdeb44a9b4bda820584", "ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:13:09.310739Z", "level": "INFO"}
+{"message": "No nodes connected", "timestamp": "2026-01-26T19:13:09.311022Z", "level": "INFO"}
+INFO: Starting Automatic Benchmark on Node 1...
+Benchmark: Waiting for API at http://localhost:8050...
+{"message": "Started server process [1]", "timestamp": "2026-01-26T19:13:09.517147Z", "level": "INFO"}
+{"message": "Waiting for application startup.", "timestamp": "2026-01-26T19:13:09.517207Z", "level": "INFO"}
+{"message": "Application startup complete.", "timestamp": "2026-01-26T19:13:09.517346Z", "level": "INFO"}
+{"message": "Uvicorn running on http://0.0.0.0:8050 (Press CTRL+C to quit)", "timestamp": "2026-01-26T19:13:09.517485Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 118.3% | RAM: 109.14MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:10.407788Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:40.272295Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:42.280396Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 8 Delay: 88.4241s", "timestamp": "2026-01-26T19:16:43.051838Z", "level": "INFO"}
+{"message": "Started server process [1]", "timestamp": "2026-01-26T19:13:14.495159Z", "level": "INFO"}
+{"message": "Waiting for application startup.", "timestamp": "2026-01-26T19:13:14.495207Z", "level": "INFO"}
+{"message": "Application startup complete.", "timestamp": "2026-01-26T19:13:14.495317Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:44.293070Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:46.306214Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:48.319489Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:50.333925Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:52.341295Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:54.353262Z", "level": "INFO"}
+{"message": "Uvicorn running on http://0.0.0.0:8053 (Press CTRL+C to quit)", "timestamp": "2026-01-26T19:13:14.495736Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 102.3% | RAM: 109.19MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:15.488952Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 2.9672s", "timestamp": "2026-01-26T19:13:17.427647Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:41.897931Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:43.907315Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:14:44.495991Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:45.921104Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:47.933204Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.4% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:49.975582Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:51.981971Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 109.19MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:17.493495Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 4.1520s", "timestamp": "2026-01-26T19:13:18.645612Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:53.985254Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:55.995060Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.2% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:58.010403Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:14:59.498330Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:00.020674Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:02.026192Z", "level": "INFO"}
+Benchmark: API is online.
+Benchmark: Initial Block Height: 3
+Benchmark: Starting load generation...
+{"message": "BENCHMARK_RESOURCES: CPU: 117.1% | RAM: 109.27MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:12.443988Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 112.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:04.036947Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 4 Delay: 106.8975s", "timestamp": "2026-01-26T19:15:04.342313Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 114.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:06.047272Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 4.1561s", "timestamp": "2026-01-26T19:13:18.649447Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.9% | RAM: 109.19MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:19.495392Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 109.27MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:14.447443Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 0.5048s", "timestamp": "2026-01-26T19:13:14.983041Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 2 Delay: 1.2611s", "timestamp": "2026-01-26T19:13:16.245375Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 109.77MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:16.455578Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 2.9680s", "timestamp": "2026-01-26T19:13:17.427831Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 102.6% | RAM: 109.77MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:18.464105Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 4.1530s", "timestamp": "2026-01-26T19:13:18.646155Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 3 Delay: 2.9306s", "timestamp": "2026-01-26T19:13:19.161694Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:56.365864Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:58.375619Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:00.384006Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:02.393724Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.0% | RAM: 113.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:04.424492Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:06.427392Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:08.430990Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:10.436757Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.6% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:12.444724Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:14.450225Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:16.458438Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:18.465361Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 114.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:08.053017Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 114.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:10.061907Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 114.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:12.074374Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 4 Delay: 8.6797s", "timestamp": "2026-01-26T19:13:21.323925Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 109.19MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:21.497730Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 5 Delay: 1.1964s", "timestamp": "2026-01-26T19:13:22.503618Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.0% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:20.489239Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:22.498793Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:24.515571Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:26.538720Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:28.543265Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:30.549690Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:32.556488Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:34.565458Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:36.570890Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:38.581237Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:40.588129Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:42.601629Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 103.9% | RAM: 110.02MB | Difficulty: 4.00", "timestamp": "2026-01-26T19:13:20.468466Z", "level": "INFO"}
+{"message": "DEBUG: Time Taken: 3.34s | Expected: 50s", "timestamp": "2026-01-26T19:13:21.298575Z", "level": "INFO"}
+{"message": "DEBUG: Too Fast! Difficulty increased to 4.10", "timestamp": "2026-01-26T19:13:21.298621Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 102.6% | RAM: 110.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:22.481425Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 114.65MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:14.081311Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:15:14.501802Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:16.084351Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:18.090370Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:20.099021Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:22.105540Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8012', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:13:24.322285Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.9% | RAM: 111.77MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:24.484964Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 111.77MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:26.490290Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.6% | RAM: 110.07MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:23.505421Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.9% | RAM: 110.07MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:25.507609Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.7% | RAM: 110.07MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:27.512056Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:13:29.471190Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 110.07MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:29.518743Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.3% | RAM: 111.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:31.528048Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 111.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:33.533610Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 111.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:35.545009Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 111.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:37.550225Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 111.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:39.556598Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 111.69MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:41.561094Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:24.120551Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:26.125638Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:28.132514Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:30.139941Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:32.145749Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 111.77MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:28.494631Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 112.14MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:30.499001Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 4 Delay: 11.8061s", "timestamp": "2026-01-26T19:13:30.918133Z", "level": "INFO"}
+Exception in thread Thread-9:
+Traceback (most recent call last):
+{"message": "BENCHMARK_RESOURCES: CPU: 99.2% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:44.615710Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:46.620333Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:48.635415Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 111.69MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:43.564135Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:13:44.472081Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 111.69MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:45.568974Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 111.82MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:47.575798Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 103.8% | RAM: 111.94MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:49.605526Z", "level": "INFO"}
+  File "/usr/local/lib/python3.11/threading.py", line 1038, in _bootstrap_inner
+    self.run()
+  File "/usr/local/lib/python3.11/site-packages/p2pnetwork/nodeconnection.py", line 222, in run
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:50.647697Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:52.649550Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:34.150999Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:36.161371Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:38.171980Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:54.654137Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:56.658973Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:40.179667Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:42.184827Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:44.190887Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 111.94MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:51.687835Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:58.665229Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:00.672558Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:46.196862Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.5% | RAM: 111.94MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:53.694971Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 111.94MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:55.702604Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.1% | RAM: 112.07MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:57.719970Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:13:59.474153Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 112.07MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:59.734306Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 103.2% | RAM: 112.07MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:01.748394Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 6 Delay: 39.7553s", "timestamp": "2026-01-26T19:14:01.979990Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.9% | RAM: 112.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:03.750386Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:02.679271Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:04.685766Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:06.697542Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:08.706482Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.2% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:10.716295Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:48.207412Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:50.217208Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.0% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:12.738984Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.0% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:14.764063Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:16.771611Z", "level": "INFO"}
+    self.main_node.node_message( self, self.parse_packet(packet) )
+  File "/usr/src/node/blockchain/p2p/socket_communication.py", line 51, in node_message
+    if message.message_type == "DISCOVERY":
+       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'message_type'
+Exception in thread Thread-11:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/threading.py", line 1038, in _bootstrap_inner
+    self.run()
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 112.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:05.753569Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 102.3% | RAM: 112.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:07.768140Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.2% | RAM: 112.32MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:09.783206Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 112.32MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:11.786722Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 112.32MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:13.792044Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:14:14.476180Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 112.32MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:15.800383Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 7 Delay: 14.1578s", "timestamp": "2026-01-26T19:14:16.062414Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 113.44MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:17.807984Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 113.44MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:19.817441Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.2% | RAM: 113.44MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:21.826813Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 4 Delay: 64.8639s", "timestamp": "2026-01-26T19:14:23.525549Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 4 Delay: 64.8749s", "timestamp": "2026-01-26T19:14:23.550457Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 113.94MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:23.834727Z", "level": "INFO"}
+Exception in thread Thread-8:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/threading.py", line 1038, in _bootstrap_inner
+    self.run()
+  File "/usr/local/lib/python3.11/site-packages/p2pnetwork/nodeconnection.py", line 222, in run
+    self.main_node.node_message( self, self.parse_packet(packet) )
+  File "/usr/src/node/blockchain/p2p/socket_communication.py", line 51, in node_message
+  File "/usr/local/lib/python3.11/site-packages/p2pnetwork/nodeconnection.py", line 222, in run
+    self.main_node.node_message( self, self.parse_packet(packet) )
+  File "/usr/src/node/blockchain/p2p/socket_communication.py", line 51, in node_message
+    if message.message_type == "DISCOVERY":
+       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'message_type'
+{"message": "BENCHMARK_RESOURCES: CPU: 101.9% | RAM: 112.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:32.503990Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 112.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:34.507633Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 112.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:36.512093Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 112.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:38.515613Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8012', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:13:39.322835Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:40.518884Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.9% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:42.521048Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:44.534042Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:46.536867Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:48.543632Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:50.547297Z", "level": "INFO"}
+TX Submission Failed: HTTPConnectionPool(host='localhost', port=8050): Read timed out. (read timeout=2)
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:52.552231Z", "level": "INFO"}
+TX Submission Failed: HTTPConnectionPool(host='localhost', port=8050): Read timed out. (read timeout=2)
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8012', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:13:54.323790Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:54.556844Z", "level": "INFO"}
+TX Submission Failed: HTTPConnectionPool(host='localhost', port=8050): Read timed out. (read timeout=2)
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:56.561827Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.0% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:13:58.574705Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 102.4% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:00.581646Z", "level": "INFO"}
+    if message.message_type == "DISCOVERY":
+       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'message_type'
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:25.842414Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:27.849911Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:14:29.478411Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:29.865548Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.0% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:18.783866Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:20.798193Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:22.804492Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:24.810252Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:26.816629Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:02.585362Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 102.7% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:04.590173Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 102.9% | RAM: 113.39MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:06.596384Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 102.7% | RAM: 113.64MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:08.603496Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8012', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:14:09.326052Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 102.6% | RAM: 113.77MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:10.613985Z", "level": "INFO"}
+Benchmark: Load generation finished. Waiting for processing...
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 113.77MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:12.624780Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 113.77MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:14.636390Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 114.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:16.646639Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:52.226589Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:54.233607Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:28.821193Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:30.827731Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:32.835583Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.1% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:34.849912Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:36.862660Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:38.869927Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 113.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:40.880076Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:31.867565Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:33.881587Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.0% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:35.897739Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 114.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:18.652610Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 114.52MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:20.656613Z", "level": "INFO"}
+--- Results ---
+Total TX Confirmed: 526
+Time Elapsed: 70.03s
+TPS: 7.51
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 115.04MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:22.660133Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:37.911846Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:39.922409Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:41.931408Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:43.938087Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:14:44.484816Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:45.944388Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:47.952794Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:49.966375Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:51.977241Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:53.985205Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:55.993735Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:56.240932Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:58.250454Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:00.259902Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:02.273441Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:04.284460Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:06.294563Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:08.336463Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:10.347275Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.6% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:12.394366Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:14.398577Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:16.411995Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:18.421581Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:20.428100Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:22.431445Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:24.437097Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8012', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:14:24.326864Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.04MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:24.676177Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.04MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:26.682277Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.04MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:28.688606Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.04MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:30.697776Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.04MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:32.713009Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 115.04MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:34.721861Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:36.732132Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.1% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:38.743542Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8012', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:14:39.334163Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:40.760067Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:26.442044Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:28.445946Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:30.448664Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:32.452248Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:34.461044Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:36.473077Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:38.478002Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.3% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:40.494096Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:42.768358Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:44.773284Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:46.781309Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:48.787108Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:50.793655Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:52.806203Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8012', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:14:54.334847Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:54.816911Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:56.828895Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:58.847756Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:00.857584Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:02.865456Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:04.878455Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.3% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:06.892234Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:08.897474Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8012', '0.0.0.0: 8013', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:15:09.341654Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 115.15MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:42.502065Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:44.513360Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:46.523682Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:10.908807Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:12.917585Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:14.926815Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:48.531710Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:50.536213Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:52.540475Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:54.546295Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:14:58.006560Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:14:59.490867Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:56.551305Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 115.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:58.555761Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:00.567966Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:02.577552Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:00.021892Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:02.025666Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 114.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:04.034462Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.27MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:04.583811Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 8 Delay: 120.8323s", "timestamp": "2026-01-26T19:17:05.059386Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:06.590252Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 115.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:06.044581Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 115.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:08.053343Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 115.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:10.060754Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:08.596555Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:10.600468Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:12.605804Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 115.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:12.076452Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:14.080625Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:15:14.497023Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:14.614541Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:16.628552Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:18.638604Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 6 Delay: 51.6164s", "timestamp": "2026-01-26T19:15:14.968972Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 6 Delay: 51.6054s", "timestamp": "2026-01-26T19:15:14.973033Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 97.7% | RAM: 116.57MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:16.087582Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:20.643775Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:22.685619Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:24.695062Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:18.091642Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:20.099895Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:22.105937Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:24.118155Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:16.944311Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.1% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:18.965134Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:20.972691Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:22.980436Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:26.126725Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:28.130850Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:30.137691Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:24.984695Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:26.995534Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:29.006616Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:32.144511Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:34.154021Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:36.161773Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:38.171986Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:40.180804Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:31.017735Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:33.031868Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:42.184244Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:44.188075Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:46.195068Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:48.204050Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:50.209598Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:26.713621Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:28.722426Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:30.736942Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:32.746099Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:52.214411Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:54.219254Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:56.225229Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:58.229308Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:00.238177Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:02.245708Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:04.251059Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:06.258476Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:08.263498Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:10.271421Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:12.277819Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:14.279992Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:16.284821Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:18.290480Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:20.294990Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:22.300765Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:24.303840Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:34.755156Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:36.772457Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:38.785883Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.4% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:35.070920Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:37.077871Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:40.794458Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:42.805752Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:44.815540Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:46.825530Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:48.835262Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:50.845124Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:52.859873Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.3% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:54.872421Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:56.882386Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:58.896499Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:00.905759Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:02.915729Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:04.926113Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:06.932628Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:08.939308Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:10.947747Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:26.309642Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:28.313542Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:30.317355Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:32.322525Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:34.326738Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.1% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:12.971014Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.0% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:14.986823Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:16.992075Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:36.332357Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:38.340781Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:40.345021Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:42.349493Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 8 Delay: 88.3979s", "timestamp": "2026-01-26T19:16:43.025558Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 8 Delay: 88.4213s", "timestamp": "2026-01-26T19:16:43.048316Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:44.354396Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:46.362204Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:48.376448Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:50.380550Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:39.084857Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:41.098255Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:52.386262Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:54.389312Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:56.398485Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:58.409216Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:00.413806Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:02.451400Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:19.000914Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:21.006273Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:23.013354Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:04.462362Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:06.468593Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:25.023440Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:27.027783Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:29.032555Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:31.037238Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.1% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:33.048110Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:35.057251Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.1% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:37.074618Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:43.111755Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:45.121424Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:47.136188Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:49.144200Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:51.150935Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:39.087386Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.40MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:41.096223Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:53.163539Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:55.174904Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:08.485509Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:10.494838Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:12.503463Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:14.511695Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:16.518086Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:18.527659Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.1% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:20.539691Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:22.551792Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:57.185325Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:15:59.197846Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:01.203861Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:03.213686Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:24.564322Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:26.608165Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:28.613439Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:30.622437Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:05.225556Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:07.235190Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:32.627421Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:34.633859Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:36.642451Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:09.246689Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:11.260854Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:13.273621Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:38.655348Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:40.662756Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:15.285803Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:17.289452Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:19.295371Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:21.304901Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:23.312497Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:25.321701Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:27.327608Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:29.340087Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:42.673406Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:44.684458Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:46.695131Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:48.710299Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:31.349935Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:33.358451Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:35.366069Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.1% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:37.382168Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:39.390869Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:41.402730Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:43.411388Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:45.427807Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:47.436617Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:50.720389Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:52.726432Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:54.736482Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:49.456185Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:51.469736Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:53.473109Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:56.751594Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:58.761198Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:00.771671Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:55.482090Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.3% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:57.498771Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:16:59.509417Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:02.778874Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:04.784166Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:06.793630Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:01.523075Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:03.537046Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:05.541275Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:07.548490Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:09.554842Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:11.561087Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:13.566653Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:15.581768Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:08.798390Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:10.804295Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.2% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:12.815674Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:14.824680Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:16.837545Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:17.592300Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.3% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:19.601269Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:21.609516Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:23.616977Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.5% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:18.843974Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:20.854518Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.2% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:25.631887Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:27.646973Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.3% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:29.659850Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.4% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:31.670776Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:33.677044Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:22.857567Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:24.862985Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:35.684371Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:37.691238Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:39.695598Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:41.699223Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:43.708270Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:45.718235Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:47.726364Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:49.733012Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:51.741313Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:26.866387Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:28.872675Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:30.879478Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.6% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:32.886090Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.1% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:34.897075Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:36.906281Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:53.749978Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:55.759460Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:57.762463Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:38.920120Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.3% | RAM: 117.19MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:40.928555Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:17:59.768831Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.4% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:01.775574Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:03.778964Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.0% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:05.781540Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.9% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:07.787628Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:09.792447Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.9% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:11.795692Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:13.826405Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:15.833354Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.0% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:17.837639Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:19.844786Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:21.849180Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:23.856865Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:25.861491Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:27.870312Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.6% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:29.878851Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:31.883562Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.1% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:33.899440Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 101.5% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:35.908445Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:37.914259Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 99.8% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:39.918761Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 100.7% | RAM: 115.54MB | Difficulty: 4.10", "timestamp": "2026-01-26T19:18:41.923143Z", "level": "INFO"}

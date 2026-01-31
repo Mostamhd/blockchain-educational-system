@@ -1,0 +1,254 @@
+{"message": "Node initialisation on port: 8013", "node": {"id": "ac1d36f3a4f553764ea14b708fafc0d532a6fa7a10dfab532208a35b691d1b3610b9512708071a51f83fde98cca6f92304cc02e68106d65a6e786c513a9b7849", "ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:56:12.405762Z", "level": "INFO"}
+{"message": "No nodes connected", "timestamp": "2026-01-26T19:56:12.406308Z", "level": "INFO"}
+{"message": "Started server process [1]", "timestamp": "2026-01-26T19:56:12.415016Z", "level": "INFO"}
+{"message": "Waiting for application startup.", "timestamp": "2026-01-26T19:56:12.415064Z", "level": "INFO"}
+{"message": "Application startup complete.", "timestamp": "2026-01-26T19:56:12.415173Z", "level": "INFO"}
+{"message": "Uvicorn running on http://0.0.0.0:8053 (Press CTRL+C to quit)", "timestamp": "2026-01-26T19:56:12.415293Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 20.9% | RAM: 107.66MB", "timestamp": "2026-01-26T19:56:13.418081Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 20.0% | RAM: 107.79MB", "timestamp": "2026-01-26T19:56:15.421206Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 0.0045s", "timestamp": "2026-01-26T19:56:15.422309Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 19.0% | RAM: 107.79MB", "timestamp": "2026-01-26T19:56:17.423730Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 0.0016s", "timestamp": "2026-01-26T19:56:17.426420Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.9% | RAM: 108.79MB", "timestamp": "2026-01-26T19:56:19.427112Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 1 Delay: 0.0021s", "timestamp": "2026-01-26T19:56:19.429166Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.0% | RAM: 108.79MB", "timestamp": "2026-01-26T19:56:21.430711Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 19.9% | RAM: 108.79MB", "timestamp": "2026-01-26T19:56:23.433971Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.0% | RAM: 108.79MB", "timestamp": "2026-01-26T19:56:25.441563Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:56:27.408241Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.0% | RAM: 108.79MB", "timestamp": "2026-01-26T19:56:27.446564Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 27.0% | RAM: 110.16MB", "timestamp": "2026-01-26T19:56:29.449011Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 2 Delay: 0.3203s", "timestamp": "2026-01-26T19:56:29.452001Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.0% | RAM: 110.16MB", "timestamp": "2026-01-26T19:56:31.456972Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 22.0% | RAM: 110.16MB", "timestamp": "2026-01-26T19:56:33.461417Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 23.0% | RAM: 110.16MB", "timestamp": "2026-01-26T19:56:35.463135Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 23.0% | RAM: 110.16MB", "timestamp": "2026-01-26T19:56:37.465053Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 2 Delay: 0.3040s", "timestamp": "2026-01-26T19:56:37.901550Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 3 Delay: 0.4240s", "timestamp": "2026-01-26T19:56:38.091320Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 19.0% | RAM: 114.41MB", "timestamp": "2026-01-26T19:56:39.468486Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 2 Delay: 0.3103s", "timestamp": "2026-01-26T19:56:39.470486Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 4.0% | RAM: 115.16MB", "timestamp": "2026-01-26T19:56:41.472159Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:56:42.410856Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 115.16MB", "timestamp": "2026-01-26T19:56:43.476770Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 115.16MB", "timestamp": "2026-01-26T19:56:45.484156Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 115.16MB", "timestamp": "2026-01-26T19:56:47.491373Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 2.0% | RAM: 115.16MB", "timestamp": "2026-01-26T19:56:49.501614Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 115.16MB", "timestamp": "2026-01-26T19:56:51.508018Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 10.9% | RAM: 115.41MB", "timestamp": "2026-01-26T19:56:53.516339Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 6.0% | RAM: 115.41MB", "timestamp": "2026-01-26T19:56:55.522950Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:56:57.412332Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 7.0% | RAM: 115.41MB", "timestamp": "2026-01-26T19:56:57.527739Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 8.0% | RAM: 115.41MB", "timestamp": "2026-01-26T19:56:59.529799Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 7.0% | RAM: 115.41MB", "timestamp": "2026-01-26T19:57:01.532551Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 115.41MB", "timestamp": "2026-01-26T19:57:03.535773Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 8.0% | RAM: 115.41MB", "timestamp": "2026-01-26T19:57:05.542196Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 7.0% | RAM: 115.41MB", "timestamp": "2026-01-26T19:57:07.544330Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 115.41MB", "timestamp": "2026-01-26T19:57:09.545833Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 115.41MB", "timestamp": "2026-01-26T19:57:11.553300Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:57:12.413546Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 2.0% | RAM: 115.41MB", "timestamp": "2026-01-26T19:57:13.559740Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 116.13MB", "timestamp": "2026-01-26T19:57:15.564581Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 116.13MB", "timestamp": "2026-01-26T19:57:17.572387Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 114.57MB", "timestamp": "2026-01-26T19:57:19.578707Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 2.0% | RAM: 114.57MB", "timestamp": "2026-01-26T19:57:21.584358Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 7 Delay: 0.0167s", "timestamp": "2026-01-26T19:57:21.667973Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 114.85MB", "timestamp": "2026-01-26T19:57:23.587924Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 114.85MB", "timestamp": "2026-01-26T19:57:25.595586Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8013}, "timestamp": "2026-01-26T19:57:27.416675Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 114.85MB", "timestamp": "2026-01-26T19:57:27.602501Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 114.85MB", "timestamp": "2026-01-26T19:57:29.610308Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 114.85MB", "timestamp": "2026-01-26T19:57:31.618604Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 8 Delay: 0.0153s", "timestamp": "2026-01-26T19:57:31.679811Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 114.95MB", "timestamp": "2026-01-26T19:57:33.621995Z", "level": "INFO"}
+{"message": "Node initialisation on port: 8011", "node": {"id": "989736fdf4c216bb7be8ead34e0aba8ff29659b728e3fc8ec73496c5ff642e397e870d0717931482e6a1421288be34a5e9cbada876b546cc5a953cfda7e34e37", "ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:56:12.408165Z", "level": "INFO"}
+{"message": "No nodes connected", "timestamp": "2026-01-26T19:56:12.408470Z", "level": "INFO"}
+{"message": "Started server process [1]", "timestamp": "2026-01-26T19:56:12.438622Z", "level": "INFO"}
+{"message": "Waiting for application startup.", "timestamp": "2026-01-26T19:56:12.438666Z", "level": "INFO"}
+{"message": "Application startup complete.", "timestamp": "2026-01-26T19:56:12.438775Z", "level": "INFO"}
+{"message": "Uvicorn running on http://0.0.0.0:8051 (Press CTRL+C to quit)", "timestamp": "2026-01-26T19:56:12.438893Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 22.0% | RAM: 107.90MB", "timestamp": "2026-01-26T19:56:13.433616Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.0% | RAM: 107.90MB", "timestamp": "2026-01-26T19:56:15.437248Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 19.0% | RAM: 107.90MB", "timestamp": "2026-01-26T19:56:17.439672Z", "level": "INFO"}
+connect_with_node: Already connected with this node (ac1d36f3a4f553764ea14b708fafc0d532a6fa7a10dfab532208a35b691d1b3610b9512708071a51f83fde98cca6f92304cc02e68106d65a6e786c513a9b7849{"py/object": "blockchain.p2p.message.Message", "sender_connector": {"py/object": "blockchain.p2p.socket_connector.SocketConnector", "ip": "0.0.0.0", "port": 8013, "use_docker": "True", "docker_ip": "node_four"}, "message_type": "DISCOVERY", "data": [{"py/object": "blockchain.p2p.socket_connector.SocketConnector", "ip": "0.0.0.0", "port": 8010, "use_docker": "True", "docker_ip": "node_one"}, {"py/object": "blockchain.p2p.socket_connector.SocketConnector", "ip": "0.0.0.0", "port": 8012, "use_docker": "True", "docker_ip": "node_three"}]}).
+{"message": "Could not handle node message: Expecting property name enclosed in double quotes: line 1 column 111497 (char 111496)", "timestamp": "2026-01-26T19:56:17.920248Z", "level": "ERROR"}
+{"message": "Could not handle node message: Extra data: line 1 column 12 (char 11)", "timestamp": "2026-01-26T19:56:17.953709Z", "level": "ERROR"}
+{"message": "BENCHMARK_RESOURCES: CPU: 22.0% | RAM: 108.40MB", "timestamp": "2026-01-26T19:56:19.443788Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 20.9% | RAM: 108.40MB", "timestamp": "2026-01-26T19:56:21.450306Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.0% | RAM: 108.52MB", "timestamp": "2026-01-26T19:56:23.453896Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.9% | RAM: 108.52MB", "timestamp": "2026-01-26T19:56:25.458003Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:56:27.409610Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 19.9% | RAM: 108.52MB", "timestamp": "2026-01-26T19:56:27.462456Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 26.9% | RAM: 110.27MB", "timestamp": "2026-01-26T19:56:29.468268Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.0% | RAM: 110.27MB", "timestamp": "2026-01-26T19:56:31.472281Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 22.0% | RAM: 110.27MB", "timestamp": "2026-01-26T19:56:33.478592Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 22.0% | RAM: 110.27MB", "timestamp": "2026-01-26T19:56:35.480078Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 19.9% | RAM: 110.27MB", "timestamp": "2026-01-26T19:56:37.486402Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 3 Delay: 0.4229s", "timestamp": "2026-01-26T19:56:38.090650Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 16.0% | RAM: 114.15MB", "timestamp": "2026-01-26T19:56:39.489725Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 114.15MB", "timestamp": "2026-01-26T19:56:41.492992Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:56:42.412540Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 114.15MB", "timestamp": "2026-01-26T19:56:43.498930Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 114.15MB", "timestamp": "2026-01-26T19:56:45.502682Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 114.15MB", "timestamp": "2026-01-26T19:56:47.506487Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 114.15MB", "timestamp": "2026-01-26T19:56:49.511183Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 2.0% | RAM: 114.15MB", "timestamp": "2026-01-26T19:56:51.513816Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 2.0% | RAM: 115.02MB", "timestamp": "2026-01-26T19:56:53.517192Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 4 Delay: 5.8412s", "timestamp": "2026-01-26T19:56:53.558967Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 6.0% | RAM: 115.15MB", "timestamp": "2026-01-26T19:56:55.519114Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:56:57.413078Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 8.0% | RAM: 115.15MB", "timestamp": "2026-01-26T19:56:57.522601Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 8.0% | RAM: 115.15MB", "timestamp": "2026-01-26T19:56:59.524746Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 9.0% | RAM: 115.15MB", "timestamp": "2026-01-26T19:57:01.528598Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 5 Delay: 2.7169s", "timestamp": "2026-01-26T19:57:02.004596Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 9.0% | RAM: 114.06MB", "timestamp": "2026-01-26T19:57:03.530911Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 8.0% | RAM: 114.06MB", "timestamp": "2026-01-26T19:57:05.533678Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 8.0% | RAM: 114.06MB", "timestamp": "2026-01-26T19:57:07.535558Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 114.06MB", "timestamp": "2026-01-26T19:57:09.541664Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 114.06MB", "timestamp": "2026-01-26T19:57:11.552157Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 6 Delay: 0.8100s", "timestamp": "2026-01-26T19:57:11.940580Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:57:12.414048Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 4.0% | RAM: 116.49MB", "timestamp": "2026-01-26T19:57:13.558594Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 114.51MB", "timestamp": "2026-01-26T19:57:15.565650Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 114.51MB", "timestamp": "2026-01-26T19:57:17.570586Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 114.51MB", "timestamp": "2026-01-26T19:57:19.577502Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 114.51MB", "timestamp": "2026-01-26T19:57:21.584572Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 7 Delay: 0.0046s", "timestamp": "2026-01-26T19:57:21.659004Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 116.55MB", "timestamp": "2026-01-26T19:57:23.589327Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 114.55MB", "timestamp": "2026-01-26T19:57:25.594352Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8012', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8011}, "timestamp": "2026-01-26T19:57:27.417911Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 114.55MB", "timestamp": "2026-01-26T19:57:27.600895Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 114.55MB", "timestamp": "2026-01-26T19:57:29.608989Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 114.55MB", "timestamp": "2026-01-26T19:57:31.618092Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 8 Delay: 0.0063s", "timestamp": "2026-01-26T19:57:31.672046Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 116.56MB", "timestamp": "2026-01-26T19:57:33.620954Z", "level": "INFO"}
+{"message": "Node initialisation on port: 8010", "node": {"id": "1094e2531dd1b3c0573482126b58851f458ed967f83335c0759d1e396646964349ce7d11bbd2e1882ab2336b8ecd4c2e6e018436a6c0a7d87dcc417bb86b8d4c", "ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:56:07.570266Z", "level": "INFO"}
+{"message": "No nodes connected", "timestamp": "2026-01-26T19:56:07.570572Z", "level": "INFO"}
+INFO: Starting Automatic Benchmark on Node 1...
+Benchmark: Waiting for API at http://localhost:8050...
+{"message": "Started server process [1]", "timestamp": "2026-01-26T19:56:07.582331Z", "level": "INFO"}
+{"message": "Waiting for application startup.", "timestamp": "2026-01-26T19:56:07.582377Z", "level": "INFO"}
+{"message": "Application startup complete.", "timestamp": "2026-01-26T19:56:07.582486Z", "level": "INFO"}
+{"message": "Node initialisation on port: 8012", "node": {"id": "f46100a568dc007c0570d06f775b35a1fa8bff33066946ab893b089f554fe944072eac5bc5056561639317cf9ce4e677e9d0bd9fede625351f51283903a6c59b", "ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:56:12.406008Z", "level": "INFO"}
+{"message": "No nodes connected", "timestamp": "2026-01-26T19:56:12.407723Z", "level": "INFO"}
+{"message": "Started server process [1]", "timestamp": "2026-01-26T19:56:12.426191Z", "level": "INFO"}
+{"message": "Waiting for application startup.", "timestamp": "2026-01-26T19:56:12.426235Z", "level": "INFO"}
+{"message": "Application startup complete.", "timestamp": "2026-01-26T19:56:12.426331Z", "level": "INFO"}
+{"message": "Uvicorn running on http://0.0.0.0:8052 (Press CTRL+C to quit)", "timestamp": "2026-01-26T19:56:12.426450Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 20.0% | RAM: 107.80MB", "timestamp": "2026-01-26T19:56:13.421528Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 20.0% | RAM: 107.93MB", "timestamp": "2026-01-26T19:56:15.423985Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 18.0% | RAM: 107.93MB", "timestamp": "2026-01-26T19:56:17.428396Z", "level": "INFO"}
+connect_with_node: Already connected with this node (ac1d36f3a4f553764ea14b708fafc0d532a6fa7a10dfab532208a35b691d1b3610b9512708071a51f83fde98cca6f92304cc02e68106d65a6e786c513a9b7849{"py/object": "blockchain.p2p.message.Message", "sender_connector": {"py/object": "blockchain.p2p.socket_connector.SocketConnector", "ip": "0.0.0.0", "port": 8013, "use_docker": "True", "docker_ip": "node_four"}, "message_type": "DISCOVERY", "data": [{"py/object": "blockchain.p2p.socket_connector.SocketConnector", "ip": "0.0.0.0", "port": 8010, "use_docker": "True", "docker_ip": "node_one"}]}).
+{"message": "BENCHMARK_RESOURCES: CPU: 22.0% | RAM: 109.05MB", "timestamp": "2026-01-26T19:56:19.429957Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.0% | RAM: 109.05MB", "timestamp": "2026-01-26T19:56:21.431562Z", "level": "INFO"}
+{"message": "Uvicorn running on http://0.0.0.0:8050 (Press CTRL+C to quit)", "timestamp": "2026-01-26T19:56:07.582635Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 107.42MB", "timestamp": "2026-01-26T19:56:08.574919Z", "level": "INFO"}
+Benchmark: API is online.
+Benchmark: Initial Block Height: 1
+Benchmark: Starting load generation...
+{"message": "BENCHMARK_RESOURCES: CPU: 27.0% | RAM: 108.05MB", "timestamp": "2026-01-26T19:56:10.577447Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 17.0% | RAM: 108.30MB", "timestamp": "2026-01-26T19:56:12.585135Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 33.0% | RAM: 108.55MB", "timestamp": "2026-01-26T19:56:14.586725Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 33.9% | RAM: 108.55MB", "timestamp": "2026-01-26T19:56:16.591590Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 33.9% | RAM: 109.42MB", "timestamp": "2026-01-26T19:56:18.599015Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 36.0% | RAM: 109.67MB", "timestamp": "2026-01-26T19:56:20.605957Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.0% | RAM: 109.05MB", "timestamp": "2026-01-26T19:56:23.433715Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 22.0% | RAM: 109.05MB", "timestamp": "2026-01-26T19:56:25.441561Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8011', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:56:27.408496Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 22.0% | RAM: 109.05MB", "timestamp": "2026-01-26T19:56:27.446862Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 27.0% | RAM: 110.43MB", "timestamp": "2026-01-26T19:56:29.449011Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 20.0% | RAM: 110.43MB", "timestamp": "2026-01-26T19:56:31.453498Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8013', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:56:22.572493Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 34.9% | RAM: 109.67MB", "timestamp": "2026-01-26T19:56:22.609018Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 35.0% | RAM: 109.67MB", "timestamp": "2026-01-26T19:56:24.610704Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 36.0% | RAM: 109.67MB", "timestamp": "2026-01-26T19:56:26.612859Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 30.0% | RAM: 113.05MB", "timestamp": "2026-01-26T19:56:28.619983Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 35.9% | RAM: 113.05MB", "timestamp": "2026-01-26T19:56:30.626198Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 34.0% | RAM: 113.05MB", "timestamp": "2026-01-26T19:56:32.627561Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 35.9% | RAM: 113.05MB", "timestamp": "2026-01-26T19:56:34.637761Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 34.0% | RAM: 113.05MB", "timestamp": "2026-01-26T19:56:36.639345Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8013', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:56:37.575731Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.0% | RAM: 110.43MB", "timestamp": "2026-01-26T19:56:33.459473Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.0% | RAM: 110.43MB", "timestamp": "2026-01-26T19:56:35.462519Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 23.0% | RAM: 110.43MB", "timestamp": "2026-01-26T19:56:37.464810Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 3 Delay: 0.4373s", "timestamp": "2026-01-26T19:56:38.102810Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 18.0% | RAM: 114.30MB", "timestamp": "2026-01-26T19:56:39.468505Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 7.0% | RAM: 115.05MB", "timestamp": "2026-01-26T19:56:41.471304Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8011', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:56:42.411864Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 115.05MB", "timestamp": "2026-01-26T19:56:43.475103Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 115.05MB", "timestamp": "2026-01-26T19:56:45.483373Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 115.05MB", "timestamp": "2026-01-26T19:56:47.491018Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 3.0% | RAM: 115.05MB", "timestamp": "2026-01-26T19:56:49.500515Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 35.6% | RAM: 113.67MB", "timestamp": "2026-01-26T19:56:38.663147Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 8.0% | RAM: 115.42MB", "timestamp": "2026-01-26T19:56:40.669829Z", "level": "INFO"}
+TX Submission Failed: HTTPConnectionPool(host='localhost', port=8050): Read timed out. (read timeout=2)
+{"message": "BENCHMARK_RESOURCES: CPU: 11.0% | RAM: 117.42MB", "timestamp": "2026-01-26T19:56:42.678040Z", "level": "INFO"}
+TX Submission Failed: HTTPConnectionPool(host='localhost', port=8050): Read timed out. (read timeout=2)
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 117.42MB", "timestamp": "2026-01-26T19:56:44.683695Z", "level": "INFO"}
+TX Submission Failed: HTTPConnectionPool(host='localhost', port=8050): Read timed out. (read timeout=2)
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 117.42MB", "timestamp": "2026-01-26T19:56:46.688839Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 5.0% | RAM: 115.18MB", "timestamp": "2026-01-26T19:56:51.506215Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 18.0% | RAM: 115.43MB", "timestamp": "2026-01-26T19:56:53.509602Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 12.9% | RAM: 115.55MB", "timestamp": "2026-01-26T19:56:55.518782Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8011', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:56:57.414224Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 14.9% | RAM: 115.55MB", "timestamp": "2026-01-26T19:56:57.522774Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 15.0% | RAM: 115.55MB", "timestamp": "2026-01-26T19:56:59.524742Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 14.0% | RAM: 115.55MB", "timestamp": "2026-01-26T19:57:01.528811Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 7.0% | RAM: 115.80MB", "timestamp": "2026-01-26T19:57:03.530925Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 15.9% | RAM: 116.68MB", "timestamp": "2026-01-26T19:57:05.539009Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 15.0% | RAM: 116.68MB", "timestamp": "2026-01-26T19:57:07.545179Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 116.68MB", "timestamp": "2026-01-26T19:57:09.547511Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 116.68MB", "timestamp": "2026-01-26T19:57:11.553800Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 6 Delay: 0.8101s", "timestamp": "2026-01-26T19:57:11.940909Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8011', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:57:12.415251Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 115.63MB", "timestamp": "2026-01-26T19:57:13.557713Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 113.63MB", "timestamp": "2026-01-26T19:57:15.563706Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 113.63MB", "timestamp": "2026-01-26T19:57:17.572177Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 113.63MB", "timestamp": "2026-01-26T19:57:19.578575Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 113.63MB", "timestamp": "2026-01-26T19:57:21.587707Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 7 Delay: 0.2045s", "timestamp": "2026-01-26T19:57:21.658905Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 2.0% | RAM: 117.25MB", "timestamp": "2026-01-26T19:57:23.591568Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 3.0% | RAM: 114.78MB", "timestamp": "2026-01-26T19:57:25.594553Z", "level": "INFO"}
+TX Submission Failed: HTTPConnectionPool(host='localhost', port=8050): Read timed out. (read timeout=2)
+{"message": "BENCHMARK_RESOURCES: CPU: 3.0% | RAM: 117.55MB", "timestamp": "2026-01-26T19:56:48.712917Z", "level": "INFO"}
+TX Submission Failed: HTTPConnectionPool(host='localhost', port=8050): Read timed out. (read timeout=2)
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 117.67MB", "timestamp": "2026-01-26T19:56:50.715973Z", "level": "INFO"}
+TX Submission Failed: HTTPConnectionPool(host='localhost', port=8050): Read timed out. (read timeout=2)
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8013', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:56:52.576014Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.0% | RAM: 118.67MB", "timestamp": "2026-01-26T19:56:52.720899Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 21.0% | RAM: 118.67MB", "timestamp": "2026-01-26T19:56:54.724251Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 28.9% | RAM: 118.67MB", "timestamp": "2026-01-26T19:56:56.731073Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 31.9% | RAM: 118.67MB", "timestamp": "2026-01-26T19:56:58.735088Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8010', '0.0.0.0: 8011', '0.0.0.0: 8013']", "whoami": {"ip": "0.0.0.0", "port": 8012}, "timestamp": "2026-01-26T19:57:27.418070Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 115.91MB", "timestamp": "2026-01-26T19:57:27.604165Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 115.91MB", "timestamp": "2026-01-26T19:57:29.608406Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 114.25MB", "timestamp": "2026-01-26T19:57:31.617757Z", "level": "INFO"}
+{"message": "BENCHMARK_PROPAGATION: Block 8 Delay: 0.0063s", "timestamp": "2026-01-26T19:57:31.672055Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 3.0% | RAM: 117.75MB", "timestamp": "2026-01-26T19:57:33.621012Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 29.9% | RAM: 118.67MB", "timestamp": "2026-01-26T19:57:00.740037Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 28.0% | RAM: 119.05MB", "timestamp": "2026-01-26T19:57:02.746144Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 29.9% | RAM: 119.55MB", "timestamp": "2026-01-26T19:57:04.754367Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 33.0% | RAM: 119.55MB", "timestamp": "2026-01-26T19:57:06.756463Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8013', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:57:07.579326Z", "level": "INFO"}
+Benchmark: Load generation finished. Waiting for processing...
+{"message": "BENCHMARK_RESOURCES: CPU: 24.9% | RAM: 119.55MB", "timestamp": "2026-01-26T19:57:08.764710Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 119.55MB", "timestamp": "2026-01-26T19:57:10.775683Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 5.0% | RAM: 119.55MB", "timestamp": "2026-01-26T19:57:12.781017Z", "level": "INFO"}
+{"message": "Could not handle node message: Expecting ',' delimiter: line 1 column 621195 (char 621194)", "timestamp": "2026-01-26T19:57:14.124450Z", "level": "ERROR"}
+{"message": "Could not handle node message: Expecting value: line 1 column 1 (char 0)", "timestamp": "2026-01-26T19:57:14.218853Z", "level": "ERROR"}
+{"message": "BENCHMARK_RESOURCES: CPU: 7.0% | RAM: 119.92MB", "timestamp": "2026-01-26T19:57:14.789226Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 9.0% | RAM: 120.55MB", "timestamp": "2026-01-26T19:57:16.797578Z", "level": "INFO"}
+--- Results ---
+Total TX Confirmed: 923
+Time Elapsed: 70.03s
+TPS: 13.18
+{"message": "BENCHMARK_RESOURCES: CPU: 4.0% | RAM: 119.94MB", "timestamp": "2026-01-26T19:57:18.808408Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 119.94MB", "timestamp": "2026-01-26T19:57:20.818240Z", "level": "INFO"}
+{"message": "Node connection status", "connections": "Current connections: ['0.0.0.0: 8013', '0.0.0.0: 8012', '0.0.0.0: 8011']", "whoami": {"ip": "0.0.0.0", "port": 8010}, "timestamp": "2026-01-26T19:57:22.582826Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 4.0% | RAM: 119.95MB", "timestamp": "2026-01-26T19:57:22.829745Z", "level": "INFO"}
+{"message": "Could not handle node message: Expecting ',' delimiter: line 1 column 262171 (char 262170)", "timestamp": "2026-01-26T19:57:24.559600Z", "level": "ERROR"}
+{"message": "BENCHMARK_RESOURCES: CPU: 3.0% | RAM: 122.83MB", "timestamp": "2026-01-26T19:57:24.835093Z", "level": "INFO"}
+{"message": "Could not handle node message: Extra data: line 1 column 5 (char 4)", "timestamp": "2026-01-26T19:57:25.762599Z", "level": "ERROR"}
+{"message": "BENCHMARK_RESOURCES: CPU: 1.0% | RAM: 124.08MB", "timestamp": "2026-01-26T19:57:26.844787Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 121.74MB", "timestamp": "2026-01-26T19:57:28.857653Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 0.0% | RAM: 121.74MB", "timestamp": "2026-01-26T19:57:30.861446Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 4.0% | RAM: 121.20MB", "timestamp": "2026-01-26T19:57:32.869175Z", "level": "INFO"}
+{"message": "BENCHMARK_RESOURCES: CPU: 2.0% | RAM: 121.74MB", "timestamp": "2026-01-26T19:57:34.875869Z", "level": "INFO"}

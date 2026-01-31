@@ -1,0 +1,40 @@
+\chapter{Conclusion and Future Work} \label{ch7_conclusion}
+\markboth{Conclusion and Future Work}{Conclusion and Future Work}
+
+This thesis set out to address the widening gap between the theoretical principles of distributed systems and the practical engineering skills required to build distributed systems. By designing a Python-based blockchain system and a corresponding educational curriculum, this work provides an educational framework that aims to transform students from passive consumers of technology into active software engineers able to work on blockchain-related problems. This final chapter summarizes the primary contributions of the thesis and outlines strategic directions for future development.
+\section{Summary of Contributions} \label{sec:contributions}
+The contributions of this thesis can be broken down into two parts: advancing both the software tooling available for blockchain education and the educational methodologies used to teach it.
+
+\subsection{The Educational Blockchain Solution}
+The primary technical contribution is the development of a blockchain system designed specifically for educational use. Unlike production systems such as Bitcoin or Ethereum, which prioritize performance and security at the cost of complexity, this system prioritizes readability and modularity. The key technical achievements include:
+
+
+\begin{itemize}
+    \item \textbf{Codebase Architectural Versatility:} The architectural implementation allowed for the possibility of changing the consensus algorithms without rewriting major parts of the codebase. This enabled the feasibility of comparing Proof of Work (PoW) and Proof of Stake (PoS) within a similar and controlled environment, isolating the consensus layer from the network or the API layer.
+    \item \textbf{Containerized Network Simulation:} The integration of Docker orchestration allowed students to understand and run P2P networks on personal hardware, lowering the barrier to entry for studying distributed systems concepts like propagation latency and resource utilization.
+    \item \textbf{Visual Observability:} The development of the web-based blockchain explorer provided students with real-time visual feedback on the state of the blockchain ledger.
+\end{itemize}
+
+\subsection{The Laboratory Curriculum}
+The educational contribution consists of a 5-module curriculum that guides students through the understanding of blockchain systems. Validated through an initial study, the curriculum targeted the following aspects:
+\begin{itemize}
+    \item \textbf{Scaffolding Approach:} By providing starter code, which abstracts concepts such as P2P networking in Module 1 and consensus mechanisms in Module 2, students were allowed to focus on the logic of the main blockchain task they were attempting to solve.
+    \item \textbf{Benchmark Analysis:} Module 3 shifts the focus from having a functional system to evaluating the system, with the aim to create an engineering mindset regarding concepts such as benchmarking and metrics (TPS, Latency).
+    \item \textbf{Architectural Criticism:} Module 5 forces students to understand the limitations of their system architecture, providing them with an opportunity to think of their own innovative solutions to system limitations.
+\end{itemize}
+
+\section{Future Work} \label{sec:future_work}
+While the current system meets its educational objectives, the initial study identified specific areas where the framework can be evolved to improve both the technical solution and the student learning experience.
+
+\subsection{Educational Refinement}
+The evaluation in Chapter~\ref{ch6_evaluation} revealed that the learning curve for implementing consensus mechanisms (Module 2) and system extensibility (Module 5) was steeper than anticipated. Future iterations of the curriculum should introduce more intermediate introductory tasks before diving into deep technical concepts such as the difficulty adjustment algorithm in Proof of Work, which proved to be a significant stumbling block. Additionally, providing the students with more information about concurrency would allow them to focus more on the core algorithmic logic.
+
+\subsection{Runtime Environment and Language Migration}
+A critical technical limitation identified in this work is the performance bottleneck imposed by the Python Global Interpreter Lock (GIL). While Python's expressiveness makes it ideal for educational readability, the GIL prevents true parallel execution, affecting scalability and capping the throughput of the system.
+
+To address this, future work should explore migrating the core system implementation to a language that supports true multi-threading, possibly as part of more advanced modules of the curriculum. Options include:
+\begin{itemize}
+    \item \textbf{Golang (Go):} Go offers native concurrency primitives (goroutines) that map well to distributed systems concepts. Its syntax is simpler than C++, making it a potential candidate for upper-level undergraduate courses.
+    \item \textbf{Kotlin:} As a modern JVM language, Kotlin offers high performance and robust concurrency (coroutines) while remaining syntactically approachable for students familiar with Java or Python.
+\end{itemize}
+Transitioning to either language would represent a compromise, gaining better system performance and parallelism at the cost of a higher barrier to entry for students with limited systems-level programming experience.

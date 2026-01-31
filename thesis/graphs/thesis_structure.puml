@@ -1,0 +1,61 @@
+@startuml Thesis_Structure
+
+' =======================
+' Style Configuration
+' =======================
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam dpi 300
+skinparam arrowColor black
+skinparam nodeBackgroundColor white
+skinparam nodeBorderColor black
+
+title Thesis Structure: The Educational Ecosystem
+
+' =======================
+' Nodes
+' =======================
+
+rectangle "Thesis: Educational Blockchain System" as Root {
+}
+
+package "1. Technical Platform\n(Chapter 3 & 4)" as Tech {
+    rectangle "Python Node" as Node
+    rectangle "Consensus Engine\n(PoW / PoS)" as Consensus
+    rectangle "P2P Networking" as Net
+    rectangle "Vue.js Explorer\n(Visualization)" as Explorer
+}
+
+package "2. Educational Curriculum\n(Chapter 5)" as Edu {
+    rectangle "Mod 1: Network Fundamentals" as M1
+    rectangle "Mod 2: Consensus Mechanisms" as M2
+    rectangle "Mod 3: Performance Analysis" as M3
+    rectangle "Mod 4: Smart Assets" as M4
+    rectangle "Mod 5: System Extensibility" as M5
+}
+
+' =======================
+' Connections
+' =======================
+
+Root --> Tech
+Root --> Edu
+
+' Technical Relationships
+Node --> Consensus
+Node --> Net
+Node -right-> Explorer : API Data
+
+' Curriculum Flow
+M1 -right-> M2
+M2 -right-> M3
+M3 -down-> M4
+M4 -left-> M5
+
+' Linking Tech to Modules (Optional/Implicit)
+' Net ..> M1
+' Consensus ..> M2
+
+@enduml

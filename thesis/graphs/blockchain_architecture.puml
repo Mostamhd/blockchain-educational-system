@@ -1,0 +1,196 @@
+@startuml Blockchain_Architecture
+
+' =======================
+' Rendering / Style
+' =======================
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam classAttributeIconSize 0
+skinparam defaultFontName Arial
+skinparam dpi 200
+
+' =======================
+' Classes
+' =======================
+
+class Node {
+    - ip : str
+    - port : int
+    - api_port : int
+    - key_file : str
+    - transaction_pool : TransactionPool
+    - wallet : Wallet
+    - blockchain : Blockchain
+    - p2p : SocketCommunication
+    - api : NodeAPI
+    - keep_running : bool
+    --
+    + get_blockchain()
+    + start_p2p()
+    + start_node_api()
+    + start_forging()
+    + start_produce_block()
+    + run_forging()
+    + run_produce_block()
+    + stop()
+    + produce_block()
+    + create_coinbase_transaction()
+    + handle_transaction(transaction)
+    + handle_block(block)
+    + request_chain()
+    + handle_blockchain_request(requesting_node)
+    + handle_blockchain(blockchain)
+    + forge()
+    + should_produce_block()
+}
+
+class Blockchain {
+    - blocks : List<Block>
+    - account_model : AccountModel
+    - pos : ProofOfStake
+    - block_time : int
+    - block_reward : int
+    - peers : List
+    --
+    + get_block_by_height(block_height)
+    + add_block(block)
+    + to_dict()
+    + block_count_valid(block)
+    + last_block_hash_valid(block)
+    + get_covered_transaction_set(transactions)
+    + transaction_covered(transaction)
+    + execute_transactions(transactions)
+    + execute_transaction(transaction)
+    + next_forger()
+    + create_block(transactions_from_pool, forger_wallet)
+    + transaction_exists(transaction)
+    + get_transaction(transaction_signature)
+    + forger_valid(block)
+    + transactions_valid(transactions)
+    + get_address_balance(public_key)
+    + get_address_transactions(public_key)
+}
+
+class Block {
+    - transactions : List<Transaction>
+    - last_hash : str
+    - forger : str
+    - block_height : int
+    - timestamp : float
+    - signature : str
+    - hash : str
+    --
+    + {static} genesis()
+    + to_dict()
+    + payload()
+    + sign(signature)
+}
+
+class Transaction {
+    - sender_public_key : str
+    - receiver_public_key : str
+    - amount : float
+    - type : str
+    - id : str
+    - timestamp : float
+    - signature : str
+    - hash : str
+    --
+    + to_dict()
+    + sign(signature)
+    + payload()
+    + equals(transaction)
+}
+
+class Wallet {
+    - key_pair : PrivateKey
+    --
+    + from_key(file_path)
+    + sign(data)
+    + {static} signature_valid(data, signature, public_key_string)
+    + public_key_string()
+    + create_coinbase_transaction(receiver, amount, type)
+    + create_transaction(receiver, amount, type)
+    + create_block(transactions, last_hash, block_height)
+}
+
+class ProofOfStake {
+    - stakers : Dict
+    --
+    + set_genesis_node_stake()
+    + update(public_key_string, stake)
+    + get(public_key_string)
+    + validator_lots(seed)
+    + winner_lot(lots, seed)
+    + forger(last_block_hash)
+}
+
+class TransactionPool {
+    - transactions : List<Transaction>
+    --
+    + add_transaction(transaction)
+    + transaction_exists(transaction)
+    + remove_from_pool(transactions)
+    + forging_required()
+}
+
+class SocketCommunication {
+    - ip : str
+    - port : int
+    - peers : List
+    - peer_discovery_handler : PeerDiscoveryHandler
+    - socket_connector : SocketConnector
+    - node : Node
+    --
+    + init_server()
+    + connect_to_first_node()
+    + start_socket_communication(node)
+    + inbound_node_connected(connected_node)
+    + outbound_node_connected(connected_node)
+    + node_message(connected_node, message)
+    + send(receiver, message)
+    + broadcast(message)
+}
+
+class Lot {
+    - public_key : str
+    - iteration : int
+    - last_block_hash : str
+    --
+    + lot_hash()
+}
+
+class AccountModel {
+    - accounts : List
+    - balances : Dict
+    --
+    + add_account(public_key_string)
+    + get_balance(public_key_string)
+    + update_balance(public_key_string, amount)
+}
+
+' =======================
+' Relationships
+' =======================
+
+' Composition
+Node *-- Blockchain
+Node *-- TransactionPool
+Node *-- Wallet
+Blockchain *-- ProofOfStake
+Node *-- SocketCommunication
+Blockchain *-- AccountModel
+Blockchain *-- "1..*" Block
+
+' Aggregation
+TransactionPool o-- "0..*" Transaction
+Block o-- "0..*" Transaction
+
+' Association
+
+
+' Dependency
+ProofOfStake ..> Lot
+
+@enduml

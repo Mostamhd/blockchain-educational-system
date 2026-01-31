@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  compiler:
+    build: .
+    image: thesis-compiler
+    volumes:
+      - .:/workdir
+    # Output everything to a 'build' directory to keep root clean
+    command: latexmk -pdfxe -bibtex -interaction=nonstopmode -synctex=1 -file-line-error -outdir=build main.tex

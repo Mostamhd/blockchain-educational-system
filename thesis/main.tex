@@ -1,0 +1,96 @@
+\documentclass[a4paper,12pt]{report}
+
+%--------------------------------------------------------Packages---------------------------------------------------------------------
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{float}
+\usepackage{ fancybox }
+\usepackage{comment}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage[table]{xcolor}
+\usepackage{caption}
+\usepackage[numbers]{natbib}
+\usepackage{listings}
+\usepackage{tcolorbox}
+% \usepackage{bidi}
+\include{preambule}
+% 
+%--------------------------------------------------------Document---------------------------------------------------------------------
+\begin{document}
+% \dominitoc
+%--------------------------------------------------------cover----------------------------------------------------------------
+\include{cover}
+
+\pagenumbering{roman}
+
+% \clearpage
+% \newpage
+% \thispagestyle{empty}
+% \hfill
+% \strut
+
+%--------------------------------------------------------Résumé-----------------------------------------------------------------------
+\include{page_annotation}
+\include{acknowledgements}
+
+
+
+\include{abstract}
+
+%--------------------------------------------------------Table ds matières-----------------------------------------------------------
+\setcounter{tocdepth}{1}
+\tableofcontents
+\listoffigures
+\listoftables
+%--------------------------------------------------------Le corps---------------------------------------------------------------------
+\clearpage
+\pagenumbering{arabic}
+
+%--------------------------------------------------------Introduction---------------------------------------------------------------------
+\setcounter{chapter}{1}
+\setcounter{section}{0}
+\include{chapter1}%
+
+\setcounter{chapter}{1}
+\setcounter{section}{0}
+% \part{Theoretical Framework}
+\include{chapter2}%
+
+\setcounter{chapter}{2}
+\setcounter{section}{0}
+% \part{Methodology and Implementation}
+\include{chapter3}%
+
+\setcounter{chapter}{3}
+\setcounter{section}{0}
+\include{chapter4}%
+
+\setcounter{chapter}{4}
+\setcounter{section}{0}
+\include{chapter5}%
+
+% \part{Results Evaluation \& Discussion}
+\setcounter{chapter}{5}
+\setcounter{section}{0}
+\include{chapter6}%
+
+% \part{Conclusion}
+\setcounter{chapter}{6}
+\setcounter{section}{0}
+\include{chapter7}%
+
+% \include{statement}%
+%--------------------------------------------------------Bibliographie-------------------------------------------------------
+\pagenumbering{roman}
+
+\bibliographystyle{unsrtnat}
+\bibliography{Bibliographie}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\end{document} 
