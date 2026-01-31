@@ -7,7 +7,7 @@ Building upon the theoretical foundations of distributed ledger technologies pre
 \section{Requirement Analysis}
 \label{ch3_requirements}
 
-The system requirements were derived from the educational objectives of the curriculum modules defined in Chapter~\ref{ch5_curriculum}. Following software engineering best practices, the requirements are categorized into two sections: Non-Functional Requirements and Functional Requirements \cite{sommerville2011software}.
+The system requirements were derived from the educational objectives of the curriculum modules defined in Chapter~\ref{ch5_curriculum}. Following software engineering best practices, the requirements are categorized into the following two sections: Non-Functional Requirements and Functional Requirements~\cite{sommerville2011software}.
 
 \subsection{Non-Functional Requirements}
 
@@ -16,7 +16,7 @@ The system requirements were derived from the educational objectives of the curr
     The codebase must follow the principle of Separation of Concerns. In particular, networking functionality must be decoupled from core business and ledger logic to facilitate modifications and extensibility.
 
     \item \textbf{Readability:}  
-    As the system is intended for educational use, source code readability must be prioritized over production-level optimizations. The implementation should leverage Python’s readable syntax to enhance conceptual understanding.
+    As the system is intended for educational use, source code readability must be prioritized over production-level optimizations. The implementation should leverage Python's readable syntax to enhance conceptual understanding.
 
     \item \textbf{Deployability:}  
     The system must support containerization using Docker to ensure consistent deployment and execution across different student operating systems.
@@ -43,28 +43,22 @@ To function as an educational platform for computer science students and individ
 
 \section{System Architecture} \label{ch3_architecture}
 
-The system adopts a multi-layered architecture pattern, dividing the system into three layers: the Networking Layer, the Core Blockchain Layer, and the Application Interface Layer (API).
+The system architecture adopts a multi-layered architecture pattern, dividing the system into three layers: the Networking Layer, the Core Blockchain Layer, and the Application Interface Layer (API).
 
 \subsection{The Networking Layer (P2P)}
-This layer handles the raw TCP socket connections. It implements a custom message handler that serializes Python objects into JSON payloads for transmission. By abstracting the networking logic here, the upper layers can simply invoke `broadcast(message)` without managing the connection states.
+This layer handles the raw TCP socket connections. It implements a custom message handler that serializes Python objects into JSON payloads for transmission. By abstracting the networking logic here, the upper layers can simply invoke \enquote{broadcast(message)} without managing the connection states.
 
 \subsection{The Core Blockchain Layer}
-This is the central engine of the system. It contains the data structures (Block, Transaction) and the validation logic. To support the educational requirement of swappable consensus mechanisms, the `Blockchain` class is designed to delegate block validation and creation to a dedicated consensus component. Rather than including the mining or staking logic directly within the blockchain management component, the blockchain instantiates a specific consensus class (e.g., `ProofOfStake` or `ProofOfWork`). This approach allows the consensus algorithm to be replaced or modified in isolation without affecting the transaction processing or peer-to-peer logic.
+This is the central engine of the system. It contains the data structures (Block, Transaction) and the validation logic. To support the educational requirement of swappable consensus mechanisms, the \enquote{Blockchain} class is designed to delegate block validation and creation to a dedicated consensus component. Rather than including the mining or staking logic directly within the blockchain management component, the blockchain instantiates a specific consensus class (e.g., `ProofOfStake` or `ProofOfWork`). This approach allows the consensus algorithm to be replaced or modified in isolation without affecting the transaction processing or peer-to-peer logic.
 
 \subsection{The Application Interface Layer (API)}
-Built using \textbf{FastAPI}, this layer exposes the node's internal state to the external world. It serves as the bridge for the ``Blockchain Explorer'' and allows students and users to manually trigger actions (e.g., `POST /connect\_peer`) during laboratory exercises.
+The Application Interface Layer serves as the primary gateway for external interaction with the blockchain node. It exposes a comprehensive set of RESTful endpoints that provide real-time access to the node's internal state, including the transaction pool, block history, and peer connections. This layer acts as the backend for the \enquote{Blockchain Explorer} visualization tool and empowers students to interact programmatically with the system. During laboratory exercises, students can manually trigger specific network behaviors such as initiating peer connections (e.g., via `POST /connect\_peer`) or submitting transactions thereby facilitating active experimentation and debugging.
 
 \section{Detailed Component Design} \label{ch3_detailed_design}
 
 \subsection{Class Design and Relationships}
-The Object-Oriented structure of the system is designed to mirror the theoretical components of a blockchain. Figure~\ref{fig:class_diagram} illustrates the relationships between the core classes.
+The object oriented structure of the system is designed to mirror the theoretical components of a blockchain. Figure~\ref{fig:class_diagram} illustrates the relationships between the core classes.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{figures/Blockchain_Architecture.png}
-    \caption{Simplified Component Class Diagram illustrating the relationship between Node, Blockchain, and Consensus Strategy.}
-    \label{fig:class_diagram}
-\end{figure}
 
 Key relationships include:
 \begin{itemize}
@@ -73,12 +67,20 @@ Key relationships include:
     \item \textbf{Component-based Consensus:} The `Blockchain` integrates a dedicated consensus class. In the reference system implemented in Chapter~\ref{ch4_implementation}, this is the `ProofOfStake` component. This design choice simplifies the initial codebase while retaining the flexibility to swap the consensus mechanism (e.g., to `ProofOfWork`) as an educational exercise in Chapter~\ref{ch5_curriculum}.
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth, height=1\textheight, keepaspectratio]{figures/Blockchain_Architecture.png}
+    \caption{Simplified Component Class Diagram illustrating the relationship between Node, Blockchain, and Consensus.}
+    \label{fig:class_diagram}
+\end{figure}
+
+
 \subsection{Data Flow and Transaction Lifecycle}
-Understanding how data moves through the system is critical for the ``Performance Analysis'' module in Chapter~\ref{ch5_curriculum}. The lifecycle of a transaction follows the flow illustrated in Figure~\ref{fig:tx_flow}.
+Understanding how data moves through the system is critical for the \enquote{Performance Analysis} module in Chapter~\ref{ch5_curriculum}. Figure~\ref{fig:tx_flow} illustrates the transaction lifecycle using a UML Activity Diagram, where partitions (swimlanes) are employed to delineate the specific system components—such as the Node, P2P Network, and Consensus engine—responsible for each stage of execution. Additionally, the diagram adheres to standard UML conventions by utilizing rhombus-shaped decision nodes to represent control flow divergence based on boolean conditions, such as signature validation and loop checks.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[height=0.95\textheight, keepaspectratio]{figures/transaction_lifecycle_activity.png}
+    \includegraphics[height=1\textheight, keepaspectratio]{figures/transaction_lifecycle_activity.png}
     \caption{Transaction Activity Diagram: Illustrating the sequence of operations from creation to finalization.}
     \label{fig:tx_flow}
 \end{figure}
