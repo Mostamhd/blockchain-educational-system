@@ -9,7 +9,7 @@ The curriculum is designed to transform the learning process for the students fr
 
 \section{Approach and Methodology} \label{ch5_pedagogy}
 
-The design of the laboratory exercises is inspired by the theory of Constructionist Learning, proposed by Seymour Papert~\cite{papert1991situating}. This theory states that learning is most effective when students are actively engaged in constructing tangible objects in the real world, rather than acquiring knowledge through passive transmission or consumption. In the context of Computer Science education, this means moving beyond theory, static simulations, or black-box interactions with production networks (such as sending transactions on a public Testnet) toward a deeper system understanding, enabling students to fully understand the concepts through practice and by gaining experience in making modifications to the system.\newpage To facilitate this, the curriculum adopts a Problem-Based Learning methodology. Rather than editing a finished system, students are presented with engineering challenges that mirror real-world distributed systems problems. To ensure a rigorous, scientific approach, each of the five modules follows a standardized structure inspired by the Active Learning framework~\cite{freeman2014active}. This structure consists of:
+The design of the laboratory exercises is inspired by the theory of Constructionist Learning, proposed by Seymour Papert~\cite{papert1991situating}. This theory states that learning is most effective when students are actively engaged in constructing tangible objects in the real world, rather than acquiring knowledge through passive transmission or consumption. In the context of Computer Science education, this means moving beyond theory, static simulations, or black-box interactions with production networks (such as sending transactions on a public Testnet) toward a deeper system understanding, enabling students to understand the concepts through practice and by gaining experience in making modifications to the system.\newpage To facilitate this, the curriculum adopts a Problem-Based Learning methodology. Rather than editing a finished system, students are presented with engineering challenges that mirror real-world distributed systems problems. To ensure a rigorous, scientific approach, each of the five modules follows a standardized structure inspired by the Active Learning framework~\cite{freeman2014active}. This structure consists of:
 
 
 \begin{enumerate}
@@ -19,22 +19,19 @@ The design of the laboratory exercises is inspired by the theory of Construction
     \item \textbf{Analysis of Findings:} Record observations of the system's behavior in relation to the actions taken in the previous steps.
     \item \textbf{Learning Outcome:} In this phase, and upon completing the previous steps, students are presented with a correlation to connect their experimental results with the theoretical bounds established in Chapter~\ref{ch2_theoretical_framework}, solidifying their gained knowledge of distributed systems and blockchains.
 \end{enumerate}
-
 This structured approach addresses the educational disconnect identified in Section~\ref{ch1_motivation}, providing a safe environment where breaking and modifying the system facilitates constructive learning rather than causing system failure, thus fostering deeper engagement of both students and teachers in the learning process.
 
 \newpage
 
 \section{Repository Structure and Setup} \label{ch5_repo_structure}
 
-To support the modular nature of the curriculum, a dedicated GitHub repository has been organized to provide entry points for each learning module: \url{https://github.com/Mostamhd/blockchain-educational-system} \label{ch5_repo_url}
-
+To support the modular nature of the curriculum, a dedicated GitHub repository has been organized to provide entry points for each learning module: \\\url{https://github.com/Mostamhd/blockchain-educational-system} \label{ch5_repo_url}\\
 The repository is structured to provide the necessary codebase to start working on each module for the students. For each module, two directories are provided:
 \begin{itemize}
     \item \textbf{Starter/}: This directory contains the baseline code required to initiate the module. Although the provided code is functional, it is intentionally incomplete. It serves as a starting point from which students are expected to implement the required features and address the problem statement associated with the module.
 
     \item \textbf{Solution/}: This directory contains a reference implementation corresponding to each module. It is intended to support self-assessment and solution validation. Due to space limitations, the complete solution implementations are not reproduced in full within this thesis. Instead, only the most critical modifications and design decisions are discussed, with the full reference implementations available in the accompanying repository under this solution directory.
 \end{itemize}
-
 \textbf{Note:} While the full solutions are provided to ensure no student remains blocked, however, they are strongly encouraged to attempt each task independently before consulting the \texttt{Solution/} directory. The primary educational value of the curriculum lies in the process of system design, implementation, and debugging, rather than in the examination of completed code alone.
 
 \newpage
@@ -193,7 +190,7 @@ The default node behavior is designed for Proof of Stake. The student must alter
     \begin{itemize}
         \item Instead of waiting for a turn, each node must continuously attempt to create a block and find the target nonce by calling the \texttt{mine()} method created in the previous task, Task 1.
         \item Ensure the code waits until the mining function returns a valid nonce and a block, unless another node managed to solve the mining problem before the current node does.
-        \item If the node managed to solve the mining problem before the other nodes in the network, then immediately broadcast the mined block to the network upon success.
+        \item If the node managed to solve the mining problem before other nodes, then it immediately broadcast the mined block to the network upon success.
         \item Ensure that the blockchain network difficulty variable is updated periodically based on blockchain network updates interval to maintain the block time interval (e.g., the difficulty variable is updated after each 5 new blocks generations by the network).
     \end{itemize}
 \end{enumerate}
@@ -364,7 +361,6 @@ class BenchmarkSuite:
 
 Upon the completion of the task, students conduct a two-step verification process to validate both the correctness of their implementation, the behavior of the network under load, and perform the following verifications:
 
-
 \textbf{1. Metric Verification:}
 Before executing the full stress test, students confirm that the implemented logging mechanism correctly captures relevant network metrics, by performing the following verifications:
 
@@ -395,7 +391,7 @@ This module aims to illustrate the difference between protocol-imposed limits (e
 \newpage
 \section{Module 4: Application Layer and Smart Assets} \label{ch5_module4}
 
-While previous modules focused on the infrastructure and architecture aspects of the system, this module shifts the focus to the application layer. In this stage, students transition from analyzing the blockchain as a mechanism for currency transfer to utilizing it as a secure and immutable state machine capable of storing and managing arbitrary application data. Rather than serving exclusively as a financial ledger, this module aims to show students  how blockchain systems can be used as a general-purpose platform for applications that benefit from the blockchain systems' immutability, transparency, and decentralization .
+While previous modules focused on the infrastructure and architecture aspects of the system, this module shifts the focus to the application layer. In this stage, students transition from analyzing the blockchain as a mechanism for currency transfer to utilizing it as a secure and immutable state machine capable of storing and managing arbitrary application data. Rather than serving exclusively as a financial ledger, this module aims to show students  how blockchain systems can be used as a general-purpose platform for applications that benefit from the blockchain systems' immutability, transparency, and decentralization.
 
 \subsection{Problem Statement}
 
@@ -614,7 +610,7 @@ def create_block(self, transactions_from_pool, forger_wallet):
 \end{lstlisting}
 % \newpage
 \subsubsection*{Task 2: Schema Enforcement}
-This implementation enforces the application layer to utilize off-chain storage for transactions of type \enquote{STORE\_FILE}. Listing~\ref{lst:mod5_schema} below, provide a code snippet of a possible implementation.
+This implementation enforces the application layer to only store the off-chain storage data hash for transactions of type \enquote{STORE\_FILE}. Listing~\ref{lst:mod5_schema} below provides a code snippet of a possible implementation.
 
 \begin{lstlisting}[language=Python, caption=Transaction Schema Validation, label=lst:mod5_schema]
 
