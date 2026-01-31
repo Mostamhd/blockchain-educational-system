@@ -1,16 +1,16 @@
-class TestTransactionModel:
-    def test_default_properties(self, transaction):
-        data_map = transaction.to_dict()
+class TestTxProperties:
+    def test_schema(self, transaction):
+        m = transaction.to_dict()
 
-        assert data_map["id"]
-        assert data_map["timestamp"]
-        assert data_map["amount"] == 1
-        assert data_map["type"] == "transfer"
+        assert m["id"]
+        assert m["timestamp"]
+        assert m["amount"] == 1
+        assert m["type"] == "transfer"
 
-    def test_signing_process(self, transaction, wallet_signature):
+    def test_auth_signature(self, transaction, wallet_signature):
         transaction.sign(wallet_signature)
-        data_map = transaction.to_dict()
+        m = transaction.to_dict()
 
-        assert data_map["id"]
-        assert data_map["timestamp"]
-        assert data_map["signature"] != ""
+        assert m["id"]
+        assert m["timestamp"]
+        assert m["signature"] != ""

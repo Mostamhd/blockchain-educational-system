@@ -4,34 +4,33 @@ from blockchain.transaction.transaction_pool import TransactionPool
 from blockchain.utils.helpers import BlockchainUtils
 
 
-class TestBlockchainLogic:
-    def test_insufficient_balance_transaction(self):
-        blockchain = Blockchain()
-        pool = TransactionPool()
+class TestRulesEngine:
+    def test_balance_check(self):
+        c = Blockchain()
+        p = TransactionPool()
         
-        alice = Wallet()
-        bob = Wallet()
+        u1 = Wallet()
+        u2 = Wallet()
         
-        invalid_tx = alice.create_transaction(bob.public_key_string(), 10, "TRANSFER")
-        pool.add_transaction(invalid_tx)
+        t = u1.create_transaction(u2.public_key_string(), 10, "TRANSFER")
+        p.add_transaction(t)
         
-        covered_transactions = blockchain.get_covered_transaction_set(pool.transactions)
+        set_tx = c.get_covered_transaction_set(p.transactions)
         
-        assert len(covered_transactions) == 0
-        assert not blockchain.transaction_covered(invalid_tx)
+        assert len(set_tx) == 0
+        assert not c.transaction_covered(t)
 
-    def test_transaction_replay_prevention_logic(self):
-        blockchain = Blockchain()
-        alice = Wallet()
-        miner = Wallet()
+    def test_duplication_check(self):
+        c = Blockchain()
+        u1 = Wallet()
+        m = Wallet()
         
-        exchange_tx = miner.create_transaction(alice.public_key_string(), 10, "EXCHANGE")
+        tx = m.create_transaction(u1.public_key_string(), 10, "EXCHANGE")
         
-        latest_hash = BlockchainUtils.hash(blockchain.blocks[-1].payload()).hex()
+        lh = BlockchainUtils.hash(c.blocks[-1].payload()).hex()
         
-        block = miner.create_block([exchange_tx], latest_hash, 1)
-        blockchain.add_block(block)
+        b = m.create_block([tx], lh, 1)
+        c.add_block(b)
         
-        assert blockchain.transaction_exists(exchange_tx)
-        
-        assert blockchain.transaction_exists(exchange_tx)
+        assert c.transaction_exists(tx)
+        assert c.transaction_exists(tx)

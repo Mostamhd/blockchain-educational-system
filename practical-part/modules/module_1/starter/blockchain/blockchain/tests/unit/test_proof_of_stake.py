@@ -1,36 +1,36 @@
 from blockchain.pos.proof_of_stake import ProofOfStake
 
 
-class TestConsensusMechanism:
-    def test_genesis_stake_exists(self):
-        consensus = ProofOfStake()
-        assert consensus.stakers
-        assert len(consensus.stakers) == 1
+class TestConsensus:
+    def test_genesis_config(self):
+        cp = ProofOfStake()
+        assert cp.stakers
+        assert len(cp.stakers) == 1
 
-    def test_stake_registry_updates(self):
-        consensus = ProofOfStake()
-        consensus.update("alice", 10)
-        consensus.update("bob", 100)
+    def test_stake_modifications(self):
+        cp = ProofOfStake()
+        cp.update("a", 10)
+        cp.update("b", 100)
 
-        assert consensus.get("alice") == 10
-        assert consensus.get("bob") == 100
-        assert consensus.get("charlie") is None
+        assert cp.get("a") == 10
+        assert cp.get("b") == 100
+        assert cp.get("c") is None
 
-        consensus.update("alice", 5)
-        assert consensus.get("alice") == 15
+        cp.update("a", 5)
+        assert cp.get("a") == 15
 
-    def test_lot_generation_count(self):
-        consensus = ProofOfStake()
-        consensus.update("alice", 2)
-        lot_pool = consensus.validator_lots("seed")
+    def test_lot_allocation(self):
+        cp = ProofOfStake()
+        cp.update("a", 2)
+        pool = cp.validator_lots("seed")
         
-        alice_lots = [item for item in lot_pool if item.public_key == "alice"]
-        assert len(alice_lots) == 2
+        a_lots = [l for l in pool if l.public_key == "a"]
+        assert len(a_lots) == 2
 
-    def test_leader_election_integrity(self):
-        consensus = ProofOfStake()
-        consensus.update("alice", 10)
+    def test_selection_output(self):
+        cp = ProofOfStake()
+        cp.update("a", 10)
         
-        elected_forger = consensus.forger("random_seed_string")
-        assert isinstance(elected_forger, str)
-        assert elected_forger in consensus.stakers.keys()
+        winner = cp.forger("seed")
+        assert isinstance(winner, str)
+        assert winner in cp.stakers.keys()

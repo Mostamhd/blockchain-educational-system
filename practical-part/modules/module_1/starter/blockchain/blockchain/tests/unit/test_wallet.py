@@ -1,34 +1,33 @@
 from blockchain.transaction.wallet import Wallet
 
 
-class TestWalletFunctionality:
-    def test_crypto_signature_checks(self, transaction):
-        user_wallet = Wallet()
-        sig = user_wallet.sign(transaction.payload())
+class TestWalletBehavior:
+    def test_signature_validity(self, transaction):
+        w = Wallet()
+        s = w.sign(transaction.payload())
         
-        assert Wallet.signature_valid(transaction.payload(), sig, user_wallet.public_key_string())
-        
-        assert not Wallet.signature_valid({"data": "garbage"}, sig, user_wallet.public_key_string())
+        assert Wallet.signature_valid(transaction.payload(), s, w.public_key_string())
+        assert not Wallet.signature_valid({"x": "y"}, s, w.public_key_string())
 
-    def test_key_format_standards(self):
-        user_wallet = Wallet()
-        assert "0x" in user_wallet.public_key_string()
+    def test_public_key_standard(self):
+        w = Wallet()
+        assert "0x" in w.public_key_string()
 
-    def test_tx_generation(self):
-        sender_wallet = Wallet()
-        receiver_wallet = Wallet()
-        new_tx = sender_wallet.create_transaction(receiver_wallet.public_key_string(), 10, "TRANSFER")
+    def test_transaction_initiation(self):
+        w1 = Wallet()
+        w2 = Wallet()
+        tx = w1.create_transaction(w2.public_key_string(), 10, "TRANSFER")
         
-        assert new_tx.sender_public_key == sender_wallet.public_key_string()
-        assert new_tx.receiver_public_key == receiver_wallet.public_key_string()
-        assert new_tx.amount == 10
-        assert new_tx.signature != ""
+        assert tx.sender_public_key == w1.public_key_string()
+        assert tx.receiver_public_key == w2.public_key_string()
+        assert tx.amount == 10
+        assert tx.signature != ""
         
-    def test_block_minting(self, transaction_pool):
-        minter_wallet = transaction_pool["transaction_from_wallet"]["wallet"]
-        tx_source = transaction_pool["pool"]
+    def test_block_generation(self, transaction_pool):
+        w = transaction_pool["transaction_from_wallet"]["wallet"]
+        p = transaction_pool["pool"]
         
-        minted_block = minter_wallet.create_block(tx_source.transactions, "last_hash", 1)
-        assert minted_block.forger == minter_wallet.public_key_string()
-        assert minted_block.signature != ""
-        assert minted_block.transactions == tx_source.transactions
+        b = w.create_block(p.transactions, "prev", 1)
+        assert b.forger == w.public_key_string()
+        assert b.signature != ""
+        assert b.transactions == p.transactions

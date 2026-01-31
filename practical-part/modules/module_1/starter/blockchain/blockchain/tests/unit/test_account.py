@@ -6,52 +6,52 @@ from blockchain.transaction.wallet import Wallet
 from blockchain.utils.helpers import BlockchainUtils
 
 
-class TestAccountSystem:
-    def test_balance_updates_correctly(self):
-        user_wallet = Wallet()
-        user_pub_key = user_wallet.public_key_string()
-        accounts = AccountModel()
+class TestAccountBalances:
+    def test_update_workflow(self):
+        w = Wallet()
+        addr = w.public_key_string()
+        am = AccountModel()
 
-        accounts.add_account(user_pub_key)
-        assert accounts.balances[user_pub_key] == 0
+        am.add_account(addr)
+        assert am.balances[addr] == 0
         
-        accounts.update_balance(user_pub_key, 5)
-        assert accounts.balances[user_pub_key] == 5
+        am.update_balance(addr, 5)
+        assert am.balances[addr] == 5
 
-    def test_ledger_state_updates(self):
-        chain_instance = Blockchain()
-        mempool = TransactionPool()
+    def test_chain_state_persistence(self):
+        bc = Blockchain()
+        tp = TransactionPool()
 
-        alice = Wallet()
-        bob = Wallet()
-        bank = Wallet()
-        validator = Wallet()
+        u1 = Wallet()
+        u2 = Wallet()
+        src = Wallet()
+        v = Wallet()
 
-        funding_tx = bank.create_transaction(
-            alice.public_key_string(), 10, "EXCHANGE"
+        tx1 = src.create_transaction(
+            u1.public_key_string(), 10, "EXCHANGE"
         )
-        mempool.add_transaction(funding_tx)
+        tp.add_transaction(tx1)
 
-        pending_txs = chain_instance.get_covered_transaction_set(mempool.transactions)
-        prev_hash = BlockchainUtils.hash(chain_instance.blocks[-1].payload()).hex()
-        next_height = chain_instance.blocks[-1].block_height + 1
+        txs = bc.get_covered_transaction_set(tp.transactions)
+        h0 = BlockchainUtils.hash(bc.blocks[-1].payload()).hex()
+        idx = bc.blocks[-1].block_height + 1
         
-        first_block = validator.create_block(pending_txs, prev_hash, next_height)
-        chain_instance.add_block(first_block)
-        mempool.remove_from_pool(first_block.transactions)
+        b1 = v.create_block(txs, h0, idx)
+        bc.add_block(b1)
+        tp.remove_from_pool(b1.transactions)
 
-        transfer_tx = alice.create_transaction(bob.public_key_string(), 5, "TRANSFER")
-        mempool.add_transaction(transfer_tx)
+        tx2 = u1.create_transaction(u2.public_key_string(), 5, "TRANSFER")
+        tp.add_transaction(tx2)
 
-        pending_txs_2 = chain_instance.get_covered_transaction_set(mempool.transactions)
-        prev_hash_2 = BlockchainUtils.hash(chain_instance.blocks[-1].payload()).hex()
-        next_height_2 = chain_instance.blocks[-1].block_height + 1
+        txs2 = bc.get_covered_transaction_set(tp.transactions)
+        h1 = BlockchainUtils.hash(bc.blocks[-1].payload()).hex()
+        idx2 = bc.blocks[-1].block_height + 1
         
-        second_block = validator.create_block(pending_txs_2, prev_hash_2, next_height_2)
-        chain_instance.add_block(second_block)
+        b2 = v.create_block(txs2, h1, idx2)
+        bc.add_block(b2)
         
-        ledger_snapshot = chain_instance.to_dict()
+        snap = bc.to_dict()
 
-        assert ledger_snapshot["blocks"][0]["last_hash"] == "genesis_block"
-        assert ledger_snapshot["blocks"][1]["transactions"][0]["amount"] == 10
-        assert ledger_snapshot["blocks"][2]["transactions"][0]["amount"] == 5
+        assert snap["blocks"][0]["last_hash"] == "genesis_block"
+        assert snap["blocks"][1]["transactions"][0]["amount"] == 10
+        assert snap["blocks"][2]["transactions"][0]["amount"] == 5
