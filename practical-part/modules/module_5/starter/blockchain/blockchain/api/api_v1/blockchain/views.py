@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request, HTTPException
 
 
 
-# Create the blockchain router
+                              
 router = APIRouter()
 
 

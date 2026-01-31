@@ -74,7 +74,7 @@ class Node:
         process = psutil.Process(os.getpid())
         while self.keep_running:
             cpu = process.cpu_percent(interval=1)
-            memory = process.memory_info().rss / (1024 * 1024) # MB
+            memory = process.memory_info().rss / (1024 * 1024)     
             logger.info(f"BENCHMARK_RESOURCES: CPU: {cpu}% | RAM: {memory:.2f}MB")
             time.sleep(1)
 

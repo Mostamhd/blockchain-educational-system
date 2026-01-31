@@ -20,17 +20,17 @@ if __name__ == "__main__":
 
     exchange = Wallet()
 
-    # Block size: 2 transactions / block
+                                        
 
-    # Forger: Genesis
+                     
     post_transaction(exchange, jane, 100, "EXCHANGE")
     post_transaction(exchange, john, 100, "EXCHANGE")
     post_transaction(exchange, john, 10, "EXCHANGE")
     post_transaction(john, john, 100, "STAKE")
 
-    # Forger: Probably Jane (the Genesis forger has 1 token staked, therefore Jane will most likely be the next forger)
+                                                                                                                       
     post_transaction(jane, john, 1, "TRANSFER")
     post_transaction(jane, john, 1, "TRANSFER")
 
-    # One remaining in transaction pool
+                                       
     post_transaction(jane, john, 1, "TRANSFER")

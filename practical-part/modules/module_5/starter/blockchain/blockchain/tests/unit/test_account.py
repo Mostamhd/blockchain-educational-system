@@ -27,7 +27,7 @@ def test_account_model_with_blockchain():
     exchange = Wallet()
     forger = Wallet()
 
-    # John buys 10 tokens from exchange
+                                       
     exchange_transaction = exchange.create_transaction(
         john.public_key_string(), 10, "EXCHANGE"
     )
@@ -35,7 +35,7 @@ def test_account_model_with_blockchain():
     if not pool.transaction_exists(exchange_transaction):
         pool.add_transaction(exchange_transaction)
 
-    # Add to blockchain
+                       
     covered_transaction = blockchain.get_covered_transaction_set(pool.transactions)
     last_hash = BlockchainUtils.hash(blockchain.blocks[-1].payload()).hex()
     block_height = blockchain.blocks[-1].block_height + 1
@@ -43,13 +43,13 @@ def test_account_model_with_blockchain():
     blockchain.add_block(block_one)
     pool.remove_from_pool(block_one.transactions)
 
-    # John sends 5 tokens to Jane
+                                 
     transaction = john.create_transaction(jane.public_key_string(), 5, "TRANSFER")
 
     if not pool.transaction_exists(transaction):
         pool.add_transaction(transaction)
 
-    # Add to blockchain
+                       
     covered_transaction = blockchain.get_covered_transaction_set(pool.transactions)
     last_hash = BlockchainUtils.hash(blockchain.blocks[-1].payload()).hex()
     block_height = blockchain.blocks[-1].block_height + 1
@@ -62,6 +62,6 @@ def test_account_model_with_blockchain():
     assert blockchain_representation["blocks"][0]["last_hash"] == "genesis_hash"
     assert blockchain_representation["blocks"][1]["transactions"][0]["amount"] == 10
     with pytest.raises(IndexError):
-        # Make sure transactions are not duplicate in new block (remove_from_pool)
+                                                                                  
         assert blockchain_representation["blocks"][2]["transactions"][1]
     assert blockchain_representation["blocks"][2]["transactions"][0]["amount"] == 5

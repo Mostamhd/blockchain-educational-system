@@ -4,7 +4,7 @@ import json
 import urllib.request
 import urllib.error
 
-# Ensure we can import the blockchain package
+                                             
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(current_dir)
 
