@@ -36,7 +36,7 @@ class PeerDiscoveryHandler:
                     }
                 )
             count += 1
-            sleep_time = 15 if count < 10 else 600  # prevent excessive logging
+            sleep_time = 15 if count < 10 else 600
             time.sleep(sleep_time)
 
     def discovery(self):
