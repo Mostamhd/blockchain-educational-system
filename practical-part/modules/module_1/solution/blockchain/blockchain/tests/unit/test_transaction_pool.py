@@ -1,8 +1,9 @@
 from blockchain.transaction.transaction_pool import TransactionPool
 
 
-def test_transaction_pool(transaction):
-    pool = TransactionPool()
-    assert not pool.transaction_exists(transaction)
-    pool.add_transaction(transaction)
-    assert pool.transaction_exists(transaction)
+class TestPool:
+    def test_item_management(self, transaction):
+        inst = TransactionPool()
+        assert not inst.transaction_exists(transaction)
+        inst.add_transaction(transaction)
+        assert inst.transaction_exists(transaction)

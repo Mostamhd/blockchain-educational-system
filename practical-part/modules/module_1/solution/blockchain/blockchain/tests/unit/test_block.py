@@ -1,10 +1,18 @@
 from blockchain.block import Block
 
 
-def test_block(transaction_pool):
-    tx_pool = transaction_pool["pool"]
-    block = Block(tx_pool.transactions, "last_hash", "forger", 1)
-    block_representation = block.to_dict()
-    assert block_representation["block_height"]
-    assert block_representation["transactions"][0]["sender_public_key"]
-    assert block_representation["forger"]
+class TestObjectBlocks:
+    def test_initial_values(self, transaction_pool):
+        p = transaction_pool["pool"]
+        txs = p.transactions
+        prev = "last_hash"
+        f = "forger"
+        h = 1
+        
+        obj = Block(txs, prev, f, h)
+        
+        dat = obj.to_dict()
+        assert dat["block_height"] == 1
+        assert dat["transactions"][0]["sender_public_key"]
+        assert dat["forger"] == "forger"
+        assert dat["last_hash"] == "last_hash"

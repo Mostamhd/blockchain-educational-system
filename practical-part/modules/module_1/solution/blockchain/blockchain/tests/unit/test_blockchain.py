@@ -1,44 +1,58 @@
 from blockchain.blockchain import Blockchain
 from blockchain.utils.helpers import BlockchainUtils
+from blockchain.transaction.wallet import Wallet
 
 
-def test_blockchain(transaction_pool):
-    wallet = transaction_pool["transaction_from_wallet"]["wallet"]
-    pool = transaction_pool["pool"]
+class TestMainChain:
+    def test_block_addition(self, transaction_pool):
+        w = transaction_pool["transaction_from_wallet"]["wallet"]
+        p = transaction_pool["pool"]
 
-    block = wallet.create_block(pool.transactions, "last_hash", 1)
+        b = w.create_block(p.transactions, "last_hash", 1)
 
-    blockchain = Blockchain()
-    blockchain.add_block(block)
+        inst = Blockchain()
+        inst.add_block(b)
 
-    blockchain_readable = blockchain.to_dict()
+        dat = inst.to_dict()
 
-    assert blockchain_readable["blocks"]
-    assert blockchain_readable["blocks"][0]["last_hash"] == "genesis_hash"
+        assert len(dat["blocks"]) == 2
+        assert dat["blocks"][0]["last_hash"] == "genesis_group_05"
 
+    def test_integrity_checks(self, transaction_pool):
+        w = transaction_pool["transaction_from_wallet"]["wallet"]
+        p = transaction_pool["pool"]
 
-def test_blockchain_valid_blocks(transaction_pool):
-    wallet = transaction_pool["transaction_from_wallet"]["wallet"]
-    pool = transaction_pool["pool"]
+        inst = Blockchain()
 
-    blockchain = Blockchain()
+        lh = BlockchainUtils.hash(inst.blocks[-1].payload()).hex()
+        nxt = inst.blocks[-1].block_height + 1
+        
+        b_ok = w.create_block(p.transactions, lh, nxt)
+        assert inst.last_block_hash_valid(b_ok)
+        assert inst.block_count_valid(b_ok)
 
-    last_hash = BlockchainUtils.hash(blockchain.blocks[-1].payload()).hex()
+        b_err = w.create_block(p.transactions, lh, nxt + 10)
+        assert not inst.block_count_valid(b_err)
 
-    block_height = blockchain.blocks[-1].block_height + 1
-    block = wallet.create_block(pool.transactions, last_hash, block_height)
+        inst.add_block(b_ok)
+        
+        dat = inst.to_dict()
+        assert dat["blocks"]
+        assert dat["blocks"][0]["last_hash"] == "genesis_group_05"
 
-    assert blockchain.last_block_hash_valid(block)
-    assert blockchain.block_count_valid(block)
-
-    block_height = blockchain.blocks[-1].block_height + 10
-    block = wallet.create_block(pool.transactions, last_hash, block_height)
-
-    assert not blockchain.block_count_valid(block)
-
-    blockchain.add_block(block)
-
-    blockchain_readable = blockchain.to_dict()
-
-    assert blockchain_readable["blocks"]
-    assert blockchain_readable["blocks"][0]["last_hash"] == "genesis_hash"
+    def test_tx_lookup(self):
+        inst = Blockchain()
+        u1 = Wallet()
+        u2 = Wallet()
+        
+        tx = u1.create_transaction(u2.public_key_string(), 5, "TRANSFER")
+        
+        assert not inst.transaction_exists(tx)
+        
+        m = Wallet()
+        lh = BlockchainUtils.hash(inst.blocks[-1].payload()).hex()
+        b = m.create_block([tx], lh, 1)
+        
+        inst.add_block(b)
+        
+        assert inst.transaction_exists(tx)
