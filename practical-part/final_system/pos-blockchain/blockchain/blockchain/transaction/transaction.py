@@ -12,7 +12,7 @@ class Transaction:
         self.id = uuid.uuid1().hex
         self.timestamp = time.time()
         self.signature = ""
-        self.hash = None
+        self.hash = ""
 
     def to_dict(self):
         return self.__dict__

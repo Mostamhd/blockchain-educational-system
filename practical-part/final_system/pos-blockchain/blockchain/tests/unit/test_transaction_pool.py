@@ -1,8 +1,9 @@
 from blockchain.transaction.transaction_pool import TransactionPool
 
 
-def test_transaction_pool(transaction):
-    pool = TransactionPool()
-    assert not pool.transaction_exists(transaction)
-    pool.add_transaction(transaction)
-    assert pool.transaction_exists(transaction)
+class TestMempool:
+    def test_pool_ingestion(self, transaction):
+        mempool = TransactionPool()
+        assert not mempool.transaction_exists(transaction)
+        mempool.add_transaction(transaction)
+        assert mempool.transaction_exists(transaction)

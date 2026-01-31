@@ -28,7 +28,7 @@ body{
 
 .header-link {
   color: black;
-  text-decoration: none; /* no underline */
+  text-decoration: none;
 }
 
 .break-word {
@@ -55,7 +55,6 @@ li a {
 }
 li.right {float: right;}
 
-/* Change the link color to #111 (black) on hover */
 li a:hover {
   background-color: #111;
 }

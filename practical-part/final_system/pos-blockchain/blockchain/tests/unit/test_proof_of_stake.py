@@ -1,39 +1,36 @@
-import random
-import string
-
 from blockchain.pos.proof_of_stake import ProofOfStake
 
 
-def get_random_string(length):
-    letters = string.ascii_lowercase
-    result_string = "".join(random.choice(letters) for i in range(length))
-    return result_string
+class TestConsensusMechanism:
+    def test_genesis_stake_exists(self):
+        consensus = ProofOfStake()
+        assert consensus.stakers
+        assert len(consensus.stakers) == 1
 
+    def test_stake_registry_updates(self):
+        consensus = ProofOfStake()
+        consensus.update("alice", 10)
+        consensus.update("bob", 100)
 
-def test_proof_of_stake():
-    pos = ProofOfStake()
-    pos.update("john", 10)
-    pos.update("jane", 100)
+        assert consensus.get("alice") == 10
+        assert consensus.get("bob") == 100
+        assert consensus.get("charlie") is None
 
-    assert pos.get("john") == 10
-    assert pos.get("jane") == 100
-    assert not pos.get("jack")
+        consensus.update("alice", 5)
+        assert consensus.get("alice") == 15
 
+    def test_lot_generation_count(self):
+        consensus = ProofOfStake()
+        consensus.update("alice", 2)
+        lot_pool = consensus.validator_lots("seed")
+        
+        alice_lots = [item for item in lot_pool if item.public_key == "alice"]
+        assert len(alice_lots) == 2
 
-def test_proof_of_stake_winner_lot():
-    pos = ProofOfStake()
-    pos.update("john", 50)
-    pos.update("jane", 100)
-
-    john_wins = 0
-    jane_wins = 0
-
-    for _ in range(100):
-        forger = pos.forger(get_random_string(1))
-        if forger == "john":
-            john_wins += 1
-        elif forger == "jane":
-            jane_wins += 1
-
-    assert jane_wins > 40
-    assert john_wins < 60
+    def test_leader_election_integrity(self):
+        consensus = ProofOfStake()
+        consensus.update("alice", 10)
+        
+        elected_forger = consensus.forger("random_seed_string")
+        assert isinstance(elected_forger, str)
+        assert elected_forger in consensus.stakers.keys()

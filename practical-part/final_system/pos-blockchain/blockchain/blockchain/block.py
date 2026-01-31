@@ -11,7 +11,7 @@ class Block:
         self.block_height = block_height
         self.timestamp = time.time()
         self.signature = ""
-        self.hash = hash
+        self.hash = ""
         
     @staticmethod
     def genesis():

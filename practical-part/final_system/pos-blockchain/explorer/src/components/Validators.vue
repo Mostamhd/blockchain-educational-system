@@ -49,22 +49,22 @@
 <style scoped>
 .table-container {
   width: 100%;
-  overflow-x: auto; /* Ensure the table can scroll horizontally if necessary */
+  overflow-x: auto;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* Ensures equal width for all columns */
+  table-layout: fixed;
 }
 
 th, td {
   border: 1px solid #ccc;
   padding: 8px;
   text-align: left;
-  white-space: nowrap; /* Prevents text from wrapping */
-  overflow: hidden; /* Ensures content that overflows is hidden */
-  text-overflow: ellipsis; /* Shows ellipsis (...) for overflowed content */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 th {
