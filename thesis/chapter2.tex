@@ -6,7 +6,7 @@ This chapter provides the necessary preliminaries and theoretical foundations re
 
 \section{Distributed Ledger Technology (DLT)} \label{ch2_dlt}
 
-Distributed Ledger Technology (DLT) represents a shift in data management and data science, moving from centralized data systems to decentralized architectures with a distributed, replicated database architecture. In a DLT network, the ledger is maintained by a distributed set of nodes, each possessing a copy of the database, thereby eliminating the single point of failure inherent in traditional centralized systems.
+Distributed Ledger Technology (DLT)~\cite{maull2017distributed} represents a shift in data management and data science, moving from centralized data systems to decentralized architectures with a distributed, replicated database architecture. In a DLT network, the ledger is maintained by a distributed set of nodes, each possessing a copy of the database, thereby eliminating the single point of failure inherent in traditional centralized systems.
 
 \subsection{Blockchain Architecture}
 A blockchain is a specific implementation of DLT where data is structured into sequential batches known as \enquote{blocks}., this structure utilizes cryptographic chaining to ensure the tamper-proofing of historical data, ordering, and immutability.
@@ -14,7 +14,7 @@ The architecture typically consists of two primary components, as illustrated in
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{figures/block_structure.png}
+    \includegraphics[width=0.4\textwidth, keepaspectratio]{figures/block_structure.png}
     \caption[Structure of a Block: Header and Body components]{Structure of a Block: Header and Body components \cite{nakamoto2008bitcoin}.}
     \label{fig:block_structure}
 \end{figure}
@@ -28,8 +28,8 @@ The inclusion of $H_{prev}$ in every block header creates a tamper-proof chain o
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/blockchain_structure.png}
-    \caption[The Blockchain Data Structure: Linking blocks via Cryptographic Hashes]{The Blockchain Data Structure: Linking blocks via Cryptographic Hashes \cite{nakamoto2008bitcoin}.}
+    \includegraphics[width=0.8\textwidth, keepaspectratio]{figures/blockchain_structure.png}
+    \caption[The Blockchain Data Structure: Linking blocks via Cryptographic Hashes]{The Blockchain Data Structure: Linking blocks via Cryptographic Hashes~\cite{nakamoto2008bitcoin}.}
     \label{fig:blockchain_link}
 \end{figure}
 
@@ -78,7 +78,6 @@ A majority 51\% attack~\cite{eyal2014majority} occurs when a single entity or gr
     \item Prevent new transactions from gaining confirmations (Censorship).
     \item Reverse their own transactions that were completed while they held the majority, leading to double-spending.
 \end{itemize}
-
 Despite these capabilities, a 51\% attack does not enable attackers to modify historical transactions or steal funds belonging to other users, as transaction validity remains constrained by cryptographic signatures and protocol rules. Nevertheless, the mere feasibility of sustained transaction censorship or transaction reversion undermines confidence in the immutability of the ledger, posing a severe threat to the practical security of the system.
 
 \subsection{Replay Attacks}
@@ -100,15 +99,13 @@ This trilemma provides a framework for evaluating blockchain architectures. For 
 
 \section{Consensus Algorithms} \label{ch2_consensus}
 
-In decentralized distributed systems, achieving agreement on a shared state without a central authority is a fundamental challenge. This section explores the theoretical foundations of consensus and critically analyzes the dominant mechanisms used to maintain ledger integrity.
+In decentralized distributed systems, achieving agreement on a shared state without a central authority is a challenge. This section explores the theoretical foundations of consensus and critically analyzes the dominant mechanisms used to maintain ledger integrity.
 
 \subsection{The Byzantine Generals Problem and BFT} \label{ch2_consensus_bft}
-The primary objective of any blockchain consensus algorithm is to achieve \textbf{Byzantine Fault Tolerance (BFT)}. This concept, formalized by Lamport et al. \cite{lamport1982byzantine}, describes a scenario in which components of a distributed system may fail or act maliciously (Byzantine faults) by providing inconsistent information to different parts of the network.
-
-To reach a consensus in such an environment, the system must agree on a single value even if some nodes are acting maliciously. Mathematically, traditional BFT requires that more than two-thirds of the network participants ($3f + 1$, where $f$ is the number of faulty nodes) are honest to guarantee safety and security. Modern blockchain algorithms address this issue by introducing economic costs or cryptographic proofs that make acting maliciously in the network expensive or computationally infeasible.
+The primary objective of any blockchain consensus algorithm is to achieve \textbf{Byzantine Fault Tolerance (BFT)}. This concept, formalized by Lamport~\cite{lamport1982byzantine}, describes a scenario in which components of a distributed system may fail or act maliciously (Byzantine faults) by providing inconsistent information to different parts of the network.\\To reach a consensus in such an environment, the system must agree on a single value even if some nodes are acting maliciously. \\Mathematically, traditional BFT requires that more than two thirds of the network participants ($3f + 1$, where $f$ is the number of faulty nodes) are honest to guarantee safety and security~\cite{lamport1982byzantine}. Modern blockchain algorithms address this issue by introducing economic costs or cryptographic proofs that make acting maliciously in the network expensive or computationally infeasible.
 
 \subsection{Proof of Work (PoW)} \label{ch2_consensus_pow}
-Proof of Work (PoW), introduced by Bitcoin~\ref{garay2015bitcoin}, serves as the primary mechanism for achieving consensus in a permissionless environment. It functions by requiring nodes (miners) to prove they have performed a specific amount of computational work.
+Proof of Work (PoW), introduced by Bitcoin~\cite{garay2015bitcoin}, serves as the primary mechanism for achieving consensus in a permissionless environment. It functions by requiring nodes (miners) to prove they have performed a specific amount of computational work.
 
 \subsubsection{The Hashing Problem and Proof Generation}
 The fundamental mechanism of PoW is the requirement for nodes (miners) to solve a computationally intensive cryptographic guessing problem. Miners must find a \textit{nonce} $n$ such that the hash of the block header $B_h$ satisfies a specific numerical constraint defined by a network-wide target $T$:
@@ -129,7 +126,7 @@ Where:
 Because hash functions are designed with high sensitivity (Avalanche Effect), the only strategy to find a valid $n$ is via brute-force search, which consumes significant CPU cycles. While computing the hash of input data is efficient, inverting the process to derive the input data from a hash is computationally infeasible. Consequently, the resulting “proof” is trivial for other nodes to verify via a single hash operation.
 
 \subsubsection{Dynamic Difficulty Adjustment} \label{ch2_dynamic_difficulty_adjustment}
-To maintain stability, the network must account for fluctuations in the total computational power (\textit{hashrate}). If more miners join or hardware becomes faster, the average block time would decrease, leading to inflation and network congestion. To counter this, the protocol periodically adjusts the Target $T$.
+To maintain stability, the network must account for fluctuations in the total computational power (\textit{hashrate})~\cite{garay2015bitcoin}. If more miners join or hardware becomes faster, the average block time would decrease, leading to inflation and network congestion. To counter this, the protocol periodically adjusts the Target $T$.
 
 The difficulty $D$ is inversely proportional to the Target. The adjustment ensures that the average time taken to find a valid hash remains constant. The adjustment factor is typically calculated as:
 
@@ -169,21 +166,19 @@ Unlike PoW, where security is derived from the cost of hardware and energy, PoS 
 
 \subsubsection{The Problem and BFT}
 A fundamental challenge in early PoS implementations was the \enquote{Nothing at Stake} problem. In a PoW system, miners are naturally disincentivized from mining on two competing forks because their hashing power is a finite physical resource. In PoS, however, there is no physical cost to signing every available fork, which would prevent the network from ever reaching a stable consensus.
-
 To achieve Byzantine Fault Tolerance (BFT), modern PoS protocols (such as Ethereum's Casper or Cardano's Ouroboros) implement \textbf{Slashing Conditions}~\cite{formal2025beacon}:
 \begin{enumerate}
     \item \textbf{Economic Deterrence:} If a validator is caught acting maliciously (e.g., signing two different versions of the same block), a portion or the entirety of their stake is \enquote{slashed} (destroyed).
     \item \textbf{Finality:} Once a block receives signatures from a supermajority (typically $>2/3$) of the total stake, it is considered finalized. This provides a formal mathematical guarantee that the block cannot be reversed without an attacker losing a massive amount of capital.
 \end{enumerate}
 
-\subsubsection{Security }
+\subsubsection{Security}
 PoS solves the Byzantine Generals Problem by making an attack self-defeating. To execute a 51\% attack, an adversary would need to purchase more than half of the network's total supply. The resulting market demand would likely drive the token price to a very high levels, and a subsequent attack would devalue the very assets the attacker had acquired.
-
 \textbf{Analysis:} 
-PoS offers better scalability and lower latency compared to PoW. However, it introduces risks of \textbf{wealth concentration}, where early or large stakers accumulate more rewards, potentially leading to a centralizing effect over time.
+PoS offers better scalability and lower latency compared to PoW. However, it introduces risks of \textbf{wealth concentration}~\cite{blockchainWithoutWastePos}, where early or large stakers accumulate more rewards, potentially leading to a centralizing effect over time.
 
 \subsection{Delegated Proof of Stake (DPoS)}
-Delegated Proof of Stake (DPoS) \cite{springer2025_dpos_scalability} represents a shift from purely algorithmic consensus to a democratic model, designed specifically to overcome the scalability bottlenecks inherent in traditional BFT and PoW systems by concentrating block production among a small set of elected nodes.
+Delegated Proof of Stake (DPoS)~\cite{springer2025_dpos_scalability} represents a shift from purely algorithmic consensus to a democratic model, designed specifically to overcome the scalability bottlenecks inherent in traditional BFT and PoW systems by concentrating block production among a small set of elected nodes.
 
 \subsubsection{The Two-Tiered Governance Mechanism}
 The DPoS protocol separates the security of the network into two distinct layers:
@@ -194,10 +189,7 @@ The DPoS protocol separates the security of the network into two distinct layers
 
 
 \subsubsection{Optimizing Throughput and Communication Complexity}
-The primary technical advantage of DPoS lies in its reduction of network overhead. In traditional consensus mechanisms, enabling every node to participate in the validation process results in a massive increase in communication traffic as the network grows. This message propagation delay often becomes a bottleneck that limits the system's speed and scalability \cite{CastroLiskov1999}.
-
-
-By fixing the number of active validators to a small, constant set of elected delegates, DPoS ensures that the communication required to reach consensus remains efficient \cite{larimer2014dpos}. While the delegates still communicate amongst themselves, the limited size of this group ensures that the consensus delay remains minimal and constant, regardless of how many thousands of passive token holders are in the system. This enables:
+The primary technical advantage of DPoS lies in its reduction of network overhead. In traditional consensus mechanisms, enabling every node to participate in the validation process resulting in a massive increase in communication traffic as the network grows~\cite{CastroLiskov1999}. This message propagation delay often becomes a bottleneck that limits the system's speed and scalability.\\By fixing the number of active validators to a small, constant set of elected delegates, DPoS ensures that the communication required to reach consensus remains efficient. While the delegates still communicate amongst themselves, the limited size of this group ensures that the consensus delay remains minimal and constant, regardless of how many thousands of passive token holders are in the system. This enables:
 
 \begin{itemize}
     \item \textbf{Sub-second Block Times:} Because the next block producer is known in advance via the round-robin schedule, there is no \enquote{competition} phase, allowing for near-instantaneous block propagation.
@@ -220,7 +212,7 @@ While DPoS achieves transaction speeds much higher than other algorithms, it fac
 Proof of History (PoH)~\cite{mishra2024solana}, is a cryptographic clock designed to solve the problem of time synchronization in distributed systems. While traditional consensus mechanisms require nodes to communicate to agree on the order of events, PoH provides a verifiable record of the passage of time, allowing nodes to agree on the sequence of transactions without requiring constant network-wide broadcasts.
 
 \subsubsection{The Verifiable Delay Function (VDF) Mechanism}
-The core of PoH is a high-frequency \textbf{Verifiable Delay Function (VDF)}. This is a sequential, recursive process utilizing a cryptographically secure, collision-resistant hash function. Since the output of each step is required to compute the next, the process cannot be parallelized, ensuring that a specific amount of real-world time must elapse to produce the result.
+The core of PoH is a high-frequency \textbf{Verifiable Delay Function (VDF)}~\cite{mishra2024solana}. This is a sequential, recursive process utilizing a cryptographically secure, collision-resistant hash function. Since the output of each step is required to compute the next, the process cannot be parallelized, ensuring that a specific amount of real-world time must elapse to produce the result.
 
 The recursive hashing process is defined as:
 \begin{equation}
@@ -343,8 +335,8 @@ Introduced by Satoshi Nakamoto, Bitcoin represents the first successful implemen
     \item \textbf{Nakamoto Consensus:} Bitcoin utilizes Proof of Work with the longest-chain rule. While this provides security and immutability, the computational overhead of the PoW consensus mechanism restricts the throughput of the network to approximately 7 transactions per second (TPS) with a 10-minute block interval.
 \end{itemize}
 
-\subsection{Ethereum}
-Ethereum, proposed by Vitalik Buterin in 2013, extended blockchain systems from the peer-to-peer currency model to a distributed Turing-complete system capable of executing arbitrary code while maintaining the functionality of a cryptocurrency~\cite{formal2025beacon}. Ethereum's architecture is defined by the following key design choices:
+\subsection{Ethereum}\label{ch2_relatedWork_eth}
+Ethereum~\cite{chen2021survey}, proposed by Vitalik Buterin in 2013, extended blockchain systems from the peer-to-peer currency model to a distributed Turing-complete system capable of executing arbitrary code while maintaining the functionality of a cryptocurrency~\cite{formal2025beacon}. Ethereum's architecture is defined by the following key design choices:
 
 \begin{itemize}
     \item \textbf{Account-Based Model:} To support complex applications, Ethereum abandoned UTXOs for an Account Model (State machine), mapping addresses directly to balances and storage. This design choice simplifies the development of Decentralized Applications (dApps).
