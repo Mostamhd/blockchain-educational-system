@@ -5,7 +5,6 @@ from api.api_v1.api import router as api_router
 from api.utils.log_middleware import LogMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 
-                            
 origins = [
     "http://localhost",
     "http://localhost:8080",
@@ -18,13 +17,12 @@ app = FastAPI(
     version="0.1.0",
 )
 app.add_middleware(LogMiddleware)
-                     
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,                          
+    allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],                          
-    allow_headers=["*"],                     
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 class NodeAPI:

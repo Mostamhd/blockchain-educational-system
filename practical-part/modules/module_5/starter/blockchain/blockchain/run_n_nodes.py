@@ -33,15 +33,12 @@ if __name__ == "__main__":
     node_port_start = 8010
     api_port_start = 8050
 
-                                                   
     node1 = Node(ip, node_port_start, api_port_start, args.key_file_1)
     print(f"Started node 1 at {ip}:{node_port_start} with API port {api_port_start} and key file {args.key_file_1}")
 
-                                                     
     node2 = Node(ip, node_port_start + 1, api_port_start + 1, args.key_file_2)
     print(f"Started node 2 at {ip}:{node_port_start + 1} with API port {api_port_start + 1} and key file {args.key_file_2}")
 
-                                                  
     for i in range(2, args.n):
         node_port = node_port_start + i
         api_port = api_port_start + i

@@ -3,6 +3,7 @@ from blockchain.utils.helpers import BlockchainUtils
 
 from eth_keys import keys
 from eth_utils import decode_hex
+import os
 
 
 class ProofOfStake:
@@ -11,10 +12,12 @@ class ProofOfStake:
         self.set_genesis_node_stake()
 
     def set_genesis_node_stake(self):
-        with open("./keys/genesis_public_key.txt", "r") as key_file:
+        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        key_path = os.path.join(base_dir, "keys", "genesis_public_key.txt")
+        with open(key_path, "r") as key_file:
             key_hex = key_file.read().strip() 
             genesis_public_key = keys.PublicKey(decode_hex(key_hex))
-        self.stakers[genesis_public_key] = 1
+        self.stakers[genesis_public_key.to_hex()] = 1
 
     def update(self, public_key_string, stake):
         if public_key_string in self.stakers.keys():

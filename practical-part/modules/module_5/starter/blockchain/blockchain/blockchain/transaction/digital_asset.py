@@ -9,3 +9,8 @@ class Book:
 
     def to_json(self):
         return json.dumps(self.__dict__)
+
+    @staticmethod
+    def from_json(json_data):
+        data = json.loads(json_data)
+        return Book(data['isbn'], data['title'], data['author'], data['owner_public_key'])

@@ -19,5 +19,4 @@ class BlockchainUtils:
 
     @staticmethod
     def decode(encoded_obj):
-                                                                     
-        return jsonpickle.decode(encoded_obj)         
+        return jsonpickle.decode(encoded_obj)

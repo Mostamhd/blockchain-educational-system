@@ -20,17 +20,12 @@ if __name__ == "__main__":
 
     exchange = Wallet()
 
-                                        
-
-                     
     post_transaction(exchange, jane, 100, "EXCHANGE")
     post_transaction(exchange, john, 100, "EXCHANGE")
     post_transaction(exchange, john, 10, "EXCHANGE")
     post_transaction(john, john, 100, "STAKE")
 
-                                                                                                                       
     post_transaction(jane, john, 1, "TRANSFER")
     post_transaction(jane, john, 1, "TRANSFER")
 
-                                       
     post_transaction(jane, john, 1, "TRANSFER")

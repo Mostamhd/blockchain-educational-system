@@ -29,7 +29,6 @@ class Node:
         self.start_p2p()
         self.start_node_api()
         self.start_produce_block()
-                              
 
     def get_blockchain(self):
         return Blockchain()
@@ -41,7 +40,6 @@ class Node:
     def start_node_api(self):
         self.api = NodeAPI()
         self.api.inject_node(self)
-                                                       
         api_thread = threading.Thread(target=self.api.start, args=(self.ip, self.api_port))
         api_thread.daemon = True
         api_thread.start()
@@ -70,7 +68,6 @@ class Node:
         self.keep_running = False
 
     def produce_block(self):
-                                                          
         if not self.should_produce_block():
             return
         forger = self.blockchain.next_forger()
@@ -84,9 +81,6 @@ class Node:
 
     def create_coinbase_transaction(self):
         transaction = self.wallet.create_coinbase_transaction(self.wallet.public_key_string(), self.blockchain.block_reward, 'COINBASE')
-                                                                                    
-                                    
-                                                                
         self.transaction_pool.add_transaction(transaction)
 
     def handle_transaction(self, transaction):
@@ -166,7 +160,6 @@ class Node:
             self.p2p.broadcast(BlockchainUtils.encode(message))
 
     def should_produce_block(self):
-                                                        
         last_block_timestamp = self.blockchain.blocks[-1].timestamp
         current_timestamp = time.time()
         time_since_last_block = current_timestamp - last_block_timestamp
