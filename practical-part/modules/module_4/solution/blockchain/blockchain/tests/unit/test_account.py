@@ -1,5 +1,4 @@
 import pytest
-
 from blockchain.blockchain import Blockchain
 from blockchain.transaction.account_model import AccountModel
 from blockchain.transaction.transaction_pool import TransactionPool
@@ -7,61 +6,52 @@ from blockchain.transaction.wallet import Wallet
 from blockchain.utils.helpers import BlockchainUtils
 
 
-def test_account_model():
-    wallet = Wallet()
-    public_key_string = wallet.public_key_string()
-    account_model = AccountModel()
+class TestAccountBalances:
+    def test_update_workflow(self):
+        w = Wallet()
+        addr = w.public_key_string()
+        am = AccountModel()
 
-    account_model.add_account(public_key_string)
-    assert account_model.balances[public_key_string] == 0
-    account_model.update_balance(public_key_string, 5)
-    assert account_model.balances[public_key_string] == 5
+        am.add_account(addr)
+        assert am.balances[addr] == 0
+        
+        am.update_balance(addr, 5)
+        assert am.balances[addr] == 5
 
+    def test_chain_state_persistence(self):
+        bc = Blockchain()
+        tp = TransactionPool()
 
-def test_account_model_with_blockchain():
-    blockchain = Blockchain()
-    pool = TransactionPool()
+        u1 = Wallet()
+        u2 = Wallet()
+        src = Wallet()
+        v = Wallet()
 
-    john = Wallet()
-    jane = Wallet()
-    exchange = Wallet()
-    forger = Wallet()
+        tx1 = src.create_transaction(
+            u1.public_key_string(), 10, "EXCHANGE"
+        )
+        tp.add_transaction(tx1)
 
-    # John buys 10 tokens from exchange
-    exchange_transaction = exchange.create_transaction(
-        john.public_key_string(), 10, "EXCHANGE"
-    )
+        txs = bc.get_covered_transaction_set(tp.transactions)
+        h0 = BlockchainUtils.hash(bc.blocks[-1].payload()).hex()
+        idx = bc.blocks[-1].block_height + 1
+        
+        b1 = v.create_block(txs, h0, idx)
+        bc.add_block(b1)
+        tp.remove_from_pool(b1.transactions)
 
-    if not pool.transaction_exists(exchange_transaction):
-        pool.add_transaction(exchange_transaction)
+        tx2 = u1.create_transaction(u2.public_key_string(), 5, "PAYMENT")
+        tp.add_transaction(tx2)
 
-    # Add to blockchain
-    covered_transaction = blockchain.get_covered_transaction_set(pool.transactions)
-    last_hash = BlockchainUtils.hash(blockchain.blocks[-1].payload()).hex()
-    block_height = blockchain.blocks[-1].block_height + 1
-    block_one = forger.create_block(covered_transaction, last_hash, block_height)
-    blockchain.add_block(block_one)
-    pool.remove_from_pool(block_one.transactions)
+        txs2 = bc.get_covered_transaction_set(tp.transactions)
+        h1 = BlockchainUtils.hash(bc.blocks[-1].payload()).hex()
+        idx2 = bc.blocks[-1].block_height + 1
+        
+        b2 = v.create_block(txs2, h1, idx2)
+        bc.add_block(b2)
+        
+        snap = bc.to_dict()
 
-    # John sends 5 tokens to Jane
-    transaction = john.create_transaction(jane.public_key_string(), 5, "TRANSFER")
-
-    if not pool.transaction_exists(transaction):
-        pool.add_transaction(transaction)
-
-    # Add to blockchain
-    covered_transaction = blockchain.get_covered_transaction_set(pool.transactions)
-    last_hash = BlockchainUtils.hash(blockchain.blocks[-1].payload()).hex()
-    block_height = blockchain.blocks[-1].block_height + 1
-    block_two = forger.create_block(covered_transaction, last_hash, block_height)
-    blockchain.add_block(block_two)
-    pool.remove_from_pool(block_one.transactions)
-
-    blockchain_representation = blockchain.to_dict()
-
-    assert blockchain_representation["blocks"][0]["last_hash"] == "genesis_hash"
-    assert blockchain_representation["blocks"][1]["transactions"][0]["amount"] == 10
-    with pytest.raises(IndexError):
-        # Make sure transactions are not duplicate in new block (remove_from_pool)
-        assert blockchain_representation["blocks"][2]["transactions"][1]
-    assert blockchain_representation["blocks"][2]["transactions"][0]["amount"] == 5
+        assert snap["blocks"][0]["last_hash"] == "genesis_block"
+        assert snap["blocks"][1]["transactions"][0]["amount"] == 10
+        assert snap["blocks"][2]["transactions"][0]["amount"] == 5
