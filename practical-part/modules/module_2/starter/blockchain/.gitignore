@@ -24,12 +24,10 @@ archive.zip
 .vscode
 .env
 
-# vim temporary files
 *~
 .*.sw?
 .cache
 
-# macOS
 .DS_Store
 qwen.md
 
