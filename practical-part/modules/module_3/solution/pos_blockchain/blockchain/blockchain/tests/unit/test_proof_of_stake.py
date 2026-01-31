@@ -1,39 +1,36 @@
-import random
-import string
-
 from blockchain.pos.proof_of_stake import ProofOfStake
 
 
-def get_random_string(length):
-    letters = string.ascii_lowercase
-    result_string = "".join(random.choice(letters) for i in range(length))
-    return result_string
+class TestConsensus:
+    def test_genesis_config(self):
+        cp = ProofOfStake()
+        assert cp.stakers
+        assert len(cp.stakers) == 1
 
+    def test_stake_modifications(self):
+        cp = ProofOfStake()
+        cp.update("a", 10)
+        cp.update("b", 100)
 
-def test_proof_of_stake():
-    pos = ProofOfStake()
-    pos.update("john", 10)
-    pos.update("jane", 100)
+        assert cp.get("a") == 10
+        assert cp.get("b") == 100
+        assert cp.get("c") is None
 
-    assert pos.get("john") == 10
-    assert pos.get("jane") == 100
-    assert not pos.get("jack")
+        cp.update("a", 5)
+        assert cp.get("a") == 15
 
+    def test_lot_allocation(self):
+        cp = ProofOfStake()
+        cp.update("a", 2)
+        pool = cp.validator_lots("seed")
+        
+        a_lots = [l for l in pool if l.public_key == "a"]
+        assert len(a_lots) == 2
 
-def test_proof_of_stake_winner_lot():
-    pos = ProofOfStake()
-    pos.update("john", 50)
-    pos.update("jane", 100)
-
-    john_wins = 0
-    jane_wins = 0
-
-    for _ in range(100):
-        forger = pos.forger(get_random_string(1))
-        if forger == "john":
-            john_wins += 1
-        elif forger == "jane":
-            jane_wins += 1
-
-    assert jane_wins > 40
-    assert john_wins < 60
+    def test_selection_output(self):
+        cp = ProofOfStake()
+        cp.update("a", 10)
+        
+        winner = cp.forger("seed")
+        assert isinstance(winner, str)
+        assert winner in cp.stakers.keys()

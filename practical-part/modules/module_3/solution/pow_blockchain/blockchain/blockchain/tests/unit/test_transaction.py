@@ -1,15 +1,16 @@
-def test_transaction(transaction):
-    tx_dict = transaction.to_dict()
+class TestTxProperties:
+    def test_schema(self, transaction):
+        m = transaction.to_dict()
 
-    assert tx_dict["id"]
-    assert tx_dict["timestamp"]
-    assert tx_dict["amount"] == 1
+        assert m["id"]
+        assert m["timestamp"]
+        assert m["amount"] == 1
+        assert m["type"] == "transfer"
 
+    def test_auth_signature(self, transaction, wallet_signature):
+        transaction.sign(wallet_signature)
+        m = transaction.to_dict()
 
-def test_transaction_sign(transaction, wallet_signature):
-    transaction.sign(wallet_signature)
-    tx_dict = transaction.to_dict()
-
-    assert tx_dict["id"]
-    assert tx_dict["timestamp"]
-    assert not tx_dict["signature"] == ""
+        assert m["id"]
+        assert m["timestamp"]
+        assert m["signature"] != ""
